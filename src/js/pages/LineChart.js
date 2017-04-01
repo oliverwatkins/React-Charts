@@ -1,6 +1,6 @@
 import React from "react";
 
-import SimpleChart from "../components/SimpleChart";
+import SimpleChart from "../components/chart/SimpleChart";
 
 export default class LineChart extends React.Component {
     render() {
@@ -8,7 +8,6 @@ export default class LineChart extends React.Component {
             <div>
                 <h1>Line Chart</h1>
                 <SimpleChart/>
-
             </div>
         );
     }

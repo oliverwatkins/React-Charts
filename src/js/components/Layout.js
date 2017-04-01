@@ -2,7 +2,7 @@ import React from "react";
 
 import Footer from "./Footer";
 import Header from "./Header";
-import SimpleChart from "./SimpleChart";
+import SimpleChart from "./chart/SimpleChart";
 
 // import { LineChart, Line } from 'recharts';
 
