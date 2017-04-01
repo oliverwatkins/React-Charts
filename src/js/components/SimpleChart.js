@@ -1,16 +1,9 @@
 import React from "react";
 
-
-// const {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} = Recharts;
-// import { LineChart, Line } from 'recharts';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 
 export default class SimpleChart extends React.Component {
-
-
     constructor() {
-
-
         super();
         this.data = [
             {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
@@ -21,8 +14,6 @@ export default class SimpleChart extends React.Component {
             {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
             {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
         ];
-
-
     }
 
     render () {
