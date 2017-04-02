@@ -1,20 +1,27 @@
 import React from "react";
+import * as PieChartActions from "../../actions/PieChartActions";
 
 export default class PieChartForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
 
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value});
+        alert('on text change')
+
+        // reloadTodos() {
+            PieChartActions.changeSliceName(123);
+        // }
+
+        // this.setState({value: event.target.value});
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
+        alert('XXA name was submitted: ' + this.state.value);
         event.preventDefault();
     }
 
@@ -23,7 +30,7 @@ export default class PieChartForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <div>
                     <h3>Enter Chart Title Here : </h3>
-                    <input type="text" className="form-control"/>
+                    <input type="text" className="form-control" onChange={this.handleChange} />
                 </div>
                 <div className="css-form">
                     <div className="col-xs-10">
@@ -41,17 +48,13 @@ export default class PieChartForm extends React.Component {
                         <input type="number" className="form-control"
                                name="newValue" min="1" max="5" placeholder="Add value"></input>
                     </div>
-
                     <div className="input-group col-xs-5">
                         <span className="input-group-addon"><i className="glyphicon glyphicon-tint"></i></span>
                         <input type="text" className="form-control" name="color" placeholder="Choose Color"></input>
                     </div>
-
                     <button type="submit" value="Add Slice" className="button">Add Slice</button>
-
                 </div>
             </form>
-
         );
     }
 }

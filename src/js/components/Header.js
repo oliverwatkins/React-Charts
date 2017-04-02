@@ -1,24 +1,24 @@
-import React from "react";
+{/*import React from "react";*/}
 
-import Title from "./Header/Title";
+{/*import Title from "./Header/Title";*/}
 
-export default class Header extends React.Component {
-  handleChange(e) {
-    const title = e.target.value;
-    this.props.changeTitle(title);
-  }
+{/*export default class Header extends React.Component {*/}
+  {/*handleChange(e) {*/}
+    {/*const title = e.target.value;*/}
+    {/*this.props.changeTitle(title);*/}
+  {/*}*/}
 
-  render() {
+  {/*render() {*/}
 
-      var styles = {};
-      styles.borderColor = 'green';
-      styles.background = 'green';
+      {/*var styles = {};*/}
+      {/*styles.borderColor = 'green';*/}
+      {/*styles.background = 'green';*/}
 
-      return (
-      <div style={styles}>This is title
-        <Title title={this.props.title} />
-        <input value={this.props.title} onChange={this.handleChange.bind(this)} />
-      </div>
-    );
-  }
-}
+      {/*return (*/}
+      {/*<div style={styles}>This is title*/}
+        {/*<Title title={this.props.title} />*/}
+        {/*<input value={this.props.title} onChange={this.handleChange.bind(this)} />*/}
+      {/*</div>*/}
+    {/*);*/}
+  {/*}*/}
+{/*}*/}

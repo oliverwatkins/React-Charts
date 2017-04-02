@@ -10,10 +10,13 @@ export default class PieChartPage extends React.Component {
         return (
             <div>
                 <h1>Pie Chart</h1>
+                <div class="col-md-5">
+                    <PieChartForm/>
+                </div>
 
-                <PieChartForm/>
-
-                <SimplePieChart/>
+                <div class="col-md-5">
+                    <SimplePieChart/>
+                </div>
             </div>
         );
     }
