@@ -7,7 +7,7 @@ import SlicesStore from "../../stores/SlicesStore";
 export default class PieChartForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {name: '', percent:'', color:''};
 
         // this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,17 @@ export default class PieChartForm extends React.Component {
         // alert('XXA name was submitted: ' + this.state.value);
         event.preventDefault();
 
-        PieChartActions.createSlice("asdfasdf");
+        var slice = {
+            name: React.findDOMNode(this.refs.sliceName).value,
+            color: React.findDOMNode(this.refs.color).value,
+            percent: React.findDOMNode(this.refs.percent).value
+        }
+
+        // alert(React.findDOMNode(this.refs.color).value);
+        // alert(React.findDOMNode(this.refs.percent).value);
+        // alert();
+
+        PieChartActions.createSlice(slice);
     }
 
     render() {
@@ -40,17 +50,18 @@ export default class PieChartForm extends React.Component {
                     </div>
                     <div className="input-group col-xs-9">
                         <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
-                        <input type="text" className="form-control"
+                        <input type="text" ref="sliceName" className="form-control"
                                name="newSlice" placeholder="Add Pie Slice Name"></input>
                     </div>
                     <div className="input-group col-xs-9">
                         <span className="input-group-addon"><i className="glyphicon glyphicon-plus"></i></span>
-                        <input type="number" className="form-control"
+                        <input type="number" ref="percent" className="form-control"
                                name="newValue" min="1" max="5" placeholder="Add value"></input>
                     </div>
                     <div className="input-group col-xs-5">
                         <span className="input-group-addon"><i className="glyphicon glyphicon-tint"></i></span>
-                        <input type="text" className="form-control" name="color" placeholder="Choose Color"></input>
+                        <input type="text"  ref="color"  className="form-control"
+                               name="color" placeholder="Choose Color"></input>
                     </div>
                     <button type="submit" value="Add Slice" className="button">Add Slice</button>
                 </div>

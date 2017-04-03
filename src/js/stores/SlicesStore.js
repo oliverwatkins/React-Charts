@@ -19,12 +19,10 @@ class SlicesStore extends EventEmitter {
         ];
     }
 
-    createSlice(text) {
-        this.slices.push({
-            name:"asdf",
-            percent:1,
-            color: "#523432",
-        });
+    createSlice(slice) {
+        this.slices.push(
+            slice
+        );
         this.emit("change");
     }
 
