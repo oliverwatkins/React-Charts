@@ -12,7 +12,7 @@ class SlicesStore extends EventEmitter {
                 color: "#123123"
             },
             {
-                name: "Second Slice",
+                name: "Second SliceFGFG",
                 percent: 15,
                 color: "#423443"
             },
@@ -40,6 +40,15 @@ class SlicesStore extends EventEmitter {
             }
             case "RECEIVE_TODOS": {
                 this.todos = action.todos;
+                this.emit("change");
+                break;
+            }
+            case "CREATE_SLICE": {
+                // alert('yo in here')
+                // this.todos = action.todos;
+
+
+                this.createSlice(action.text);
                 this.emit("change");
                 break;
             }

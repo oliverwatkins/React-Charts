@@ -1,6 +1,9 @@
 import React from "react";
 import * as PieChartActions from "../../actions/PieChartActions";
 
+import SlicesStore from "../../stores/SlicesStore";
+
+
 export default class PieChartForm extends React.Component {
     constructor(props) {
         super(props);
@@ -12,17 +15,14 @@ export default class PieChartForm extends React.Component {
 
     handleChange(event) {
         alert('on text change')
-
-        // reloadTodos() {
-            PieChartActions.changeSliceName(123);
-        // }
-
-        // this.setState({value: event.target.value});
+        PieChartActions.changeSliceName(123);
     }
 
     handleSubmit(event) {
-        alert('XXA name was submitted: ' + this.state.value);
+        // alert('XXA name was submitted: ' + this.state.value);
         event.preventDefault();
+
+        PieChartActions.createSlice("asdfasdf");
     }
 
     render() {

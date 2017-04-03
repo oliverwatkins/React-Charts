@@ -1,10 +1,14 @@
 import React from "react";
+
+
 import SlicesStore from "../../stores/SlicesStore";
 
 export default class PieChartSliceList extends React.Component {
     constructor(props) {
         super(props);
+
         this.getSlices = this.getSlices.bind(this);
+
         this.state = {
             slices: SlicesStore.getAll(),
         };
@@ -16,21 +20,15 @@ export default class PieChartSliceList extends React.Component {
         });
     }
 
+    componentWillMount() {
+        SlicesStore.on("change", this.getSlices);
+    }
+
+    componentWillUnmount() {
+        SlicesStore.removeListener("change", this.getSlices);
+    }
 
     render() {
-        var slices = [
-            {
-                name: "First SliceXXX",
-                percent: 12,
-                color: "#123123"
-            },
-            {
-                name: "Second SliceYYY",
-                percent: 15,
-                color: "#423443"
-            },
-        ];
-
         return (
             <table className="MyClassName">
                 <tbody>
