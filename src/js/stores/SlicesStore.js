@@ -7,7 +7,7 @@ class SlicesStore extends EventEmitter {
         super()
         this.slices = [
             {
-                name: "First Slice",
+                name: "First SliceASDF",
                 percent: 12,
                 color: "#123123"
             },
@@ -19,20 +19,17 @@ class SlicesStore extends EventEmitter {
         ];
     }
 
-    createTodo(text) {
-        const id = Date.now();
-
-        this.todos.push({
-            id,
-            text,
-            complete: false,
+    createSlice(text) {
+        this.slices.push({
+            name:"asdf",
+            percent:1,
+            color: "#523432",
         });
-
         this.emit("change");
     }
 
     getAll() {
-        return this.todos;
+        return this.slices;
     }
 
     handleActions(action) {
@@ -51,7 +48,7 @@ class SlicesStore extends EventEmitter {
 
 }
 
-const todoStore = new TodoStore;
-dispatcher.register(todoStore.handleActions.bind(todoStore));
+const sStore = new SlicesStore();
+dispatcher.register(sStore.handleActions.bind(sStore));
 
-export default todoStore;
+export default sStore;

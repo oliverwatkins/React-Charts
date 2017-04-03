@@ -8,7 +8,7 @@ import Todos from "./pages/Todos";
 import Layout from "./pages/Layout";
 import Settings from "./pages/Settings";
 import LineChart from "./pages/LineChart";
-import PieChart from "./pages/PieChart";
+import PieChartPage from "./pages/PieChartPage";
 
 const app = document.getElementById('app');
 {/*ReactDOM.render(<Layout/>, app);*/}
@@ -20,7 +20,7 @@ ReactDOM.render(
             <Route path="favorites" component={Favorites}></Route>
             <Route path="settings" component={Settings}></Route>
             <Route path="line" component={LineChart}></Route>
-            <Route path="pie" component={PieChart}></Route>
+            <Route path="pie" component={PieChartPage}></Route>
         </Route>
     </Router>,
 app);
