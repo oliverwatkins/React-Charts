@@ -9,12 +9,12 @@ class SlicesStore extends EventEmitter {
         this.slices = [
             {
                 name: "First SliceASDF",
-                percent: 12,
+                value: 12,
                 color: "#123123"
             },
             {
                 name: "Second SliceFGFG",
-                percent: 15,
+                value: 15,
                 color: "#423443"
             },
         ];
@@ -40,6 +40,16 @@ class SlicesStore extends EventEmitter {
     getAllSlices() {
         return this.slices;
     }
+
+    getChartData() {
+
+        // [{name: 'Group A', value: 400},
+
+        return this.slices;
+
+        // return this.slices;
+    }
+
 
     handleActions(action) {
         switch(action.type) {

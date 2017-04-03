@@ -7,7 +7,7 @@ import SlicesStore from "../../stores/SlicesStore";
 export default class PieChartForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {name: '', percent:'', color:''};
+        this.state = {name: '', value:'', color:''};
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -17,7 +17,7 @@ export default class PieChartForm extends React.Component {
         var slice = {
             name: React.findDOMNode(this.refs.sliceName).value,
             color: React.findDOMNode(this.refs.color).value,
-            percent: React.findDOMNode(this.refs.percent).value
+            percent: React.findDOMNode(this.refs.value).value
         }
 
         PieChartActions.createSlice(slice);
@@ -47,7 +47,7 @@ export default class PieChartForm extends React.Component {
                     </div>
                     <div className="input-group col-xs-9">
                         <span className="input-group-addon"><i className="glyphicon glyphicon-plus"></i></span>
-                        <input type="number" ref="percent" className="form-control"
+                        <input type="number" ref="value" className="form-control"
                                name="newValue" min="1" max="5" placeholder="Add value"></input>
                     </div>
                     <div className="input-group col-xs-5">

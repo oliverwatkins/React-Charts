@@ -39,7 +39,7 @@ export default class PieChartSliceList extends React.Component {
                                 {slice.name}
                             </td>
                             <td>
-                                {slice.percent}
+                                {slice.value}
                             </td>
                             <td>
                                 {slice.color}
