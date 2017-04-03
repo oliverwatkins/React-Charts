@@ -4,7 +4,6 @@ import Todo from "../components/Todo";
 import * as TodoActions from "../actions/TodoActions";
 import TodoStore from "../stores/TodoStore";
 
-
 export default class Todos extends React.Component {
   constructor() {
     super();

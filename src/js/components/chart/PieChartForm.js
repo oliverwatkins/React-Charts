@@ -8,18 +8,10 @@ export default class PieChartForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {name: '', percent:'', color:''};
-
-        // this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-        alert('on text change')
-        PieChartActions.changeSliceName(123);
-    }
-
     handleSubmit(event) {
-        // alert('XXA name was submitted: ' + this.state.value);
         event.preventDefault();
 
         var slice = {
@@ -28,11 +20,11 @@ export default class PieChartForm extends React.Component {
             percent: React.findDOMNode(this.refs.percent).value
         }
 
-        // alert(React.findDOMNode(this.refs.color).value);
-        // alert(React.findDOMNode(this.refs.percent).value);
-        // alert();
-
         PieChartActions.createSlice(slice);
+    }
+
+    handleChartNameChange(event) {
+        PieChartActions.changeSliceName(event.currentTarget.value);
     }
 
     render() {
@@ -40,7 +32,7 @@ export default class PieChartForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <div>
                     <h3>Enter Chart Title Here : </h3>
-                    <input type="text" className="form-control" onChange={this.handleChange} />
+                    <input type="text" className="form-control" onChange={this.handleChartNameChange} />
                 </div>
                 <div className="css-form">
                     <div className="col-xs-10">

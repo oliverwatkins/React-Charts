@@ -15,9 +15,9 @@ export function deleteSlice(id) {
 }
 
 
-export function changeSliceName(id) {
+export function changeSliceName(newName) {
     dispatcher.dispatch({
         type: "CHANGE_SLICE_NAME",
-        id,
+        newName,
     });
 }

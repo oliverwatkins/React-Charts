@@ -10,13 +10,13 @@ export default class PieChartSliceList extends React.Component {
         this.getSlices = this.getSlices.bind(this);
 
         this.state = {
-            slices: SlicesStore.getAll(),
+            slices: SlicesStore.getAllSlices(),
         };
     }
 
     getSlices() {
         this.setState({
-            slices: SlicesStore.getAll(),
+            slices: SlicesStore.getAllSlices(),
         });
     }
 
@@ -30,7 +30,7 @@ export default class PieChartSliceList extends React.Component {
 
     render() {
         return (
-            <table className="MyClassName">
+            <table className="table">
                 <tbody>
                 {this.state.slices.map(function(slice, i) {
                     return (

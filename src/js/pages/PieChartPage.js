@@ -17,9 +17,6 @@ export default class PieChartPage extends React.Component {
                 <div class="col-md-5">
                     <PieChartSliceList/>
                 </div>
-
-
-
                 <div class="col-md-5">
                     <SimplePieChart/>
                 </div>
