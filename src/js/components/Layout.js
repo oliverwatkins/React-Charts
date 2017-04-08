@@ -4,10 +4,6 @@ import Footer from "./Footer";
 import Header from "./Header";
 import SimpleChart from "./chart/SimpleChart";
 
-// import { LineChart, Line } from 'recharts';
-
-// const {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} = Recharts;
-// const {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} = Recharts;
 const data = [
     {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
     {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
@@ -17,10 +13,6 @@ const data = [
     {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
     {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
 ];
-
-
-
-
 
 export default class Layout extends React.Component {
     constructor() {
