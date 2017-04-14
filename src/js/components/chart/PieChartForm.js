@@ -15,6 +15,8 @@ export default class PieChartForm extends React.Component {
         this.state.showModal = true;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.cancel = this.cancel.bind(this);
+        this.popupPicker = this.popupPicker.bind(this);
+        this.chooseColor = this.chooseColor.bind(this);
     }
     cancel(event) {
         this.setState({ showModal: false });
@@ -34,6 +36,11 @@ export default class PieChartForm extends React.Component {
         PieChartActions.createSlice(slice);
     }
     chooseColor(event) {
+        // this.state.showModal = false;
+        // PieChartActions.changeSliceName(event.currentTarget.value);
+    }
+    popupPicker(event) {
+        this.setState({ showModal: true });
         // this.state.showModal = false;
         // PieChartActions.changeSliceName(event.currentTarget.value);
     }
@@ -79,7 +86,7 @@ export default class PieChartForm extends React.Component {
                                 <Modal.Title>Pick a Color</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <CirclePicker/>
+                                <CirclePicker onChangeComplete={ this.chooseColor }/>
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button onClick={this.chooseColor}>OK</Button>
@@ -89,6 +96,7 @@ export default class PieChartForm extends React.Component {
 
                         <input type="text"  ref="color"  className="form-control"
                                name="color" placeholder="Choose Color"></input>
+                        <Button onClick={this.popupPicker}>Choose</Button>
                     </div>
                     <button type="submit" value="Add Slice" className="button">Add Slice</button>
                 </div>
