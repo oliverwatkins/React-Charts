@@ -1,11 +1,25 @@
 import React from "react";
 import * as PieChartActions from "../../actions/PieChartActions";
+import { SketchPicker } from 'react-color';
+import { AlphaPicker } from 'react-color';
+import { BlockPicker } from 'react-color';
+import { PhotoshopPicker } from 'react-color';
+import { CirclePicker } from 'react-color';
+import { Modal, Button } from 'react-bootstrap';
+
 
 export default class PieChartForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {name: '', value:'', color:''};
+        this.state.showModal = true;
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.cancel = this.cancel.bind(this);
+    }
+    cancel(event) {
+        this.setState({ showModal: false });
+        // this.state.showModal = false;
+        // PieChartActions.changeSliceName(event.currentTarget.value);
     }
 
     handleSubmit(event) {
@@ -18,6 +32,10 @@ export default class PieChartForm extends React.Component {
         }
 
         PieChartActions.createSlice(slice);
+    }
+    chooseColor(event) {
+        // this.state.showModal = false;
+        // PieChartActions.changeSliceName(event.currentTarget.value);
     }
 
     handleChartNameChange(event) {
@@ -49,6 +67,26 @@ export default class PieChartForm extends React.Component {
                     </div>
                     <div className="input-group col-xs-5">
                         <span className="input-group-addon"><i className="glyphicon glyphicon-tint"></i></span>
+
+                        {/*<SketchPicker/>*/}
+                        {/*<AlphaPicker/>*/}
+                        {/*<BlockPicker/>*/}
+                        {/*<CirclePicker/>*/}
+
+                        {/*{this.state.showModal}*/}
+                        <Modal show={this.state.showModal} onHide={this.cancel}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Pick a Color</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <CirclePicker/>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button onClick={this.chooseColor}>OK</Button>
+                                <Button onClick={this.cancel}>Cancel</Button>
+                            </Modal.Footer>
+                        </Modal>
+
                         <input type="text"  ref="color"  className="form-control"
                                name="color" placeholder="Choose Color"></input>
                     </div>
