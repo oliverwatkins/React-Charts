@@ -1,4 +1,4 @@
-import dispatcher from "../dispatcher";
+import dispatcher from "../AppDispatcher.js";
 
 export function createTodo(text) {
   dispatcher.dispatch({

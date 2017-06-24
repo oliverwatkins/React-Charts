@@ -1,10 +1,12 @@
 import { EventEmitter } from "events";
 
-import dispatcher from "../dispatcher";
+import dispatcher from "../AppDispatcher.js";
 
 class TodoStore extends EventEmitter {
   constructor() {
-    super()
+
+    super();
+
     this.todos = [
       {
         id: 113464613,

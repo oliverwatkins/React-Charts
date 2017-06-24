@@ -1,6 +1,7 @@
 import { EventEmitter } from "events";
 
-import dispatcher from "../dispatcher";
+import dispatcher from "../AppDispatcher.js";
+
 
 class SlicesStore extends EventEmitter {
     constructor() {

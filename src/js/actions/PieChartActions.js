@@ -1,4 +1,5 @@
-import dispatcher from "../dispatcher";
+import dispatcher from "../AppDispatcher.js";
+
 
 export function createSlice(text) {
     dispatcher.dispatch({
