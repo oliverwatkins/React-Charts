@@ -10,7 +10,7 @@ const AppState =
           {name: 'Group C', value: 300},
           {name: 'Group D', value: 200},
           {name: 'Group E', value: 278},
-          {name: 'Group F', value: 189}
+          {name: 'Group F', value: 289}
         ]
       },
       line: {

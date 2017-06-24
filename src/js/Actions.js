@@ -1,14 +1,7 @@
 "use strict";
 
-import AppDispatcher from "../../../../main/AppDispatcher.js";
+import AppDispatcher from "./AppDispatcher.js";
 import ActionTypes from "./ActionTypes.js";
-
-// ENTER_PIE_CHART_NAME: 'ENTER_PIE_CHART_NAME',
-//   ADD_PIE_SLICE: 'ADD_PIE_SLICE',
-
-
-import AppDispatcher from "../../../../main/AppDispatcher.js";
-
 
 const Actions = {
   enterPieChartName() {
