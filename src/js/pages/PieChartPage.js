@@ -17,11 +17,8 @@ class PieChartPage extends Component {
   }
 
   static calculateState(prevState) {
-    return {
-      pie: AppStore.getState(),
-    };
+    return AppStore.getState();
   }
-
 
   render() {
     return (
@@ -34,7 +31,7 @@ class PieChartPage extends Component {
           <PieChartSliceList/>
         </div>
         <div className="col-md-5">
-          <SimplePieChart/>
+          <SimplePieChart {...this.state}/>
         </div>
       </div>
     );

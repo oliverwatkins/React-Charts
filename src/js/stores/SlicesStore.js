@@ -11,12 +11,14 @@ class SlicesStore extends EventEmitter {
             {
                 name: "First SliceASDF",
                 value: 12,
-                color: "#123123"
+                color: "#123123",
+                key: 1
             },
             {
                 name: "Second SliceFGFG",
                 value: 15,
-                color: "#423443"
+                color: "#423443",
+                key: 2
             },
         ];
     }

@@ -21,6 +21,7 @@ class AppStore extends ReduceStore {
   reduce(state, action) {
     switch (action.type) {
       case ActionTypes.ADD_PIE_SLICE:
+        alert();
         // state = DateRangeEntity.setFrom(state, action.index, action.value);
         // state = filtersUpdated(state);
         break;

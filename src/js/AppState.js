@@ -5,13 +5,19 @@ const AppState =
         name: "benfolds",
 
         data: [
-          {name: 'Group A', value: 400},
-          {name: 'Group B', value: 300},
-          {name: 'Group C', value: 300},
-          {name: 'Group D', value: 200},
-          {name: 'Group E', value: 278},
-          {name: 'Group F', value: 289}
-        ]
+          {
+            name: "First SliceASDF",
+            value: 12,
+            color: "#123123",
+            key: 1
+          },
+          {
+            name: "Second SliceFGFG",
+            value: 15,
+            color: "#423443",
+            key: 2
+          },
+        ],
       },
       line: {
 
