@@ -33,8 +33,11 @@ export default class PieChartSliceList extends React.Component {
             <table className="table">
                 <tbody>
                 {this.state.slices.map(function(slice, i) {
+
+                    var key = 'xx_' + i;
+
                     return (
-                        <tr key={i}>
+                        <tr key={key}>
                             <td>
                                 {slice.name}
                             </td>

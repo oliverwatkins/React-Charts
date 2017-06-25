@@ -18,6 +18,12 @@ const AppState =
             key: 2
           },
         ],
+
+        showColorPicker: false,
+
+        form: {
+          sliceName: "xxx"
+        }
       },
       line: {
 
@@ -32,10 +38,7 @@ const AppState =
           {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
           {name: 'Page G', uv: 3490, pv: 4300, amt: 2100}
         ]
-
-
       }
-
     }
   }
 export default AppState;

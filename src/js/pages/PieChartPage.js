@@ -25,10 +25,10 @@ class PieChartPage extends Component {
       <div>
         <h1>Pie Chart</h1>
         <div className="col-md-5">
-          <PieChartForm/>
+          <PieChartForm {...this.state}/>
         </div>
         <div className="col-md-5">
-          <PieChartSliceList/>
+          <PieChartSliceList  {...this.state}/>
         </div>
         <div className="col-md-5">
           <SimplePieChart {...this.state}/>

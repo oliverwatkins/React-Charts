@@ -15,6 +15,12 @@ export function deleteSlice(id) {
     });
 }
 
+export function changeName(newName) {
+  dispatcher.dispatch({
+    type: "CHANGE_NAME",
+    newName,
+  });
+}
 
 export function changeSliceName(newName) {
     dispatcher.dispatch({
