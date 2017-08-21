@@ -1,5 +1,6 @@
 import React from "react";
 
+
 import {Component} from 'react';
 import {Container} from 'flux/utils';
 import AppStore from './../AppStore.js';
@@ -11,11 +12,6 @@ import PieChartSliceList from "../components/chart/PieChartSliceList";
 
 
 class PieChartPage extends Component {
-
-
-  // constructor(props) {
-  //
-  // }
 
   static getStores() {
     return [AppStore];
@@ -32,6 +28,8 @@ class PieChartPage extends Component {
         newName,
       });
     }
+
+    console.info('changing text to ' + event.currentTarget.value)
     changeName(event.currentTarget.value);
   }
 

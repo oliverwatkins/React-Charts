@@ -16,9 +16,7 @@ class AppStore extends ReduceStore {
   getInitialState() {
     var state = AppState;
 
-    // var imState = Immutable.fromJS(state);
-
-    state.fuckthisshit = "fuckthisshit"
+    state.asdf = "asdf"
 
     return state;
   }
@@ -28,15 +26,27 @@ class AppStore extends ReduceStore {
     var imState = Immutable.fromJS(state);
 
     switch (action.type) {
+
+      case 'ADD_PIE_SLICE':
+
+        imState = imState.update(['app','pie','data'], myList => myList.push(action.slice));
+
+        break;
+
       case 'CHANGE_NAME':
         var newName = action.newName;
 
-        imState = imState.setIn(['app','name'], newName)
+        imState = imState.setIn(['app','pie','name'], newName)
 
         break;
     }
     return imState.toJS();
   }
+
+    //   getAllSlices() {
+    //     return this.slices;
+    // }
+
 }
 
 export default new AppStore();

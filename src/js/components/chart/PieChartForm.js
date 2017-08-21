@@ -8,6 +8,9 @@ import {CirclePicker} from 'react-color';
 import {Modal, Button} from 'react-bootstrap';
 
 
+
+import ReactDOM from "react-dom";
+
 export default class PieChartForm extends React.Component {
   constructor(props) {
     super(props);
@@ -27,10 +30,14 @@ export default class PieChartForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    const val = ReactDOM.findDOMNode(this.refs.sliceName).value;
+    const color = ReactDOM.findDOMNode(this.refs.color).value;
+    const value = parseInt(ReactDOM.findDOMNode(this.refs.value).value);
+
     var slice = {
-      name: React.findDOMNode(this.refs.sliceName).value,
-      color: React.findDOMNode(this.refs.color).value,
-      value: parseInt(React.findDOMNode(this.refs.value).value)
+      name: val,
+      color: color,
+      value: value
     }
 
     PieChartActions.createSlice(slice);

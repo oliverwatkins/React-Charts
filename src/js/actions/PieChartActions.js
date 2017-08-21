@@ -1,10 +1,10 @@
 import dispatcher from "../AppDispatcher.js";
 
 
-export function createSlice(text) {
+export function createSlice(slice) {
     dispatcher.dispatch({
         type: "CREATE_SLICE",
-        text,
+      slice,
     });
 }
 

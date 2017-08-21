@@ -13,7 +13,6 @@ export default class SimplePieChart extends React.Component {
     this.getChartData = this.getChartData.bind(this);
   }
 
-
   getChartName() {
     this.setState({
       chartName: SlicesStore.getChartName(),
@@ -28,14 +27,14 @@ export default class SimplePieChart extends React.Component {
 
 
   componentWillMount() {
-    SlicesStore.on("change", this.getChartName);
-    SlicesStore.on("change", this.getChartData);
+    // SlicesStore.on("change", this.getChartName);
+    // SlicesStore.on("change", this.getChartData);
 
   }
 
   componentWillUnmount() {
-    SlicesStore.removeListener("change", this.getChartName);
-    SlicesStore.removeListener("change", this.getChartData);
+    // SlicesStore.removeListener("change", this.getChartName);
+    // SlicesStore.removeListener("change", this.getChartData);
   }
 
   render() {
