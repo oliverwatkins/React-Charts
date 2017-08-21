@@ -1,5 +1,4 @@
 import {Container} from 'flux/utils';
-import View from './../../pages/PieChartPage.js';
 import AppStore from './../../AppStore.js';
 
 

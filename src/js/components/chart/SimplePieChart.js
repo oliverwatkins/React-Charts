@@ -45,7 +45,7 @@ export default class SimplePieChart extends React.Component {
 
 
         <div id="canvasTitle">
-          <h1 className="text-center">xx {this.props.app.pie.name}</h1>
+          <h1 className="text-center">{this.props.app.pie.name}</h1>
         </div>
 
         <PieChart width={800} height={400}>

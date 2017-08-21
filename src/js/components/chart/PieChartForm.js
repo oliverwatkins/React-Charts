@@ -11,11 +11,6 @@ import {Modal, Button} from 'react-bootstrap';
 export default class PieChartForm extends React.Component {
   constructor(props) {
     super(props);
-
-    // this.state = props;
-    // this.state = {name: '', value:'', color:''};
-    // props.showColorPicker = true;
-
     this.handleChartSliceChange = this.handleChartSliceChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.cancel = this.cancel.bind(this);
@@ -69,6 +64,7 @@ export default class PieChartForm extends React.Component {
 
 
   render() {
+    console.info('what is state : ' + this.state)
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
@@ -98,12 +94,7 @@ export default class PieChartForm extends React.Component {
           <div className="input-group col-xs-5">
             <span className="input-group-addon"><i className="glyphicon glyphicon-tint"></i></span>
 
-            {/*<SketchPicker/>*/}
-            {/*<AlphaPicker/>*/}
-            {/*<BlockPicker/>*/}
-            {/*<CirclePicker/>*/}
 
-            {/*{this.state.showModal}*/}
             <Modal show={this.props.app.pie.showColorPicker} onHide={this.cancel}>
               <Modal.Header closeButton>
                 <Modal.Title>Pick a Color</Modal.Title>
