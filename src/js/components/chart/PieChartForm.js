@@ -18,7 +18,7 @@ export default class PieChartForm extends React.Component {
     this.chooseColor = this.chooseColor.bind(this);
 
     this.state = {
-      showModal: false
+      showModalColorPicker: false
     };
   }
 
@@ -38,18 +38,15 @@ export default class PieChartForm extends React.Component {
   }
 
   cancel(event) {
-    this.setState({showModal: false});
+    this.setState({showModalColorPicker: false});
   }
 
   chooseColor(event) {
-    this.setState({showModal: false});
-    // PieChartActions.changeSliceName(event.currentTarget.value);
+    this.setState({showModalColorPicker: false, color: event.hex});
   }
 
   popupPicker(event) {
-    this.setState({showModal: true});
-    // this.state.showModal = false;
-    // PieChartActions.changeSliceName(event.currentTarget.value);
+    this.setState({showModalColorPicker: true});
   }
 
   handleChartNameChange(event) {
@@ -58,6 +55,14 @@ export default class PieChartForm extends React.Component {
 
   render() {
     console.info('what is state : ' + this.state)
+
+
+    var style = {
+      color: 'black',
+      background: this.state.color
+    };
+
+
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
@@ -84,7 +89,8 @@ export default class PieChartForm extends React.Component {
           </div>
           <div className="input-group col-xs-5">
             <span className="input-group-addon"><i className="glyphicon glyphicon-tint"></i></span>
-            <Modal show={this.state.showModal} onHide={this.cancel}>
+
+            <Modal show={this.state.showModalColorPicker} onHide={this.cancel}>
               <Modal.Header closeButton>
                 <Modal.Title>Pick a Color</Modal.Title>
               </Modal.Header>
@@ -96,8 +102,9 @@ export default class PieChartForm extends React.Component {
                 <Button onClick={this.cancel}>Cancel</Button>
               </Modal.Footer>
             </Modal>
+
             <input type="text" ref="color" className="form-control"
-                   name="color" placeholder="Choose Color"></input>
+                   name="color" placeholder="Choose Color" value={this.state.color} style={style}/>
             <Button onClick={this.popupPicker}>Choose</Button>
           </div>
           <button type="submit" value="Add Slice" className="button">Add Slice</button>

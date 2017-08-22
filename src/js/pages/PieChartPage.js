@@ -34,7 +34,6 @@ class PieChartPage extends Component {
   }
 
   render() {
-    // console.info('state is : ' + this.state)
     return (
       <div>
         <h1>Pie Chart</h1>

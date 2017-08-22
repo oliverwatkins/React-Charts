@@ -5,12 +5,12 @@ const AppState =
         name: "benfolds",
 
         data: [
-          {name: 'Group A', value: 12},
-          {name: 'Group B', value: 300},
-          {name: 'Group C', value: 300},
-          {name: 'Group D', value: 200},
-          {name: 'Group E', value: 278},
-          {name: 'Group F', value: 289}
+          {name: 'Group A', value: 12, color: '#123123'},
+          {name: 'Group B', value: 300, color: '#634334'},
+          {name: 'Group C', value: 300, color: '#92fa56'},
+          {name: 'Group D', value: 200, color: '#aa4234'},
+          {name: 'Group E', value: 278, color: '#ccccc5'},
+          {name: 'Group F', value: 289, color: '#b456bb'}
         ]
       },
       line: {

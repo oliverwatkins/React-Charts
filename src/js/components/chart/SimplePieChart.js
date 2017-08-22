@@ -1,8 +1,10 @@
 import React from "react";
-import {PieChart, Pie, Tooltip} from 'recharts'
+import {PieChart, Pie, Tooltip, Cell} from 'recharts'
 // import SlicesStore from "../../stores/SlicesStore";
 
 export default class SimplePieChart extends React.Component {
+
+
   constructor(props) {
     super(props);
 
@@ -14,9 +16,9 @@ export default class SimplePieChart extends React.Component {
   }
 
   getChartName() {
-    this.setState({
-      chartName: "ffafafa",
-    });
+    // this.setState({
+    //   chartName: "ffafafa",
+    // });
   }
 
   getChartData() {
@@ -38,13 +40,25 @@ export default class SimplePieChart extends React.Component {
   }
 
   render() {
+    const COLORS = this.props.app.pie.data.map((entry, index) => entry.color)
     return (
       <div>
         <div id="canvasTitle">
           <h1 className="text-center">{this.props.app.pie.name}</h1>
         </div>
+
         <PieChart width={800} height={400}>
-          <Pie data={this.props.app.pie.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
+
+
+          <Pie data={this.props.app.pie.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
+
+            {
+              this.props.app.pie.data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+            }
+
+
+          </Pie>
+
           <Tooltip/>
         </PieChart>
       </div>
