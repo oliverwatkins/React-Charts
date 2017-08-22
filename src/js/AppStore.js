@@ -4,7 +4,6 @@ import {ReduceStore} from "flux/utils";
 
 import Immutable from "immutable";
 
-
 import AppState from "./AppState.js";
 import AppDispatcher from "./AppDispatcher.js";
 
@@ -15,8 +14,6 @@ class AppStore extends ReduceStore {
 
   getInitialState() {
     var state = AppState;
-
-    state.asdf = "asdf"
 
     return state;
   }
@@ -29,55 +26,13 @@ class AppStore extends ReduceStore {
 
       case 'CREATE_SLICE':
 
-        // imState = imState.getIn(['app', 'pie', 'data']).push(action.slice);
-
-        // imState = imState.setIn(['app', 'pie', 'name'], "why you not working")
-
-        var myState = {
-          a: {
-            b: {
-              c: [
-                {name: 'hi', value: 2},
-                {name: 'howdy', value: 3}
-              ]
-            }
-          }
-        }
-        myState = Immutable.fromJS(myState);
-
-        var list = myState.getIn(['a', 'b', 'c'])
-        var list = list.toJS();
-
-        list.push({"name": "hallo", "value": 4});
-
-        var v = Immutable.fromJS(list)
-
-        myState = myState.setIn(['a', 'b', 'c'], v)
-
-
-
-        myState = myState.updateIn(['a', 'b', 'c'], function (myList) {
-            return myList.push({"name": "hallo", "value": 4})
-          }
-        );
-
-
-
-
-
-
         var myList = imState.getIn(['app', 'pie', 'data'])
+        myList = myList.toJS();
+        myList.push(action.slice);
 
-        console.info('myList ' + myList.toJS())
+        var v = Immutable.fromJS(myList)
 
-
-
-
-        imState = imState.update(['app', 'pie', 'data'], function (myList) {
-            myList.push(action.slice)
-          }
-        );
-
+        imState = imState.setIn(['app', 'pie', 'data'], v)
         break;
 
       case 'CHANGE_NAME':
@@ -92,10 +47,6 @@ class AppStore extends ReduceStore {
 
     return imState.toJS();
   }
-
-  //   getAllSlices() {
-  //     return this.slices;
-  // }
 
 }
 
