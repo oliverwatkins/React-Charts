@@ -14,7 +14,7 @@ import ReactDOM from "react-dom";
 export default class PieChartForm extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChartSliceChange = this.handleChartSliceChange.bind(this);
+    // this.handleChartSliceChange = this.handleChartSliceChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.cancel = this.cancel.bind(this);
     this.popupPicker = this.popupPicker.bind(this);
@@ -39,7 +39,6 @@ export default class PieChartForm extends React.Component {
       color: color,
       value: value
     }
-
     PieChartActions.createSlice(slice);
   }
 
@@ -58,25 +57,11 @@ export default class PieChartForm extends React.Component {
     PieChartActions.changeName(event.currentTarget.value);
   }
 
-  handleChartSliceChange(event) {
-
-
-    PieChartActions.changeSliceName(event.currentTarget.value);
-    // console.info('props.app.form.slicename ' + this.props.app.pie.form.slicename)
-
-    // PieChartActions.changeSliceName(event.currentTarget.value);
-    /*value={this.props.app.pie.name}*/
-
-  }
-
-
   render() {
     console.info('what is state : ' + this.state)
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <div>{this.props.app.pie.name}</div>
-
           <h3>Enter Chart Title Here : </h3>
           <input type="text" className="form-control" onChange={this.handleChartNameChange}
           />

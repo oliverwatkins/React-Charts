@@ -1,6 +1,6 @@
 import React from "react";
 import {PieChart, Pie, Tooltip} from 'recharts'
-import SlicesStore from "../../stores/SlicesStore";
+// import SlicesStore from "../../stores/SlicesStore";
 
 export default class SimplePieChart extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export default class SimplePieChart extends React.Component {
 
   getChartName() {
     this.setState({
-      chartName: SlicesStore.getChartName(),
+      chartName: "ffafafa",
     });
   }
 
@@ -39,14 +39,10 @@ export default class SimplePieChart extends React.Component {
 
   render() {
     return (
-
       <div>
-
-
         <div id="canvasTitle">
           <h1 className="text-center">{this.props.app.pie.name}</h1>
         </div>
-
         <PieChart width={800} height={400}>
           <Pie data={this.props.app.pie.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
           <Tooltip/>
