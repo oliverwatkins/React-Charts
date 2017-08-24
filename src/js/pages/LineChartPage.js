@@ -12,6 +12,23 @@ class LineChartPage extends React.Component {
       </div>
     );
   }
+
+  // render() {
+  //   return (
+  //     <div>
+  //       <h1>Pie Chart</h1>
+  //       <div className="col-md-5">
+  //         <PieChartForm {...this.state}/>
+  //       </div>
+  //       <div className="col-md-5">
+  //         <PieChartSliceList {...this.state}/>
+  //       </div>
+  //       <div className="col-md-5">
+  //         <SimplePieChart {...this.state}/>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 }
 
 export default LineChartPage;

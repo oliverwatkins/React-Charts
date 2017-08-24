@@ -7,6 +7,8 @@ import {PhotoshopPicker} from 'react-color';
 import {CirclePicker} from 'react-color';
 import {Modal, Button} from 'react-bootstrap';
 
+import TitleComponent from './TitleComponent'
+
 import ReactDOM from "react-dom";
 
 export default class PieChartForm extends React.Component {
@@ -56,7 +58,6 @@ export default class PieChartForm extends React.Component {
   render() {
     console.info('what is state : ' + this.state)
 
-
     var style = {
       color: 'black',
       background: this.state.color
@@ -65,11 +66,8 @@ export default class PieChartForm extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
-          <h3>Enter Chart Title Here : </h3>
-          <input type="text" className="form-control" onChange={this.handleChartNameChange}
-          />
-        </div>
+        <TitleComponent onChange={this.handleChartNameChange}/>
+
         <div className="css-form">
           <div className="col-xs-10">
             <div className="col-xs-9">
