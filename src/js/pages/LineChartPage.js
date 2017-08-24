@@ -1,15 +1,45 @@
 import React from "react";
 
-import SimpleXYChart from "../components/chart/SimpleXYChart";
+import XYChartComponent from "../components/chart/xy/XYChartComponent";
+
+import XYChartForm from "../components/chart/xy/XYChartForm";
+import XYDataList from "../components/chart/xy/XYDataList";
+
+import {Container} from 'flux/utils';
+
+import AppStore from './../AppStore.js';
+
 
 class LineChartPage extends React.Component {
 
+
+  static getStores() {
+    return [AppStore];
+  }
+
+  static calculateState(prevState) {
+    return AppStore.getState();
+  }
+
   render() {
     return (
-      <div>
-        <h1>Line Chart</h1>
-        <SimpleXYChart/>
+
+
+    <div>
+      <h1>Line Chart</h1>
+      <div className="col-md-5">
+        <XYChartForm {...this.state}/>
       </div>
+      <div className="col-md-5">
+        <XYDataList {...this.state}/>
+      </div>
+      <div className="col-md-5">
+        <XYChartComponent {...this.state}/>
+      </div>
+    </div>
+
+
+
     );
   }
 
@@ -31,4 +61,5 @@ class LineChartPage extends React.Component {
   // }
 }
 
-export default LineChartPage;
+
+export default Container.create(LineChartPage); //flux thing

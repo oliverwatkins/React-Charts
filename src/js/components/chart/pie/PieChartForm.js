@@ -1,5 +1,4 @@
 import React from "react";
-import * as PieChartActions from "../../actions/PieChartActions";
 import {SketchPicker} from 'react-color';
 import {AlphaPicker} from 'react-color';
 import {BlockPicker} from 'react-color';
@@ -7,7 +6,8 @@ import {PhotoshopPicker} from 'react-color';
 import {CirclePicker} from 'react-color';
 import {Modal, Button} from 'react-bootstrap';
 
-import TitleComponent from './TitleComponent'
+import * as PieChartActions from "../../../../js/actions/PieChartActions";
+import TitleComponent from '../TitleComponent'
 
 import ReactDOM from "react-dom";
 

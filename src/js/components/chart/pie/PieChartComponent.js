@@ -1,35 +1,23 @@
 import React from "react";
 import {PieChart, Pie, Tooltip, Cell} from 'recharts'
 
-export default class SimplePieChart extends React.Component {
+export default class PieChartComponent extends React.Component {
 
   constructor(props) {
     super(props);
-
-    console.info('this.props.pie.app.pie.name ' + props.app.pie.name)
-    console.info('props ' + JSON.stringify(props))
-
-    this.getChartName = this.getChartName.bind(this);
     this.getChartData = this.getChartData.bind(this);
   }
 
-  getChartName() {
-    // this.setState({
-    //   chartName: "ffafafa",
-    // });
-  }
-
   getChartData() {
-    this.setState({
-      data01: SlicesStore.getChartData(),
-    });
+    // this.setState({
+    //   data01: SlicesStore.getChartData(),
+    // });
   }
 
 
   componentWillMount() {
     // SlicesStore.on("change", this.getChartName);
     // SlicesStore.on("change", this.getChartData);
-
   }
 
   componentWillUnmount() {

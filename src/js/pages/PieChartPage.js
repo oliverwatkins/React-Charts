@@ -6,9 +6,9 @@ import {Container} from 'flux/utils';
 import AppStore from './../AppStore.js';
 
 
-import SimplePieChart from "../components/chart/SimplePieChart";
-import PieChartForm from "../components/chart/PieChartForm";
-import PieChartSliceList from "../components/chart/PieChartSliceList";
+import SimplePieChart from "../components/chart/pie/PieChartComponent";
+import PieChartForm from "../components/chart/pie/PieChartForm";
+import PieChartSliceList from "../components/chart/pie/PieChartSliceList";
 
 
 class PieChartPage extends Component {
