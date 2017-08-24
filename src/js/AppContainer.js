@@ -27,13 +27,7 @@ class AppContainer extends Component {
   }
 
   render() {
-
-
     var s = this.state;
-
-    // var dates = DateRangeEntity.getData(this.props.query);
-    // dates.push(emptyDate);
-
     return (
       <div>
         <div>{s.app.name}</div>

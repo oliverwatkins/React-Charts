@@ -3,7 +3,6 @@ const AppState =
     app: {
       pie: {
         name: "benfolds",
-
         data: [
           {name: 'Group A', value: 12, color: '#123123'},
           {name: 'Group B', value: 300, color: '#634334'},
@@ -14,9 +13,7 @@ const AppState =
         ]
       },
       line: {
-
-        name: "bikini kill",
-
+        name: "magic dirt",
         data : [
           {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
           {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},

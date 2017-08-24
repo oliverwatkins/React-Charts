@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router";
 
-import Footer from "../components/layout/Footer";
-import Nav from "../components/layout/Nav";
+import Footer from "./components/layout/Footer";
+import Nav from "./components/layout/Nav";
 
-export default class Layout extends React.Component {
+/**
+ * Contains nav on top, footer on bottom, and all the pages are passed in
+ * as children.
+ */
+export default class PageLayout extends React.Component {
   render() {
     const { location } = this.props;
     const containerStyle = {

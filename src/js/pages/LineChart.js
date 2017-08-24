@@ -4,8 +4,6 @@ import SimpleChart from "../components/chart/SimpleChart";
 
 class LineChart extends React.Component {
 
-
-
   render() {
     return (
       <div>
