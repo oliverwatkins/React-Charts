@@ -2,7 +2,7 @@ import React from "react";
 
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 
-export default class SimpleChart extends React.Component {
+export default class SimpleXYChart extends React.Component {
     constructor() {
         super();
         this.data = [
