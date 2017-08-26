@@ -22,6 +22,7 @@ export default class XYChartComponent extends React.Component {
     //     ];
     // });
   }
+
   // constructor() {
   //   super();
   //   this.data = [
@@ -51,19 +52,79 @@ export default class XYChartComponent extends React.Component {
 // </PieChart>
 // </div>
 
+  // name: "Some line graph (fixed X)",
+  //
+  // series: [
+  //
+  //   {
+  //     name : "Series1x",
+  //     data : [
+  //       {y: 17},
+  //       {y: 43},
+  //       {y: 73},
+  //       {y: 23}
+  //   },
+  //   {
+  //     name : "Series2x",
+  //     data : [
+  //       {y: 17},
+  //       {y: 43},
+  //       {y: 73},
+  //       {y: 23}
+  //   },
+  //
+  // ]
+
+
   render() {
+
+    var series = this.props.app.line.series;
+
+    var lengthSeriesData = this.props.app.line.series[0].data.length;
+    var newData = [];
+
+    for (var i = 0; i < lengthSeriesData; i++) {
+
+      var obj = {};
+
+      obj["name"] = i;
+
+      for (var j = 0; j < series.length; j++) {
+        var s = series[j];
+
+        let d = s.data[i].y;
+        let n = s.name
+
+        obj[n] = d;
+      }
+      newData.push(obj)
+    }
+
+    var data = [
+      {name: '1', Series1x: 17, Series2x: 17},
+      {name: '2', Series1x: 43, Series2x: 43},
+      {name: '3', Series1x: 73, Series2x: 9800},
+      {name: '4', Series1x: 23, Series2x: 3908},
+      {name: '5', Series1x: 1890, Series2x: 4800},
+      {name: '6', Series1x: 2390, Series2x: 3800},
+      {name: '7', Series1x: 3490, Series2x: 4300},
+    ];
+
+
+    data = newData;
+
     console.info('asdf')
     return (
 
-      <LineChart width={600} height={300} data={this.props.app.line.data}
+      <LineChart width={600} height={300} data={data}
                  margin={{top: 5, right: 30, left: 20, bottom: 5}}>
         <XAxis dataKey="name"/>
         <YAxis/>
         <CartesianGrid strokeDasharray="3 3"/>
         <Tooltip/>
         <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d"/>
+        <Line type="monotone" dataKey="Series1x" stroke="#8884d8" activeDot={{r: 8}}/>
+        <Line type="monotone" dataKey="Series2x" stroke="#82ca9d"/>
       </LineChart>
     );
   }

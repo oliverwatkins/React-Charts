@@ -6,27 +6,35 @@ export default class XYDataList extends React.Component {
 
   constructor(props) {
     super(props)
-    this.createRows();
-    this._columns = [
-      { key: 'id', name: 'ID' },
-      { key: 'title', name: 'Title' },
-      { key: 'count', name: 'Count' } ];
+
+    var rows = [];
+    var cols = [];
+
+    props.app.line.series.forEach(function (value) {
+      cols.push({key: value.name, name: value.name});
+    });
+
+    var lengthSeries = props.app.line.series[0].data.length;
+    for (var index = 0; index < lengthSeries; index++) {
+
+      let row = {}
+
+      var noSeries = props.app.line.series.length
+
+      for (var j = 0; j< noSeries; j++) {
+
+        var val = props.app.line.series[j].data[index].y
+        var nameS = props.app.line.series[j].name
+
+        row[nameS] = val;
+      }
+      rows.push(row);
+    }
+    this._rows = rows;
+
+    this._columns = cols;
 
     this.rowGetter = this.rowGetter.bind(this);
-  }
-
-
-  createRows() {
-    let rows = [];
-    for (let i = 1; i < 1000; i++) {
-      rows.push({
-        id: i,
-        title: 'Title ' + i,
-        count: i * 1000
-      });
-    }
-
-    this._rows = rows;
   }
 
   rowGetter(i) {
@@ -34,22 +42,16 @@ export default class XYDataList extends React.Component {
   }
 
   render() {
-    this._columns = [
-      { key: 'id', name: 'ID' },
-      { key: 'title', name: 'Title' },
-      { key: 'count', name: 'Count' } ];
     return (
       <div>
         <ReactDataGrid
           columns={this._columns}
           rowGetter={this.rowGetter}
           rowsCount={this._rows.length}
-          minHeight={500} />
+          minHeight={500}/>
 
         TODO2
-
       </div>
-
     )
   }
 }
