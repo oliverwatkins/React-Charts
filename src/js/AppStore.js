@@ -44,38 +44,29 @@ class AppStore extends ReduceStore {
 
       case 'CELL_CHANGED':
 
-        // this.props.app.line.series[1].data[2] = {x:1, y:99}
+        /**
+         * action.value :
+         * fromRow : 3,
+         * toRow : 3,
+         * updated: {seriesName: '99
+         * }
+         */
 
+        let row = action.value.fromRow;
+
+        let seriesName = Object.keys(action.value.updated)[0];
+
+        let cellValue = action.value.updated[seriesName]
 
         console.info("imState.toJS().app.line " + imState.toJS().app.line)
 
-        imState = imState.setIn(['app', 'line', 'series', 2, 'data', 1, 'y'], 999)
+        var list = imState.getIn(['app', 'line', 'series']);
 
-        //
-        //
-        // imState = imState.updateIn(['app', 'line', 'series'], function (seriesList) {
-        //   seriesList = seriesList.update(1, function (v) {
-        //
-        //     return {
-        //       name: "asdfasdf",
-        //       data: [
-        //         {x: 1, y: 88},
-        //         {x: 2, y: 88},
-        //         {x: 3, y: 88},
-        //         {x: 4, y: 88}
-        //       ]
-        //     };
-        //   })
-        // })
-        //
-        // var myList = imState.getIn(['app', 'line', 'series'])
-        //
-        //
-        // myList = myList.toJS();
-        // myList.push(action.slice);
-        //
-        // // imState = imState.setIn(['app', 'pie', 'name'], newName)
-        // imState = imState.setIn(['app', 'line', 'name'], newName)
+        var index = list.findIndex(function(item) {
+          return item.get("name") === seriesName;
+        })
+
+        imState = imState.setIn(['app', 'line', 'series', index, 'data', row, 'y'], cellValue)
 
         console.info("imState.toJS().app.line " + imState.toJS().app.line)
         console.info("imState.toJS().app.line.series[2].data[1] " + imState.toJS().app.line.series[2].data[1])
