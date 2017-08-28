@@ -1,18 +1,28 @@
 import React from "react";
 import ReactDataGrid from "react-data-grid";
 
+import ActionTypes from "./../../../ActionTypes";
+import AppDispatcher from "./../../../AppDispatcher";
+
 export default class XYDataList extends React.Component {
 
 
   constructor(props) {
     super(props)
 
-    var rows = [];
-    var cols = [];
 
-    props.app.line.series.forEach(function (value) {
-      cols.push({key: value.name, name: value.name});
-    });
+
+    this.rowGetter = this.rowGetter.bind(this);
+    this.handleGridRowsUpdated = this.handleGridRowsUpdated.bind(this);
+  }
+
+
+  createRows(props) {
+    var rows = [];
+
+    // props.app.line.series.forEach(function (value) {
+    //   cols.push({key: value.name, name: value.name, editable:true});
+    // });
 
     var lengthSeries = props.app.line.series[0].data.length;
     for (var index = 0; index < lengthSeries; index++) {
@@ -31,20 +41,51 @@ export default class XYDataList extends React.Component {
       rows.push(row);
     }
     this._rows = rows;
+  }
+
+  createCols(props) {
+    var cols = [];
+
+    props.app.line.series.forEach(function (value) {
+      cols.push({key: value.name, name: value.name, editable:true});
+    });
 
     this._columns = cols;
-
-    this.rowGetter = this.rowGetter.bind(this);
   }
 
   rowGetter(i) {
     return this._rows[i];
   }
 
+
+  /**
+   *
+   * @param fromRow 0
+   * @param toRow 0
+   * @param updated (Series3x:3)
+   */
+  handleGridRowsUpdated({ fromRow, toRow, updated }) {
+
+    AppDispatcher.dispatch({
+      type: ActionTypes.CELL_CHANGED,
+      value: { fromRow, toRow, updated }
+    });
+
+  }
+
+
   render() {
+
+    this.createRows(this.props);
+    this.createCols(this.props);
+
     return (
       <div>
         <ReactDataGrid
+
+          enableCellSelect={true}
+          onGridRowsUpdated={this.handleGridRowsUpdated}
+
           columns={this._columns}
           rowGetter={this.rowGetter}
           rowsCount={this._rows.length}
