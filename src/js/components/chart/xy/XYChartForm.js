@@ -1,5 +1,7 @@
 import React from "react";
-import TitleComponent from '../TitleComponent'
+import TitleEditComponent from '../TitleEditComponent'
+
+import * as PieChartActions from "../../../../js/actions/PieChartActions";
 
 import {CirclePicker} from 'react-color';
 
@@ -19,6 +21,12 @@ export default class XYChartForm extends React.Component {
     };
   }
 
+
+  handleChartNameChange(event) {
+    PieChartActions.changeName(event.currentTarget.value);
+  }
+
+
   render() {
 
     var style = {
@@ -29,14 +37,7 @@ export default class XYChartForm extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <TitleComponent onChange={this.handleChartNameChange}/>
-
-
-
-
-
-
-
+        <TitleEditComponent onChange={this.handleChartNameChange}/>
 
         <div className="css-form">
           <div className="col-xs-10">

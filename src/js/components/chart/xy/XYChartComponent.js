@@ -1,5 +1,5 @@
 import React from "react";
-
+import TitleComponent from '../TitleComponent'
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 
 export default class XYChartComponent extends React.Component {
@@ -46,25 +46,28 @@ export default class XYChartComponent extends React.Component {
     var series = this.props.app.line.series;
     var data = this.createDataForChart();
 
-
-    console.info('asdf')
     return (
 
-      <LineChart width={600} height={300} data={data}
-                 margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-        <XAxis dataKey="name"/>
-        <YAxis/>
-        <CartesianGrid strokeDasharray="3 3"/>
-        <Tooltip/>
-        <Legend />
+      <div>
+        <TitleComponent name={this.props.app.line.name}/>
 
-        {series.map(function (series) {
-          return (
-            <Line type="monotone" dataKey={series.name} stroke="#82ca9d"/>
-          )
-        })}
+        <LineChart width={400} height={200} data={data}
+                   margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+          <XAxis dataKey="name"/>
+          <YAxis/>
+          <CartesianGrid strokeDasharray="3 3"/>
+          <Tooltip/>
+          <Legend />
 
-      </LineChart>
+          {series.map(function (series) {
+            return (
+              <Line type="monotone" dataKey={series.name} stroke="#82ca9d"/>
+            )
+          })}
+
+        </LineChart>
+
+      </div>
     );
   }
 }

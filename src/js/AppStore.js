@@ -58,31 +58,18 @@ class AppStore extends ReduceStore {
 
         let cellValue = action.value.updated[seriesName]
 
-        console.info("imState.toJS().app.line " + imState.toJS().app.line)
-
         var list = imState.getIn(['app', 'line', 'series']);
 
-        var index = list.findIndex(function(item) {
+        var index = list.findIndex(function (item) {
           return item.get("name") === seriesName;
         })
 
         imState = imState.setIn(['app', 'line', 'series', index, 'data', row, 'y'], cellValue)
 
-        console.info("imState.toJS().app.line " + imState.toJS().app.line)
-        console.info("imState.toJS().app.line.series[2].data[1] " + imState.toJS().app.line.series[2].data[1])
-
         break;
     }
-
-    console.info('updated state is ' + imState.toJS());
-
     return imState.toJS();
   }
-
 }
 
-export
-default
-new
-
-  AppStore();
+export default new AppStore();

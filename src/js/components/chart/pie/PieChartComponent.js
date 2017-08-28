@@ -1,6 +1,8 @@
 import React from "react";
 import {PieChart, Pie, Tooltip, Cell} from 'recharts'
 
+import TitleComponent from '../TitleComponent'
+
 export default class PieChartComponent extends React.Component {
 
   constructor(props) {
@@ -29,9 +31,8 @@ export default class PieChartComponent extends React.Component {
     const COLORS = this.props.app.pie.data.map((entry, index) => entry.color)
     return (
       <div>
-        <div id="canvasTitle">
-          <h1 className="text-center">{this.props.app.pie.name}</h1>
-        </div>
+
+        <TitleComponent name={this.props.app.pie.name}/>
         <PieChart width={800} height={400}>
           <Pie data={this.props.app.pie.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
             {

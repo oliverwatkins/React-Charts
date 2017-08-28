@@ -89,9 +89,7 @@ export default class XYDataList extends React.Component {
           columns={this._columns}
           rowGetter={this.rowGetter}
           rowsCount={this._rows.length}
-          minHeight={500}/>
-
-        TODO2
+          minHeight={200}/>
       </div>
     )
   }

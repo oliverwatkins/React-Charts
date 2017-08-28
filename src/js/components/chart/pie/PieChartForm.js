@@ -7,7 +7,7 @@ import {CirclePicker} from 'react-color';
 import {Modal, Button} from 'react-bootstrap';
 
 import * as PieChartActions from "../../../../js/actions/PieChartActions";
-import TitleComponent from '../TitleComponent'
+import TitleEditComponent from '../TitleEditComponent'
 
 import ReactDOM from "react-dom";
 
@@ -66,7 +66,7 @@ export default class PieChartForm extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <TitleComponent onChange={this.handleChartNameChange}/>
+        <TitleEditComponent onChange={this.handleChartNameChange}/>
 
         <div className="css-form">
           <div className="col-xs-10">
