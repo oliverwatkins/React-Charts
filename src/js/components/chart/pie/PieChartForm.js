@@ -6,7 +6,7 @@ import {PhotoshopPicker} from 'react-color';
 import {CirclePicker} from 'react-color';
 import {Modal, Button} from 'react-bootstrap';
 
-import * as PieChartActions from "../../../../js/actions/PieChartActions";
+import Actions from "../../../../js/Actions";
 import TitleEditComponent from '../TitleEditComponent'
 
 import ReactDOM from "react-dom";
@@ -36,7 +36,7 @@ export default class PieChartForm extends React.Component {
       color: color,
       value: value
     }
-    PieChartActions.createSlice(slice);
+    Actions.createSlice(slice);
   }
 
   cancel(event) {
@@ -52,7 +52,7 @@ export default class PieChartForm extends React.Component {
   }
 
   handleChartNameChange(event) {
-    PieChartActions.changeName(event.currentTarget.value);
+    Actions.changeName(event.currentTarget.value);
   }
 
   render() {

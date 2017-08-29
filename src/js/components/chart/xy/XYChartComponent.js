@@ -15,19 +15,19 @@ export default class XYChartComponent extends React.Component {
 
   createDataForChart() {
 
-    var series = this.props.app.line.series;
+    let series = this.props.app.line.series;
 
-    var lengthSeriesData = this.props.app.line.series[0].data.length;
-    var newData = [];
+    let lengthSeriesData = this.props.app.line.series[0].data.length;
+    let newData = [];
 
-    for (var i = 0; i < lengthSeriesData; i++) {
+    for (let i = 0; i < lengthSeriesData; i++) {
 
-      var obj = {};
+      let obj = {};
 
       obj["name"] = i;
 
-      for (var j = 0; j < series.length; j++) {
-        var s = series[j];
+      for (let j = 0; j < series.length; j++) {
+        const s = series[j];
 
         let d = s.data[i].y;
         let n = s.name;
@@ -36,8 +36,6 @@ export default class XYChartComponent extends React.Component {
       }
       newData.push(obj)
     }
-    // let data = newData;
-
     return newData;
   }
 
@@ -45,6 +43,9 @@ export default class XYChartComponent extends React.Component {
 
     var series = this.props.app.line.series;
     var data = this.createDataForChart();
+
+
+    // TitleEditComponent
 
     return (
 

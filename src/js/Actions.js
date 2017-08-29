@@ -14,7 +14,39 @@ const Actions = {
       type: ActionTypes.ADD_PIE_SLICE,
       value: id
     });
+  },
+  createSlice(slice) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CREATE_SLICE,
+      slice,
+    });
+  }, deleteSlice(id) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.DELETE_SLICE,
+      id,
+    });
+  }, changeName(newName) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CHANGE_NAME,
+      newName,
+    });
+  },
+  changeLineChartName(newName) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CHANGE_LINE_CHART_NAME,
+      newName,
+    });
+  }, changeSliceName(newName) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CHANGE_SLICE_NAME,
+      newName,
+    });
+  }, changeCell(value) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CELL_CHANGED,
+      value
+    });
   }
-};
+}
 
 export default Actions;

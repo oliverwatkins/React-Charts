@@ -1,7 +1,7 @@
 import React from "react";
 import TitleEditComponent from '../TitleEditComponent'
 
-import * as PieChartActions from "../../../../js/actions/PieChartActions";
+import Actions from "../../../../js/Actions";
 
 import {CirclePicker} from 'react-color';
 
@@ -23,7 +23,7 @@ export default class XYChartForm extends React.Component {
 
 
   handleChartNameChange(event) {
-    PieChartActions.changeName(event.currentTarget.value);
+    Actions.changeLineChartName(event.currentTarget.value);
   }
 
 
@@ -80,17 +80,6 @@ export default class XYChartForm extends React.Component {
 
           <button type="submit" value="Add Slice" className="button">Add Slice</button>
         </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
       </form>

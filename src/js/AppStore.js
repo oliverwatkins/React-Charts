@@ -7,6 +7,10 @@ import Immutable from "immutable";
 import AppState from "./AppState.js";
 import AppDispatcher from "./AppDispatcher.js";
 
+
+import PieChart from "./entity/PieChart";
+import LineChart from "./entity/LineChart";
+
 class AppStore extends ReduceStore {
   constructor() {
     super(AppDispatcher);
@@ -14,7 +18,6 @@ class AppStore extends ReduceStore {
 
   getInitialState() {
     var state = AppState;
-
     return state;
   }
 
@@ -26,16 +29,14 @@ class AppStore extends ReduceStore {
 
       case 'CREATE_SLICE':
 
-        var myList = imState.getIn(['app', 'pie', 'data'])
-        myList = myList.toJS();
-        myList.push(action.slice);
+        imState = PieChart.createSlice(imState, action.slice);
 
-        var v = Immutable.fromJS(myList)
-
-        imState = imState.setIn(['app', 'pie', 'data'], v)
         break;
 
       case 'CHANGE_NAME':
+
+        imState = PieChart.changeName(imState, action.newName);
+
         var newName = action.newName;
 
         imState = imState.setIn(['app', 'pie', 'name'], newName)
@@ -44,32 +45,29 @@ class AppStore extends ReduceStore {
 
       case 'CELL_CHANGED':
 
-        /**
-         * action.value :
-         * fromRow : 3,
-         * toRow : 3,
-         * updated: {seriesName: '99
-         * }
-         */
 
-        let row = action.value.fromRow;
 
-        let seriesName = Object.keys(action.value.updated)[0];
 
-        let cellValue = action.value.updated[seriesName]
+        imState = LineChart.cellChanged(imState, action)
 
-        var list = imState.getIn(['app', 'line', 'series']);
 
-        var index = list.findIndex(function (item) {
-          return item.get("name") === seriesName;
-        })
-
-        imState = imState.setIn(['app', 'line', 'series', index, 'data', row, 'y'], cellValue)
-
+        // let row = action.value.fromRow;
+        // let seriesName = Object.keys(action.value.updated)[0];
+        // let cellValue = action.value.updated[seriesName]
+        //
+        // var list = imState.getIn(['app', 'line', 'series']);
+        //
+        // var index = list.findIndex(function (item) {
+        //   return item.get("name") === seriesName;
+        // })
+        //
+        // imState = imState.setIn(['app', 'line', 'series', index, 'data', row, 'y'], cellValue)
         break;
+
+
+
     }
     return imState.toJS();
   }
 }
-
 export default new AppStore();
