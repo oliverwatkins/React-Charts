@@ -1,9 +1,9 @@
 import React from "react";
 
-import XYChartComponent from "../components/chart/xy/XYChartComponent";
+import XYChartComponent from "../components/chart/bar/XYChartComponent";
 
-import XYChartForm from "../components/chart/xy/XYChartForm";
-import XYDataList from "../components/chart/xy/XYDataList";
+import XYChartForm from "../components/chart/bar/XYChartForm";
+import XYDataList from "../components/chart/bar/XYDataList";
 
 import {Container} from 'flux/utils';
 

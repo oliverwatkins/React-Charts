@@ -1,16 +1,11 @@
 import React from "react";
 import TitleComponent from '../TitleComponent'
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
+import {LineChart, BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 
 export default class XYChartComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    this.getChartData = this.getChartData.bind(this);
-  }
-
-  getChartData() {
-
   }
 
   createDataForChart() {
@@ -46,27 +41,26 @@ export default class XYChartComponent extends React.Component {
 
 
     // TitleEditComponent
-
+    // BarChart w
     return (
 
       <div>
         <TitleComponent name={this.props.app.line.name}/>
 
-        <LineChart width={400} height={200} data={data}
+        <BarChart width={400} height={200} data={data}
                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
           <XAxis dataKey="name"/>
           <YAxis/>
           <CartesianGrid strokeDasharray="3 3"/>
           <Tooltip/>
           <Legend />
-
           {series.map(function (series) {
             return (
-              <Line type="monotone" dataKey={series.name} stroke="#82ca9d"/>
+              <Bar type="monotone" dataKey={series.name} fill={series.color}/>
             )
           })}
 
-        </LineChart>
+        </BarChart>
 
       </div>
     );

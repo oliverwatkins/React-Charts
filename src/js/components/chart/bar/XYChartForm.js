@@ -21,19 +21,15 @@ export default class XYChartForm extends React.Component {
     };
   }
 
-
   handleChartNameChange(event) {
     Actions.changeLineChartName(event.currentTarget.value);
   }
-
-
   render() {
 
     var style = {
       color: 'black',
       background: this.state.color
     };
-
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -52,7 +48,9 @@ export default class XYChartForm extends React.Component {
                    name="newSlice" placeholder="Series Name"></input>
           </div>
           <div className="input-group col-xs-5">
-            <span className="input-group-addon"><i className="glyphicon glyphicon-tint"></i></span>
+            <span className="input-group-addon">
+              <i className="glyphicon glyphicon-tint"></i>
+            </span>
 
             <Modal show={this.state.showModalColorPicker} onHide={this.cancel}>
               <Modal.Header closeButton>
@@ -72,13 +70,8 @@ export default class XYChartForm extends React.Component {
             <Button onClick={this.popupPicker}>Choose</Button>
           </div>
 
-          <div className="input-group col-xs-9">
-            <span className="input-group-addon"><i className="glyphicon glyphicon-plus"></i></span>
-            <input type="number" ref="value" className="form-control"
-                   name="newValue" placeholder="Add values"></input>
-          </div>
 
-          <button type="submit" value="Add Slice" className="button">Add Slice</button>
+          <button type="submit" value="Add Slice" className="button">Add Series</button>
         </div>
 
 

@@ -13,12 +13,11 @@ const AppState =
         ]
       },
       line: {
-        name: "Some line graph (fixed X)",
-
+        name: "Bar Chart",
         series: [
-
           {
             name: "Series1x",
+            color: "#82ca9d",
             data: [
               {x: 1, y: 17},
               {x: 2, y: 43},
@@ -28,6 +27,7 @@ const AppState =
           },
           {
             name: "Series2x",
+            color: "#2239ca",
             data: [
               {x: 1, y: 17},
               {x: 2, y: 13},
@@ -37,6 +37,7 @@ const AppState =
           },
           {
             name: "Series3x",
+            color: "#c2a5ca",
             data: [
               {x: 1, y: 17},
               {x: 2, y: 11},
@@ -45,10 +46,7 @@ const AppState =
             ]
           }
         ]
-
-
       }
-
     }
   }
 export default AppState;

@@ -33,7 +33,7 @@ const Actions = {
   },
   changeLineChartName(newName) {
     AppDispatcher.dispatch({
-      type: ActionTypes.CHANGE_LINE_CHART_NAME,
+      type: ActionTypes.CHANGE_NAME_BAR,
       newName,
     });
   }, changeSliceName(newName) {
