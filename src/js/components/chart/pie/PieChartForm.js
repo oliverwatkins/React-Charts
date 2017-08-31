@@ -49,26 +49,15 @@ export default class PieChartForm extends React.Component {
 
         <TitleEditComponent value={this.props.app.pie.name} onChange={this.handleChartNameChange}/>
 
-        <div className="css-form">
-          <div className="col-xs-10">
-            <div className="col-xs-9">
+        <div>
+          <div>
               <h3>Add Sections Here :</h3>
-            </div>
           </div>
-          <div className="input-group col-xs-9">
-            <span className="input-group-addon">
-            <i className="glyphicon glyphicon-user"></i></span>
-            <input type="text" ref="sliceName" className="form-control" onChange={this.handleChartSliceChange}
+            <input type="text" ref="sliceName" onChange={this.handleChartSliceChange}
                    name="newSlice" placeholder="Add Pie Slice Name"></input>
-          </div>
 
-          <div className="input-group col-xs-9">
-            <span className="input-group-addon">
-            <i className="glyphicon glyphicon-plus"></i>
-            </span>
-            <input type="number" ref="value" className="form-control"
+            <input type="number" ref="value"
                    name="newValue" placeholder="Add value"></input>
-          </div>
 
           <ColorChooser onChooseColor={this.colorSelected}/>
 

@@ -1,8 +1,6 @@
 import React from "react";
 
-import AppStore from "../../../../js/AppStore";
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
-
 
 export default class CategoryDataList extends React.Component {
   constructor(props) {

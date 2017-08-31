@@ -1,7 +1,5 @@
 import React from "react";
 
-import AppStore from "../../../../js/AppStore";
-
 export default class PieChartSliceList extends React.Component {
   constructor(props) {
     super(props);

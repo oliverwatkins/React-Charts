@@ -1,9 +1,9 @@
 import React from "react";
 
-
 import {Component} from 'react';
 import {Container} from 'flux/utils';
 import AppStore from './../AppStore.js';
+
 
 
 import SimplePieChart from "../components/chart/pie/PieChartComponent";

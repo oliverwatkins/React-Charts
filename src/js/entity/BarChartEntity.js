@@ -13,13 +13,40 @@ class BarChartEntity {
     return appState.line.categories;
   }
 
+  static createCategory(imState, action) {
+
+    let catName = action.value.name
+
+    let myList = imState.getIn([...this.path, 'categories'])
+    myList = myList.toJS();
+    myList.push(action.value.name)
+    var v = Immutable.fromJS(myList)
+    imState = imState.setIn([...this.path, 'categories'], v)
+
+    //now for each series create an entry
+
+
+    var list = imState.getIn([...this.path, 'series']);
+    list = list.toJS();
+    list = list.forEach(function (data) {
+      data[catName] = 0;
+    });
+
+
+
+    return imState;
+  }
+
+
+
+
   static createSeries(imState, action) {
     let series = action.series;
 
-    let myList = imState.getIn([...this.path, 'series'])
+    let list = imState.getIn([...this.path, 'series'])
 
-    myList = myList.toJS();
-    let firstSeries = myList[0];
+    list = list.toJS();
+    let firstSeries = list[0];
 
     let dataArr = [];
     firstSeries.data.forEach(function (data) {
@@ -27,7 +54,7 @@ class BarChartEntity {
       dataArr.push({"x":n, "y":0 });
     });
 
-    myList.push(
+    list.push(
       {
         name: series.name,
         color: series.color,
@@ -35,7 +62,7 @@ class BarChartEntity {
       },
     );
 
-    var v = Immutable.fromJS(myList)
+    var v = Immutable.fromJS(list)
     imState = imState.setIn([...this.path, 'series'], v)
     return imState;
   }

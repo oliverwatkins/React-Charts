@@ -28,33 +28,33 @@ export default class ColorChooser extends React.Component {
   render() {
 
     var style = {
+      width:70,
       color: 'black',
       background: this.state.color
     };
 
     return (
-    <div className="input-group col-xs-5">
-      <span className="input-group-addon">
-        <i className="glyphicon glyphicon-tint"></i>
+
+      <span>
+
+        <Modal show={this.state.showModalColorPicker} onHide={this.cancel}>
+          <Modal.Header closeButton>
+            <Modal.Title>Pick a Color</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <CirclePicker onChangeComplete={ this.chooseColor }/>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.chooseColor}>OK</Button>
+            <Button onClick={this.cancel}>Cancel</Button>
+          </Modal.Footer>
+        </Modal>
+
+        <input type="text" ref="color"
+                     onClick={this.popupPicker}     name="color" placeholder="Choose Color" value={this.state.color} style={style}/>
+
       </span>
 
-      <Modal show={this.state.showModalColorPicker} onHide={this.cancel}>
-        <Modal.Header closeButton>
-          <Modal.Title>Pick a Color</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <CirclePicker onChangeComplete={ this.chooseColor }/>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.chooseColor}>OK</Button>
-          <Button onClick={this.cancel}>Cancel</Button>
-        </Modal.Footer>
-      </Modal>
-
-      <input type="text" ref="color" className="form-control"
-             name="color" placeholder="Choose Color" value={this.state.color} style={style}/>
-      <Button onClick={this.popupPicker}>Choose</Button>
-    </div>
     )
   }
 

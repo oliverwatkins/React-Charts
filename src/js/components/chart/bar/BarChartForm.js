@@ -1,5 +1,4 @@
 import React from "react";
-import TitleEditComponent from '../TitleEditComponent'
 import ColorChooser from '../ColorChooser'
 import Actions from "../../../../js/Actions";
 
@@ -31,9 +30,6 @@ export default class BarChartForm extends React.Component {
     Actions.createSeries(series);
   }
 
-  handleChartNameChange(event) {
-    Actions.changeLineChartName(event.currentTarget.value);
-  }
 
   colorSelected(color) {
     this.setState({selectedColor: color});
@@ -41,26 +37,20 @@ export default class BarChartForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <TitleEditComponent onChange={this.handleChartNameChange}/>
 
-        <div className="css-form">
-          <div className="col-xs-10">
-            <div className="col-xs-9">
-              <h3>Add Series Here :</h3>
-            </div>
-          </div>
-          <div className="input-group col-xs-9">
-                        <span className="input-group-addon">
-                            <i className="glyphicon glyphicon-user"></i></span>
-            <input type="text" ref="seriesName" className="form-control" onChange={this.handleChartSliceChange}
-                   name="newSlice" placeholder="Series Name"></input>
-          </div>
+      <div>
+        <h3>Series :</h3>
 
-          <ColorChooser onChooseColor={this.colorSelected}/>
-          <button type="submit" value="Add Series" className="button">Add Series</button>
-        </div>
+        <form onSubmit={this.handleSubmit}>
+
+        <input type="text" ref="seriesName" onChange={this.handleChartSliceChange}
+                     name="newSlice" placeholder="Series Name"/>
+
+        <ColorChooser onChooseColor={this.colorSelected}/>
+
+        <input type="submit" value="Add Series" className="button"/>
       </form>
+      </div>
     )
   }
 }
