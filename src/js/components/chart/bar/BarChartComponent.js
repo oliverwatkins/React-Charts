@@ -1,6 +1,7 @@
 import React from "react";
 import TitleComponent from '../TitleComponent'
-import {LineChart, BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
+import {BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
+import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
 export default class BarChartComponent extends React.Component {
 
@@ -10,14 +11,12 @@ export default class BarChartComponent extends React.Component {
 
   createDataForChart() {
 
-    let series = this.props.app.line.series;
+    let series = BarChartEntity.getSeries(this.props.app);
+    let categories = BarChartEntity.getCategories(this.props.app);
 
-    let categories = this.props.app.line.categories;
-
-    let lengthSeriesData = this.props.app.line.series[0].data.length;
     let newData = [];
 
-    for (let i = 0; i < lengthSeriesData; i++) {
+    for (let i = 0; i < categories.length; i++) {
 
       let obj = {};
 
@@ -37,9 +36,8 @@ export default class BarChartComponent extends React.Component {
   }
 
   render() {
-
-    var series = this.props.app.line.series;
-    var data = this.createDataForChart();
+    let series = this.props.app.line.series;
+    let data = this.createDataForChart();
 
     return (
 
@@ -58,9 +56,7 @@ export default class BarChartComponent extends React.Component {
               <Bar type="monotone" dataKey={series.name} fill={series.color}/>
             )
           })}
-
         </BarChart>
-
       </div>
     );
   }

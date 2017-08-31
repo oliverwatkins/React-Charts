@@ -9,7 +9,7 @@ import ActionTypes from "./ActionTypes.js";
 import AppDispatcher from "./AppDispatcher.js";
 
 import PieChart from "./entity/PieChart";
-import LineChart from "./entity/LineChart";
+import BarChartEntity from "./entity/BarChartEntity";
 
 class AppStore extends ReduceStore {
   constructor() {
@@ -37,13 +37,13 @@ class AppStore extends ReduceStore {
 
         //bar
       case ActionTypes.CHANGE_NAME_BAR:
-        imState = LineChart.changeName(imState, action.newName);
+        imState = BarChartEntity.changeName(imState, action.newName);
         break;
       case ActionTypes.CELL_CHANGED:
-        imState = LineChart.cellChanged(imState, action)
+        imState = BarChartEntity.cellChanged(imState, action)
         break;
       case ActionTypes.CREATE_SERIES:
-        imState = LineChart.createSeries(imState, action)
+        imState = BarChartEntity.createSeries(imState, action)
         break;
 
     }

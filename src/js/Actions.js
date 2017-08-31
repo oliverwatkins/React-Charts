@@ -55,6 +55,12 @@ const Actions = {
       type: ActionTypes.CELL_CHANGED,
       value
     });
+  },
+  createCategory(value) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CREATE_CATEGORY,
+      value
+    });
   }
 }
 

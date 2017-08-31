@@ -18,6 +18,9 @@ const ActionTypes = {
   //bar
   CREATE_SERIES: 'CREATE_SERIES',
   CELL_CHANGED: 'CELL_CHANGED',
+  CREATE_CATEGORY: 'CREATE_CATEGORY',
+
+
 
 };
 

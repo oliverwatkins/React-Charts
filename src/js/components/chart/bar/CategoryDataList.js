@@ -4,8 +4,7 @@ import AppStore from "../../../../js/AppStore";
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
 
-
-export default class BarSeriesList extends React.Component {
+export default class CategoryDataList extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -20,24 +19,23 @@ export default class BarSeriesList extends React.Component {
 
   render() {
     const series = BarChartEntity.getSeries(this.props.app);
+    const categories = BarChartEntity.getCategories(this.props.app);
+
     return (
       <table className="table">
         <tbody>
-        {this.props.app.line.series.map(function (series, i) {
 
+        {categories.map(function (cat, i) {
           var key = 'xx_' + i;
+
           var style = {
             color: 'black',
-            background: series.color
           };
 
           return (
             <tr key={key}>
               <td>
-                {series.name}
-              </td>
-              <td style={style}>
-                {series.color}
+                {cat}
               </td>
               <td>
                 <input type="button" value="delete"/>

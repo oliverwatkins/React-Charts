@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 
-class LineChart {
+class BarChartEntity {
 
   static get path() {
     return ['app', 'line'];
@@ -8,6 +8,9 @@ class LineChart {
 
   static getSeries(appState) {
     return appState.line.series;
+  }
+  static getCategories(appState) {
+    return appState.line.categories;
   }
 
   static createSeries(imState, action) {
@@ -80,6 +83,6 @@ class LineChart {
   }
 }
 
-export default LineChart;
+export default BarChartEntity;
 
 
