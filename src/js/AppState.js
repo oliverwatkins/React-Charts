@@ -16,32 +16,30 @@ const AppState =
         name: "Bar Chart",
 
         categories: [
-          1,
-          2,
-          3,
-          4
+          "Apple",
+          "Orange",
+          "Banana",
+          "Peach"
         ],
-
-
         series: [
           {
             name: "Series1x",
             color: "#82ca9d",
             data: [
-              {x: 1, y: 17},
-              {x: 2, y: 43},
-              {x: 3, y: 73},
-              {x: 4, y: 23}
+              {y: 17},
+              {y: 43},
+              {y: 73},
+              {y: 23}
             ]
           },
           {
             name: "Series2x",
             color: "#2239ca",
             data: [
-              {x: 1, y: 17},
-              {x: 2, y: 13},
-              {x: 3, y: 43},
-              {x: 4, y: 23}
+              {y: 17},
+              {y: 13},
+              {y: 43},
+              {y: 23}
             ]
           },
           {

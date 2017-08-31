@@ -12,6 +12,8 @@ export default class BarChartComponent extends React.Component {
 
     let series = this.props.app.line.series;
 
+    let categories = this.props.app.line.categories;
+
     let lengthSeriesData = this.props.app.line.series[0].data.length;
     let newData = [];
 
@@ -19,7 +21,7 @@ export default class BarChartComponent extends React.Component {
 
       let obj = {};
 
-      obj["name"] = i;
+      obj["name"] = categories[i];
 
       for (let j = 0; j < series.length; j++) {
         const s = series[j];
