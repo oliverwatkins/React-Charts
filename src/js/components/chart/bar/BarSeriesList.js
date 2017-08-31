@@ -1,8 +1,11 @@
 import React from "react";
 
 import AppStore from "../../../../js/AppStore";
+import LineChart from "../../../../js/entity/LineChart";
 
-export default class PieChartSliceList extends React.Component {
+
+
+export default class BarSeriesList extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -17,31 +20,34 @@ export default class PieChartSliceList extends React.Component {
 
   render() {
 
+
+    const series = LineChart.getSeries(this.props.app);
+
     return (
       <table className="table">
         <tbody>
-        {this.props.app.pie.data.map(function (slice, i) {
+
+        {this.props.app.line.series.map(function (series, i) {
+
           var key = 'xx_' + i;
 
           var style = {
             color: 'black',
-            background: slice.color
+            background: series.color
           };
 
           return (
             <tr key={key}>
               <td>
-                {slice.name}
-              </td>
-              <td>
-                {slice.value}
+                {series.name}
               </td>
               <td style={style}>
-                {slice.color}
+                {series.color}
               </td>
             </tr>
           );
         })}
+
         </tbody>
       </table>
     );

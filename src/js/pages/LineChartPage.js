@@ -1,17 +1,16 @@
 import React from "react";
 
-import XYChartComponent from "../components/chart/bar/XYChartComponent";
+import XYChartComponent from "../components/chart/bar/BarChartComponent";
 
-import XYChartForm from "../components/chart/bar/XYChartForm";
-import XYDataList from "../components/chart/bar/XYDataList";
+import XYChartForm from "../components/chart/bar/BarChartForm";
+import XYDataList from "../components/chart/bar/BarChartDataTable";
+import BarSeriesList from "../components/chart/bar/BarSeriesList";
 
 import {Container} from 'flux/utils';
 
 import AppStore from './../AppStore.js';
 
-
 class LineChartPage extends React.Component {
-
 
   static getStores() {
     return [AppStore];
@@ -24,12 +23,16 @@ class LineChartPage extends React.Component {
   render() {
     return (
 
-
     <div>
       <h1>Line Chart</h1>
       <div className="col-md-5">
         <XYChartForm {...this.state}/>
       </div>
+
+      <div className="col-md-5">
+        <BarSeriesList {...this.state}/>
+      </div>
+
       <div className="col-md-5">
         <XYDataList {...this.state}/>
       </div>
@@ -37,28 +40,8 @@ class LineChartPage extends React.Component {
         <XYChartComponent {...this.state}/>
       </div>
     </div>
-
-
-
     );
   }
-
-  // render() {
-  //   return (
-  //     <div>
-  //       <h1>Pie Chart</h1>
-  //       <div className="col-md-5">
-  //         <PieChartForm {...this.state}/>
-  //       </div>
-  //       <div className="col-md-5">
-  //         <PieChartSliceList {...this.state}/>
-  //       </div>
-  //       <div className="col-md-5">
-  //         <SimplePieChart {...this.state}/>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 }
 
 

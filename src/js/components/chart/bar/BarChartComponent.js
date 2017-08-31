@@ -2,7 +2,7 @@ import React from "react";
 import TitleComponent from '../TitleComponent'
 import {LineChart, BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 
-export default class XYChartComponent extends React.Component {
+export default class BarChartComponent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -39,9 +39,6 @@ export default class XYChartComponent extends React.Component {
     var series = this.props.app.line.series;
     var data = this.createDataForChart();
 
-
-    // TitleEditComponent
-    // BarChart w
     return (
 
       <div>

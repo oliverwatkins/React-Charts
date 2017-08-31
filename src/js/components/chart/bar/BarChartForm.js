@@ -1,20 +1,15 @@
 import React from "react";
 import TitleEditComponent from '../TitleEditComponent'
-
+import ColorChooser from '../ColorChooser'
 import Actions from "../../../../js/Actions";
 
-import {CirclePicker} from 'react-color';
-
-import {Modal, Button} from 'react-bootstrap';
-
 export default class XYChartForm extends React.Component {
+
   constructor(props) {
     super(props)
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.cancel = this.cancel.bind(this);
-    this.popupPicker = this.popupPicker.bind(this);
-    this.chooseColor = this.chooseColor.bind(this);
+    this.colorSelected = this.colorSelected.bind(this);
 
     this.state = {
       showModalColorPicker: false
@@ -24,13 +19,12 @@ export default class XYChartForm extends React.Component {
   handleChartNameChange(event) {
     Actions.changeLineChartName(event.currentTarget.value);
   }
+
+  colorSelected(color) {
+    this.setState({selectedColor: color});
+  }
+
   render() {
-
-    var style = {
-      color: 'black',
-      background: this.state.color
-    };
-
     return (
       <form onSubmit={this.handleSubmit}>
         <TitleEditComponent onChange={this.handleChartNameChange}/>
@@ -47,37 +41,14 @@ export default class XYChartForm extends React.Component {
             <input type="text" ref="sliceName" className="form-control" onChange={this.handleChartSliceChange}
                    name="newSlice" placeholder="Series Name"></input>
           </div>
-          <div className="input-group col-xs-5">
-            <span className="input-group-addon">
-              <i className="glyphicon glyphicon-tint"></i>
-            </span>
 
-            <Modal show={this.state.showModalColorPicker} onHide={this.cancel}>
-              <Modal.Header closeButton>
-                <Modal.Title>Pick a Color</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <CirclePicker onChangeComplete={ this.chooseColor }/>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button onClick={this.chooseColor}>OK</Button>
-                <Button onClick={this.cancel}>Cancel</Button>
-              </Modal.Footer>
-            </Modal>
-
-            <input type="text" ref="color" className="form-control"
-                   name="color" placeholder="Choose Color" value={this.state.color} style={style}/>
-            <Button onClick={this.popupPicker}>Choose</Button>
-          </div>
-
-
+          <ColorChooser onChooseColor={this.colorSelected}/>
           <button type="submit" value="Add Slice" className="button">Add Series</button>
         </div>
-
-
       </form>
     )
   }
+
 
   handleSubmit(event) {
     event.preventDefault();
@@ -94,16 +65,5 @@ export default class XYChartForm extends React.Component {
     // PieChartActions.createSlice(slice);
   }
 
-  cancel(event) {
-    this.setState({showModalColorPicker: false});
-  }
-
-  chooseColor(event) {
-    this.setState({showModalColorPicker: false, color: event.hex});
-  }
-
-  popupPicker(event) {
-    this.setState({showModalColorPicker: true});
-  }
 
 }

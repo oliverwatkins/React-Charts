@@ -6,6 +6,9 @@ class LineChart {
     return ['app', 'line'];
   }
 
+  static getSeries(appState) {
+    return appState.line.series;
+  }
 
   /**
    *
@@ -15,16 +18,12 @@ class LineChart {
    */
   static cellChanged(imState, action) {
 
-
     /**
      * action.value :
      * fromRow : 3,
      * toRow : 3,
-     * updated: {seriesName: '99
-         * }
+     * updated: {seriesName: '99}
      */
-
-
 
     let row = action.value.fromRow;
     let seriesName = Object.keys(action.value.updated)[0];

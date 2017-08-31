@@ -13,10 +13,6 @@ export default class PieChartForm extends React.Component {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
-
-    // this.cancel = this.cancel.bind(this);
-    // this.popupPicker = this.popupPicker.bind(this);
-
     this.colorSelected = this.colorSelected.bind(this);
 
     this.state = {
@@ -29,8 +25,6 @@ export default class PieChartForm extends React.Component {
 
     const val = ReactDOM.findDOMNode(this.refs.sliceName).value;
 
-    const color = this.state.selectedColor; //ReactDOM.findDOMNode(this.refs.color).value;
-
     const value = parseInt(ReactDOM.findDOMNode(this.refs.value).value);
 
     var slice = {
@@ -41,34 +35,19 @@ export default class PieChartForm extends React.Component {
     Actions.createSlice(slice);
   }
 
-
   colorSelected(color) {
-    alert('hi')
     this.setState({selectedColor: color});
   }
-
-  // cancel(event) {
-  //   this.setState({showModalColorPicker: false});
-  // }
-  //
-  // chooseColor(event) {
-  //   this.setState({showModalColorPicker: false, color: event.hex});
-  // }
-  //
-  // popupPicker(event) {
-  //   this.setState({showModalColorPicker: true});
-  // }
 
   handleChartNameChange(event) {
     Actions.changeName(event.currentTarget.value);
   }
 
   render() {
-    console.info('what is state : ' + this.state)
-
     return (
       <form onSubmit={this.handleSubmit}>
-        <TitleEditComponent onChange={this.handleChartNameChange}/>
+
+        <TitleEditComponent value={this.props.app.pie.name} onChange={this.handleChartNameChange}/>
 
         <div className="css-form">
           <div className="col-xs-10">

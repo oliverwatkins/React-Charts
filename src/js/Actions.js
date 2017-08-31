@@ -27,7 +27,7 @@ const Actions = {
     });
   }, changeName(newName) {
     AppDispatcher.dispatch({
-      type: ActionTypes.CHANGE_NAME,
+      type: ActionTypes.CHANGE_NAME_PIE,
       newName,
     });
   },

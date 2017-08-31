@@ -16,7 +16,6 @@ ReactDOM.render(
     <Route path="/" component={PageLayout}>
       <IndexRoute component={WelcomePage}></IndexRoute>
 
-
       <Route path="line" component={LineChartPage}></Route>
       <Route path="pie" component={PieChartPage}></Route>
     </Route>
