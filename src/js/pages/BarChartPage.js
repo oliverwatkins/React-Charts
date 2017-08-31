@@ -1,16 +1,15 @@
 import React from "react";
 
-import XYChartComponent from "../components/chart/bar/BarChartComponent";
-
-import XYChartForm from "../components/chart/bar/BarChartForm";
-import XYDataList from "../components/chart/bar/BarChartDataTable";
+import BarChartComponent from "../components/chart/bar/BarChartComponent";
 import BarSeriesList from "../components/chart/bar/BarSeriesList";
+import BarChartForm from "../components/chart/bar/BarChartForm";
+import BarChartDataTable from "../components/chart/bar/BarChartDataTable";
 
 import {Container} from 'flux/utils';
 
 import AppStore from './../AppStore.js';
 
-class LineChartPage extends React.Component {
+class BarChartPage extends React.Component {
 
   static getStores() {
     return [AppStore];
@@ -26,7 +25,7 @@ class LineChartPage extends React.Component {
     <div>
       <h1>Line Chart</h1>
       <div className="col-md-5">
-        <XYChartForm {...this.state}/>
+        <BarChartForm {...this.state}/>
       </div>
 
       <div className="col-md-5">
@@ -34,10 +33,10 @@ class LineChartPage extends React.Component {
       </div>
 
       <div className="col-md-5">
-        <XYDataList {...this.state}/>
+        <BarChartDataTable {...this.state}/>
       </div>
       <div className="col-md-5">
-        <XYChartComponent {...this.state}/>
+        <BarChartComponent {...this.state}/>
       </div>
     </div>
     );
@@ -45,4 +44,4 @@ class LineChartPage extends React.Component {
 }
 
 
-export default Container.create(LineChartPage); //flux thing
+export default Container.create(BarChartPage); //flux thing

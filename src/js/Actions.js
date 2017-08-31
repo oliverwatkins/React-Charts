@@ -15,6 +15,15 @@ const Actions = {
       value: id
     });
   },
+
+  createSeries(series) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CREATE_SERIES,
+      series,
+    });
+
+  },
+
   createSlice(slice) {
     AppDispatcher.dispatch({
       type: ActionTypes.CREATE_SLICE,

@@ -3,7 +3,7 @@ import ReactDataGrid from "react-data-grid";
 
 import Actions from "../../../../js/Actions";
 
-export default class XYDataList extends React.Component {
+export default class BarDataList extends React.Component {
 
   constructor(props) {
     super(props)

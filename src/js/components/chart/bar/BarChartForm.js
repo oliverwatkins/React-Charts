@@ -3,7 +3,9 @@ import TitleEditComponent from '../TitleEditComponent'
 import ColorChooser from '../ColorChooser'
 import Actions from "../../../../js/Actions";
 
-export default class XYChartForm extends React.Component {
+import ReactDOM from "react-dom";
+
+export default class BarChartForm extends React.Component {
 
   constructor(props) {
     super(props)
@@ -14,6 +16,19 @@ export default class XYChartForm extends React.Component {
     this.state = {
       showModalColorPicker: false
     };
+  }
+
+  handleSubmit(event) {
+
+    event.preventDefault();
+
+    const val = ReactDOM.findDOMNode(this.refs.seriesName).value;
+
+    let series = {
+      name: val,
+      color: this.state.selectedColor,
+    }
+    Actions.createSeries(series);
   }
 
   handleChartNameChange(event) {
@@ -38,32 +53,14 @@ export default class XYChartForm extends React.Component {
           <div className="input-group col-xs-9">
                         <span className="input-group-addon">
                             <i className="glyphicon glyphicon-user"></i></span>
-            <input type="text" ref="sliceName" className="form-control" onChange={this.handleChartSliceChange}
+            <input type="text" ref="seriesName" className="form-control" onChange={this.handleChartSliceChange}
                    name="newSlice" placeholder="Series Name"></input>
           </div>
 
           <ColorChooser onChooseColor={this.colorSelected}/>
-          <button type="submit" value="Add Slice" className="button">Add Series</button>
+          <button type="submit" value="Add Series" className="button">Add Series</button>
         </div>
       </form>
     )
   }
-
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    // const val = ReactDOM.findDOMNode(this.refs.sliceName).value;
-    // const color = ReactDOM.findDOMNode(this.refs.color).value;
-    // const value = parseInt(ReactDOM.findDOMNode(this.refs.value).value);
-    //
-    // var slice = {
-    //   name: val,
-    //   color: color,
-    //   value: value
-    // }
-    // PieChartActions.createSlice(slice);
-  }
-
-
 }

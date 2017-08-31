@@ -10,6 +10,38 @@ class LineChart {
     return appState.line.series;
   }
 
+  static createSeries(imState, action) {
+    let series = action.series;
+
+    let myList = imState.getIn([...this.path, 'series'])
+
+    myList = myList.toJS();
+    let firstSeries = myList[0];
+
+    let dataArr = [];
+    firstSeries.data.forEach(function (data) {
+      let n = data.name;
+
+      dataArr.push({"x":n, "y":0 });
+    });
+
+    myList.push(
+      {
+        name: series.name,
+        color: series.color,
+        data: dataArr
+
+      },
+    );
+
+    var v = Immutable.fromJS(myList)
+
+    imState = imState.setIn([...this.path, 'series'], v)
+
+    return imState;
+  }
+
+
   /**
    *
    * @param imState

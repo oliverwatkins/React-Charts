@@ -23,19 +23,29 @@ class AppStore extends ReduceStore {
 
   reduce(state, action) {
 
-    var imState = Immutable.fromJS(state);
+    let imState = Immutable.fromJS(state);
 
     switch (action.type) {
 
+        //pie
       case ActionTypes.CREATE_SLICE:
         imState = PieChart.createSlice(imState, action.slice);
         break;
       case ActionTypes.CHANGE_NAME_PIE:
         imState = PieChart.changeName(imState, action.newName);
         break;
+
+        //bar
+      case ActionTypes.CHANGE_NAME_BAR:
+        imState = LineChart.changeName(imState, action.newName);
+        break;
       case ActionTypes.CELL_CHANGED:
         imState = LineChart.cellChanged(imState, action)
         break;
+      case ActionTypes.CREATE_SERIES:
+        imState = LineChart.createSeries(imState, action)
+        break;
+
     }
     return imState.toJS();
   }
