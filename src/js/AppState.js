@@ -14,6 +14,15 @@ const AppState =
       },
       line: {
         name: "Bar Chart",
+
+        categories: [
+          1,
+          2,
+          3,
+          4
+        ],
+
+
         series: [
           {
             name: "Series1x",

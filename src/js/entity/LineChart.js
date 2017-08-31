@@ -21,7 +21,6 @@ class LineChart {
     let dataArr = [];
     firstSeries.data.forEach(function (data) {
       let n = data.name;
-
       dataArr.push({"x":n, "y":0 });
     });
 
@@ -30,14 +29,11 @@ class LineChart {
         name: series.name,
         color: series.color,
         data: dataArr
-
       },
     );
 
     var v = Immutable.fromJS(myList)
-
     imState = imState.setIn([...this.path, 'series'], v)
-
     return imState;
   }
 
@@ -50,6 +46,7 @@ class LineChart {
    */
   static cellChanged(imState, action) {
 
+
     /**
      * action.value :
      * fromRow : 3,
@@ -61,14 +58,18 @@ class LineChart {
     let seriesName = Object.keys(action.value.updated)[0];
     let cellValue = action.value.updated[seriesName]
 
-    var list = imState.getIn([...this.path, 'series']);
+    if (seriesName === "category") {
+      imState = imState.setIn([...this.path, 'categories', row], cellValue)
+    }else {
 
-    var index = list.findIndex(function (item) {
-      return item.get("name") === seriesName;
-    })
+      var list = imState.getIn([...this.path, 'series']);
 
-    imState = imState.setIn([...this.path, 'series', index, 'data', row, 'y'], cellValue)
+      var index = list.findIndex(function (item) {
+        return item.get("name") === seriesName;
+      })
 
+      imState = imState.setIn([...this.path, 'series', index, 'data', row, 'y'], cellValue)
+    }
     return imState;
   }
 

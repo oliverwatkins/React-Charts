@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDataGrid from "react-data-grid";
+const { Row } = ReactDataGrid;
+
 
 import Actions from "../../../../js/Actions";
 
@@ -13,19 +15,22 @@ export default class BarDataList extends React.Component {
   }
 
   createRows(props) {
-    var rows = [];
+    let rows = [];
 
-    var lengthSeries = props.app.line.series[0].data.length;
-    for (var index = 0; index < lengthSeries; index++) {
+    let categoryLength = props.app.line.categories.length;
+
+    for (let index = 0; index < categoryLength; index++) {
 
       let row = {}
 
-      var noSeries = props.app.line.series.length
+      let noSeries = props.app.line.series.length;
 
-      for (var j = 0; j< noSeries; j++) {
+      row["category"] = props.app.line.categories[index];
 
-        var val = props.app.line.series[j].data[index].y
-        var nameS = props.app.line.series[j].name
+      for (let j = 0; j< noSeries; j++) {
+
+        let val = props.app.line.series[j].data[index].y;
+        let nameS = props.app.line.series[j].name;
 
         row[nameS] = val;
       }
@@ -36,6 +41,10 @@ export default class BarDataList extends React.Component {
 
   createCols(props) {
     var cols = [];
+
+    // formatter: PercentCompleteFormatter
+
+    cols.push({key: "category", name: "category", editable:true, formatter:ColumnFormatter});
 
     props.app.line.series.forEach(function (value) {
       cols.push({key: value.name, name: value.name, editable:true});
@@ -63,10 +72,8 @@ export default class BarDataList extends React.Component {
     return (
       <div>
         <ReactDataGrid
-
           enableCellSelect={true}
           onGridRowsUpdated={this.handleGridRowsUpdated}
-
           columns={this._columns}
           rowGetter={this.rowGetter}
           rowsCount={this._rows.length}
@@ -75,3 +82,17 @@ export default class BarDataList extends React.Component {
     )
   }
 }
+
+
+const ColumnFormatter = React.createClass({
+  propTypes: {
+    value: React.PropTypes.number.isRequired
+  },
+
+  render() {
+    return (
+      <div >
+        <b>{this.props.value}</b>
+      </div>);
+  }
+});
