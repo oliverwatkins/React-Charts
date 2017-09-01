@@ -18,9 +18,17 @@ export default class CategoryDataList extends React.Component {
     // SlicesStore.removeListener("change", this.getSlices);
   }
 
+
+  deleteCategory(event, seriesName) {
+    event.preventDefault();
+    Actions.deleteCategory(seriesName);
+  }
+
   render() {
     const series = BarChartEntity.getSeries(this.props.app);
     const categories = BarChartEntity.getCategories(this.props.app);
+
+    let deleteS = this.deleteCategory;
 
     return (
     <div className="listStyle">
@@ -40,7 +48,8 @@ export default class CategoryDataList extends React.Component {
                 {cat}
               </td>
               <td>
-                <input type="button" value="delete"/>
+                <input type="button" value="delete"
+                       onClick={(e) => deleteS(e, series.name)}/>
               </td>
             </tr>
           );

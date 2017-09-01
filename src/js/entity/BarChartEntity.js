@@ -23,13 +23,21 @@ class BarChartEntity {
     var v = Immutable.fromJS(myList)
     imState = imState.setIn([...this.path, 'categories'], v)
 
+
     //now for each series create an entry
 
     var list = imState.getIn([...this.path, 'series']);
     list = list.toJS();
-    list = list.forEach(function (data) {
-      data[catName] = 0;
+
+    list.forEach(function (data) {
+      data.data.push({y:"0"})
     });
+
+    var v = Immutable.fromJS(list)
+
+
+    imState = imState.setIn([...this.path, 'series'], v);
+
     return imState;
   }
 
