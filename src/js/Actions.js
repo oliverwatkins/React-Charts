@@ -4,6 +4,8 @@ import AppDispatcher from "./AppDispatcher.js";
 import ActionTypes from "./ActionTypes.js";
 
 const Actions = {
+
+  //pie
   enterPieChartName() {
     AppDispatcher.dispatch({
       type: ActionTypes.ENTER_PIE_CHART_NAME,
@@ -15,15 +17,6 @@ const Actions = {
       value: id
     });
   },
-
-  createSeries(series) {
-    AppDispatcher.dispatch({
-      type: ActionTypes.CREATE_SERIES,
-      series,
-    });
-
-  },
-
   createSlice(slice) {
     AppDispatcher.dispatch({
       type: ActionTypes.CREATE_SLICE,
@@ -40,12 +33,29 @@ const Actions = {
       newName,
     });
   },
+
+  //bar
+  createSeries(series) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CREATE_SERIES,
+      series,
+    });
+  },
+  deleteSeries(seriesName) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.DELETE_SERIES,
+      seriesName,
+    });
+  },
   changeLineChartName(newName) {
     AppDispatcher.dispatch({
       type: ActionTypes.CHANGE_NAME_BAR,
       newName,
     });
-  }, changeSliceName(newName) {
+  },
+
+
+  changeSliceName(newName) {
     AppDispatcher.dispatch({
       type: ActionTypes.CHANGE_SLICE_NAME,
       newName,
@@ -63,5 +73,8 @@ const Actions = {
     });
   }
 }
+
+
+
 
 export default Actions;

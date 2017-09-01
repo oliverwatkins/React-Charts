@@ -25,19 +25,24 @@ class BarChartEntity {
 
     //now for each series create an entry
 
-
     var list = imState.getIn([...this.path, 'series']);
     list = list.toJS();
     list = list.forEach(function (data) {
       data[catName] = 0;
     });
-
-
-
     return imState;
   }
 
+  static deleteSeries(imState, action) {
+    let list = imState.getIn([...this.path, 'series'])
 
+    list = list.filter(function(elem) {
+      return elem.get("name") !== action.seriesName
+    })
+    imState = imState.setIn([...this.path, 'series'], list)
+
+    return imState;
+  }
 
 
   static createSeries(imState, action) {
@@ -67,7 +72,6 @@ class BarChartEntity {
     return imState;
   }
 
-
   /**
    *
    * @param imState
@@ -76,14 +80,12 @@ class BarChartEntity {
    */
   static cellChanged(imState, action) {
 
-
     /**
      * action.value :
      * fromRow : 3,
      * toRow : 3,
      * updated: {seriesName: '99}
      */
-
     let row = action.value.fromRow;
     let seriesName = Object.keys(action.value.updated)[0];
     let cellValue = action.value.updated[seriesName]

@@ -22,6 +22,7 @@ export default class Nav extends React.Component {
 
     const lineClass = location.pathname.match(/^\/line/) ? "active" : "";
     const pieClass = location.pathname.match(/^\/pie/) ? "active" : "";
+    const barClass = location.pathname.match(/^\/bar/) ? "active" : "";
 
     return (
       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -38,6 +39,9 @@ export default class Nav extends React.Component {
             <ul class="nav navbar-nav">
               <li class={featuredClass}>
                 <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Todos</IndexLink>
+              </li>
+              <li class={barClass}>
+                <Link to="bar" onClick={this.toggleCollapse.bind(this)}>Bar</Link>
               </li>
               <li class={lineClass}>
                 <Link to="line" onClick={this.toggleCollapse.bind(this)}>Line</Link>

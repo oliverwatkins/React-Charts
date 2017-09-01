@@ -48,6 +48,12 @@ class AppStore extends ReduceStore {
       case ActionTypes.CREATE_CATEGORY:
         imState = BarChartEntity.createCategory(imState, action)
         break;
+      case ActionTypes.DELETE_SERIES:
+        imState = BarChartEntity.deleteSeries(imState, action)
+        break;
+
+
+
 
 
 

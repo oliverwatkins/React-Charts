@@ -15,7 +15,7 @@ import Actions from './../Actions.js';
 
 import TitleEditComponent from "../components/chart/TitleEditComponent";
 
-class BarChartPage extends React.Component {
+class LineChartPage extends React.Component {
 
 
   handleChartNameChange(event) {
@@ -40,37 +40,11 @@ class BarChartPage extends React.Component {
 
     return (
       <div>
-        <div style={{display: 'flex'}}>
-          <div>
-            <div style={style}>
-              <TitleEditComponent onChange={this.handleChartNameChange}/>
-              <div>
-                <BarChartForm {...this.state}/>
-              </div>
-              <div>
-                <BarSeriesList {...this.state}/>
-              </div>
-            </div>
-            <div style={style}>
-              <div>
-                <CategoryForm {...this.state}/>
-              </div>
-              <div>
-                <CategoryDataList {...this.state}/>
-              </div>
-            </div>
-          </div>
-          <div>
-            <BarChartComponent {...this.state}/>
-          </div>
-        </div>
-        <div style={{width: 700}}>
-          <BarChartDataTable {...this.state}/>
-        </div>
+
+        TODO
       </div>
     );
   }
 }
 
-
-export default Container.create(BarChartPage); //flux thing
+export default Container.create(LineChartPage);
