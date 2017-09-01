@@ -30,17 +30,26 @@ export default class CategoryForm extends React.Component {
   }
 
   render() {
+
+    let style = {
+      "padding": "3px",
+      "margin": "3px"
+    }
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
+
+      <div style={style}>
+        <form onSubmit={this.handleSubmit}>
+
           <h3>Category :</h3>
-            <input type="text" ref="categoryName"
-                         onChange={this.handleChartSliceChange}
-                         name="newSlice" placeholder="Series Name">
-            </input>
-            <input type="submit" value="Add Category" className="button"/>
-        </div>
-      </form>
+          <input style={style} type="text" ref="categoryName"
+                 onChange={this.handleChartSliceChange}
+                 name="newSlice" placeholder="Series Name">
+          </input>
+
+          <input style={style} type="submit" value="Add Category" className="button"/>
+        </form>
+      </div>
     )
   }
 }

@@ -21,7 +21,8 @@ export default class BarSeriesList extends React.Component {
   render() {
     const series = BarChartEntity.getSeries(this.props.app);
     return (
-      <table className="tableXX">
+    <div className="listStyle">
+      <table>
         <tbody>
         {this.props.app.line.series.map(function (series, i) {
 
@@ -45,9 +46,9 @@ export default class BarSeriesList extends React.Component {
             </tr>
           );
         })}
-
         </tbody>
       </table>
+    </div>
     );
   }
 }

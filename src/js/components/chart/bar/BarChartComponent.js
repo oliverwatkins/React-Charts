@@ -44,7 +44,7 @@ export default class BarChartComponent extends React.Component {
       <div>
         <TitleComponent name={this.props.app.line.name}/>
 
-        <BarChart width={400} height={200} data={data}
+        <BarChart width={600} height={500} data={data}
                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
           <XAxis dataKey="name"/>
           <YAxis/>

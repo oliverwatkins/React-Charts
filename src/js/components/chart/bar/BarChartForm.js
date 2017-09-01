@@ -36,19 +36,27 @@ export default class BarChartForm extends React.Component {
   }
 
   render() {
+
+    let style = {
+      "padding": "3px",
+      "margin": "3px"
+    }
     return (
 
-      <div>
+
+
+
+      <div style={style}>
         <h3>Series :</h3>
 
         <form onSubmit={this.handleSubmit}>
 
-        <input type="text" ref="seriesName" onChange={this.handleChartSliceChange}
+        <input style={style} type="text" ref="seriesName" onChange={this.handleChartSliceChange}
                      name="newSlice" placeholder="Series Name"/>
 
-        <ColorChooser onChooseColor={this.colorSelected}/>
+        <ColorChooser style={style} onChooseColor={this.colorSelected}/>
 
-        <input type="submit" value="Add Series" className="button"/>
+        <input style={style} type="submit" value="Add Series" className="button"/>
       </form>
       </div>
     )

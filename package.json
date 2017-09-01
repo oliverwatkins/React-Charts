@@ -7,6 +7,7 @@
     "babel-polyfill": "^6.22.0",
     "bootstrap": "^3.3.7",
     "events": "^1.1.1",
+    "flexbox": "0.0.3",
     "flux": "^3.1.2",
     "immutable": "^3.8.1",
     "less": "^2.7.2",
@@ -58,7 +59,6 @@
     "dev": "webpack-dev-server --content-base src --inline --hot",
     "package": "webpack --content-base src --inline --hot",
     "build": "webpack"
-
   },
   "author": "",
   "license": ""

@@ -33,46 +33,46 @@ class BarChartPage extends React.Component {
   render() {
 
     let style = {
-      borderColor: "#ed4226",
-      borderStyle: "solid",
-      borderWidth: "1px"
+      // borderColor: "#808080",
+      // borderStyle: "solid",
+      // borderWidth: "1px"
     }
 
     return (
 
       <div>
-        <h1>Bar Chart</h1>
+        <div style={{display: 'flex'}}>
+          <div>
+            <div style={style}>
+              <TitleEditComponent onChange={this.handleChartNameChange}/>
+              <div>
+                <BarChartForm {...this.state}/>
+              </div>
 
-        <TitleEditComponent onChange={this.handleChartNameChange}/>
+              <div>
+                <BarSeriesList {...this.state}/>
+              </div>
+            </div>
 
-        <div style={style}>
-          <div className="col-md-5">
-            <BarChartForm {...this.state}/>
+            <div style={style}>
+              <div>
+                <CategoryForm {...this.state}/>
+              </div>
+
+              <div>
+                <CategoryDataList {...this.state}/>
+              </div>
+            </div>
           </div>
 
-          <div className="col-md-5">
-            <BarSeriesList {...this.state}/>
+          <div>
+            <BarChartComponent {...this.state}/>
           </div>
         </div>
-
-        <div style={style}>
-          <div className="col-md-5">
-            <CategoryForm {...this.state}/>
-          </div>
-
-          <div className="col-md-5">
-            <CategoryDataList {...this.state}/>
-          </div>
-        </div>
-
-
-        <div className="col-md-5">
+        <div style={{width: 700}}>
           <BarChartDataTable {...this.state}/>
         </div>
 
-        <div className="col-md-5">
-          <BarChartComponent {...this.state}/>
-        </div>
       </div>
     );
   }

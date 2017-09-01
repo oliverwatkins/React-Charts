@@ -23,7 +23,8 @@ export default class CategoryDataList extends React.Component {
     const categories = BarChartEntity.getCategories(this.props.app);
 
     return (
-      <table className="table">
+    <div className="listStyle">
+      <table>
         <tbody>
 
         {categories.map(function (cat, i) {
@@ -47,6 +48,7 @@ export default class CategoryDataList extends React.Component {
 
         </tbody>
       </table>
+    </div>
     );
   }
 }
