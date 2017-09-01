@@ -1,0 +1,30 @@
+@import '../../global.less';
+
+.result {
+  position: absolute;
+  float: left;
+  overflow: auto;
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  width: calc(~"100% - 20px");
+  background: white;
+  z-index: -1;
+  text-align: right;
+
+  table {
+    td, th {
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+  }
+}
+
+.result * {
+  text-align: initial;
+}
+
+.result .loader {
+  display: inline-block;
+}

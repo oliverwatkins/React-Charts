@@ -1,8 +1,8 @@
 import React from "react";
 
-import AppStore from "../../../../js/AppStore";
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
+import './List.less';
 
 
 export default class BarSeriesList extends React.Component {
@@ -21,7 +21,7 @@ export default class BarSeriesList extends React.Component {
   render() {
     const series = BarChartEntity.getSeries(this.props.app);
     return (
-      <table className="table">
+      <table className="tableXX">
         <tbody>
         {this.props.app.line.series.map(function (series, i) {
 

@@ -5,7 +5,13 @@ var path = require('path');
 module.exports = {
   context: path.join(__dirname, "src"),
   devtool: debug ? "inline-sourcemap" : null,
+
   entry: "./js/client.js",
+
+  output: {
+    path: __dirname + "/src/",
+    filename: "client.min.js"
+  },
 
 
   // resolve: {
@@ -17,21 +23,18 @@ module.exports = {
 
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
+      { test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015', 'stage-0'],
           plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
         }
-      }
+      },
+      { test: /\.css|\.less$/, loaders: ["style-loader", "css-loader", "less-loader"] },
     ]
   },
-  output: {
-    path: __dirname + "/src/",
-    filename: "client.min.js"
-  },
+
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),

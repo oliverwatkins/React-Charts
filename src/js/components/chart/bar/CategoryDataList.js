@@ -2,6 +2,9 @@ import React from "react";
 
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
+import './List.less';
+
+
 export default class CategoryDataList extends React.Component {
   constructor(props) {
     super(props);
