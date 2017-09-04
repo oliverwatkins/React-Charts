@@ -53,6 +53,21 @@ const Actions = {
       newName,
     });
   },
+  createCategory(value) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CREATE_CATEGORY,
+      value
+    });
+  },
+  deleteCategory(categoryName, index) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.DELETE_CATEGORY,
+      categoryName,
+      index
+    });
+  },
+
+
 
 
   changeSliceName(newName) {
@@ -65,13 +80,8 @@ const Actions = {
       type: ActionTypes.CELL_CHANGED,
       value
     });
-  },
-  createCategory(value) {
-    AppDispatcher.dispatch({
-      type: ActionTypes.CREATE_CATEGORY,
-      value
-    });
   }
+
 }
 
 

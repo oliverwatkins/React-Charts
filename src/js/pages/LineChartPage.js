@@ -1,12 +1,9 @@
 import React from "react";
 
-import BarChartComponent from "../components/chart/bar/BarChartComponent";
-import BarSeriesList from "../components/chart/bar/BarSeriesList";
-import BarChartForm from "../components/chart/bar/BarChartForm";
-import BarChartDataTable from "../components/chart/bar/BarChartDataTable";
-import CategoryForm from "../components/chart/bar/CategoryForm";
-
-import CategoryDataList from "../components/chart/bar/CategoryDataList";
+import LineChartComponent from "../components/chart/line/LineChartComponent";
+import LineSeriesList from "../components/chart/line/LineSeriesList";
+import LineChartForm from "../components/chart/line/LineChartForm";
+import LineChartDataTable from "../components/chart/line/LineChartDataTable";
 
 import {Container} from 'flux/utils';
 
@@ -41,7 +38,26 @@ class LineChartPage extends React.Component {
     return (
       <div>
 
-        TODO
+
+        <div style={{display: 'flex'}}>
+          <div>
+            <div style={style}>
+              <TitleEditComponent onChange={this.handleChartNameChange}/>
+              <div>
+                <LineChartForm {...this.state}/>
+              </div>
+              <div>
+                <LineSeriesList {...this.state}/>
+              </div>
+            </div>
+          </div>
+          <div>
+            <LineChartComponent {...this.state}/>
+          </div>
+        </div>
+        <div style={{width: 700}}>
+          <LineChartDataTable {...this.state}/>
+        </div>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import React from "react";
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
 import './List.less';
-
+import Actions from "../../../../js/Actions";
 
 export default class CategoryDataList extends React.Component {
   constructor(props) {
@@ -19,13 +19,13 @@ export default class CategoryDataList extends React.Component {
   }
 
 
-  deleteCategory(event, seriesName) {
+  deleteCategory(event, categoryName, index) {
     event.preventDefault();
-    Actions.deleteCategory(seriesName);
+    Actions.deleteCategory(categoryName, index);
   }
 
   render() {
-    const series = BarChartEntity.getSeries(this.props.app);
+    // const series = BarChartEntity.getSeries(this.props.app);
     const categories = BarChartEntity.getCategories(this.props.app);
 
     let deleteS = this.deleteCategory;
@@ -34,14 +34,8 @@ export default class CategoryDataList extends React.Component {
     <div className="listStyle">
       <table>
         <tbody>
-
         {categories.map(function (cat, i) {
-          var key = 'xx_' + i;
-
-          var style = {
-            color: 'black',
-          };
-
+          let key = 'xx_' + i;
           return (
             <tr key={key}>
               <td>
@@ -49,7 +43,7 @@ export default class CategoryDataList extends React.Component {
               </td>
               <td>
                 <input type="button" value="delete"
-                       onClick={(e) => deleteS(e, series.name)}/>
+                       onClick={(e) => deleteS(e, cat, i)}/>
               </td>
             </tr>
           );
