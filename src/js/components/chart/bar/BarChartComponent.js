@@ -36,13 +36,13 @@ export default class BarChartComponent extends React.Component {
   }
 
   render() {
-    let series = this.props.app.line.series;
+    let series = BarChartEntity.getSeries(this.props.app);
     let data = this.createDataForChart();
 
     return (
 
       <div>
-        <TitleComponent name={this.props.app.line.name}/>
+        <TitleComponent name={this.props.app.bar.name}/>
 
         <BarChart width={600} height={500} data={data}
                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>

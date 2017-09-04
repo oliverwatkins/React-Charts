@@ -1,45 +1,13 @@
 import Immutable from 'immutable';
 
-class BarChartEntity {
+class XYChartEntity {
 
   static get path() {
-    return ['app', 'bar'];
+    return ['app', 'xy'];
   }
 
   static getSeries(appState) {
-    return appState.bar.series;
-  }
-
-  static getCategories(appState) {
-    return appState.bar.categories;
-  }
-
-  static createCategory(imState, action) {
-
-    // let catName = action.value.name
-
-    let myList = imState.getIn([...this.path, 'categories'])
-    myList = myList.toJS();
-    myList.push(action.value.name)
-    var v = Immutable.fromJS(myList)
-    imState = imState.setIn([...this.path, 'categories'], v)
-
-
-    //now for each series create an entry
-
-    var list = imState.getIn([...this.path, 'series']);
-    list = list.toJS();
-
-    list.forEach(function (data) {
-      data.data.push({y: "0"})
-    });
-
-    var v = Immutable.fromJS(list)
-
-
-    imState = imState.setIn([...this.path, 'series'], v);
-
-    return imState;
+    return appState.xy.series;
   }
 
   static deleteSeries(imState, action) {
@@ -49,50 +17,6 @@ class BarChartEntity {
       return elem.get("name") !== action.seriesName
     })
     imState = imState.setIn([...this.path, 'series'], list)
-
-    return imState;
-  }
-
-  static deleteCategory(imState, action) {
-
-    let index = action.index;
-
-    let list = imState.getIn([...this.path, 'categories'])
-
-    list = list.filter(function (elem) {
-      return elem !== action.categoryName
-    })
-    imState = imState.setIn([...this.path, 'categories'], list)
-
-
-    // list.forEach(function (data) {
-    //   data.data.push({y:"0"})
-    // });
-
-
-    alert('not yet working')
-
-
-
-    // let seriesList = imState.getIn([...this.path, 'series'])
-
-    imState.update(
-      ['app', 'bar', 'series'],
-      series => series.map(s => s.update('color', color => "#1bf115"))
-    )
-
-
-    // seriesList = seriesList.update(
-    //   'color',
-    //   (elem) => {
-    //     return '#1bf115'
-    //   }
-    //
-    // );
-
-
-    imState = imState.setIn([...this.path, 'series'], seriesList);
-
 
     return imState;
   }
@@ -165,6 +89,6 @@ class BarChartEntity {
   }
 }
 
-export default BarChartEntity;
+export default XYChartEntity;
 
 

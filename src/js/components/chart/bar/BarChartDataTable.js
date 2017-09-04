@@ -5,6 +5,10 @@ const { Row } = ReactDataGrid;
 
 import Actions from "../../../../js/Actions";
 
+
+import BarChartEntity from "../../../entity/BarChartEntity";
+
+
 export default class BarDataList extends React.Component {
 
   constructor(props) {
@@ -14,23 +18,44 @@ export default class BarDataList extends React.Component {
     this.handleGridRowsUpdated = this.handleGridRowsUpdated.bind(this);
   }
 
+  createCols(props) {
+
+    let categories = BarChartEntity.getCategories(props.app);
+    let series = BarChartEntity.getSeries(props.app);
+
+    var cols = [];
+
+    // formatter: PercentCompleteFormatter
+
+    cols.push({key: "category", name: "category", editable:true, formatter:ColumnFormatter});
+
+    series.forEach(function (value) {
+      cols.push({key: value.name, name: value.name, editable:true});
+    });
+
+    this._columns = cols;
+  }
+
   createRows(props) {
     let rows = [];
 
-    let categoryLength = props.app.line.categories.length;
+    let categories = BarChartEntity.getCategories(props.app);
+    let series = BarChartEntity.getSeries(props.app);
+
+    let categoryLength = categories.length; //props.app.bar.categories.length;
 
     for (let index = 0; index < categoryLength; index++) {
 
       let row = {}
 
-      let noSeries = props.app.line.series.length;
+      let noSeries = series.length;
 
-      row["category"] = props.app.line.categories[index];
+      row["category"] = props.app.bar.categories[index];
 
       for (let j = 0; j< noSeries; j++) {
 
-        let val = props.app.line.series[j].data[index].y;
-        let nameS = props.app.line.series[j].name;
+        let val = series[j].data[index].y;
+        let nameS = series[j].name;
 
         row[nameS] = val;
       }
@@ -39,19 +64,7 @@ export default class BarDataList extends React.Component {
     this._rows = rows;
   }
 
-  createCols(props) {
-    var cols = [];
 
-    // formatter: PercentCompleteFormatter
-
-    cols.push({key: "category", name: "category", editable:true, formatter:ColumnFormatter});
-
-    props.app.line.series.forEach(function (value) {
-      cols.push({key: value.name, name: value.name, editable:true});
-    });
-
-    this._columns = cols;
-  }
 
   rowGetter(i) {
     return this._rows[i];

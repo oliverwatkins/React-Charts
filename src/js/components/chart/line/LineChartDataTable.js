@@ -5,7 +5,11 @@ const { Row } = ReactDataGrid;
 
 import Actions from "../../../../js/Actions";
 
-export default class LineDataList extends React.Component {
+
+import XYChartEntity from "../../../entity/XYChartEntity";
+
+
+export default class LineChartDataTable extends React.Component {
 
   constructor(props) {
     super(props)
@@ -14,47 +18,55 @@ export default class LineDataList extends React.Component {
     this.handleGridRowsUpdated = this.handleGridRowsUpdated.bind(this);
   }
 
-  createRows(props) {
-    let rows = [];
-
-    let categoryLength = props.app.line.categories.length;
-
-    for (let index = 0; index < categoryLength; index++) {
-
-      let row = {}
-
-      let noSeries = props.app.line.series.length;
-
-      row["category"] = props.app.line.categories[index];
-
-      for (let j = 0; j< noSeries; j++) {
-
-        let val = props.app.line.series[j].data[index].y;
-        let nameS = props.app.line.series[j].name;
-
-        row[nameS] = val;
-      }
-      rows.push(row);
-    }
-    this._rows = rows;
-  }
-
   createCols(props) {
+
+    let series = XYChartEntity.getSeries(props.app);
+
     var cols = [];
 
     // formatter: PercentCompleteFormatter
 
     cols.push({key: "category", name: "category", editable:true, formatter:ColumnFormatter});
 
-    props.app.line.series.forEach(function (value) {
+    series.forEach(function (value) {
       cols.push({key: value.name, name: value.name, editable:true});
     });
 
     this._columns = cols;
   }
 
+  // createRows(props) {
+  //   let rows = [];
+  //
+  //   // let categories = XYChartEntity.getCategories(props.app);
+  //   let series = XYChartEntity.getSeries(props.app);
+  //
+  //   // let categoryLength = categories.length; //props.app.bar.categories.length;
+  //
+  //   for (let index = 0; index < categoryLength; index++) {
+  //
+  //     let row = {}
+  //
+  //     let noSeries = series.length;
+  //
+  //     row["category"] = props.app.bar.categories[index];
+  //
+  //     for (let j = 0; j< noSeries; j++) {
+  //
+  //       let val = series[j].data[index].y;
+  //       let nameS = series[j].name;
+  //
+  //       row[nameS] = val;
+  //     }
+  //     rows.push(row);
+  //   }
+  //   this._rows = rows;
+  // }
+
+
+
   rowGetter(i) {
-    return this._rows[i];
+    return 1; //this._rows[i];
   }
 
   /**
@@ -67,11 +79,7 @@ export default class LineDataList extends React.Component {
   }
 
   render() {
-
-    return (<div>TODO</div>)
-
-
-    this.createRows(this.props);
+    // this.createRows(this.props);
     this.createCols(this.props);
     return (
       <div>
@@ -80,7 +88,7 @@ export default class LineDataList extends React.Component {
           onGridRowsUpdated={this.handleGridRowsUpdated}
           columns={this._columns}
           rowGetter={this.rowGetter}
-          rowsCount={this._rows.length}
+          rowsCount={12}
           minHeight={200}/>
       </div>
     )

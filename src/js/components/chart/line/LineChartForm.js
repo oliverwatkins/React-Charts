@@ -36,18 +36,11 @@ export default class LineChartForm extends React.Component {
   }
 
   render() {
-
-    return (<div>TODO</div>)
-
-
     let style = {
       "padding": "3px",
       "margin": "3px"
     }
     return (
-
-
-
 
       <div style={style}>
         <h3>Series :</h3>

@@ -25,15 +25,14 @@ export default class BarSeriesList extends React.Component {
   }
 
   render() {
-    // const series = BarChartEntity.getSeries(this.props.app);
-
+    const series = BarChartEntity.getSeries(this.props.app);
     let deleteS = this.deleteSeries;
 
     return (
       <div className="listStyle">
         <table>
           <tbody>
-          {this.props.app.line.series.map(function (series, i) {
+          {series.map(function (series, i) {
             var key = 'xx_' + i;
             var style = {
               color: 'black',

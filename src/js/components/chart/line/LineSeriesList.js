@@ -3,6 +3,8 @@ import React from "react";
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
 import Actions from "../../../../js/Actions";
 
+import XYChartEntity from "../../../../js/entity/XYChartEntity";
+
 import './List.less';
 
 
@@ -21,13 +23,13 @@ export default class LineSeriesList extends React.Component {
 
   deleteSeries(event, seriesName) {
     event.preventDefault();
+    alert('todo')
     Actions.deleteSeries(seriesName);
   }
 
   render() {
 
-    return (<div>TODO</div>)
-    // const series = BarChartEntity.getSeries(this.props.app);
+    const series = XYChartEntity.getSeries(this.props.app);
 
     let deleteS = this.deleteSeries;
 
@@ -35,7 +37,7 @@ export default class LineSeriesList extends React.Component {
       <div className="listStyle">
         <table>
           <tbody>
-          {this.props.app.line.series.map(function (series, i) {
+          {this.props.app.xy.series.map(function (series, i) {
             var key = 'xx_' + i;
             var style = {
               color: 'black',
