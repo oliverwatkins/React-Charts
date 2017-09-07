@@ -60,21 +60,11 @@ class AppStore extends ReduceStore {
         break;
 
       case ActionTypes.FETCH_BAR_DATA:
-        fetchBarData();
+        doGetRequest('/bardata');
         break;
 
       case ActionTypes.SERVER_RESPONSE: {
-
-        // alert("here " + action.state);
         imState = BarChartEntity.fetchFinished(imState, action)
-        break;
-
-        // BarChartEntity.setIsFetching()
-        // if (action.endpoint == '/evaluation') {
-        //   if (action.state == CommunicationState.RESPONSE_OK) {
-        //     state = ResultEntity.setData(state, action.payload.values);
-        //   }
-        // }
         break;
       }
     }
@@ -82,30 +72,26 @@ class AppStore extends ReduceStore {
   }
 }
 
-function fetchBarData() {
-  doGetRequest('/bardata');
-}
+// import request from 'superagent';
 
 
 function doGetRequest(endpoint, params = {}) {
-  var url = "some blah blah" //API_URL + endpoint;
-  // abortPendingRequests(endpoint);
 
-  console.log("GET REQUEST; params=", params);
-
-  request.get(url)
-    .set('Accept','application/json')
-    .timeout(1111)
-    .query(params)
-    .end(handleResponse(endpoint));
-
-
-  // _pendingRequests[endpoint] =
-  //   request.get(url)
-  //     .set('Accept','application/json')
-  //     .timeout(TIMEOUT)
-  //     .query(params)
-  //     .end(handleResponse(endpoint));
+  setTimeout(
+    ()=> {
+     request.get("some_kind_of_URL_that_will_fail")
+      .set('Accept','application/json')
+      .timeout(1111)
+      .query(params)
+      .end(handleResponse(endpoint));
+    } , 4000
+  )
+  //
+  // request.get("some_kind_of_URL")
+  //   .set('Accept','application/json')
+  //   .timeout(1111)
+  //   .query(params)
+  //   .end(handleResponse(endpoint));
 }
 
 

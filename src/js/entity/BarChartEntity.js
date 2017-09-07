@@ -61,8 +61,6 @@ class BarChartEntity {
 
   static fetchFinished(imState, action) {
     imState = imState.setIn([...this.path, 'isFetching'], false)
-
-    alert('here')
     return imState;
   }
 

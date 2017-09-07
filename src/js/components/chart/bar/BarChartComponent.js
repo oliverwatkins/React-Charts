@@ -5,42 +5,27 @@ import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
 import AppDispatcher from "../../../AppDispatcher"
 import ActionTypes from "../../../ActionTypes"
+import Loader from 'react-loader-advanced';
+
+import { RingLoader } from 'react-spinners';
+
+var ReactSpinner = require('reactjs-spinner');
+var ClipLoader= require('reactjs-spinner');
+
+
+
+
 
 export default class BarChartComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {spinner:true}
   }
-
-  // componentDidMount: function () {
-  //   new Profile({ id: this.props.id }).fetch({
-  //     success: this.onSuccess,
-  //     error: this.onError
-  //   })
-  // }
 
   componentDidMount() {
     AppDispatcher.dispatch({
       type: ActionTypes.FETCH_BAR_DATA,
     });
-  }
-  //
-  //
-  // shouldComponentUpdate() {
-  //   // alert('here2')
-  //   return true;
-  // }
-  //
-  // componentDidUpdate() {
-  //   // alert('here3')
-  //   this.setState({spinner:false})
-  // }
-
-
-  shouldComponentUpdate() {
-    // alert('here2')
-    return true;
   }
 
   createDataForChart() {
@@ -73,18 +58,19 @@ export default class BarChartComponent extends React.Component {
     let series = BarChartEntity.getSeries(this.props.app);
     let data = this.createDataForChart();
 
-    let sp = <div></div>
     let isFetching = BarChartEntity.isFetching(this.props.app);
 
-    if (isFetching) {
-      sp = <h1>spinner</h1>
+    let style = {
+      color:"white"
     }
-
     return (
+      <Loader show={isFetching} message={<div>
+        <h1 style={style}>loading</h1>
+        <RingLoader color={'white'} loading={true}/>
+      </div>}>
 
       <div>
         <TitleComponent name={this.props.app.bar.name}/>
-        {sp}
         <BarChart width={600} height={500} data={data}
                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
           <XAxis dataKey="name"/>
@@ -99,6 +85,7 @@ export default class BarChartComponent extends React.Component {
           })}
         </BarChart>
       </div>
+    </Loader>
     );
   }
 }

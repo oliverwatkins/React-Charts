@@ -60,8 +60,16 @@ export default class LineChartComponent extends React.Component {
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="max" stroke="#8884d8" />
-          <Line type="monotone" dataKey="avg" stroke="#82ca9d" />
         </LineChart>
+
+
+        <LineChart width={500} height={300} data={data}>
+          <XAxis dataKey="name"/>
+          <YAxis/>
+          <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
+          <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+        </LineChart>
+
 
 
         <LineChart width={400} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
