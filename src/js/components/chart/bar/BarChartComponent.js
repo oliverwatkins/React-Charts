@@ -60,14 +60,24 @@ export default class BarChartComponent extends React.Component {
 
     let isFetching = BarChartEntity.isFetching(this.props.app);
 
-    let style = {
-      color:"white"
+    let style1 = {
+      color:"white",
+      fontSize: 40,
+      display: "inline"
     }
+    let style2 = {
+      color:"white",
+      fontSize: 40,
+      display: "inline"
+    }
+
     return (
-      <Loader show={isFetching} message={<div>
-        <h1 style={style}>loading</h1>
-        <RingLoader color={'white'} loading={true}/>
-      </div>}>
+      <Loader show={isFetching} message={
+        <div style={{display: 'flex', position: 'center', justifyContent: 'center'}}>
+          <RingLoader style={style1} color={'white'} loading={true}/>
+          <div style={style2}>loading</div>
+        </div>
+      }>
 
       <div>
         <TitleComponent name={this.props.app.bar.name}/>

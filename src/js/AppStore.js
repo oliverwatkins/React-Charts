@@ -72,9 +72,6 @@ class AppStore extends ReduceStore {
   }
 }
 
-// import request from 'superagent';
-
-
 function doGetRequest(endpoint, params = {}) {
 
   setTimeout(
@@ -84,7 +81,7 @@ function doGetRequest(endpoint, params = {}) {
       .timeout(1111)
       .query(params)
       .end(handleResponse(endpoint));
-    } , 4000
+    } , 3000
   )
   //
   // request.get("some_kind_of_URL")
