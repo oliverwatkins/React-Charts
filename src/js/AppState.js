@@ -38,7 +38,7 @@ const AppState =
       ]},
       bar: {
         name: "Bar Chart",
-
+        isFetching: true,
         categories: [
           "Apple",
           "Orange",

@@ -52,13 +52,25 @@ export default class LineChartComponent extends React.Component {
       <div>
         <TitleComponent name={this.props.app.xy.name}/>
 
-        <ScatterChart width={400} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
+        <LineChart width={600} height={300} data={data}
+                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <XAxis dataKey="x" interval={50} type="number"/>/>
+          <YAxis dataKey="y"interval={50} type="number"/>
+          <CartesianGrid strokeDasharray="3 3" />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="max" stroke="#8884d8" />
+          <Line type="monotone" dataKey="avg" stroke="#82ca9d" />
+        </LineChart>
+
+
+        <LineChart width={400} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
           <XAxis dataKey={'x'} name='stature' unit='cm'/>
           <YAxis dataKey={'y'} name='weight' unit='kg'/>
           <Scatter name='A school' data={data} fill='#8884d8'/>
           <CartesianGrid />
           <Tooltip cursor={{strokeDasharray: '3 3'}}/>
-        </ScatterChart>
+        </LineChart>
 
       </div>
     );

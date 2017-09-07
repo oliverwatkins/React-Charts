@@ -10,6 +10,12 @@ class BarChartEntity {
     return appState.bar.series;
   }
 
+  static isFetching(appState) {
+    return appState.bar.isFetching;
+  }
+
+
+
   static getCategories(appState) {
     return appState.bar.categories;
   }
@@ -50,6 +56,13 @@ class BarChartEntity {
     })
     imState = imState.setIn([...this.path, 'series'], list)
 
+    return imState;
+  }
+
+  static fetchFinished(imState, action) {
+    imState = imState.setIn([...this.path, 'isFetching'], false)
+
+    alert('here')
     return imState;
   }
 
