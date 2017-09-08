@@ -14,7 +14,7 @@ export default class Server {
 
     setTimeout(
       () => {
-        request.get("http://localhost:8080/test.json")
+        request.get("test.json")
           .set('Accept', 'application/json')
           .timeout(1111)
           .query(params)
