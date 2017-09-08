@@ -4,15 +4,17 @@ import {ReduceStore} from "flux/utils";
 
 import Immutable from "immutable";
 
-import AppState from "./AppState.js";
-import ActionTypes from "./ActionTypes.js";
-import AppDispatcher from "./AppDispatcher.js";
+import AppState from "./AppState";
+import ActionTypes from "./ActionTypes";
+import AppDispatcher from "./AppDispatcher";
 
 import PieChart from "./entity/PieChart";
 import BarChartEntity from "./entity/BarChartEntity";
 
 
-import request from 'superagent';
+
+
+import Server from './Server'
 
 
 class AppStore extends ReduceStore {
@@ -60,7 +62,7 @@ class AppStore extends ReduceStore {
         break;
 
       case ActionTypes.FETCH_BAR_DATA:
-        doGetRequest('/bardata');
+        Server.doGetRequest('/bardata');
         break;
 
       case ActionTypes.SERVER_RESPONSE: {
@@ -72,56 +74,5 @@ class AppStore extends ReduceStore {
   }
 }
 
-function doGetRequest(endpoint, params = {}) {
-
-  setTimeout(
-    ()=> {
-     request.get("some_kind_of_URL_that_will_fail")
-      .set('Accept','application/json')
-      .timeout(1111)
-      .query(params)
-      .end(handleResponse(endpoint));
-    } , 3000
-  )
-  //
-  // request.get("some_kind_of_URL")
-  //   .set('Accept','application/json')
-  //   .timeout(1111)
-  //   .query(params)
-  //   .end(handleResponse(endpoint));
-}
-
-
-
-
-function handleResponse(endpoint) {
-  return function (err, res) {
-    if (err && err.timeout === "TIMEOUT") {
-      // ServerActionCreator.connectionTimeout(endpoint);
-    } else if (res && res.ok) {
-      receiveData(endpoint, res);
-    } else {
-      dispatch(endpoint, "FAIL");
-      // ServerActionCreator.requestFailed(endpoint);
-    }
-  };
-}
-
-function receiveData(endpoint, responseData) {
-  console.log('ServerActionCreator.receiveData', responseData.body);
-  dispatch(endpoint, "CommunicationState.RESPONSE_OK", responseData.body);
-}
-
-
-function dispatch(endpoint, state, responseData = {}) {
-  AppDispatcher.dispatch(
-    {
-      type: ActionTypes.SERVER_RESPONSE,
-      endpoint: endpoint,
-      state: state,
-      payload: responseData
-    }
-  );
-}
 
 export default new AppStore();

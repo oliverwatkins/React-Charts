@@ -60,7 +60,13 @@ class BarChartEntity {
   }
 
   static fetchFinished(imState, action) {
+
+    var v = Immutable.fromJS(action.payload.app.bar)
+
+    imState = imState.setIn([...this.path], v)
+
     imState = imState.setIn([...this.path, 'isFetching'], false)
+
     return imState;
   }
 
