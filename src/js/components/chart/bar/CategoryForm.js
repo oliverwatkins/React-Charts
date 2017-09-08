@@ -1,9 +1,6 @@
 import React from "react";
 import Actions from "../../../../js/Actions";
 
-import ReactDOM from "react-dom";
-
-
 import MUITextField from 'material-ui/TextField';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -26,10 +23,7 @@ export default class CategoryForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    // const val = ReactDOM.findDOMNode(this.refs.categoryName).value;
-
     let val =  this.refs.categoryName.input.value
-
 
     let category = {
       name: val,
