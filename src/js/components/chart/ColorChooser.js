@@ -51,7 +51,11 @@ export default class ColorChooser extends React.Component {
         </Modal>
 
         <input type="text" ref="color"
-                     onClick={this.popupPicker}     name="color" placeholder="Choose Color" value={this.state.color} style={style}/>
+               onClick={this.popupPicker}
+               name="color"
+               placeholder="Choose Color"
+               value={this.state.color}
+               style={style}/>
 
       </span>
 

@@ -37,6 +37,8 @@ export default class BarSeriesList extends React.Component {
             var style = {
               color: 'black',
               background: series.color
+
+
             };
             return (
               <tr key={key}>
