@@ -82,15 +82,24 @@ export default class BarDataList extends React.Component {
   render() {
     this.createRows(this.props);
     this.createCols(this.props);
+
+
+    let style = {"height":200};
+
     return (
-      <div>
+      <div style={style}>
+        <h3>Table Data : </h3>
         <ReactDataGrid
+
+          style={style}
           enableCellSelect={true}
           onGridRowsUpdated={this.handleGridRowsUpdated}
           columns={this._columns}
           rowGetter={this.rowGetter}
           rowsCount={this._rows.length}
-          minHeight={200}/>
+
+          minHeight={150}
+        />
       </div>
     )
   }

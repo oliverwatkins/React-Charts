@@ -10,6 +10,7 @@ import Actions from "../../../../js/Actions";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 
+
 import './List.less';
 
 
@@ -52,10 +53,6 @@ export default class BarSeriesList extends React.Component {
           <tbody>
           {series.map(function (series, i) {
             var key = 'xx_' + i;
-            var style = {
-              color: 'black',
-              background: series.color
-            };
             return (
               <tr key={key}>
                 <td>
@@ -63,7 +60,7 @@ export default class BarSeriesList extends React.Component {
                 </td>
                 <td>
 
-                  <ColorChooser color={series.color} style={style}
+                  <ColorChooser color={series.color}
                                 onChooseColor={
                                   (color) => {
                                     self.colorSelected(color, series.name)

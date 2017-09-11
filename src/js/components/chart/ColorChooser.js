@@ -7,6 +7,10 @@ import {PhotoshopPicker} from 'react-color';
 import {CirclePicker} from 'react-color';
 import {Modal, Button} from 'react-bootstrap';
 
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+
 /**
  * ColorChooser. Works with react-color (a color picker)
  */
@@ -15,12 +19,9 @@ export default class ColorChooser extends React.Component {
   constructor(props) {
     super(props);
 
-    props.color;
-
-
     this.state = {
       showModalColorPicker: false,
-      color: props.color
+      color: props.color ? props.color : '#c2a5ca'
     };
 
     this.cancel = this.cancel.bind(this);
@@ -31,12 +32,23 @@ export default class ColorChooser extends React.Component {
   render() {
 
     var style = {
-      width:70,
+      padding: 10,
+      width: 90,
       color: 'black',
-      background: this.state.color
+      background: this.state.color,
+
+
+      borderRadius: "25px",
+    // -moz-border-radius: 25px,
+    // -webkit-border-radius: 25px,
+    //   border: "1px solid #800000",
+    //   borderColor:"gray",
+      cursor: "pointer"
     };
 
     return (
+
+      <MuiThemeProvider>
 
       <span>
 
@@ -53,14 +65,19 @@ export default class ColorChooser extends React.Component {
           </Modal.Footer>
         </Modal>
 
-        <input type="text" ref="color"
-               onClick={this.popupPicker}
-               name="color"
-               placeholder="Choose Color"
-               value={this.state.color}
-               style={style}/>
+        <div label={this.state.color}
+             onClick={this.popupPicker}
+             style={style}>{this.state.color}</div>
+
+        {/*<input type="text" ref="color"*/}
+        {/*onClick={this.popupPicker}*/}
+        {/*name="color"*/}
+        {/*placeholder="Choose Color"*/}
+        {/*value={this.state.color}*/}
+        {/*style={style}/>*/}
 
       </span>
+      </MuiThemeProvider>
 
     )
   }

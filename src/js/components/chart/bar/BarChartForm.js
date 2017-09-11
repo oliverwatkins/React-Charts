@@ -8,6 +8,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import ReactDOM from "react-dom";
 
+import ReactHint from 'react-hint'
+import 'react-hint/css/index.css'
+
 import RaisedButton from 'material-ui/RaisedButton';
 
 export default class BarChartForm extends React.Component {
@@ -24,6 +27,10 @@ export default class BarChartForm extends React.Component {
       showModalColorPicker: false
     };
   }
+
+
+
+
 
   handleSubmit(event) {
 
@@ -62,26 +69,39 @@ export default class BarChartForm extends React.Component {
 
       <div style={style}>
         <h3>Series :</h3>
-
         <form onSubmit={this.handleSubmit}>
 
+          <table>
+            <tr>
+
+            <td>
+
           <MUITextField
+            style={{width:170}}
             hintText="Enter Series Name"
             type="text"
             ref="seriesName"
             name="newSlice"
             onChange={this.onChangeText}
+            data-rh="Bottom" data-rh-at="bottom"
           />
+            </td>
+              <td>
 
-          <ColorChooser style={style}
+          <ColorChooser
                         onChooseColor={this.colorSelected}/>
+              </td>
+          <td>
 
           <RaisedButton style={style}
                         type="submit"
                         label="Add Series"
                         disabled={!enableButton}
           />
-      </form>
+                              </td>
+          </tr>
+          </table>
+        </form>
       </div>
 
       </MuiThemeProvider>

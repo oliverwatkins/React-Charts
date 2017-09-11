@@ -61,12 +61,15 @@ class BarChartPage extends React.Component {
             </div>
           </div>
           <div>
+          <div style={{width: 700, height: 200}}>
+            <BarChartDataTable {...this.state}/>
+          </div>
+          <div>
             <BarChartComponent {...this.state}/>
           </div>
+          </div>
         </div>
-        <div style={{width: 700}}>
-          <BarChartDataTable {...this.state}/>
-        </div>
+
       </div>
     );
   }
