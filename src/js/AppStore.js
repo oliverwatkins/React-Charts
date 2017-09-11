@@ -60,6 +60,11 @@ class AppStore extends ReduceStore {
       case ActionTypes.DELETE_SERIES:
         imState = BarChartEntity.deleteSeries(imState, action)
         break;
+      case ActionTypes.UPDATE_COLOR:
+        imState = BarChartEntity.updateColor(imState, action)
+        break;
+
+
 
       case ActionTypes.FETCH_BAR_DATA:
         Server.doGetRequest('/bardata');

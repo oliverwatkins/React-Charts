@@ -47,6 +47,19 @@ const Actions = {
       seriesName,
     });
   },
+  updateColor(color, seriesName){
+
+
+
+    AppDispatcher.dispatch({
+      type: ActionTypes.UPDATE_COLOR,
+      seriesName,
+      color
+    });
+  },
+
+
+
   changeLineChartName(newName) {
     AppDispatcher.dispatch({
       type: ActionTypes.CHANGE_NAME_BAR,

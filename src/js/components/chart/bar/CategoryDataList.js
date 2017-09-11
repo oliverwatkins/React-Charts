@@ -5,6 +5,9 @@ import BarChartEntity from "../../../../js/entity/BarChartEntity";
 import './List.less';
 import Actions from "../../../../js/Actions";
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import FlatButton from 'material-ui/FlatButton';
+
 export default class CategoryDataList extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +34,7 @@ export default class CategoryDataList extends React.Component {
     let deleteS = this.deleteCategory;
 
     return (
+      <MuiThemeProvider>
     <div className="listStyle">
       <table>
         <tbody>
@@ -42,8 +46,11 @@ export default class CategoryDataList extends React.Component {
                 {cat}
               </td>
               <td>
-                <input type="button" value="delete"
-                       onClick={(e) => deleteS(e, cat, i)}/>
+                <FlatButton label="Delete" secondary={true}
+                            onClick={(e) => deleteS(e, cat, i)}/>
+
+                {/*<input type="button" value="delete"*/}
+                       {/*onClick={(e) => deleteS(e, cat, i)}/>*/}
               </td>
             </tr>
           );
@@ -52,6 +59,8 @@ export default class CategoryDataList extends React.Component {
         </tbody>
       </table>
     </div>
+      </MuiThemeProvider>
+
     );
   }
 }

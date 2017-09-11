@@ -15,9 +15,12 @@ export default class ColorChooser extends React.Component {
   constructor(props) {
     super(props);
 
+    props.color;
+
+
     this.state = {
       showModalColorPicker: false,
-      color: '#fbfbfb'
+      color: props.color
     };
 
     this.cancel = this.cancel.bind(this);

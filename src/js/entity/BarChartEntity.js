@@ -59,6 +59,30 @@ class BarChartEntity {
     return imState;
   }
 
+
+  static updateColor(imState, action) {
+
+
+    var list = imState.getIn([...this.path, 'series']);
+
+    list = list.update(
+      list.findIndex(function(item) {
+        let b = item.get("name") === action.seriesName;
+        return item;
+      }), function(item) {
+        let l = item.get("name")
+        return item.set("color", action.color);
+      }
+    );
+
+    list = list.toJS();
+
+    imState = imState.setIn([...this.path, 'series'], list)
+
+    return imState;
+
+  }
+
   static fetchFinished(imState, action) {
 
     var v = Immutable.fromJS(action.payload.app.bar)
@@ -94,7 +118,7 @@ class BarChartEntity {
     // let seriesList = imState.getIn([...this.path, 'series'])
 
     imState.update(
-      ['app', 'bar', 'series'],
+      [...this.path, 'series'],
       series => series.map(s => s.update('color', color => "#1bf115"))
     )
 

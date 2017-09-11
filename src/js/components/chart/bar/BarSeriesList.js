@@ -1,7 +1,14 @@
 import React from "react";
 
+
+import ColorChooser from '../ColorChooser'
+
+
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
 import Actions from "../../../../js/Actions";
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import FlatButton from 'material-ui/FlatButton';
 
 import './List.less';
 
@@ -9,6 +16,12 @@ import './List.less';
 export default class BarSeriesList extends React.Component {
   constructor(props) {
     super(props);
+    this.colorSelected = this.colorSelected.bind(this);
+  }
+
+
+  colorSelected(color, seriesName) {
+    Actions.updateColor(color, seriesName)
   }
 
   componentWillMount() {
@@ -28,7 +41,12 @@ export default class BarSeriesList extends React.Component {
     const series = BarChartEntity.getSeries(this.props.app);
     let deleteS = this.deleteSeries;
 
+    let self = this;
+
     return (
+      <MuiThemeProvider>
+
+
       <div className="listStyle">
         <table>
           <tbody>
@@ -37,21 +55,24 @@ export default class BarSeriesList extends React.Component {
             var style = {
               color: 'black',
               background: series.color
-
-
             };
             return (
               <tr key={key}>
                 <td>
                   {series.name}
                 </td>
-                <td style={style}>
-                  {series.color}
+                <td>
+
+                  <ColorChooser color={series.color} style={style}
+                                onChooseColor={
+                                  (color) => {
+                                    self.colorSelected(color, series.name)
+                                  }
+                                }/>
                 </td>
                 <td>
-                  <input type="button" value="delete"
-                         onClick={(e) => deleteS(e, series.name)}
-                  />
+                  <FlatButton label="Delete" secondary={true}
+                              onClick={(e) => deleteS(e, series.name)}/>
                 </td>
               </tr>
             );
@@ -59,6 +80,7 @@ export default class BarSeriesList extends React.Component {
           </tbody>
         </table>
       </div>
+      </MuiThemeProvider>
     );
   }
 }
