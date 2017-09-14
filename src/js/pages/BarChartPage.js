@@ -18,8 +18,9 @@ import TitleEditComponent from "../components/chart/TitleEditComponent";
 class BarChartPage extends React.Component {
 
 
-  handleChartNameChange(event) {
-    Actions.changeLineChartName(event.currentTarget.value);
+  handleChartNameChange(val, event) {
+    // Actions.changeLineChartName(event.currentTarget.value);
+    Actions.changeLineChartName(val);
   }
 
   static getStores() {

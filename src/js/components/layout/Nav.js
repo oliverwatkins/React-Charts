@@ -1,6 +1,8 @@
 import React from "react";
 import {IndexLink, Link} from "react-router";
 
+import './style.less';
+
 export default class Nav extends React.Component {
   constructor() {
     super()
@@ -20,34 +22,53 @@ export default class Nav extends React.Component {
     const featuredClass = location.pathname === "/" ? "active" : "";
     const navClass = collapsed ? "collapse" : "";
 
-    const lineClass = location.pathname.match(/^\/line/) ? "active" : "";
-    const pieClass = location.pathname.match(/^\/pie/) ? "active" : "";
-    const barClass = location.pathname.match(/^\/bar/) ? "active" : "";
+    let lineClass = location.pathname.match(/^\/line/) ? "active" : "";
+    let pieClass = location.pathname.match(/^\/pie/) ? "active" : "";
+    let barClass = location.pathname.match(/^\/bar/) ? "active" : "";
+
+    barClass = barClass + " bar-chart"
+    lineClass = lineClass + " line-chart"
+    pieClass = pieClass + " pie-chart"
+
 
     return (
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" onClick={this.toggleCollapse.bind(this)}>
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+      <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div className="container">
+          <div className="navbar-header">
+            <button type="button" className="navbar-toggle" onClick={this.toggleCollapse.bind(this)}>
+              <span className="sr-only">Toggle navigation</span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
             </button>
           </div>
-          <div class={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class={featuredClass}>
+          <div className={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
+            <ul className="nav navbar-nav">
+              <li className={featuredClass}>
                 <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Home</IndexLink>
               </li>
-              <li class={barClass}>
-                <Link to="bar" onClick={this.toggleCollapse.bind(this)}>Bar</Link>
+              <li >
+
+                <Link to="bar" onClick={this.toggleCollapse.bind(this)} className={barClass}>
+
+                  &nbsp;
+                </Link>
+
+
+
               </li>
-              <li class={lineClass}>
-                <Link to="line" onClick={this.toggleCollapse.bind(this)}>Line</Link>
+              <li>
+                <Link to="line" onClick={this.toggleCollapse.bind(this)} className={lineClass}>
+                  &nbsp;
+
+                </Link>
               </li>
-              <li class={pieClass}>
-                <Link to="pie" onClick={this.toggleCollapse.bind(this)}>Pie</Link>
+              <li >
+                <Link to="pie" onClick={this.toggleCollapse.bind(this)} className={pieClass}>
+
+                  &nbsp;
+
+                </Link>
               </li>
             </ul>
           </div>

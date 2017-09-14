@@ -8,7 +8,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import ReactDOM from "react-dom";
 
-import ReactHint from 'react-hint'
 import 'react-hint/css/index.css'
 
 import RaisedButton from 'material-ui/RaisedButton';
