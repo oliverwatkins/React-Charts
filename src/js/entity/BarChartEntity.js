@@ -14,15 +14,11 @@ class BarChartEntity {
     return appState.bar.isFetching;
   }
 
-
-
   static getCategories(appState) {
     return appState.bar.categories;
   }
 
   static createCategory(imState, action) {
-
-    // let catName = action.value.name
 
     let myList = imState.getIn([...this.path, 'categories'])
     myList = myList.toJS();
@@ -32,7 +28,6 @@ class BarChartEntity {
 
 
     //now for each series create an entry
-
     var list = imState.getIn([...this.path, 'series']);
     list = list.toJS();
 
@@ -62,7 +57,6 @@ class BarChartEntity {
 
   static updateColor(imState, action) {
 
-
     var list = imState.getIn([...this.path, 'series']);
 
     list = list.update(
@@ -80,7 +74,6 @@ class BarChartEntity {
     imState = imState.setIn([...this.path, 'series'], list)
 
     return imState;
-
   }
 
   static fetchFinished(imState, action) {
@@ -98,42 +91,25 @@ class BarChartEntity {
 
     let index = action.index;
 
-    let list = imState.getIn([...this.path, 'categories'])
+    let categoryList = imState.getIn([...this.path, 'categories'])
+    let seriesList = imState.getIn([...this.path, 'series'])
 
-    list = list.filter(function (elem) {
+    categoryList = categoryList.filter(function (elem) {
       return elem !== action.categoryName
     })
-    imState = imState.setIn([...this.path, 'categories'], list)
+    imState = imState.setIn([...this.path, 'categories'], categoryList)
 
+    var list = imState.getIn([...this.path, 'series']);
+    list = list.toJS();
 
-    // list.forEach(function (data) {
-    //   data.data.push({y:"0"})
-    // });
+    list.forEach(function (elem) {
+      let data = elem.data;
+      data.splice(index, 1);
+    });
 
+    var v = Immutable.fromJS(list)
 
-    alert('not yet working')
-
-
-
-    // let seriesList = imState.getIn([...this.path, 'series'])
-
-    imState.update(
-      [...this.path, 'series'],
-      series => series.map(s => s.update('color', color => "#1bf115"))
-    )
-
-
-    // seriesList = seriesList.update(
-    //   'color',
-    //   (elem) => {
-    //     return '#1bf115'
-    //   }
-    //
-    // );
-
-
-    imState = imState.setIn([...this.path, 'series'], seriesList);
-
+    imState = imState.setIn([...this.path, 'series'], v);
 
     return imState;
   }

@@ -95,7 +95,7 @@
       ],
       "series": [
         {
-          "name": "Series1x",
+          "name": "Germany",
           "color": "#82ca9d",
           "data": [
             {
@@ -113,7 +113,7 @@
           ]
         },
         {
-          "name": "Series2x",
+          "name": "Holland",
           "color": "#2239ca",
           "data": [
             {
@@ -131,23 +131,19 @@
           ]
         },
         {
-          "name": "Series3x",
+          "name": "Mexico",
           "color": "#c2a5ca",
           "data": [
             {
-              "x": 1,
               "y": 17
             },
             {
-              "x": 2,
               "y": 11
             },
             {
-              "x": 3,
               "y": 41
             },
             {
-              "x": 4,
               "y": 27
             }
           ]

@@ -16,7 +16,7 @@ const AppState =
         name: "XY Chart",
         series: [
           {
-            name: "Series1x",
+            name: "Mexico",
             color: "#82ca9d",
             data: [
               {x: 12, y: 0},
@@ -26,7 +26,7 @@ const AppState =
             ]
           },
           {
-            name: "Series2x",
+            name: "Germany",
             color: "#2239ca",
             data: [
               {x: 122, y: 0},
@@ -47,7 +47,7 @@ const AppState =
         ],
         series: [
           {
-            name: "Series1x",
+            name: "Mexico",
             color: "#82ca9d",
             data: [
               {y: 0},
@@ -57,7 +57,7 @@ const AppState =
             ]
           },
           {
-            name: "Series2x",
+            name: "Germany",
             color: "#2239ca",
             data: [
               {y: 0},
@@ -67,7 +67,7 @@ const AppState =
             ]
           },
           {
-            name: "Series3x",
+            name: "Holland",
             color: "#c2a5ca",
             data: [
               {x: 1, y: 0},

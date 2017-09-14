@@ -50,17 +50,13 @@ export default class Nav extends React.Component {
               <li >
 
                 <Link to="bar" onClick={this.toggleCollapse.bind(this)} className={barClass}>
-
                   &nbsp;
                 </Link>
-
-
 
               </li>
               <li>
                 <Link to="line" onClick={this.toggleCollapse.bind(this)} className={lineClass}>
                   &nbsp;
-
                 </Link>
               </li>
               <li >
