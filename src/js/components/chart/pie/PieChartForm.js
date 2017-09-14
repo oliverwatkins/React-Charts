@@ -7,6 +7,12 @@ import ColorChooser from '../ColorChooser'
 
 import ReactDOM from "react-dom";
 
+import MUITextField from 'material-ui/TextField';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+
+
 export default class PieChartForm extends React.Component {
   constructor(props) {
 
@@ -45,6 +51,7 @@ export default class PieChartForm extends React.Component {
 
   render() {
     return (
+    <MuiThemeProvider>
       <form onSubmit={this.handleSubmit}>
 
         <TitleEditComponent value={this.props.app.pie.name} onChange={this.handleChartNameChange}/>
@@ -53,17 +60,18 @@ export default class PieChartForm extends React.Component {
           <div>
               <h3>Add Sections Here :</h3>
           </div>
-            <input type="text" ref="sliceName" onChange={this.handleChartSliceChange}
-                   name="newSlice" placeholder="Add Pie Slice Name"></input>
+            <MUITextField type="text" ref="sliceName"
+                   name="newSlice" placeholder="Add Pie Slice Name"></MUITextField>
 
-            <input type="number" ref="value"
-                   name="newValue" placeholder="Add value"></input>
+            <MUITextField type="number" ref="value"
+                   name="newValue" placeholder="Add value"></MUITextField>
 
           <ColorChooser onChooseColor={this.colorSelected}/>
 
           <button type="submit" value="Add Slice" className="button">Add Slice</button>
         </div>
       </form>
+    </MuiThemeProvider>
     );
   }
 }

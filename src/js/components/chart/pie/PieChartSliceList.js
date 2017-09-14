@@ -1,5 +1,9 @@
 import React from "react";
 
+
+
+import ColorChooser from '../ColorChooser'
+
 export default class PieChartSliceList extends React.Component {
   constructor(props) {
     super(props);
@@ -34,8 +38,18 @@ export default class PieChartSliceList extends React.Component {
               <td>
                 {slice.value}
               </td>
-              <td style={style}>
-                {slice.color}
+
+
+
+              <td>
+
+                <ColorChooser color={slice.color}
+                                   onChooseColor={
+                                     (color) => {
+                                       colorSelected(color, slice.name)
+                                     }
+                                   }/>
+
               </td>
             </tr>
           );
@@ -44,4 +58,8 @@ export default class PieChartSliceList extends React.Component {
       </table>
     );
   }
+}
+
+function colorSelected(color, seriesName) {
+  Actions.updateColor(color, seriesName)
 }
