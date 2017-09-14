@@ -21,6 +21,7 @@ export default class TitleEditComponent extends React.Component {
           <h3>Title : </h3>
 
           <MUITextField
+            tooltip="test"
             ref="titleField"
             hintText="Enter Chart Title"
             type="text"

@@ -40,42 +40,12 @@ const AppState =
         name: "Bar Chart",
         isFetching: true,
         categories: [
-          "Apple",
-          "Orange",
-          "Banana",
-          "Peach"
+
         ],
         series: [
-          {
-            name: "Mexico",
-            color: "#82ca9d",
-            data: [
-              {y: 0},
-              {y: 0},
-              {y: 0},
-              {y: 0}
-            ]
-          },
-          {
-            name: "Germany",
-            color: "#2239ca",
-            data: [
-              {y: 0},
-              {y: 0},
-              {y: 0},
-              {y: 0}
-            ]
-          },
-          {
-            name: "Holland",
-            color: "#c2a5ca",
-            data: [
-              {x: 1, y: 0},
-              {x: 2, y: 0},
-              {x: 3, y: 0},
-              {x: 4, y: 0}
-            ]
-          }
+
+
+
         ]
       }
     }

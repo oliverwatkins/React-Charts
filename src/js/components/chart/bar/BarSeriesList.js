@@ -35,11 +35,19 @@ export default class BarSeriesList extends React.Component {
 
   deleteSeries(event, seriesName) {
     event.preventDefault();
+
+
+
     Actions.deleteSeries(seriesName);
   }
 
   render() {
     const series = BarChartEntity.getSeries(this.props.app);
+
+    console.info("3")
+    console.info(JSON.stringify(this.props.app))
+
+
     let deleteS = this.deleteSeries;
 
     let self = this;
@@ -52,6 +60,10 @@ export default class BarSeriesList extends React.Component {
         <table>
           <tbody>
           {series.map(function (series, i) {
+
+            console.info('in render: series name = ' + series.name + ' color ' + series.color)
+
+
             var key = 'xx_' + i;
             return (
               <tr key={key}>

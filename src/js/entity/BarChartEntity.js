@@ -46,10 +46,20 @@ class BarChartEntity {
   static deleteSeries(imState, action) {
     let list = imState.getIn([...this.path, 'series'])
 
+    console.info("1")
+    console.info(JSON.stringify(list.toJS()))
+
+
+
+
     list = list.filter(function (elem) {
       return elem.get("name") !== action.seriesName
     })
     imState = imState.setIn([...this.path, 'series'], list)
+
+
+    console.info("2")
+    console.info(JSON.stringify(imState.toJS()))
 
     return imState;
   }

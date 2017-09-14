@@ -30,12 +30,14 @@ export default class ColorChooser extends React.Component {
   }
 
   render() {
+    let color = this.props.color ? this.props.color : this.state.color;
+
 
     var style = {
       padding: 10,
       width: 90,
       color: 'black',
-      background: this.state.color,
+      background: color,
 
 
       borderRadius: "25px",
@@ -65,9 +67,9 @@ export default class ColorChooser extends React.Component {
           </Modal.Footer>
         </Modal>
 
-        <div label={this.state.color}
+        <div label={color}
              onClick={this.popupPicker}
-             style={style}>{this.state.color}</div>
+             style={style}>{color}</div>
 
         {/*<input type="text" ref="color"*/}
         {/*onClick={this.popupPicker}*/}
