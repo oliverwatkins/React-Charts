@@ -17,7 +17,7 @@
     "merge": "^1.2.0",
     "object-assign": "^4.1.1",
     "rc-calendar": "^7.7.1",
-    "react": "^15.4.2",
+    "react": "^15.6.1",
     "react-bootstrap": "^0.30.7",
     "react-bootstrap-table": "^3.1.1",
     "react-csv": "^1.0.5",
@@ -42,6 +42,9 @@
     "babel-preset-react": "^6.22.0",
     "chai": "^3.5.0",
     "css-loader": "^0.26.1",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-15": "^1.0.0",
+    "enzyme-adapter-react-15.4": "^1.0.0",
     "eslint": "^3.14.1",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-react": "^6.9.0",
@@ -52,7 +55,7 @@
     "jshint": "^2.9.4",
     "jshint-loader": "^0.8.3",
     "json-loader": "^0.5.4",
-    "mocha": "^3.2.0",
+    "mocha": "^3.5.3",
     "sinon": "^1.17.7",
     "style-loader": "^0.13.1",
     "superagent": "^3.4.1",
@@ -63,7 +66,9 @@
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot",
     "package": "webpack --content-base src --inline --hot",
-    "build": "webpack"
+    "build": "webpack",
+    "testXX": "webpack test",
+    "test": "mocha --compilers js:babel-core/register ./test/*.*"
   },
   "author": "",
   "license": ""

@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 import ColorChooser from '../ColorChooser'
 
 export default class PieChartSliceList extends React.Component {
@@ -38,11 +36,7 @@ export default class PieChartSliceList extends React.Component {
               <td>
                 {slice.value}
               </td>
-
-
-
               <td>
-
                 <ColorChooser color={slice.color}
                                    onChooseColor={
                                      (color) => {

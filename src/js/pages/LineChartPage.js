@@ -38,6 +38,12 @@ class LineChartPage extends React.Component {
     return (
       <div>
 
+        <h1>XY Chart</h1>
+
+        <div className="alert alert-danger">
+          <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
+        </div>
+
 
         <div style={{display: 'flex'}}>
           <div>

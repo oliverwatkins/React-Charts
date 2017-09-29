@@ -37,6 +37,12 @@ class PieChartPage extends Component {
     return (
       <div>
         <h1>Pie Chart</h1>
+
+        <div className="alert alert-danger">
+          <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
+        </div>
+
+        {/*<div className="col-md-5">This chart is still a work in progress!!!!! </div>*/}
         <div className="col-md-5">
           <PieChartForm {...this.state}/>
         </div>
