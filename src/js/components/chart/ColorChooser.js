@@ -70,14 +70,6 @@ export default class ColorChooser extends React.Component {
         <div label={color}
              onClick={this.popupPicker}
              style={style}>{color}</div>
-
-        {/*<input type="text" ref="color"*/}
-        {/*onClick={this.popupPicker}*/}
-        {/*name="color"*/}
-        {/*placeholder="Choose Color"*/}
-        {/*value={this.state.color}*/}
-        {/*style={style}/>*/}
-
       </span>
       </MuiThemeProvider>
 

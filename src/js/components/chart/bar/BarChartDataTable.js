@@ -25,8 +25,6 @@ export default class BarDataList extends React.Component {
 
     var cols = [];
 
-    // formatter: PercentCompleteFormatter
-
     cols.push({key: "category", name: "category", editable:true, formatter:ColumnFormatter});
 
     series.forEach(function (value) {
@@ -70,11 +68,6 @@ export default class BarDataList extends React.Component {
     return this._rows[i];
   }
 
-  /**
-   * @param fromRow 0
-   * @param toRow 0
-   * @param updated (Series3x:3)
-   */
   handleGridRowsUpdated({ fromRow, toRow, updated }) {
     Actions.changeCell({ fromRow, toRow, updated })
   }
@@ -82,7 +75,6 @@ export default class BarDataList extends React.Component {
   render() {
     this.createRows(this.props);
     this.createCols(this.props);
-
 
     let style = {"height":200};
 

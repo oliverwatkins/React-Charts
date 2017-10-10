@@ -4,9 +4,6 @@ import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
 import Foo from './../src/js/components/layout/Footer';
 
-import setup from './setup'
-
-setup.setup();
 
 var assert = require('assert');
 

@@ -1,7 +1,7 @@
 {
   "app": {
     "pie": {
-      "name": "benfolds",
+      "name": "My Pie Chart",
       "data": [
         {
           "name": "Group A",

@@ -9,13 +9,6 @@ import Loader from 'react-loader-advanced';
 
 import { RingLoader } from 'react-spinners';
 
-var ReactSpinner = require('reactjs-spinner');
-var ClipLoader= require('reactjs-spinner');
-
-
-
-
-
 export default class BarChartComponent extends React.Component {
 
   constructor(props) {

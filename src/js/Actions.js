@@ -48,18 +48,12 @@ const Actions = {
     });
   },
   updateColor(color, seriesName){
-
-
-
     AppDispatcher.dispatch({
       type: ActionTypes.UPDATE_COLOR,
       seriesName,
       color
     });
   },
-
-
-
   changeLineChartName(newName) {
     AppDispatcher.dispatch({
       type: ActionTypes.CHANGE_NAME_BAR,
@@ -79,10 +73,6 @@ const Actions = {
       index
     });
   },
-
-
-
-
   changeSliceName(newName) {
     AppDispatcher.dispatch({
       type: ActionTypes.CHANGE_SLICE_NAME,
