@@ -12,18 +12,28 @@ import PieChartPage from "./pages/PieChartPage";
 import LineChartPage from "./pages/LineChartPage";
 import WelcomePage from "./pages/WelcomePage";
 
+import { Provider } from 'react-redux'
 
+import AppReducer from './AppReducer'
 
-const app = document.getElementById('app');
+import { createStore } from 'redux'
+
+const store = createStore(AppReducer)
+
 
 ReactDOM.render(
-  <Router history={hashHistory}>
-    <Route path="/" component={PageLayout}>
-      <IndexRoute component={WelcomePage}></IndexRoute>
+  <Provider store={store}>
 
-      <Route path="bar" component={BarChartPage}></Route>
-      <Route path="pie" component={PieChartPage}></Route>
-      <Route path="line" component={LineChartPage}></Route>
-    </Route>
-  </Router>,
-  app);
+    <Router history={hashHistory}>
+      <Route path="/" component={PageLayout}>
+        <IndexRoute component={WelcomePage}></IndexRoute>
+
+        <Route path="bar" component={BarChartPage}></Route>
+        <Route path="pie" component={PieChartPage}></Route>
+        <Route path="line" component={LineChartPage}></Route>
+      </Route>
+    </Router>
+  </Provider>,
+
+app);
+

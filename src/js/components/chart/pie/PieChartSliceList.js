@@ -1,8 +1,11 @@
 import React from "react";
 
 import ColorChooser from '../ColorChooser'
+import { connect } from 'react-redux'
 
-export default class PieChartSliceList extends React.Component {
+
+
+class PieChartSliceList extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -17,10 +20,11 @@ export default class PieChartSliceList extends React.Component {
 
   render() {
 
+    let pieData = this.props.pieData
     return (
       <table className="table">
         <tbody>
-        {this.props.app.pie.data.map(function (slice, i) {
+        {pieData.map(function (slice, i) {
           var key = 'xx_' + i;
 
           var style = {
@@ -53,6 +57,26 @@ export default class PieChartSliceList extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps  = state => {
+  return {
+    blah: () => alert()
+  }
+}
+
+
+const mapStateToProps = state => {
+  return {
+    pieData: state.app.pie.data
+  }
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PieChartSliceList)
+
 
 function colorSelected(color, seriesName) {
   Actions.updateColor(color, seriesName)
