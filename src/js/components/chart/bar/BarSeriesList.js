@@ -14,7 +14,11 @@ import FlatButton from 'material-ui/FlatButton';
 import './List.less';
 
 
-export default class BarSeriesList extends React.Component {
+import { connect } from 'react-redux'
+import {} from '../../../ActionsRedux'
+
+
+class BarSeriesList extends React.Component {
   constructor(props) {
     super(props);
     this.colorSelected = this.colorSelected.bind(this);
@@ -93,3 +97,16 @@ export default class BarSeriesList extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    barData: state.app.bar
+  }
+}
+const mapDispatchToProps = state => {
+  return {}
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BarSeriesList)

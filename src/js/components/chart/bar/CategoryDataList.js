@@ -8,24 +8,15 @@ import Actions from "../../../../js/Actions";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 
-export default class CategoryDataList extends React.Component {
+import { connect } from 'react-redux'
+import {} from '../../../ActionsRedux'
+
+
+class CategoryDataList extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  componentWillMount() {
-    // SlicesStore.on("change", this.getSlices);
-  }
-
-  componentWillUnmount() {
-    // SlicesStore.removeListener("change", this.getSlices);
-  }
-
-
-  deleteCategory(event, categoryName, index) {
-    event.preventDefault();
-    Actions.deleteCategory(categoryName, index);
-  }
 
   render() {
     // const series = BarChartEntity.getSeries(this.props.app);
@@ -63,4 +54,29 @@ export default class CategoryDataList extends React.Component {
 
     );
   }
+
+  deleteCategory(event, categoryName, index) {
+    event.preventDefault();
+    Actions.deleteCategory(categoryName, index);
+  }
+
 }
+
+
+
+
+
+const mapStateToProps = state => {
+  return {
+    barData: state.app.bar
+  }
+}
+const mapDispatchToProps = state => {
+  return {}
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategoryDataList)
+
+

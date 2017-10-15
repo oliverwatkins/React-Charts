@@ -3,6 +3,8 @@ import React from "react";
 import ColorChooser from '../ColorChooser'
 import { connect } from 'react-redux'
 
+import {updateColor} from '../../../ActionsRedux'
+
 
 
 class PieChartSliceList extends React.Component {
@@ -19,6 +21,8 @@ class PieChartSliceList extends React.Component {
   }
 
   render() {
+
+    let props = this.props;
 
     let pieData = this.props.pieData
     return (
@@ -42,11 +46,14 @@ class PieChartSliceList extends React.Component {
               </td>
               <td>
                 <ColorChooser color={slice.color}
-                                   onChooseColor={
-                                     (color) => {
-                                       colorSelected(color, slice.name)
-                                     }
-                                   }/>
+                     onChooseColor={
+                       (color) => {
+                         props.colorSelected('sausage is nice')
+
+
+                         /*colorSelected(color, slice.name)*/
+                       }
+                     }/>
 
               </td>
             </tr>
@@ -58,16 +65,30 @@ class PieChartSliceList extends React.Component {
   }
 }
 
-const mapDispatchToProps  = state => {
-  return {
-    blah: () => alert()
-  }
-}
 
 
 const mapStateToProps = state => {
   return {
     pieData: state.app.pie.data
+  }
+}
+
+//depreacated
+// function colorSelected(color, seriesName) {
+//   Actions.updateColor(color, seriesName)
+// }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    colorSelected: (color, seriesName )=> {
+
+      console.info('in color selected')
+      let a = updateColor(color, seriesName)
+      dispatch(a);
+
+      // alert('hello hello')
+      // dispatch(toggleTodo(id))
+    }
   }
 }
 
@@ -78,6 +99,4 @@ export default connect(
 )(PieChartSliceList)
 
 
-function colorSelected(color, seriesName) {
-  Actions.updateColor(color, seriesName)
-}
+

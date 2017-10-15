@@ -12,7 +12,12 @@ import 'react-hint/css/index.css'
 
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default class BarChartForm extends React.Component {
+
+import { connect } from 'react-redux'
+import {} from '../../../ActionsRedux'
+
+
+class BarChartForm extends React.Component {
 
   constructor(props) {
     super(props)
@@ -103,3 +108,18 @@ export default class BarChartForm extends React.Component {
     )
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+    barData: state.app.bar
+  }
+}
+const mapDispatchToProps = state => {
+  return {}
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BarChartForm)
+

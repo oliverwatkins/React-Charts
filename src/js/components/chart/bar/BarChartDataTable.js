@@ -8,8 +8,11 @@ import Actions from "../../../../js/Actions";
 
 import BarChartEntity from "../../../entity/BarChartEntity";
 
+import { connect } from 'react-redux'
+import {} from '../../../ActionsRedux'
 
-export default class BarDataList extends React.Component {
+
+class BarDataList extends React.Component {
 
   constructor(props) {
     super(props)
@@ -110,3 +113,18 @@ const ColumnFormatter = React.createClass({
       </div>);
   }
 });
+
+
+const mapStateToProps = state => {
+  return {
+    barData: state.app.bar
+  }
+}
+const mapDispatchToProps = state => {
+  return {}
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BarDataList)
+

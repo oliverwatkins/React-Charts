@@ -9,22 +9,29 @@ import Loader from 'react-loader-advanced';
 
 import { RingLoader } from 'react-spinners';
 
-export default class BarChartComponent extends React.Component {
+import { connect } from 'react-redux'
+import {fetchBarData} from '../../../ActionsRedux'
+
+class BarChartComponent extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    AppDispatcher.dispatch({
-      type: ActionTypes.FETCH_BAR_DATA,
-    });
+    this.props.fetchBarData('asdf')
+
+    // AppDispatcher.dispatch({
+    //   type: ActionTypes.FETCH_BAR_DATA,
+    // });
+    //
+
   }
 
-  createDataForChart() {
+  createDataForChart(barData) {
 
-    let series = BarChartEntity.getSeries(this.props.app);
-    let categories = BarChartEntity.getCategories(this.props.app);
+    let series = BarChartEntity.getSeries2(barData);
+    let categories = BarChartEntity.getCategories2(barData);
 
     let newData = [];
 
@@ -48,10 +55,15 @@ export default class BarChartComponent extends React.Component {
   }
 
   render() {
-    let series = BarChartEntity.getSeries(this.props.app);
-    let data = this.createDataForChart();
 
-    let isFetching = BarChartEntity.isFetching(this.props.app);
+    let barData = this.props.barData;
+
+
+    let series = BarChartEntity.getSeries2(barData);
+
+    let data = this.createDataForChart(barData);
+
+    let isFetching = BarChartEntity.isFetching2(barData);
 
     let style1 = {
       color:"white",
@@ -73,7 +85,7 @@ export default class BarChartComponent extends React.Component {
       }>
 
       <div>
-        <TitleComponent name={this.props.app.bar.name}/>
+        <TitleComponent name={barData.name}/>
         <BarChart width={600} height={500} data={data}
                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
           <XAxis dataKey="name"/>
@@ -92,4 +104,51 @@ export default class BarChartComponent extends React.Component {
     );
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+    barData: state.app.bar
+  }
+}
+
+// AppDispatcher.dispatch({
+//   type: ActionTypes.FETCH_BAR_DATA,
+// });
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchBarData: (value) => {
+      dispatch(fetchBarData(value))
+    }
+  }
+}
+
+
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     colorSelected: (color, seriesName )=> {
+//
+//       console.info('in color selected')
+//       let a = updateColor(color, seriesName)
+//       dispatch(a);
+//
+//       // alert('hello hello')
+//       // dispatch(toggleTodo(id))
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BarChartComponent)
+
 

@@ -11,9 +11,13 @@ import MUITextField from 'material-ui/TextField';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import { connect } from 'react-redux'
+
+import {changeNamePie} from '../../../ActionsRedux'
 
 
-export default class PieChartForm extends React.Component {
+
+class PieChartForm extends React.Component {
   constructor(props) {
 
     super(props);
@@ -50,11 +54,14 @@ export default class PieChartForm extends React.Component {
   }
 
   render() {
+
+    let pieData = this.props.pieData;
+
     return (
     <MuiThemeProvider>
       <form onSubmit={this.handleSubmit}>
 
-        <TitleEditComponent value={this.props.app.pie.name} onChange={this.handleChartNameChange}/>
+        <TitleEditComponent value={pieData.name} onChange={this.handleChartNameChange}/>
 
         <div>
           <div>
@@ -75,3 +82,26 @@ export default class PieChartForm extends React.Component {
     );
   }
 }
+
+
+
+
+const mapStateToProps = state => {
+  return {
+    pieData: state.app.pie.data
+  }
+}
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeName: (newName)=> {
+      dispatch(changeNamePie(newName));
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PieChartForm)

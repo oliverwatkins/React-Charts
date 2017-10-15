@@ -6,14 +6,31 @@ class BarChartEntity {
     return ['app', 'bar'];
   }
 
+
+
+
+
+
+  //@deprecated
   static getSeries(appState) {
     return appState.bar.series;
+  }
+
+  static getSeries2(barData) {
+    return barData.series;
+  }
+
+  static isFetching2(barData) {
+    return barData.isFetching;
   }
 
   static isFetching(appState) {
     return appState.bar.isFetching;
   }
 
+  static getCategories2(barData) {
+    return barData.categories;
+  }
   static getCategories(appState) {
     return appState.bar.categories;
   }

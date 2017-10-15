@@ -3,7 +3,11 @@ import {PieChart, Pie, Tooltip, Cell} from 'recharts'
 
 import TitleComponent from '../TitleComponent'
 
-export default class PieChartComponent extends React.Component {
+import { connect } from 'react-redux'
+
+// import {changeNamePie} from '../../../ActionsRedux'
+
+class PieChartComponent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -28,15 +32,20 @@ export default class PieChartComponent extends React.Component {
   }
 
   render() {
-    const COLORS = this.props.app.pie.data.map((entry, index) => entry.color)
+
+    let pieData = this.props.pieData;
+
+    const COLORS = pieData.data.map((entry, index) => entry.color)
+
+    // const COLORS = this.props.app.pie.data.map((entry, index) => entry.color)
     return (
       <div>
 
-        <TitleComponent name={this.props.app.pie.name}/>
+        <TitleComponent name={pieData.name}/>
         <PieChart width={800} height={400}>
-          <Pie data={this.props.app.pie.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
+          <Pie data={pieData.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
             {
-              this.props.app.pie.data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+              pieData.data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
             }
           </Pie>
           <Tooltip/>
@@ -45,3 +54,16 @@ export default class PieChartComponent extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    pieData: state.app.pie
+  }
+}
+const mapDispatchToProps = state => {
+  return {}
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PieChartComponent)

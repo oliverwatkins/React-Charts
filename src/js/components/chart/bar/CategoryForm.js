@@ -7,7 +7,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default class CategoryForm extends React.Component {
+
+import { connect } from 'react-redux'
+import {} from '../../../ActionsRedux'
+
+
+
+class CategoryForm extends React.Component {
 
   constructor(props) {
     super(props)
@@ -77,3 +83,16 @@ export default class CategoryForm extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    barData: state.app.bar
+  }
+}
+const mapDispatchToProps = state => {
+  return {}
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategoryForm)

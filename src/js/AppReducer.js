@@ -21,6 +21,11 @@ export default function AppReducer(state = initialState, action) {
     case PieActions.CHANGE_NAME_PIE:
       imState = PieChart.changeName(imState, action.newName);
       break;
+    case PieActions.UPDATE_COLOR:
+      //TODO
+      // imState = PieChart.(imState, action.newName);
+      break;
+
 
     //bar
     case BarActions.CHANGE_NAME_BAR:

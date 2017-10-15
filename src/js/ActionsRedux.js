@@ -2,7 +2,7 @@
 
 export const MiscActions = {
   FETCH_BAR_DATA : 'FETCH_BAR_DATA',
-  SERVER_RESPONSE : 'SERVER_RESPONSE'
+  SERVER_RESPONSE : 'SERVER_RESPONSE',
 }
 
 //pie
@@ -11,7 +11,8 @@ export const PieActions = {
   ADD_PIE_SLICE: 'ADD_PIE_SLICE',
   CHANGE_NAME_PIE: 'CHANGE_NAME_PIE',
   CREATE_SLICE: 'CREATE_SLICE',
-  DELETE_SLICE: 'DELETE_SLICE'
+  DELETE_SLICE: 'DELETE_SLICE',
+  UPDATE_COLOR: 'UPDATE_COLOR'
 }
 
 //bar
@@ -24,9 +25,6 @@ export const BarActions = {
   DELETE_CATEGORY: 'DELETE_CATEGORY',
   UPDATE_COLOR: 'UPDATE_COLOR'
 }
-
-
-
 
 
 //pie
@@ -52,7 +50,7 @@ export function deleteSlice(id) {
     id
   }
 }
-export function changeName(newName) {
+export function changeNamePie(newName) {
   return {
     type: PieActions.CHANGE_NAME_PIE,
     newName
@@ -75,9 +73,17 @@ export function deleteSeries(seriesName) {
   }
 }
 
-export function updateColor(color, seriesName) {
+export function updateColorBar(color, seriesName) {
   return {
     type: BarActions.UPDATE_COLOR,
+    seriesName,
+    color
+  }
+}
+
+export function updateColorPie(color, seriesName) {
+  return {
+    type: PieActions.UPDATE_COLOR,
     seriesName,
     color
   }
@@ -112,5 +118,10 @@ export function changeCell(value) {
     value
   }
 }
-
+export function fetchBarData(value) {
+  return {
+    type: MiscActions.FETCH_BAR_DATA,
+    value
+  }
+}
 
