@@ -3,8 +3,7 @@ import TitleComponent from '../TitleComponent'
 import {BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
-import AppDispatcher from "../../../AppDispatcher"
-import ActionTypes from "../../../ActionTypes"
+
 import Loader from 'react-loader-advanced';
 
 import { RingLoader } from 'react-spinners';
@@ -20,12 +19,6 @@ class BarChartComponent extends React.Component {
 
   componentDidMount() {
     this.props.fetchBarData('asdf')
-
-    // AppDispatcher.dispatch({
-    //   type: ActionTypes.FETCH_BAR_DATA,
-    // });
-    //
-
   }
 
   createDataForChart(barData) {

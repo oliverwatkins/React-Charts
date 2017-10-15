@@ -2,6 +2,11 @@ import Immutable from "immutable";
 import Server from './Server'
 
 import { PieActions, BarActions, MiscActions } from './ActionsRedux'
+import BarChartEntity from './entity/BarChartEntity'
+import PieChart from './entity/PieChart'
+
+
+
 
 export default function AppReducer(state = initialState, action) {
 
@@ -9,8 +14,6 @@ export default function AppReducer(state = initialState, action) {
 
   console.info('--> ' + JSON.stringify(PieActions));
   console.info('--> ' + JSON.stringify(BarActions));
-
-  // alert('VisibilityFilters ' + VisibilityFilters)
 
   switch (action.type) {
 
@@ -59,6 +62,9 @@ export default function AppReducer(state = initialState, action) {
       imState = BarChartEntity.fetchFinished(imState, action)
       break;
     }
+    default : {
+      alert('action not found ' + action.type)
+    }
   }
   return imState.toJS();
 }
@@ -68,7 +74,7 @@ const initialState =
   {
     app: {
       pie: {
-        name: "benfolds",
+        name: "Pie Chart",
         data: [
           {name: 'Group A', value: 12, color: '#123123'},
           {name: 'Group B', value: 300, color: '#634334'},

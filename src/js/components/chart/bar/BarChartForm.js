@@ -27,7 +27,7 @@ class BarChartForm extends React.Component {
     this.onChangeText = this.onChangeText.bind(this);
 
     this.state = {
-      enableButton:false,
+      enableButton: false,
       showModalColorPicker: false
     };
   }

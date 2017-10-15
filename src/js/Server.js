@@ -1,5 +1,7 @@
 import React from "react";
 
+import {getStore} from "./client"
+
 import request from 'superagent';
 
 import AppDispatcher from "./AppDispatcher";
@@ -47,12 +49,9 @@ function receiveData(endpoint, responseData) {
 
 function dispatch(endpoint, state, responseData = {}) {
 
-  console.info('Provider ' + Provider)
+  let store = getStore();
 
-  console.info('Provider.getSTore ' + Provider.getStore())
-
-
-  AppDispatcher.dispatch(
+  store.dispatch(
     {
       type: ActionTypes.SERVER_RESPONSE,
       endpoint: endpoint,
@@ -63,15 +62,15 @@ function dispatch(endpoint, state, responseData = {}) {
 }
 
 
-function dispatch_old(endpoint, state, responseData = {}) {
-
-  AppDispatcher.dispatch(
-    {
-      type: ActionTypes.SERVER_RESPONSE,
-      endpoint: endpoint,
-      state: state,
-      payload: responseData
-    }
-  );
-}
+// function dispatch_old(endpoint, state, responseData = {}) {
+//
+//   AppDispatcher.dispatch(
+//     {
+//       type: ActionTypes.SERVER_RESPONSE,
+//       endpoint: endpoint,
+//       state: state,
+//       payload: responseData
+//     }
+//   );
+// }
 

@@ -8,7 +8,7 @@ import CategoryForm from "../components/chart/bar/CategoryForm";
 
 import CategoryDataList from "../components/chart/bar/CategoryDataList";
 
-import {Container} from 'flux/utils';
+// import {Container} from 'flux/utils';
 
 import AppStore from './../AppStore.js';
 import Actions from './../Actions.js';
@@ -77,4 +77,4 @@ class BarChartPage extends React.Component {
 }
 
 
-export default Container.create(BarChartPage); //flux thing
+export default BarChartPage;

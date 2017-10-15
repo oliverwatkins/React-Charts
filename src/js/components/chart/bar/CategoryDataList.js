@@ -4,6 +4,7 @@ import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
 import './List.less';
 import Actions from "../../../../js/Actions";
+import {deleteCategory} from "../../../../js/ActionsRedux";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
@@ -15,12 +16,18 @@ import {} from '../../../ActionsRedux'
 class CategoryDataList extends React.Component {
   constructor(props) {
     super(props);
+
+    this.deleteCategory = this.deleteCategory.bind(this);
+
   }
 
 
   render() {
+
+    let barData = this.props.barData;
+
     // const series = BarChartEntity.getSeries(this.props.app);
-    const categories = BarChartEntity.getCategories(this.props.app);
+    const categories = BarChartEntity.getCategories2(barData);
 
     let deleteS = this.deleteCategory;
 
@@ -57,13 +64,9 @@ class CategoryDataList extends React.Component {
 
   deleteCategory(event, categoryName, index) {
     event.preventDefault();
-    Actions.deleteCategory(categoryName, index);
+    this.props.deleteCategory(categoryName, index);
   }
-
 }
-
-
-
 
 
 const mapStateToProps = state => {
@@ -71,8 +74,12 @@ const mapStateToProps = state => {
     barData: state.app.bar
   }
 }
-const mapDispatchToProps = state => {
-  return {}
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteCategory: (categoryName, index) => {
+      dispatch(deleteCategory(categoryName, index))
+    }
+  }
 }
 export default connect(
   mapStateToProps,

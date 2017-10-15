@@ -18,10 +18,15 @@ import { connect } from 'react-redux'
 import {} from '../../../ActionsRedux'
 
 
+import {deleteSeries} from '../../../ActionsRedux'
+
+
 class BarSeriesList extends React.Component {
   constructor(props) {
     super(props);
     this.colorSelected = this.colorSelected.bind(this);
+    this.deleteSeries = this.deleteSeries.bind(this);
+
   }
 
 
@@ -39,17 +44,16 @@ class BarSeriesList extends React.Component {
 
   deleteSeries(event, seriesName) {
     event.preventDefault();
-
-
-
-    Actions.deleteSeries(seriesName);
+    this.props.deleteSeries(seriesName);
   }
 
   render() {
-    const series = BarChartEntity.getSeries(this.props.app);
 
-    console.info("3")
-    console.info(JSON.stringify(this.props.app))
+    let barData = this.props.barData;
+
+    const series = BarChartEntity.getSeries2(barData);
+
+    console.info(JSON.stringify(barData))
 
 
     let deleteS = this.deleteSeries;
@@ -103,8 +107,12 @@ const mapStateToProps = state => {
     barData: state.app.bar
   }
 }
-const mapDispatchToProps = state => {
-  return {}
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteSeries: (value) => {
+      dispatch(deleteSeries(value))
+    }
+  }
 }
 export default connect(
   mapStateToProps,

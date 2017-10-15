@@ -21,12 +21,12 @@ class BarDataList extends React.Component {
     this.handleGridRowsUpdated = this.handleGridRowsUpdated.bind(this);
   }
 
-  createCols(props) {
+  createCols(barData) {
 
-    let categories = BarChartEntity.getCategories(props.app);
-    let series = BarChartEntity.getSeries(props.app);
+    // let categories = BarChartEntity.getCategories2(barData);
+    let series = BarChartEntity.getSeries2(barData);
 
-    var cols = [];
+    let cols = [];
 
     cols.push({key: "category", name: "category", editable:true, formatter:ColumnFormatter});
 
@@ -37,11 +37,11 @@ class BarDataList extends React.Component {
     this._columns = cols;
   }
 
-  createRows(props) {
+  createRows(barData) {
     let rows = [];
 
-    let categories = BarChartEntity.getCategories(props.app);
-    let series = BarChartEntity.getSeries(props.app);
+    let categories = BarChartEntity.getCategories2(barData);
+    let series = BarChartEntity.getSeries2(barData);
 
     let categoryLength = categories.length; //props.app.bar.categories.length;
 
@@ -51,7 +51,7 @@ class BarDataList extends React.Component {
 
       let noSeries = series.length;
 
-      row["category"] = props.app.bar.categories[index];
+      row["category"] = categories[index];
 
       for (let j = 0; j< noSeries; j++) {
 
@@ -76,8 +76,11 @@ class BarDataList extends React.Component {
   }
 
   render() {
-    this.createRows(this.props);
-    this.createCols(this.props);
+
+    let barData = this.props.barData;
+
+    this.createRows(barData);
+    this.createCols(barData);
 
     let style = {"height":200};
 
