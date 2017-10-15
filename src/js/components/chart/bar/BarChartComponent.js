@@ -105,10 +105,6 @@ const mapStateToProps = state => {
   }
 }
 
-// AppDispatcher.dispatch({
-//   type: ActionTypes.FETCH_BAR_DATA,
-// });
-
 const mapDispatchToProps = dispatch => {
   return {
     fetchBarData: (value) => {
@@ -116,28 +112,6 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
-
-
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     colorSelected: (color, seriesName )=> {
-//
-//       console.info('in color selected')
-//       let a = updateColor(color, seriesName)
-//       dispatch(a);
-//
-//       // alert('hello hello')
-//       // dispatch(toggleTodo(id))
-//     }
-//   }
-// }
-
-
-
-
-
-
 
 export default connect(
   mapStateToProps,

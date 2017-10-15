@@ -1,20 +1,17 @@
 import React from "react";
 import ColorChooser from '../ColorChooser'
-import Actions from "../../../../js/Actions";
+// import Actions from "../../../../js/Actions";
 
 import MUITextField from 'material-ui/TextField';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import ReactDOM from "react-dom";
-
 import 'react-hint/css/index.css'
 
 import RaisedButton from 'material-ui/RaisedButton';
 
-
 import { connect } from 'react-redux'
-import {} from '../../../ActionsRedux'
+import {createSeries} from '../../../ActionsRedux'
 
 
 class BarChartForm extends React.Component {
@@ -42,7 +39,9 @@ class BarChartForm extends React.Component {
       name: val,
       color: this.state.selectedColor,
     };
-    Actions.createSeries(series);
+
+    
+    this.props.createSeries(series);
   }
 
   colorSelected(color) {
@@ -115,8 +114,12 @@ const mapStateToProps = state => {
     barData: state.app.bar
   }
 }
-const mapDispatchToProps = state => {
-  return {}
+const mapDispatchToProps = dispatch => {
+  return {
+    createSeries: (series) => {
+      dispatch(createSeries(series))
+    }
+  }
 }
 export default connect(
   mapStateToProps,

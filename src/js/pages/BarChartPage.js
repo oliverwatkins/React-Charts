@@ -8,27 +8,22 @@ import CategoryForm from "../components/chart/bar/CategoryForm";
 
 import CategoryDataList from "../components/chart/bar/CategoryDataList";
 
-// import {Container} from 'flux/utils';
+import { connect } from 'react-redux'
+import {changeLineChartName} from './../ActionsRedux.js';
 
-import AppStore from './../AppStore.js';
-import Actions from './../Actions.js';
+
 
 import TitleEditComponent from "../components/chart/TitleEditComponent";
 
 class BarChartPage extends React.Component {
 
+  constructor(props) {
+    super(props)
 
+    this.handleChartNameChange = this.handleChartNameChange.bind(this);
+  }
   handleChartNameChange(val, event) {
-    // Actions.changeLineChartName(event.currentTarget.value);
-    Actions.changeLineChartName(val);
-  }
-
-  static getStores() {
-    return [AppStore];
-  }
-
-  static calculateState(prevState) {
-    return AppStore.getState();
+    this.props.changeLineChartName(val);
   }
 
   render() {
@@ -77,4 +72,20 @@ class BarChartPage extends React.Component {
 }
 
 
-export default BarChartPage;
+
+const mapStateToProps = state => {
+  return {
+    barData: state.app.bar
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    changeLineChartName: (val) => {
+      dispatch(changeLineChartName(val))
+    }
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BarChartPage)

@@ -1,16 +1,11 @@
 import React from "react";
-import Actions from "../../../../js/Actions";
 
 import MUITextField from 'material-ui/TextField';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import RaisedButton from 'material-ui/RaisedButton';
 
-
-import { connect } from 'react-redux'
-import {} from '../../../ActionsRedux'
-
+import {connect} from 'react-redux'
+import {changeLineChartName, createCategory} from '../../../ActionsRedux'
 
 
 class CategoryForm extends React.Component {
@@ -21,7 +16,7 @@ class CategoryForm extends React.Component {
     this.onChangeText = this.onChangeText.bind(this);
 
     this.state = {
-      enableButton:false,
+      enableButton: false,
     };
 
   }
@@ -29,22 +24,18 @@ class CategoryForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    let val =  this.refs.categoryName.input.value
+    let val = this.refs.categoryName.input.value
 
     let category = {
       name: val,
     }
-    Actions.createCategory(category);
-  }
-
-  handleChartNameChange(event) {
-    Actions.changeLineChartName(event.currentTarget.value);
+    this.props.createCategory(category);
   }
 
   onChangeText(e, value) {
     if (!value) {
       this.setState({enableButton: false});
-    }else {
+    } else {
       this.setState({enableButton: true});
     }
   }
@@ -89,8 +80,12 @@ const mapStateToProps = state => {
     barData: state.app.bar
   }
 }
-const mapDispatchToProps = state => {
-  return {}
+const mapDispatchToProps = dispatch => {
+  return {
+    createCategory: (val) => {
+      dispatch(createCategory(val))
+    }
+  }
 }
 export default connect(
   mapStateToProps,

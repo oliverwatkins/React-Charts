@@ -2,15 +2,10 @@ import React from "react";
 import ReactDataGrid from "react-data-grid";
 const { Row } = ReactDataGrid;
 
-
-import Actions from "../../../../js/Actions";
-
-
 import BarChartEntity from "../../../entity/BarChartEntity";
 
 import { connect } from 'react-redux'
-import {} from '../../../ActionsRedux'
-
+import {changeCell} from '../../../ActionsRedux'
 
 class BarDataList extends React.Component {
 
@@ -72,7 +67,7 @@ class BarDataList extends React.Component {
   }
 
   handleGridRowsUpdated({ fromRow, toRow, updated }) {
-    Actions.changeCell({ fromRow, toRow, updated })
+    this.props.changeCell({ fromRow, toRow, updated })
   }
 
   render() {
@@ -103,7 +98,6 @@ class BarDataList extends React.Component {
   }
 }
 
-
 const ColumnFormatter = React.createClass({
   propTypes: {
     value: React.PropTypes.number.isRequired
@@ -123,8 +117,12 @@ const mapStateToProps = state => {
     barData: state.app.bar
   }
 }
-const mapDispatchToProps = state => {
-  return {}
+const mapDispatchToProps = dispatch => {
+  return {
+    changeCell: (fromRow, toRow, updated ) => {
+      dispatch(changeCell(fromRow, toRow, updated ))
+    }
+  }
 }
 export default connect(
   mapStateToProps,

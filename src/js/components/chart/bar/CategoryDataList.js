@@ -3,7 +3,6 @@ import React from "react";
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
 import './List.less';
-import Actions from "../../../../js/Actions";
 import {deleteCategory} from "../../../../js/ActionsRedux";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
