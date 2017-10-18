@@ -60,17 +60,3 @@ function dispatch(endpoint, state, responseData = {}) {
     }
   );
 }
-
-
-// function dispatch_old(endpoint, state, responseData = {}) {
-//
-//   AppDispatcher.dispatch(
-//     {
-//       type: ActionTypes.SERVER_RESPONSE,
-//       endpoint: endpoint,
-//       state: state,
-//       payload: responseData
-//     }
-//   );
-// }
-

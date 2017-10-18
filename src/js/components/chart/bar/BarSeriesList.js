@@ -55,7 +55,6 @@ class BarSeriesList extends React.Component {
 
     console.info(JSON.stringify(barData))
 
-
     let deleteS = this.deleteSeries;
 
     let self = this;

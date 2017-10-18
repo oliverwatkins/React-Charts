@@ -6,8 +6,6 @@ import BarChartEntity from './entity/BarChartEntity'
 import PieChart from './entity/PieChart'
 
 
-
-
 export default function AppReducer(state = initialState, action) {
 
   let imState = Immutable.fromJS(state);
@@ -63,7 +61,7 @@ export default function AppReducer(state = initialState, action) {
       break;
     }
     default : {
-      alert('action not found ' + action.type)
+      console.info('action not found ' + action.type)
     }
   }
   return imState.toJS();

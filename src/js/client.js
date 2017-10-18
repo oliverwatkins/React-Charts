@@ -20,7 +20,7 @@ import { createStore } from 'redux'
 
 const store = createStore(AppReducer)
 
-//not very pretty solution
+//not very pretty solution :(
 export function getStore() {
   return store
 }
