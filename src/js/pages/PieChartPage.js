@@ -1,37 +1,34 @@
 import React from "react";
 
 import {Component} from 'react';
-import {Container} from 'flux/utils';
-import AppStore from './../AppStore.js';
-
-
 
 import SimplePieChart from "../components/chart/pie/PieChartComponent";
 import PieChartForm from "../components/chart/pie/PieChartForm";
 import PieChartSliceList from "../components/chart/pie/PieChartSliceList";
 
+import { connect } from 'react-redux'
+import {changeNamePie} from './../ActionsRedux.js';
+
 
 class PieChartPage extends Component {
 
-  static getStores() {
-    return [AppStore];
-  }
+  // static getStores() {
+  //   return [AppStore];
+  // }
+  //
+  // static calculateState(prevState) {
+  //   return AppStore.getState();
+  // }
 
-  static calculateState(prevState) {
-    return AppStore.getState();
-  }
-
-  handleChartNameChange(event) {
-    var changeName = function(newName) {
-      dispatcher.dispatch({
-        type: "CHANGE_NAME",
-        newName,
-      });
-    }
-
-    console.info('changing text to ' + event.currentTarget.value)
-    changeName(event.currentTarget.value);
-  }
+  // handleChartNameChange(event) {
+  //   var changeName = function(newName) {
+  //     dispatcher.dispatch({
+  //       type: "CHANGE_NAME",
+  //       newName,
+  //     });
+  //   }
+  //   changeName(event.currentTarget.value);
+  // }
 
   render() {
     return (
@@ -54,4 +51,43 @@ class PieChartPage extends Component {
   }
 }
 
-export default Container.create(PieChartPage);
+const mapStateToProps = state => {
+  return {
+    pieData: state.app.pie
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    changeBarChartName: (val) => {
+      dispatch(changeNamePie(val))
+    }
+  }
+}
+
+
+
+// handleChartNameChange(event) {
+//   var changeName = function(newName) {
+//     dispatcher.dispatch({
+//       type: "CHANGE_NAME",
+//       newName,
+//     });
+//   }
+//   changeName(event.currentTarget.value);
+// }
+
+
+
+
+
+
+
+
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PieChartPage)
+
+

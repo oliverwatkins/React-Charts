@@ -1,7 +1,7 @@
 import React from "react";
 
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
-import Actions from "../../../../js/Actions";
+import Actions from "../../../../js/ActionsRedux";
 
 import XYChartEntity from "../../../../js/entity/XYChartEntity";
 

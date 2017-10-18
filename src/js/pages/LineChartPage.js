@@ -5,27 +5,23 @@ import LineSeriesList from "../components/chart/line/LineSeriesList";
 import LineChartForm from "../components/chart/line/LineChartForm";
 import LineChartDataTable from "../components/chart/line/LineChartDataTable";
 
-import {Container} from 'flux/utils';
-
-import AppStore from './../AppStore.js';
-import Actions from './../Actions.js';
-
 import TitleEditComponent from "../components/chart/TitleEditComponent";
+
+import ActionsRedux from "../ActionsRedux";
 
 class LineChartPage extends React.Component {
 
-
   handleChartNameChange(event) {
-    Actions.changeLineChartName(event.currentTarget.value);
+    ActionsRedux.changeLineChartName(event.currentTarget.value);
   }
 
-  static getStores() {
-    return [AppStore];
-  }
-
-  static calculateState(prevState) {
-    return AppStore.getState();
-  }
+  // static getStores() {
+  //   return [AppStore];
+  // }
+  //
+  // static calculateState(prevState) {
+  //   return AppStore.getState();
+  // }
 
   render() {
 
@@ -69,4 +65,4 @@ class LineChartPage extends React.Component {
   }
 }
 
-export default Container.create(LineChartPage);
+export default LineChartPage;

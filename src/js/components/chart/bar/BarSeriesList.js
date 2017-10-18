@@ -5,7 +5,7 @@ import ColorChooser from '../ColorChooser'
 
 
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
-import Actions from "../../../../js/Actions";
+import Actions from "../../../../js/ActionsRedux";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
@@ -18,7 +18,7 @@ import { connect } from 'react-redux'
 import {} from '../../../ActionsRedux'
 
 
-import {deleteSeries} from '../../../ActionsRedux'
+import {deleteSeries, updateColorBar} from '../../../ActionsRedux'
 
 
 class BarSeriesList extends React.Component {
@@ -31,7 +31,7 @@ class BarSeriesList extends React.Component {
 
 
   colorSelected(color, seriesName) {
-    Actions.updateColor(color, seriesName)
+    this.props.updateColorBar(color, seriesName)
   }
 
   componentWillMount() {
@@ -110,6 +110,9 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteSeries: (value) => {
       dispatch(deleteSeries(value))
+    },
+    updateColorBar: (value) => {
+      dispatch(updateColorBar(value))
     }
   }
 }

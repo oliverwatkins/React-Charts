@@ -1,6 +1,6 @@
 import React from "react";
 import ColorChooser from '../ColorChooser'
-import Actions from "../../../../js/Actions";
+import ActionsRedux from "../../../../js/ActionsRedux";
 
 import ReactDOM from "react-dom";
 
@@ -27,7 +27,7 @@ export default class LineChartForm extends React.Component {
       name: val,
       color: this.state.selectedColor,
     }
-    Actions.createSeries(series);
+    ActionsRedux.createSeries(series);
   }
 
 

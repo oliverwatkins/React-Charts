@@ -4,10 +4,6 @@ import {getStore} from "./client"
 
 import request from 'superagent';
 
-import AppDispatcher from "./AppDispatcher";
-
-import {Provider} from 'react-redux'
-
 
 import ActionTypes from "./ActionTypes";
 

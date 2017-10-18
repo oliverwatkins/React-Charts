@@ -3,7 +3,7 @@ import ReactDataGrid from "react-data-grid";
 const { Row } = ReactDataGrid;
 
 
-import Actions from "../../../../js/Actions";
+import Actions from "../../../../js/ActionsRedux";
 
 
 import XYChartEntity from "../../../entity/XYChartEntity";

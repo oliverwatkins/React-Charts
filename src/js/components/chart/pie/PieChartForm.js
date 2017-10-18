@@ -1,6 +1,6 @@
 import React from "react";
 
-import Actions from "../../../../js/Actions";
+import Actions from "../../../../js/ActionsRedux";
 import TitleEditComponent from '../TitleEditComponent'
 import ColorChooser from '../ColorChooser'
 
@@ -11,7 +11,7 @@ import MUITextField from 'material-ui/TextField';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 import {changeNamePie} from '../../../ActionsRedux'
 
@@ -83,12 +83,9 @@ class PieChartForm extends React.Component {
   }
 }
 
-
-
-
 const mapStateToProps = state => {
   return {
-    pieData: state.app.pie.data
+    pieData: state.app.pie
   }
 }
 
