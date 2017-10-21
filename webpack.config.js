@@ -28,7 +28,7 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015', 'stage-0'],
-          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
+          plugins: ['emotion', 'react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
         }
       },
       { test: /\.css|\.less$/, loaders: ["style-loader", "css-loader", "less-loader"] },

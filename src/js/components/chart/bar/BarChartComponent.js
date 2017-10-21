@@ -6,7 +6,7 @@ import BarChartEntity from "../../../../js/entity/BarChartEntity";
 
 import Loader from 'react-loader-advanced';
 
-import { RingLoader } from 'react-spinners';
+// import { RingLoader } from 'react-spinners';
 
 import { connect } from 'react-redux'
 import {fetchBarData} from '../../../ActionsRedux'
@@ -72,7 +72,8 @@ class BarChartComponent extends React.Component {
     return (
       <Loader show={isFetching} message={
         <div style={{display: 'flex', position: 'center', justifyContent: 'center'}}>
-          <RingLoader style={style1} color={'white'} loading={true}/>
+          <div style={style1} color={'white'} loading={true}> disable spinner for now </div>
+          {/*<RingLoader style={style1} color={'white'} loading={true}/>*/}
           <div style={style2}>loading</div>
         </div>
       }>
