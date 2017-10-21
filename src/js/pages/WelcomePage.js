@@ -13,7 +13,7 @@ export default class WelcomePage extends React.Component {
             <li>Controlled Components</li>
             <li>JSX and ES6</li>
             <li>Functional Components</li>
-            <li>flux</li>
+            <li><strike>flux</strike> redux</li>
             <li>immutable js</li>
             <li>integration of third party components : recharts and react-grid</li>
             <li>third party components : recharts and react-grid</li>
