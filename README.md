@@ -7,6 +7,6 @@ Demonstrates :
 * Controlled component
 * JSX
 * Functional Components
-* flux (redux?)
+* redux
 * Immutable.js
 
