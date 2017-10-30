@@ -1,15 +1,25 @@
 exports[`test should match its snapshot with items 1`] = `
-<ul>
-  <li>
-    Learn react
-  </li>
-  <li>
-    rest
-  </li>
-  <li>
-    go out
-  </li>
-</ul>
+<div>
+  <div
+    className="unique" />
+  <ul>
+    <li>
+      Learn react
+    </li>
+    <li>
+      rest
+    </li>
+    <li>
+      go out
+    </li>
+  </ul>
+</div>
 `;
 
-exports[`test should render a todo item  1`] = `<ul />`;
+exports[`test should render a todo item  1`] = `
+<div>
+  <div
+    className="unique" />
+  <ul />
+</div>
+`;

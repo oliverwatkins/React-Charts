@@ -11,6 +11,10 @@ exports[`Component: App should match its empty snapshot 1`] = `
       Submit
     </button>
   </form>
-  <ul />
+  <div>
+    <div
+      className="unique" />
+    <ul />
+  </div>
 </div>
 `;

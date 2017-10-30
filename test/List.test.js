@@ -7,6 +7,7 @@ import List from './List';
 
 it('should render a todo item ', () => {
   const tree = toJson(shallow(<List items={[]} />));
+  // console.log(tree)
   expect(tree).toMatchSnapshot();
 });
 it('should match its snapshot with items', () => {
