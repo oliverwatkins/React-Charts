@@ -1,10 +1,16 @@
 import React from 'react';
-import CategoryDataList from './../CategoryDataList';
+import {CategoryDataList} from './../CategoryDataList'; //is this dumb?
 import renderer from 'react-test-renderer';
 
-test('Link changes the class when hovered', () => {
+
+import * as actions from '../../../../ActionsRedux'
+
+
+
+
+test('LinkXX changes the class when hovered', () => {
   const component = renderer.create(
-    <CategoryDataList page="http://www.facebook.com">Facebook</CategoryDataList>
+    <CategoryDataList>Facebook</CategoryDataList>
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

@@ -63,6 +63,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "test": "jest",
+    "test:watch": "npm test -- --watch",
     "eject": "react-scripts eject"
   },
   "jest": {

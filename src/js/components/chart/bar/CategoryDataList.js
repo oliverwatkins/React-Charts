@@ -12,7 +12,7 @@ import {connect} from 'react-redux'
 import {} from '../../../ActionsRedux'
 
 
-class CategoryDataList extends React.Component {
+export class CategoryDataList extends React.Component {
   constructor(props) {
     super(props);
     this.deleteCategory = this.deleteCategory.bind(this);
