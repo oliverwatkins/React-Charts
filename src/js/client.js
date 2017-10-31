@@ -21,7 +21,8 @@ export function getStore() {
   return store
 }
 
-let app = {};
+const app = document.getElementById('app');
+
 
 ReactDOM.render(
   <Provider store={store}>

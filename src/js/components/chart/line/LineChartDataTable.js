@@ -2,6 +2,7 @@ import React from "react";
 import ReactDataGrid from "react-data-grid";
 const { Row } = ReactDataGrid;
 
+import PropTypes from 'prop-types'; // ES6
 
 import Actions from "../../../../js/ActionsRedux";
 
@@ -96,15 +97,15 @@ export default class LineChartDataTable extends React.Component {
 }
 
 
-const ColumnFormatter = React.createClass({
-  propTypes: {
-    value: React.PropTypes.number.isRequired
-  },
-
+class ColumnFormatter extends React.Component{
   render() {
     return (
       <div >
         <b>{this.props.value}</b>
       </div>);
   }
-});
+};
+
+ColumnFormatter.propTypes = {
+  value: PropTypes.number.isRequired
+}

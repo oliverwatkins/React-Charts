@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDataGrid from "react-data-grid";
 const { Row } = ReactDataGrid;
+import PropTypes from 'prop-types'; // ES6
 
 import BarChartEntity from "../../../entity/BarChartEntity";
 
@@ -98,10 +99,11 @@ class BarDataList extends React.Component {
   }
 }
 
-const ColumnFormatter = React.createClass({
-  propTypes: {
-    value: React.PropTypes.number.isRequired
-  },
+class ColumnFormatter extends React.Component {
+
+  // propTypes: {
+  //   value: "" //PropTypes.number.isRequired
+  // }
 
   render() {
     return (
@@ -109,7 +111,9 @@ const ColumnFormatter = React.createClass({
         <b>{this.props.value}</b>
       </div>);
   }
-});
+};
+
+ColumnFormatter.propTypes = PropTypes.number.isRequired
 
 
 const mapStateToProps = state => {
