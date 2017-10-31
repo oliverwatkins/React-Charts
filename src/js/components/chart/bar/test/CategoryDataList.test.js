@@ -8,22 +8,10 @@ import * as actions from '../../../../ActionsRedux'
 
 
 
-test('LinkXX changes the class when hovered', () => {
+test('CategroyDataList renders', () => {
   const component = renderer.create(
-    <CategoryDataList>Facebook</CategoryDataList>
+    <CategoryDataList barData={{categories:[]}}>Facebook</CategoryDataList>
   );
   let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-
-  // manually trigger the callback
-  tree.props.onMouseEnter();
-  // re-rendering
-  tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-
-  // manually trigger the callback
-  tree.props.onMouseLeave();
-  // re-rendering
-  tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
