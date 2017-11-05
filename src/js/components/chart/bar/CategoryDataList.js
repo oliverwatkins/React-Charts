@@ -20,8 +20,8 @@ export class CategoryDataList extends React.Component {
 
   render() {
     let barData = this.props.barData;
-    // const series = BarChartEntity.getSeries(this.props.app);
-    const categories = BarChartEntity.getCategories2(barData);
+    const categories = barData.categories;
+
     let deleteS = this.deleteCategory;
     return (
       <MuiThemeProvider>
@@ -29,7 +29,7 @@ export class CategoryDataList extends React.Component {
           <table>
             <tbody>
             {categories.map(function (cat, i) {
-              let key = 'xx_' + i;
+              let key = 'key_' + i;
               return (
                 <tr key={key}>
                   <td>
