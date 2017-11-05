@@ -1,35 +1,36 @@
 
-import reducer from "./../AppReducer2"
-
+import reducer from "./../AppReducer"
+import {changeNamePie} from './../ActionsRedux.js'
 /*
 Test the reducer functions
-
-
  */
-test('Test Reducer functions', () => {
+describe('Test Reducer functions', () => {
 
-  console.log('reducer ', reducer(initialState,2))
+  it('change pie name ', () => {
+
+    console.log('reducer initial ', initialState)
+
+    let state = reducer(initialState, changeNamePie("blah"))
+
+    console.log('reducer ', state)
+
+    expect(state.app.pie.name).toBe('blah')
+  })
 
 })
-
 
 
 const initialState =
   {
     app: {
-      pie: {
-
-      },
-      xy: {
-
-      },
+      pie: {},
+      xy: {},
       bar: {
         name: "Bar Chart",
         categories: [
-          "Apple",
-          "Orange",
-          "Banana",
-          "Peach"
+          "dog",
+          "cat",
+          "cow"
         ],
         series: [
           {
@@ -65,5 +66,4 @@ const initialState =
         ]
       }
     }
-
   }

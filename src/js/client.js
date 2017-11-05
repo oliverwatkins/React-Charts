@@ -17,6 +17,9 @@ import { createStore } from 'redux'
 //BAD!!!! this is calling code while loading app...
 const store = createStore(AppReducer)
 
+
+
+
 //not very pretty solution :(
 export function getStore() {
   return store

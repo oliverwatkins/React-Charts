@@ -1,6 +1,9 @@
 import React from "react";
 
-import {getStore} from "./client"
+/**
+ * Removed dependency on client. screwing up unit tests in Jest.
+ */
+// import {getStore} from "./client"
 
 import request from 'superagent';
 
@@ -45,6 +48,10 @@ function receiveData(endpoint, responseData) {
 
 function dispatch(endpoint, state, responseData = {}) {
 
+  throw "this will not work because we have no reference to the store." +
+  " the connection to the store needs to be somehow fixed, this can be" +
+  "done i think with thunks or sagas, but Server.js cannot import client.js or" +
+  "tests will break"
   let store = getStore();
 
   store.dispatch(
