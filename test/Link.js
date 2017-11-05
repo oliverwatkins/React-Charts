@@ -1,5 +1,4 @@
 import React from 'react';
-import Link2 from './Link2'
 
 const STATUS = {
   HOVERED: 'hovered',
@@ -12,7 +11,6 @@ export default class Link extends React.Component {
 
     super(props);
 
-    console.log("Link2 is ", Link2)
 
     this._onMouseEnter = this._onMouseEnter.bind(this);
     this._onMouseLeave = this._onMouseLeave.bind(this);

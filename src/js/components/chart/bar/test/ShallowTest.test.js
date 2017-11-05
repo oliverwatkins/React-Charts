@@ -1,12 +1,14 @@
 
 import React from 'react';
-import {CategoryDataList} from './../CategoryDataList'; //dumb
+import {CategoryDataList} from './../CategoryDataList'; //dumb version
 import renderer from 'react-test-renderer';
+
+import { shallow } from 'enzyme';
 
 import * as actions from '../../../../ActionsRedux'
 
 
-describe('>>>H O M E --- Shallow Render REACT COMPONENTS',()=>{
+describe('Shallow Render REACT COMPONENTS',()=>{
   let wrapper
 
   beforeEach(()=>{
@@ -17,8 +19,8 @@ describe('>>>H O M E --- Shallow Render REACT COMPONENTS',()=>{
     expect(wrapper.length).toEqual(1)
   });
 
-  it('+++ contains output', () => {
-    expect(wrapper.find('input[placeholder="Output"]').prop('value')).toEqual(output)
-  });
+  // it('+++ contains output', () => {
+  //   expect(wrapper.find('input[placeholder="Output"]').prop('value')).toEqual(output)
+  // });
 
 });
