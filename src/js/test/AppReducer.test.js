@@ -3,6 +3,8 @@ import reducer from "./../AppReducer2"
 
 /*
 Test the reducer functions
+
+
  */
 test('Test Reducer functions', () => {
 
