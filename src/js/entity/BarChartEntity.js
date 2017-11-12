@@ -93,6 +93,7 @@ class BarChartEntity {
     return imState;
   }
 
+  //TODO refactor
   static deleteCategory(imState, action) {
 
     let index = action.index;
@@ -152,6 +153,10 @@ class BarChartEntity {
     let row = action.value.fromRow;
     let seriesName = Object.keys(action.value.updated)[0];
     let cellValue = action.value.updated[seriesName];
+
+    console.info('cellvalue', cellValue);
+
+
 
 
     if (seriesName === "category") {

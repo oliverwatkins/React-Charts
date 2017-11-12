@@ -7,7 +7,7 @@ class PieChart {
   }
 
   /**
-   *
+   * TODO use only immutable
    * @param imState
    * @param action
    * @returns {*}
@@ -15,7 +15,6 @@ class PieChart {
   static createSlice(imState, action) {
 
     var myList = imState.getIn([...this.path, 'data'])
-    // console.log(myList)
     myList = myList.toJS();
     myList.push(action);
 

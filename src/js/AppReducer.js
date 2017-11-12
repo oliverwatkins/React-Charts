@@ -33,6 +33,9 @@ export default function AppReducer(state = initialState, action) {
     case PieActions.DELETE_SLICE:
       imState = PieChart.deleteSlice(imState, action.name);
       break;
+
+
+
     //bar
     case BarActions.CHANGE_NAME_BAR:
       imState = BarChartEntity.changeName(imState, action.newName);

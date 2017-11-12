@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDataGrid from "react-data-grid";
-const { Row } = ReactDataGrid;
-import PropTypes from 'prop-types'; // ES6
-
+import PropTypes from 'prop-types';
 import BarChartEntity from "../../../entity/BarChartEntity";
 
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import {changeCell} from '../../../ActionsRedux'
+
+const { Row } = ReactDataGrid;
 
 class BarDataList extends React.Component {
 
@@ -19,7 +19,6 @@ class BarDataList extends React.Component {
 
   createCols(barData) {
 
-    // let categories = BarChartEntity.getCategories2(barData);
     let series = BarChartEntity.getSeries2(barData);
 
     let cols = [];
@@ -68,6 +67,8 @@ class BarDataList extends React.Component {
   }
 
   handleGridRowsUpdated({ fromRow, toRow, updated }) {
+
+    // what does this do
     this.props.changeCell({ fromRow, toRow, updated })
   }
 
@@ -115,7 +116,6 @@ class ColumnFormatter extends React.Component {
 
 ColumnFormatter.propTypes = PropTypes.number.isRequired
 
-
 const mapStateToProps = state => {
   return {
     barData: state.app.bar
@@ -124,6 +124,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeCell: (fromRow, toRow, updated ) => {
+
+
       dispatch(changeCell(fromRow, toRow, updated ))
     }
   }
