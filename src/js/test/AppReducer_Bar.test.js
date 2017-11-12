@@ -103,6 +103,7 @@ describe('Test Bar Reducer functions', () => {
   })
 
 
+  //TODO
   xit(' changes the cell', () => {
     let fromRow = 1, toRow = 1, updated = 42;
 
@@ -150,10 +151,10 @@ const initialState_Bar =
             name: "Holland",
             color: "blue",
             data: [
-              {x: 1, y: 0},
-              {x: 2, y: 0},
-              {x: 3, y: 0},
-              {x: 4, y: 0}
+              {y: 0},
+              {y: 0},
+              {y: 0},
+              {y: 0}
             ]
           }
         ]
