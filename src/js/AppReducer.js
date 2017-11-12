@@ -9,9 +9,9 @@ export default function AppReducer(state = initialState, action) {
 
   let imState = Immutable.fromJS(state);
 
-  console.info('--> ' + PieActions);
-  console.info('--> ' + BarActions);
-  console.info('--> ' + MiscActions);
+  // console.info('--> ' + PieActions);
+  // console.info('--> ' + BarActions);
+  // console.info('--> ' + MiscActions);
 
 
   if (!action)
@@ -30,8 +30,9 @@ export default function AppReducer(state = initialState, action) {
       //TODO
       // imState = PieChart.(imState, action.newName);
       break;
-
-
+    case PieActions.DELETE_SLICE:
+      imState = PieChart.deleteSlice(imState, action.name);
+      break;
     //bar
     case BarActions.CHANGE_NAME_BAR:
       imState = BarChartEntity.changeName(imState, action.newName);

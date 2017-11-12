@@ -15,7 +15,7 @@ class PieChart {
   static createSlice(imState, action) {
 
     var myList = imState.getIn([...this.path, 'data'])
-    console.log(myList)
+    // console.log(myList)
     myList = myList.toJS();
     myList.push(action);
 
@@ -26,9 +26,14 @@ class PieChart {
     return imState;
   }
 
+  static deleteSlice(imState, name) {
+    let filtered = imState.getIn([...this.path, 'data']).filter(o => {return o.get('name') !== name});
+    imState = imState.setIn([...this.path, 'data'], filtered);
+    return imState;
+  }
+
   static changeName(imState, newName) {
     imState = imState.setIn([...this.path, 'name'], newName)
-
     return imState;
   }
 }

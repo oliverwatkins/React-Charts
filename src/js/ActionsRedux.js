@@ -44,10 +44,10 @@ export function createSlice(slice) {
     slice
   }
 }
-export function deleteSlice(id) {
+export function deleteSlice(name) {
   return {
-    type: PieActions.CREATE_SLICE,
-    id
+    type: PieActions.DELETE_SLICE,
+    name
   }
 }
 export function changeNamePie(newName) {

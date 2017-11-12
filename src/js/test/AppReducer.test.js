@@ -6,7 +6,7 @@ Test the reducer functions
 describe('Test Reducer functions', () => {
 
   it('loads initial data correctly ', () => {
-    console.log('reducer initial ', initialState_Pie)
+    // console.log('reducer initial ', initialState_Pie)
 
     let state = reducer(initialState_Pie)
 
@@ -22,28 +22,29 @@ describe('Test Reducer functions', () => {
 
 
   it('change pie chart name ', () => {
-    console.log('reducer initial ', initialState_Pie)
     let state = reducer(initialState_Pie, changeNamePie("blah"))
-    console.log('reducer ', state)
     expect(state.app.pie.name).toBe('blah')
   })
 
   it('create pie slice ', () => {
-    console.log('reducer initial ', initialState_Pie)
-    let state = reducer(initialState_Pie, createSlice({name: 'Group A', value: 12, color: '#123123'}))
-    console.log('reducer ', state)
-
+    let state = reducer(initialState_Pie, createSlice({name: 'Group Z', value: 12, color: '#123123'}))
     expect(state.app.pie.data.length).toEqual(7)
   })
 
+  it('delete slice ', () => {
+    console.log('initialState_Pie ', initialState_Pie)
+    console.log('initialState_Pie2 ', initialState_Pie.app.pie.data)
+    expect(initialState_Pie.app.pie.data.length).toEqual(6);
+    let state = reducer(initialState_Pie, deleteSlice("Group A"))
 
-  // // @ignore
-  // it('change pie chart name ', () => {
-  //   console.log('reducer initial ', initialState)
-  //   let state = reducer(initialState, deleteSlice("blah"))
-  //   console.log('reducer ', state)
-  //   expect(state.app.pie.name).toBe('blah')
-  // })
+    console.log('state3 ', state.app.pie.data)
+
+    expect(state.app.pie.data.length).toEqual(5);
+  })
+
+
+
+
 
 
 })
