@@ -2,8 +2,6 @@ import React from 'react';
 import {CategoryDataList} from './../CategoryDataList'; //dumb
 import renderer from 'react-test-renderer';
 
-import * as actions from '../../../../ActionsRedux'
-
 describe('Test basic rendering',()=> {
   it('CategroyDataList renders', () => {
     const component = renderer.create(

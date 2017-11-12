@@ -13,6 +13,10 @@ export default function AppReducer(state = initialState, action) {
   console.info('--> ' + BarActions);
   console.info('--> ' + MiscActions);
 
+
+  if (!action)
+    return imState.toJS();
+
   switch (action.type) {
 
     //pie
@@ -61,7 +65,7 @@ export default function AppReducer(state = initialState, action) {
       break;
     }
     default : {
-      throw 'action not found ' + action.type
+      // throw 'action not found ' + action.type
     }
   }
   return imState.toJS();

@@ -6,9 +6,16 @@ class PieChart {
     return ['app', 'pie'];
   }
 
+  /**
+   *
+   * @param imState
+   * @param action
+   * @returns {*}
+   */
   static createSlice(imState, action) {
 
     var myList = imState.getIn([...this.path, 'data'])
+    console.log(myList)
     myList = myList.toJS();
     myList.push(action);
 
