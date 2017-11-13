@@ -6,22 +6,8 @@ class PieChart {
     return ['app', 'pie'];
   }
 
-  /**
-   * TODO use only immutable
-   * @param imState
-   * @param action
-   * @returns {*}
-   */
   static createSlice(imState, action) {
-
-    var myList = imState.getIn([...this.path, 'data'])
-    myList = myList.toJS();
-    myList.push(action);
-
-    var v = Immutable.fromJS(myList)
-
-    imState = imState.setIn([...this.path, 'data'], v)
-
+    imState = imState.updateIn([...this.path, 'data'], a => a.push(action))
     return imState;
   }
 

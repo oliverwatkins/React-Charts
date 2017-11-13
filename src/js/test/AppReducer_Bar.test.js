@@ -5,7 +5,8 @@ import {
   changeCell,
   createCategory,
   createSeries,
-  deleteCategory
+  deleteCategory,
+  updateColorBar
 } from './../ActionsRedux.js'
 /*
 Test the reducer functions
@@ -60,9 +61,6 @@ describe('Test Bar Reducer functions', () => {
   })
 
   it(' deletes a category ', () => {
-    let category = {
-      name: "dog",
-    }
     let state = reducer(initialState_Bar, deleteCategory("dog"));
 
     expect(state.app.bar.categories.length).toEqual(2)
@@ -98,8 +96,13 @@ describe('Test Bar Reducer functions', () => {
 
   it(' updates a color ', () => {
 
-    //TODO
+    let state = reducer(initialState_Bar, updateColorBar("pink2", "Germany"));
 
+    expect(state.app.bar.series).toContainEqual({
+      name: "Germany",
+      color: "pink2",
+      data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}]
+    })
   })
 
 
@@ -110,8 +113,6 @@ describe('Test Bar Reducer functions', () => {
     let state = reducer(initialState_Bar, changeCell(fromRow, toRow, updated))
 
     console.log('state', state)
-
-
   })
 })
 

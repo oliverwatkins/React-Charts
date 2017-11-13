@@ -10,12 +10,9 @@ describe('Test Reducer functions', () => {
     let state = reducer(initialState_Pie)
 
     expect(state.app.pie.data.length).toEqual(6)
-    expect(state.app.pie.data).toContainEqual(
-      {name: 'Group F', value: 289, color: '#b456bb'})
-    expect(state.app.pie.data).toContainEqual(
-      {name: 'Group C', value: 300, color: '#92fa56'})
-    expect(state.app.pie.data).not.toContainEqual(
-      {name: 'Currywurst', value: 300, color: '#92fa56'})
+    expect(state.app.pie.data).toContainEqual({name: 'Group F', value: 289, color: '#b456bb'})
+    expect(state.app.pie.data).toContainEqual({name: 'Group C', value: 300, color: '#92fa56'})
+    expect(state.app.pie.data).not.toContainEqual({name: 'Currywurst', value: 300, color: '#92fa56'})
 
   })
 
