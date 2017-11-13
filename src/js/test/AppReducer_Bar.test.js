@@ -56,7 +56,11 @@ describe('Test Bar Reducer functions', () => {
     let state = reducer(initialState_Bar, createCategory(category));
     expect(state.app.bar.categories.length).toEqual(4)
 
-    expect(state.app.bar.categories).toContainEqual("lizard")
+    expect(state.app.bar.series).toContainEqual({
+      name: "Mexico",
+      color: "red",
+      data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}, {y:0}]
+    })
 
   })
 
@@ -65,6 +69,17 @@ describe('Test Bar Reducer functions', () => {
 
     expect(state.app.bar.categories.length).toEqual(2)
     expect(state.app.bar.categories).not.toContainEqual("dog")
+    expect(state.app.bar.series).toContainEqual({
+      name: "Holland",
+      color: "blue",
+      data: [{y: 0}, {y: 0}, {y: 0}]
+    })
+
+    expect(state.app.bar.series).toContainEqual({
+      name: "Germany",
+      color: "orange",
+      data: [{y: 0}, {y: 0}, {y: 0}]
+    })
   })
 
   it(' deletes a series ', () => {
