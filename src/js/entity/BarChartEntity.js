@@ -60,60 +60,16 @@ class BarChartEntity {
   //TODO this doesnt work
 
   static updateColor(imState, action) {
-
     let list = imState.getIn([...this.path, 'series'])
 
-    // list = list.updateIn()
-
-
-
-
-    // update(originalArray, 1, val => val.toUpperCase()) // [ 'dog', 'FROG', 'cat' ]
-
-
-    list = list.updateIn(function (elem) {
-      if (elem.get("name") === action.seriesName) {
-        elem.set("color", action.color)
+    let list3 = list.update(
+      list.findIndex(function(item) {
+        return item.get("name") === action.seriesName;
+      }), function(item) {
+        return item.set("color", action.color);
       }
-      elem.set("color", "blah")
-      return "xxx";
-    })
-    console.info(list.toJS())
-
-    imState.setIn([...this.path, 'series'], list)
-
-
-    // var list = imState.getIn([...this.path, 'series']);
-
-    // imState = imState.updateIn([...this.path, 'series'],
-    //   (elem) => {
-    //
-    //     console.info("on element")
-    //     console.info(elem.toJS())
-    //
-    //     if (elem.get("name") !== action.seriesName) {
-    //       elem.set("color", action.color)
-    //     }
-    //     return elem;
-    //   })
-    //
-    // list = list.updateIn(
-
-
-    // list = list.update(
-    //   list.findIndex(function (item) {
-    //     let b = item.get("name") === action.seriesName;
-    //     return item;
-    //   }), function (item) {
-    //     let l = item.get("name")
-    //     return item.set("color", action.color);
-    //   }
-    // );
-
-    // list = list.toJS();
-    //
-    // imState = imState.setIn([...this.path, 'series'], list)
-
+    );
+    imState = imState.setIn([...this.path, 'series'], list3)
     return imState;
   }
 
