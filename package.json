@@ -39,6 +39,7 @@
     "reactjs-spinner": "^2.0.0",
     "recharts": "^1.0.0-alpha.6",
     "redux": "^3.7.2",
+    "reselect": "^3.0.1",
     "superagent": "^3.4.1",
     "xhr-mock": "^1.7.0"
   },

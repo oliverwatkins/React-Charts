@@ -27,10 +27,8 @@ export function reducer(state = initialState, action) {
     case PieActions.DELETE_SLICE:
       imState = PieChart.deleteSlice(imState, action.name);
       break;
-
-
     default : {
-      throw 'action not found ' + action.type
+      // throw 'asdfasdfasd action not found ' + action.type
     }
   }
   return imState.toJS();

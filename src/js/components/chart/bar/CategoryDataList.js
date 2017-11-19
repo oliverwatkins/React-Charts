@@ -8,6 +8,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 import {connect} from 'react-redux'
 
+import {makeCategoriesSelector} from "./selectors"
 
 export class CategoryDataList extends React.Component {
   constructor(props) {
@@ -17,7 +18,9 @@ export class CategoryDataList extends React.Component {
 
   render() {
     let barData = this.props.barData;
-    const categories = barData.categories;
+    // const categories = barData.categories;
+    const categories = this.props.categories;
+
 
     let deleteS = this.deleteCategory;
     return (
@@ -59,8 +62,12 @@ export class CategoryDataList extends React.Component {
 
 
 const mapStateToProps = state => {
+  const getCategories = makeCategoriesSelector(state)
+
   return {
-    barData: state.bar
+    barData: state.bar,
+    categories: getCategories
+
   }
 }
 const mapDispatchToProps = dispatch => {
