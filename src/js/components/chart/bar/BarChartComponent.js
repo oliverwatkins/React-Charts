@@ -102,7 +102,7 @@ class BarChartComponent extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    barData: state.app.bar
+    barData: state.bar
   }
 }
 

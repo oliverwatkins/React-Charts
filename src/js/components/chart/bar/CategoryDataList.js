@@ -1,15 +1,12 @@
 import React from "react";
 
-import BarChartEntity from "../../../../js/entity/BarChartEntity";
-
 import './List.less';
-import {deleteCategory} from "../../../../js/ActionsRedux";
+import {deleteCategory} from "./duck";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 
 import {connect} from 'react-redux'
-import {} from '../../../ActionsRedux'
 
 
 export class CategoryDataList extends React.Component {
@@ -63,7 +60,7 @@ export class CategoryDataList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    barData: state.app.bar
+    barData: state.bar
   }
 }
 const mapDispatchToProps = dispatch => {

@@ -11,7 +11,7 @@ import 'react-hint/css/index.css'
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { connect } from 'react-redux'
-import {createSeries} from '../../../ActionsRedux'
+import {createSeries} from './duck'
 
 
 class BarChartForm extends React.Component {
@@ -111,7 +111,7 @@ class BarChartForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    barData: state.app.bar
+    barData: state.bar
   }
 }
 const mapDispatchToProps = dispatch => {

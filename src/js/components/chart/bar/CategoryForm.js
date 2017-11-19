@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import {connect} from 'react-redux'
-import {changeLineChartName, createCategory} from '../../../ActionsRedux'
+import {changeLineChartName, createCategory} from './duck'
 
 
 class CategoryForm extends React.Component {
@@ -77,7 +77,7 @@ class CategoryForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    barData: state.app.bar
+    barData: state.bar
   }
 }
 const mapDispatchToProps = dispatch => {

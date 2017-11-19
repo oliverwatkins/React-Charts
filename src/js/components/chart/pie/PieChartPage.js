@@ -2,12 +2,12 @@ import React from "react";
 
 import {Component} from 'react';
 
-import SimplePieChart from "../components/chart/pie/PieChartComponent";
-import PieChartForm from "../components/chart/pie/PieChartForm";
-import PieChartSliceList from "../components/chart/pie/PieChartSliceList";
+import SimplePieChart from "./PieChartComponent";
+import PieChartForm from "./PieChartForm";
+import PieChartSliceList from "./PieChartSliceList";
 
 import { connect } from 'react-redux'
-import {changeNamePie} from './../ActionsRedux.js';
+import {changeNamePie} from '../../../ActionsRedux.js';
 
 
 class PieChartPage extends Component {

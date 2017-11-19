@@ -3,7 +3,6 @@ import React from "react";
 import ColorChooser from '../ColorChooser'
 
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
-import Actions from "../../../../js/ActionsRedux";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
@@ -11,10 +10,8 @@ import FlatButton from 'material-ui/FlatButton';
 import './List.less';
 
 import { connect } from 'react-redux'
-import {} from '../../../ActionsRedux'
 
-import {deleteSeries, updateColorBar} from '../../../ActionsRedux'
-
+import {deleteSeries, updateColorBar} from './duck.js'
 
 class BarSeriesList extends React.Component {
   constructor(props) {
@@ -43,27 +40,18 @@ class BarSeriesList extends React.Component {
   render() {
 
     let barData = this.props.barData;
-
     const series = BarChartEntity.getSeries2(barData);
-
     console.info(JSON.stringify(barData))
-
     let deleteS = this.deleteSeries;
-
     let self = this;
 
     return (
       <MuiThemeProvider>
-
-
       <div className="listStyle">
         <table>
           <tbody>
           {series.map(function (series, i) {
-
             console.info('in render: series name = ' + series.name + ' color ' + series.color)
-
-
             var key = 'xx_' + i;
             return (
               <tr key={key}>
@@ -71,7 +59,6 @@ class BarSeriesList extends React.Component {
                   {series.name}
                 </td>
                 <td>
-
                   <ColorChooser color={series.color}
                                 onChooseColor={
                                   (color) => {
@@ -96,7 +83,7 @@ class BarSeriesList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    barData: state.app.bar
+    barData: state.bar
   }
 }
 const mapDispatchToProps = dispatch => {

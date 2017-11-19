@@ -1,13 +1,13 @@
 import React from "react";
 
-import LineChartComponent from "../components/chart/line/LineChartComponent";
-import LineSeriesList from "../components/chart/line/LineSeriesList";
-import LineChartForm from "../components/chart/line/LineChartForm";
-import LineChartDataTable from "../components/chart/line/LineChartDataTable";
+import LineChartComponent from "./LineChartComponent";
+import LineSeriesList from "./LineSeriesList";
+import LineChartForm from "./LineChartForm";
+import LineChartDataTable from "./LineChartDataTable";
 
-import TitleEditComponent from "../components/chart/TitleEditComponent";
+import TitleEditComponent from "../TitleEditComponent";
 
-import ActionsRedux from "../ActionsRedux";
+import ActionsRedux from "../../../ActionsRedux";
 
 class LineChartPage extends React.Component {
 

@@ -9,55 +9,50 @@ export default function AppReducer(state = initialState, action) {
 
   let imState = Immutable.fromJS(state);
 
-  // console.info('--> ' + PieActions);
-  // console.info('--> ' + BarActions);
-  // console.info('--> ' + MiscActions);
-
-
   if (!action)
     return imState.toJS();
 
   switch (action.type) {
 
     //pie
-    case PieActions.CREATE_SLICE:
-      imState = PieChart.createSlice(imState, action.slice);
-      break;
-    case PieActions.CHANGE_NAME_PIE:
-      imState = PieChart.changeName(imState, action.newName);
-      break;
-    case PieActions.UPDATE_COLOR:
-      //TODO
-      // imState = PieChart.(imState, action.newName);
-      break;
-    case PieActions.DELETE_SLICE:
-      imState = PieChart.deleteSlice(imState, action.name);
-      break;
+    // case PieActions.CREATE_SLICE:
+    //   imState = PieChart.createSlice(imState, action.slice);
+    //   break;
+    // case PieActions.CHANGE_NAME_PIE:
+    //   imState = PieChart.changeName(imState, action.newName);
+    //   break;
+    // case PieActions.UPDATE_COLOR:
+    //   //TODO
+    //   // imState = PieChart.(imState, action.newName);
+    //   break;
+    // case PieActions.DELETE_SLICE:
+    //   imState = PieChart.deleteSlice(imState, action.name);
+    //   break;
+    //
+    //
 
-
-
-    //bar
-    case BarActions.CHANGE_NAME_BAR:
-      imState = BarChartEntity.changeName(imState, action.newName);
-      break;
-    case BarActions.CELL_CHANGED:
-      imState = BarChartEntity.cellChanged(imState, action)
-      break;
-    case BarActions.CREATE_SERIES:
-      imState = BarChartEntity.createSeries(imState, action)
-      break;
-    case BarActions.CREATE_CATEGORY:
-      imState = BarChartEntity.createCategory(imState, action)
-      break;
-    case BarActions.DELETE_CATEGORY:
-      imState = BarChartEntity.deleteCategory(imState, action)
-      break;
-    case BarActions.DELETE_SERIES:
-      imState = BarChartEntity.deleteSeries(imState, action)
-      break;
-    case BarActions.UPDATE_COLOR:
-      imState = BarChartEntity.updateColor(imState, action)
-      break;
+    // //bar
+    // case BarActions.CHANGE_NAME_BAR:
+    //   imState = BarChartEntity.changeName(imState, action.newName);
+    //   break;
+    // case BarActions.CELL_CHANGED:
+    //   imState = BarChartEntity.cellChanged(imState, action)
+    //   break;
+    // case BarActions.CREATE_SERIES:
+    //   imState = BarChartEntity.createSeries(imState, action)
+    //   break;
+    // case BarActions.CREATE_CATEGORY:
+    //   imState = BarChartEntity.createCategory(imState, action)
+    //   break;
+    // case BarActions.DELETE_CATEGORY:
+    //   imState = BarChartEntity.deleteCategory(imState, action)
+    //   break;
+    // case BarActions.DELETE_SERIES:
+    //   imState = BarChartEntity.deleteSeries(imState, action)
+    //   break;
+    // case BarActions.UPDATE_COLOR:
+    //   imState = BarChartEntity.updateColor(imState, action)
+    //   break;
 
 
     case MiscActions.FETCH_BAR_DATA:
@@ -78,7 +73,7 @@ export default function AppReducer(state = initialState, action) {
 
 const initialState =
   {
-    app: {
+    // app: {
       pie: {
         name: "Pie Chart",
         data: [
@@ -157,5 +152,5 @@ const initialState =
           }
         ]
       }
-    }
+    // }
   }

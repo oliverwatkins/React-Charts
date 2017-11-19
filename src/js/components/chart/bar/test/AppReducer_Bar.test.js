@@ -1,4 +1,4 @@
-import reducer from "./../AppReducer"
+import {reducer} from "./../duck"
 import {
   deleteSeries,
   changeLineChartName,
@@ -7,7 +7,7 @@ import {
   createSeries,
   deleteCategory,
   updateColorBar
-} from './../ActionsRedux.js'
+} from "./../duck"
 /*
 Test the reducer functions
  */
@@ -17,12 +17,12 @@ describe('Test Bar Reducer functions', () => {
 
     let state = reducer(initialState_Bar)
 
-    expect(state.app.bar.categories.length).toEqual(3)
-    expect(state.app.bar.categories).toContainEqual("dog")
-    expect(state.app.bar.series.length).toEqual(3)
-    expect(state.app.bar.series).toContainEqual({name: "Mexico", color: "red", data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}]})
+    expect(state.categories.length).toEqual(3)
+    expect(state.categories).toContainEqual("dog")
+    expect(state.series.length).toEqual(3)
+    expect(state.series).toContainEqual({name: "Mexico", color: "red", data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}]})
 
-    expect(state.app.bar.series).not.toContainEqual({
+    expect(state.series).not.toContainEqual({
       name: "Currywurst",
       color: "red",
       data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}]
@@ -33,14 +33,14 @@ describe('Test Bar Reducer functions', () => {
   it('change bar chart name ', () => {
 
     let state = reducer(initialState_Bar, changeLineChartName('sausage'))
-    expect(state.app.bar.name).toEqual('sausage')
-    expect(state.app.bar.name).not.toEqual('hotdog')
+    expect(state.name).toEqual('sausage')
+    expect(state.name).not.toEqual('hotdog')
   })
 
   it(' creates a series ', () => {
     let state = reducer(initialState_Bar, createSeries({name: "asdf", color: "brown"}));
-    expect(state.app.bar.series.length).toEqual(4)
-    expect(state.app.bar.series).toContainEqual({
+    expect(state.series.length).toEqual(4)
+    expect(state.series).toContainEqual({
       name: 'asdf', color: 'brown', data:
         [{"y": 0}, {"y": 0}, {"y": 0}, {"y": 0}]
     })
@@ -54,9 +54,9 @@ describe('Test Bar Reducer functions', () => {
       name: "lizard",
     }
     let state = reducer(initialState_Bar, createCategory(category));
-    expect(state.app.bar.categories.length).toEqual(4)
+    expect(state.categories.length).toEqual(4)
 
-    expect(state.app.bar.series).toContainEqual({
+    expect(state.series).toContainEqual({
       name: "Mexico",
       color: "red",
       data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}, {y:0}]
@@ -67,15 +67,15 @@ describe('Test Bar Reducer functions', () => {
   it(' deletes a category ', () => {
     let state = reducer(initialState_Bar, deleteCategory("dog"));
 
-    expect(state.app.bar.categories.length).toEqual(2)
-    expect(state.app.bar.categories).not.toContainEqual("dog")
-    expect(state.app.bar.series).toContainEqual({
+    expect(state.categories.length).toEqual(2)
+    expect(state.categories).not.toContainEqual("dog")
+    expect(state.series).toContainEqual({
       name: "Holland",
       color: "blue",
       data: [{y: 0}, {y: 0}, {y: 0}]
     })
 
-    expect(state.app.bar.series).toContainEqual({
+    expect(state.series).toContainEqual({
       name: "Germany",
       color: "orange",
       data: [{y: 0}, {y: 0}, {y: 0}]
@@ -89,20 +89,20 @@ describe('Test Bar Reducer functions', () => {
     }
     let state = reducer(initialState_Bar, deleteSeries("Germany"));
 
-    expect(state.app.bar.series.length).toEqual(2)
-    expect(state.app.bar.series).toContainEqual({
+    expect(state.series.length).toEqual(2)
+    expect(state.series).toContainEqual({
       name: "Mexico",
       color: "red",
       data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}
       ]
     })
-    expect(state.app.bar.series).toContainEqual({
+    expect(state.series).toContainEqual({
       name: "Holland",
       color: "blue",
       data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}]
     })
 
-    expect(state.app.bar.series).not.toContainEqual({
+    expect(state.series).not.toContainEqual({
       name: "Germany",
       color: "orange",
       data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}]
@@ -113,7 +113,7 @@ describe('Test Bar Reducer functions', () => {
 
     let state = reducer(initialState_Bar, updateColorBar("pink2", "Germany"));
 
-    expect(state.app.bar.series).toContainEqual({
+    expect(state.series).toContainEqual({
       name: "Germany",
       color: "pink2",
       data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}]
@@ -134,8 +134,8 @@ describe('Test Bar Reducer functions', () => {
 
 const initialState_Bar =
   {
-    app: {
-      bar: {
+    // app: {
+    //   bar: {
         name: "Bar Chart",
         categories: [
           "dog",
@@ -174,6 +174,6 @@ const initialState_Bar =
             ]
           }
         ]
-      }
-    }
+      // }
+    // }
   };

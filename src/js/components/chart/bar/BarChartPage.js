@@ -1,19 +1,19 @@
 import React from "react";
 
-import BarChartComponent from "../components/chart/bar/BarChartComponent";
-import BarSeriesList from "../components/chart/bar/BarSeriesList";
-import BarChartForm from "../components/chart/bar/BarChartForm";
-import BarChartDataTable from "../components/chart/bar/BarChartDataTable";
-import CategoryForm from "../components/chart/bar/CategoryForm";
+import BarChartComponent from "./BarChartComponent";
+import BarSeriesList from "./BarSeriesList";
+import BarChartForm from "./BarChartForm";
+import BarChartDataTable from "./BarChartDataTable";
+import CategoryForm from "./CategoryForm";
 
-import CategoryDataList from "../components/chart/bar/CategoryDataList";
+import CategoryDataList from "./CategoryDataList";
 
 import { connect } from 'react-redux'
-import {changeLineChartName} from './../ActionsRedux.js';
+import {changeLineChartName} from './duck.js';
 
 
 
-import TitleEditComponent from "../components/chart/TitleEditComponent";
+import TitleEditComponent from "../TitleEditComponent";
 
 class BarChartPage extends React.Component {
 
@@ -75,7 +75,8 @@ class BarChartPage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    barData: state.app.bar
+    // barData: state.app.bar
+    barData: state.bar
   }
 }
 const mapDispatchToProps = dispatch => {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import BarChartEntity from "../../../entity/BarChartEntity";
 
 import {connect} from 'react-redux'
-import {changeCell} from '../../../ActionsRedux'
+import {changeCell} from './duck'
 
 const { Row } = ReactDataGrid;
 
@@ -118,7 +118,7 @@ ColumnFormatter.propTypes = PropTypes.number.isRequired
 
 const mapStateToProps = state => {
   return {
-    barData: state.app.bar
+    barData: state.bar
   }
 }
 const mapDispatchToProps = dispatch => {

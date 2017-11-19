@@ -20,15 +20,15 @@ class BarChartEntity {
 
   static createCategory(imState, action) {
 
-    let myList = imState.getIn([...this.path, 'categories'])
+    let myList = imState.getIn(['categories'])
     myList = myList.toJS();
     myList.push(action.value.name)
     var v = Immutable.fromJS(myList)
-    imState = imState.setIn([...this.path, 'categories'], v)
+    imState = imState.setIn(['categories'], v)
 
 
     //now for each series create an entry
-    var list = imState.getIn([...this.path, 'series']);
+    var list = imState.getIn(['series']);
     list = list.toJS();
 
     list.forEach(function (data) {
@@ -38,17 +38,17 @@ class BarChartEntity {
     var v = Immutable.fromJS(list)
 
 
-    imState = imState.setIn([...this.path, 'series'], v);
+    imState = imState.setIn(['series'], v);
 
     return imState;
   }
 
   static deleteSeries(imState, action) {
-    let list = imState.getIn([...this.path, 'series'])
+    let list = imState.getIn(['series'])
     list = list.filter(function (elem) {
       return elem.get("name") !== action.seriesName
     })
-    imState = imState.setIn([...this.path, 'series'], list)
+    imState = imState.setIn(['series'], list)
 
     console.info("2")
     console.info(JSON.stringify(imState.toJS()))
@@ -58,7 +58,7 @@ class BarChartEntity {
 
 
   static updateColor(imState, action) {
-    let list = imState.getIn([...this.path, 'series'])
+    let list = imState.getIn(['series'])
 
     let list3 = list.update(
       list.findIndex(function(item) {
@@ -67,7 +67,7 @@ class BarChartEntity {
         return item.set("color", action.color);
       }
     );
-    imState = imState.setIn([...this.path, 'series'], list3)
+    imState = imState.setIn(['series'], list3)
     return imState;
   }
 
@@ -94,8 +94,8 @@ class BarChartEntity {
 
   static deleteCategory(imState, action) {
 
-    let filtered = imState.getIn([...this.path, 'categories']).filter(elem => elem !== action.categoryName);
-    imState = imState.setIn([...this.path, 'categories'], filtered);
+    let filtered = imState.getIn(['categories']).filter(elem => elem !== action.categoryName);
+    imState = imState.setIn(['categories'], filtered);
 
 
     /**
@@ -103,7 +103,7 @@ class BarChartEntity {
      * which correponds to the category index.
      */
     let index = action.index;
-    let seriesList = imState.getIn([...this.path, 'series']);
+    let seriesList = imState.getIn(['series']);
 
     console.info("seriesList ", seriesList.toJS())
 
@@ -151,7 +151,7 @@ class BarChartEntity {
     var v = Immutable.fromJS(seriesList)
 
 
-    imState = imState.setIn([...this.path, 'series'], seriesList);
+    imState = imState.setIn(['series'], seriesList);
 
     return imState;
   }
@@ -159,7 +159,7 @@ class BarChartEntity {
   static createSeries(imState, action) {
     let series = action.series;
 
-    let list = imState.getIn([...this.path, 'series'])
+    let list = imState.getIn(['series'])
 
     list = list.toJS();
     let firstSeries = list[0];
@@ -179,7 +179,7 @@ class BarChartEntity {
     );
 
     var v = Immutable.fromJS(list)
-    imState = imState.setIn([...this.path, 'series'], v)
+    imState = imState.setIn(['series'], v)
     return imState;
   }
 
@@ -193,22 +193,22 @@ class BarChartEntity {
 
 
     if (seriesName === "category") {
-      imState = imState.setIn([...this.path, 'categories', row], cellValue)
+      imState = imState.setIn(['categories', row], cellValue)
     } else {
 
-      var list = imState.getIn([...this.path, 'series']);
+      var list = imState.getIn(['series']);
 
       var index = list.findIndex(function (item) {
         return item.get("name") === seriesName;
       })
 
-      imState = imState.setIn([...this.path, 'series', index, 'data', row, 'y'], cellValue)
+      imState = imState.setIn(['series', index, 'data', row, 'y'], cellValue)
     }
     return imState;
   }
 
   static changeName(imState, newName) {
-    imState = imState.setIn([...this.path, 'name'], newName)
+    imState = imState.setIn(['name'], newName)
     return imState;
   }
 }
