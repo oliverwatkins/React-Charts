@@ -43,16 +43,13 @@ class BarChartEntity {
     return imState;
   }
 
+  /**
+   * Remote element from list.
+   */
   static deleteSeries(imState, action) {
     let list = imState.getIn(['series'])
-    list = list.filter(function (elem) {
-      return elem.get("name") !== action.seriesName
-    })
-    imState = imState.setIn(['series'], list)
-
-    console.info("2")
-    console.info(JSON.stringify(imState.toJS()))
-
+    let listWithout = list.filter((elem) => elem.get("name") !== action.seriesName)
+    imState = imState.setIn(['series'], listWithout)
     return imState;
   }
 
@@ -138,11 +135,6 @@ class BarChartEntity {
 
 
 
-
-
-
-
-
     seriesList = seriesList.toJS();
     seriesList.forEach(function (elem) {
       let data = elem.data;
@@ -162,19 +154,20 @@ class BarChartEntity {
     let list = imState.getIn(['series'])
 
     list = list.toJS();
+
     let firstSeries = list[0];
 
-    let dataArr = [];
-    firstSeries.data.forEach(function (data) {
-      let n = data.name;
-      dataArr.push({"x": n, "y": 0});
-    });
+    //create an empty series
+    let emptySeries = firstSeries.data.reduce((accum, currV, currIndex, array ) => {
+      accum.push({y:0})
+      return accum;
+    }, [])
 
     list.push(
       {
         name: series.name,
         color: series.color,
-        data: dataArr
+        data: emptySeries
       },
     );
 
