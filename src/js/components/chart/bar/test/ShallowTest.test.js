@@ -8,7 +8,7 @@ describe('Shallow Render REACT COMPONENTS',()=>{
   let wrapper
 
   beforeEach(()=>{
-    wrapper = shallow(<CategoryDataList barData={{categories: ['Apple', 'Orange', 'tomato']}}/>)
+    wrapper = shallow(<CategoryDataList categories={['Apple', 'Orange', 'tomato']}/>)
   })
 
   it('+++ render the DUMB component', () => {

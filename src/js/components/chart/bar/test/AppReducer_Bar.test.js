@@ -134,8 +134,6 @@ describe('Test Bar Reducer functions', () => {
 
 const initialState_Bar =
   {
-    // app: {
-    //   bar: {
         name: "Bar Chart",
         categories: [
           "dog",
@@ -174,6 +172,4 @@ const initialState_Bar =
             ]
           }
         ]
-      // }
-    // }
   };
