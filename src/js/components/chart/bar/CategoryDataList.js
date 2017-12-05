@@ -21,7 +21,6 @@ export class CategoryDataList extends React.Component {
     // const categories = barData.categories;
     const categories = this.props.categories;
 
-
     let deleteS = this.deleteCategory;
     return (
       <MuiThemeProvider>

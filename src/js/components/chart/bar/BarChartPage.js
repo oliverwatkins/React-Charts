@@ -9,17 +9,21 @@ import CategoryForm from "./CategoryForm";
 import CategoryDataList from "./CategoryDataList";
 
 import { connect } from 'react-redux'
-import {changeLineChartName} from './duck.js';
+import {changeLineChartName, reducer} from './duck';
 
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 
+import rootSaga , { helloSaga } from './helloSaga'
 
 import TitleEditComponent from "../TitleEditComponent";
+
+//redux container
 
 class BarChartPage extends React.Component {
 
   constructor(props) {
     super(props)
-
     this.handleChartNameChange = this.handleChartNameChange.bind(this);
   }
   handleChartNameChange(val, event) {
@@ -32,7 +36,7 @@ class BarChartPage extends React.Component {
       // borderColor: "#808080",
       // borderStyle: "solid",
       // borderWidth: "1px"
-    }
+    };
 
     return (
       <div>
@@ -64,13 +68,32 @@ class BarChartPage extends React.Component {
             <BarChartComponent {...this.state}/>
           </div>
           </div>
-        </div>
 
+          <div>
+            <button onClick={onIncrementAsync}>
+              TEST!!!
+            </button>
+          </div>
+
+        </div>
       </div>
     );
   }
 }
+const onIncrementAsync=() => action('INCREMENT_ASYNCH')
 
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  reducer,
+  applyMiddleware(sagaMiddleware)
+);
+// sagaMiddleware.run(helloSaga);
+
+sagaMiddleware.run(rootSaga);
+
+
+const action = type => store.dispatch({type});
 
 
 const mapStateToProps = state => {

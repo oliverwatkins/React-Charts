@@ -44,8 +44,6 @@ export const PieActions = {
   UPDATE_COLOR: 'UPDATE_COLOR_PIE'
 }
 
-
-
 const initialState =
   {
     name: "Bar Chart",

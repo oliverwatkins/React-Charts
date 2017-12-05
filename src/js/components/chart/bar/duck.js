@@ -11,6 +11,11 @@ export function reducer(state = initialState, action) {
 
   switch (action.type) {
 
+
+    case "INCREMENT_ASYNCH":
+      alert("1")
+
+
     //bar
     case BarActions.CHANGE_NAME_BAR:
       imState = BarChartEntity.changeName(imState, action.newName);
