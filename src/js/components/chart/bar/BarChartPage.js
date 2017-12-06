@@ -30,6 +30,17 @@ class BarChartPage extends React.Component {
     this.props.changeLineChartName(val);
   }
 
+
+  onLoadChart() {
+
+
+    action('FETCH_BAR_DATA')
+    // this.props.changeLineChartName(val);
+  }
+
+
+  // const onLoadChart=() => action('FETCH_BAR_DATA')
+
   render() {
 
     let style = {
@@ -65,7 +76,7 @@ class BarChartPage extends React.Component {
             <BarChartDataTable {...this.state}/>
           </div>
           <div>
-            <BarChartComponent {...this.state}/>
+            <BarChartComponent onLoadChart={this.onLoadChart} {...this.state}/>
           </div>
           </div>
 
@@ -81,6 +92,7 @@ class BarChartPage extends React.Component {
   }
 }
 const onIncrementAsync=() => action('INCREMENT_ASYNCH')
+
 
 
 const sagaMiddleware = createSagaMiddleware();

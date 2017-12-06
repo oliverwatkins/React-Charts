@@ -1,5 +1,21 @@
 import Immutable from "immutable";
 
+// import MiscActions from "../../test"
+
+export const MiscActions = {
+  FETCH_BAR_DATA : 'FETCH_BAR_DATA',
+  SERVER_RESPONSE : 'SERVER_RESPONSE',
+}
+
+// export function fetchBarData(value) {
+//   return {
+//     type: MiscActions.FETCH_BAR_DATA,
+//     value
+//   }
+// }
+
+
+
 import BarChartEntity from './BarChartEntity'
 
 export function reducer(state = initialState, action) {
@@ -10,6 +26,19 @@ export function reducer(state = initialState, action) {
     return imState.toJS();
 
   switch (action.type) {
+    //
+    // case MiscActions.FETCH_BAR_DATA:
+    //   Server.doGetRequest('/bardata');
+    //   break;
+
+    case MiscActions.SERVER_RESPONSE: {
+
+      alert('finished server')
+
+      // imState = BarChartEntity.fetchFinished(imState, action)
+      break;
+    }
+
 
 
     case "INCREMENT_ASYNCH":
@@ -120,6 +149,12 @@ export function changeCell(value) {
   }
 }
 
+export function fetchBarData(value) {
+  return {
+    type: MiscActions.FETCH_BAR_DATA,
+    value
+  }
+}
 
 
 const initialState =

@@ -9,7 +9,7 @@ import Loader from 'react-loader-advanced';
 // import { RingLoader } from 'react-spinners';
 
 import { connect } from 'react-redux'
-import {fetchBarData} from '../../../ActionsRedux'
+import {fetchBarData} from './duck'
 
 class BarChartComponent extends React.Component {
 
@@ -18,6 +18,8 @@ class BarChartComponent extends React.Component {
   }
 
   componentDidMount() {
+
+    this.props.onLoadChart();
     this.props.fetchBarData('asdf')
   }
 
