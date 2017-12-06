@@ -18,9 +18,7 @@ class BarChartComponent extends React.Component {
   }
 
   componentDidMount() {
-
     this.props.onLoadChart();
-    this.props.fetchBarData('asdf')
   }
 
   createDataForChart(barData) {
@@ -52,7 +50,6 @@ class BarChartComponent extends React.Component {
   render() {
 
     let barData = this.props.barData;
-
 
     let series = BarChartEntity.getSeries2(barData);
 
@@ -111,11 +108,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchBarData: (value) => {
-      dispatch(fetchBarData(value))
+      // dispatch(fetchBarData(value))
     }
   }
 }
 
+//TODO is this needed
 export default connect(
   mapStateToProps,
   mapDispatchToProps

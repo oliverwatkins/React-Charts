@@ -1,19 +1,9 @@
 import Immutable from "immutable";
 
-// import MiscActions from "../../test"
-
 export const MiscActions = {
   FETCH_BAR_DATA : 'FETCH_BAR_DATA',
   SERVER_RESPONSE : 'SERVER_RESPONSE',
 }
-
-// export function fetchBarData(value) {
-//   return {
-//     type: MiscActions.FETCH_BAR_DATA,
-//     value
-//   }
-// }
-
 
 
 import BarChartEntity from './BarChartEntity'
@@ -26,24 +16,16 @@ export function reducer(state = initialState, action) {
     return imState.toJS();
 
   switch (action.type) {
-    //
-    // case MiscActions.FETCH_BAR_DATA:
-    //   Server.doGetRequest('/bardata');
-    //   break;
+    case MiscActions.FETCH_BAR_DATA:
+
+      //TODO is this needed? This action is listened to already in the saga
+      // Server.doGetRequest('/bardata');
+      break;
 
     case MiscActions.SERVER_RESPONSE: {
-
-      alert('finished server')
-
-      // imState = BarChartEntity.fetchFinished(imState, action)
+      imState = BarChartEntity.fetchFinished(imState, action)
       break;
     }
-
-
-
-    case "INCREMENT_ASYNCH":
-      alert("1")
-
 
     //bar
     case BarActions.CHANGE_NAME_BAR:
@@ -67,8 +49,6 @@ export function reducer(state = initialState, action) {
     case BarActions.UPDATE_COLOR:
       imState = BarChartEntity.updateColor(imState, action)
       break;
-
-
     default : {
       // throw 'action not found ' + action.type
     }
@@ -141,7 +121,6 @@ export function deleteCategory(categoryName, index) {
   }
 }
 
-
 export function changeCell(value) {
   return {
     type: BarActions.CELL_CHANGED,
@@ -169,23 +148,23 @@ const initialState =
     ],
     series: [
       {
-        name: "Mexico",
+        name: "Mexicoooo",
         color: "red",
         data: [
-          {y: 0},
-          {y: 0},
-          {y: 0},
-          {y: 0}
+          {y: 1},
+          {y: 2},
+          {y: 3},
+          {y: 4}
         ]
       },
       {
-        name: "Germany",
+        name: "Germanyyy",
         color: "orange",
         data: [
-          {y: 0},
-          {y: 0},
-          {y: 0},
-          {y: 0}
+          {y: 5},
+          {y: 6},
+          {y: 7},
+          {y: 8}
         ]
       },
       {

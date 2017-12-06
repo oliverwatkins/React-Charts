@@ -8,32 +8,35 @@ import PieChartPage from "./components/chart/pie/PieChartPage";
 import LineChartPage from "./components/chart/line/LineChartPage";
 import WelcomePage from "./pages/WelcomePage";
 
+import rootSaga from './components/chart/bar/saga'
+
 import { Provider } from 'react-redux'
 
-import AppReducer from './AppReducer.js'
+import createSagaMiddleware from 'redux-saga'
+
 import {reducer as barReducer} from './components/chart/bar/duck.js'
 import {reducer as lineReducer} from './components/chart/line/duck.js'
 import {reducer as pieReducer} from './components/chart/pie/duck.js'
 
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers , applyMiddleware, compose} from 'redux'
 
 
 
-let combined = combineReducers({
-  line: lineReducer,
+let combinedReducers = combineReducers({
+  lineReducer: lineReducer,
   pie: pieReducer,
   bar: barReducer
-})
+});
 
-//BAD!!!! this is calling code while loading app...
-// const store = createStore(AppReducer)
+const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(combined)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  combinedReducers,
+  composeEnhancers(applyMiddleware(sagaMiddleware))
+);
 
-//not very pretty solution :(
-export function getStore() {
-  return store
-}
+sagaMiddleware.run(rootSaga);
 
 const app = document.getElementById('app');
 
@@ -50,6 +53,5 @@ ReactDOM.render(
       </Route>
     </Router>
   </Provider>,
-
 app);
 

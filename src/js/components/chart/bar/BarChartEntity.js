@@ -3,7 +3,7 @@ import selectors from './selectors'
 class BarChartEntity {
 
   static get path() {
-    return ['app', 'bar'];
+    return [];
   }
 
   static getSeries2(barData) {
@@ -36,7 +36,6 @@ class BarChartEntity {
     });
 
     var v = Immutable.fromJS(list)
-
 
     imState = imState.setIn(['series'], v);
 
@@ -73,6 +72,7 @@ class BarChartEntity {
     var v = Immutable.fromJS(action.payload.app.bar)
     imState = imState.setIn([...this.path], v)
     imState = imState.setIn([...this.path, 'isFetching'], false)
+
     return imState;
   }
 
@@ -182,18 +182,15 @@ class BarChartEntity {
     let seriesName = Object.keys(action.value.updated)[0];
     let cellValue = action.value.updated[seriesName];
 
-    console.info('cellvalue', cellValue);
-
-
     if (seriesName === "category") {
       imState = imState.setIn(['categories', row], cellValue)
     } else {
 
-      var list = imState.getIn(['series']);
+      let list = imState.getIn(['series']);
 
-      var index = list.findIndex(function (item) {
+      let index = list.findIndex(function (item) {
         return item.get("name") === seriesName;
-      })
+      });
 
       imState = imState.setIn(['series', index, 'data', row, 'y'], cellValue)
     }

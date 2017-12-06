@@ -1,8 +1,6 @@
 import Immutable from "immutable";
-import Server from '../../../Server';
 
 import {BarActions, MiscActions} from '../../../ActionsRedux.js'
-import BarChartEntity from '../../../entity/BarChartEntity'
 
 export function reducer(state = initialState, action) {
 

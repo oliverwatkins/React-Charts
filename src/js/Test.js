@@ -5,13 +5,7 @@ import Server from './Server'
 import ActionsRedux from './ActionsRedux'
 
 
-
-// import { PieActions, BarActions, MiscActions } from './ActionsRedux'
-// import BarChartEntity from './entity/BarChartEntity'
-// import PieChart from './entity/PieChart'
-
 export default function Test(state = initialState, action) {
-
 
   let imState = Immutable.fromJS(state);
 

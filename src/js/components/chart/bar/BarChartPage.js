@@ -9,37 +9,25 @@ import CategoryForm from "./CategoryForm";
 import CategoryDataList from "./CategoryDataList";
 
 import { connect } from 'react-redux'
-import {changeLineChartName, reducer} from './duck';
-
-import { createStore, applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-
-import rootSaga , { helloSaga } from './helloSaga'
+import {changeLineChartName, fetchBarData} from './duck';
 
 import TitleEditComponent from "../TitleEditComponent";
 
 //redux container
-
 class BarChartPage extends React.Component {
 
   constructor(props) {
     super(props)
     this.handleChartNameChange = this.handleChartNameChange.bind(this);
+    this.onLoadChart = this.onLoadChart.bind(this);
   }
   handleChartNameChange(val, event) {
     this.props.changeLineChartName(val);
   }
 
-
-  onLoadChart() {
-
-
-    action('FETCH_BAR_DATA')
-    // this.props.changeLineChartName(val);
+  onLoadChart(val, event) {
+    this.props.onLoadChart(val);
   }
-
-
-  // const onLoadChart=() => action('FETCH_BAR_DATA')
 
   render() {
 
@@ -79,38 +67,14 @@ class BarChartPage extends React.Component {
             <BarChartComponent onLoadChart={this.onLoadChart} {...this.state}/>
           </div>
           </div>
-
-          <div>
-            <button onClick={onIncrementAsync}>
-              TEST!!!
-            </button>
-          </div>
-
         </div>
       </div>
     );
   }
 }
-const onIncrementAsync=() => action('INCREMENT_ASYNCH')
-
-
-
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(
-  reducer,
-  applyMiddleware(sagaMiddleware)
-);
-// sagaMiddleware.run(helloSaga);
-
-sagaMiddleware.run(rootSaga);
-
-
-const action = type => store.dispatch({type});
-
 
 const mapStateToProps = state => {
   return {
-    // barData: state.app.bar
     barData: state.bar
   }
 }
@@ -118,9 +82,14 @@ const mapDispatchToProps = dispatch => {
   return {
     changeLineChartName: (val) => {
       dispatch(changeLineChartName(val))
+    },
+    onLoadChart: () => {
+      dispatch(fetchBarData());
     }
   }
 }
+
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
