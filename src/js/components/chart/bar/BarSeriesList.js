@@ -15,13 +15,7 @@ import {deleteSeries, updateColorBar} from './duck.js'
 class BarSeriesList extends React.Component {
   constructor(props) {
     super(props);
-    // this.colorSelected = this.colorSelected.bind(this);
-    // this.deleteSeries = this.deleteSeries.bind(this);
   }
-
-  // colorSelected(color, seriesName) {
-  //   this.props.updateColorBar(color, seriesName)
-  // }
 
   componentWillMount() {
     // SlicesStore.on("change", this.getSlices);
@@ -31,17 +25,11 @@ class BarSeriesList extends React.Component {
     // SlicesStore.removeListener("change", this.getSlices);
   }
 
-  deleteSeries(event, seriesName) {
-    event.preventDefault();
-    this.props.deleteSeries(seriesName);
-  }
-
   render() {
 
     let barData = this.props.barData; //pass through
     const series = BarChartEntity.getSeries2(barData);
     console.info(JSON.stringify(barData))
-    // let deleteS = this.deleteSeries;
 
     let deleteSeries = this.props.deleteSeries;
     let colorSelected = this.props.colorSelected;
@@ -65,13 +53,15 @@ class BarSeriesList extends React.Component {
                   <ColorChooser color={series.color}
                                 onChooseColor={
                                   (color) => {
+
                                     colorSelected(color, series.name)
                                   }
                                 }/>
                 </td>
                 <td>
                   <FlatButton label="Delete" secondary={true}
-                              onClick={(e) => deleteSeries(series.name)}/>
+                              onClick={
+                                (e) => deleteSeries(series.name)}/>
                 </td>
               </tr>
             );
@@ -83,25 +73,5 @@ class BarSeriesList extends React.Component {
     );
   }
 }
-
-// const mapStateToProps = state => {
-//   return {
-//     barData: state.bar
-//   }
-// }
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     deleteSeries: (value) => {
-//       dispatch(deleteSeries(value))
-//     },
-//     updateColorBar: (value) => {
-//       dispatch(updateColorBar(value))
-//     }
-//   }
-// }
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(BarSeriesList)
 
 export default BarSeriesList

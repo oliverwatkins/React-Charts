@@ -84,6 +84,9 @@ export function deleteSeries(seriesName) {
 }
 
 export function updateColorBar(color, seriesName) {
+
+  alert('seriesname = ' + seriesName)
+
   return {
     type: BarActions.UPDATE_COLOR,
     seriesName,

@@ -30,8 +30,8 @@ class BarChartPage extends React.Component {
   handleDeleteSeries(val, event) {
     this.props.deleteSeries(val);
   }
-  handleUpdateColorBar(val, event) {
-    this.props.updateColorBar(val);
+  handleUpdateColorBar(val, name) {
+    this.props.updateColorBar(val, name);
   }
 
   onLoadChart(val, event) {
@@ -102,8 +102,8 @@ const mapDispatchToProps = dispatch => {
     deleteSeries: (value) => {
       dispatch(deleteSeries(value))
     },
-    updateColorBar: (value) => {
-      dispatch(updateColorBar(value))
+    updateColorBar: (colorValue, seriesName) => {
+      dispatch(updateColorBar(colorValue, seriesName))
     }
   }
 }
