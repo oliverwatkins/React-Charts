@@ -3,7 +3,7 @@ import React from "react";
 import BarChartEntity from "../../../../js/entity/BarChartEntity";
 import Actions from "../../../../js/ActionsRedux";
 
-import XYChartEntity from "../../../../js/entity/XYChartEntity";
+import XYChartEntity from "./XYChartEntity";
 
 import './List.less';
 

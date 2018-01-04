@@ -8,6 +8,7 @@ import LineChartDataTable from "./LineChartDataTable";
 import TitleEditComponent from "../TitleEditComponent";
 
 import ActionsRedux from "../../../ActionsRedux";
+import { connect } from 'react-redux'
 
 class LineChartPage extends React.Component {
 
@@ -64,5 +65,22 @@ class LineChartPage extends React.Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    xyData: state.xy
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    XXchangeBarChartName: (val) => {
+      dispatch(changeNamePie(val))
+    }
+  }
+}
 
-export default LineChartPage;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LineChartPage)
+
+// export default LineChartPage;

@@ -1,8 +1,7 @@
 import React from "react";
 import TitleComponent from '../TitleComponent'
 import {BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
-import BarChartEntity from "../../../../js/entity/BarChartEntity";
-
+import BarChartEntity from "./BarChartEntity";
 
 import Loader from 'react-loader-advanced';
 
@@ -31,7 +30,6 @@ class BarChartComponent extends React.Component {
     for (let i = 0; i < categories.length; i++) {
 
       let obj = {};
-
       obj["name"] = categories[i];
 
       for (let j = 0; j < series.length; j++) {

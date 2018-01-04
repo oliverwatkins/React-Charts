@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDataGrid from "react-data-grid";
 import PropTypes from 'prop-types';
-import BarChartEntity from "../../../entity/BarChartEntity";
+import BarChartEntity from "./BarChartEntity";
 
 import {connect} from 'react-redux'
 import {changeCell} from './duck'

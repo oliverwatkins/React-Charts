@@ -2,27 +2,26 @@ import React from "react";
 
 import ColorChooser from '../ColorChooser'
 
-import BarChartEntity from "../../../../js/entity/BarChartEntity";
+import BarChartEntity from "./BarChartEntity";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 
 import './List.less';
 
-import { connect } from 'react-redux'
 
 import {deleteSeries, updateColorBar} from './duck.js'
 
 class BarSeriesList extends React.Component {
   constructor(props) {
     super(props);
-    this.colorSelected = this.colorSelected.bind(this);
-    this.deleteSeries = this.deleteSeries.bind(this);
+    // this.colorSelected = this.colorSelected.bind(this);
+    // this.deleteSeries = this.deleteSeries.bind(this);
   }
 
-  colorSelected(color, seriesName) {
-    this.props.updateColorBar(color, seriesName)
-  }
+  // colorSelected(color, seriesName) {
+  //   this.props.updateColorBar(color, seriesName)
+  // }
 
   componentWillMount() {
     // SlicesStore.on("change", this.getSlices);
@@ -39,10 +38,14 @@ class BarSeriesList extends React.Component {
 
   render() {
 
-    let barData = this.props.barData;
+    let barData = this.props.barData; //pass through
     const series = BarChartEntity.getSeries2(barData);
     console.info(JSON.stringify(barData))
-    let deleteS = this.deleteSeries;
+    // let deleteS = this.deleteSeries;
+
+    let deleteSeries = this.props.deleteSeries;
+    let colorSelected = this.props.colorSelected;
+
     let self = this;
 
     return (
@@ -62,13 +65,13 @@ class BarSeriesList extends React.Component {
                   <ColorChooser color={series.color}
                                 onChooseColor={
                                   (color) => {
-                                    self.colorSelected(color, series.name)
+                                    colorSelected(color, series.name)
                                   }
                                 }/>
                 </td>
                 <td>
                   <FlatButton label="Delete" secondary={true}
-                              onClick={(e) => deleteS(e, series.name)}/>
+                              onClick={(e) => deleteSeries(series.name)}/>
                 </td>
               </tr>
             );
@@ -81,22 +84,24 @@ class BarSeriesList extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    barData: state.bar
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    deleteSeries: (value) => {
-      dispatch(deleteSeries(value))
-    },
-    updateColorBar: (value) => {
-      dispatch(updateColorBar(value))
-    }
-  }
-}
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BarSeriesList)
+// const mapStateToProps = state => {
+//   return {
+//     barData: state.bar
+//   }
+// }
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     deleteSeries: (value) => {
+//       dispatch(deleteSeries(value))
+//     },
+//     updateColorBar: (value) => {
+//       dispatch(updateColorBar(value))
+//     }
+//   }
+// }
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(BarSeriesList)
+
+export default BarSeriesList

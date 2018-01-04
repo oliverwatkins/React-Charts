@@ -15,7 +15,7 @@ import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
 
 import {reducer as barReducer} from './components/chart/bar/duck.js'
-import {reducer as lineReducer} from './components/chart/line/duck.js'
+import {reducer as xyReducer} from './components/chart/line/duck.js'
 import {reducer as pieReducer} from './components/chart/pie/duck.js'
 
 import { createStore, combineReducers , applyMiddleware, compose} from 'redux'
@@ -23,7 +23,7 @@ import { createStore, combineReducers , applyMiddleware, compose} from 'redux'
 
 
 let combinedReducers = combineReducers({
-  lineReducer: lineReducer,
+  xy: xyReducer,
   pie: pieReducer,
   bar: barReducer
 });

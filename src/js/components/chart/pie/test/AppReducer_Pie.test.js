@@ -1,5 +1,4 @@
-import {reducer} from "./../duck"
-import {changeNamePie, createSlice, deleteSlice} from "./../duck"
+import {reducer, changeNamePie, createSlice, deleteSlice} from "./../duck"
 /*
 Test the reducer functions
  */

@@ -1,9 +1,6 @@
 import Immutable from "immutable";
 
-// import PieChart from "./../../"
-
-import PieChart from '../../../entity/PieChart'
-
+import PieChart from './PieChartEntity'
 
 export function reducer(state = initialState, action) {
 

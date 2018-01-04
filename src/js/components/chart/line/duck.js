@@ -1,6 +1,6 @@
 import Immutable from "immutable";
 
-import {BarActions, MiscActions} from '../../../ActionsRedux.js'
+import XYChartEntity from './XYChartEntity'
 
 export function reducer(state = initialState, action) {
 
@@ -12,15 +12,15 @@ export function reducer(state = initialState, action) {
   switch (action.type) {
 
     //bar
-    // case LineActions.CHANGE_NAME_BAR:
-    //   imState = BarChartEntity.changeName(imState, action.newName);
-    //   break;
+    case LineActions.CHANGE_NAME_XY:
+      imState = XYChartEntity.changeName(imState, action.newName);
+      break;
     // case BarActions.CELL_CHANGED:
     //   imState = BarChartEntity.cellChanged(imState, action)
     //   break;
-    // case BarActions.CREATE_SERIES:
-    //   imState = BarChartEntity.createSeries(imState, action)
-    //   break;
+    case LineActions.CREATE_SERIES_XY:
+      // imState = XYChartEntity.createSeries(imState, action)
+      break;
     // case BarActions.CREATE_CATEGORY:
     //   imState = BarChartEntity.createCategory(imState, action)
     //   break;
@@ -43,9 +43,18 @@ export function reducer(state = initialState, action) {
 }
 
 
+//bar
+export const LineActions = {
+  CHANGE_NAME_XY: 'CHANGE_NAME_XY',
+  CREATE_SERIES_XY: 'CREATE_SERIES_XY',
+}
+
+
+
+
 const initialState =
   {
-    name: "Bar Chart",
+    name: "XY Chart",
     isFetching: true,
     categories: [
       "Apple",

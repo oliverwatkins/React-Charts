@@ -53,7 +53,7 @@ class PieChartPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    pieData: state.app.pie
+    pieData: state.pie
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -75,14 +75,6 @@ const mapDispatchToProps = dispatch => {
 //   }
 //   changeName(event.currentTarget.value);
 // }
-
-
-
-
-
-
-
-
 
 
 export default connect(

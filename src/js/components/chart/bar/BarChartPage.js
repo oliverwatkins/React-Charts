@@ -9,7 +9,7 @@ import CategoryForm from "./CategoryForm";
 import CategoryDataList from "./CategoryDataList";
 
 import { connect } from 'react-redux'
-import {changeLineChartName, fetchBarData} from './duck';
+import {changeLineChartName, fetchBarData, deleteSeries, updateColorBar} from './duck';
 
 import TitleEditComponent from "../TitleEditComponent";
 
@@ -19,10 +19,19 @@ class BarChartPage extends React.Component {
   constructor(props) {
     super(props)
     this.handleChartNameChange = this.handleChartNameChange.bind(this);
+    this.handleDeleteSeries = this.handleDeleteSeries.bind(this);
+    this.handleUpdateColorBar = this.handleUpdateColorBar.bind(this);
+
     this.onLoadChart = this.onLoadChart.bind(this);
   }
   handleChartNameChange(val, event) {
     this.props.changeLineChartName(val);
+  }
+  handleDeleteSeries(val, event) {
+    this.props.deleteSeries(val);
+  }
+  handleUpdateColorBar(val, event) {
+    this.props.updateColorBar(val);
   }
 
   onLoadChart(val, event) {
@@ -47,7 +56,11 @@ class BarChartPage extends React.Component {
                 <BarChartForm {...this.state}/>
               </div>
               <div>
-                <BarSeriesList {...this.state}/>
+                <BarSeriesList {...this.state}
+                               barData={this.props.barData}
+                               deleteSeries={this.handleDeleteSeries}
+                                colorSelected={this.handleUpdateColorBar}
+                />
               </div>
             </div>
             <div style={style}>
@@ -85,6 +98,12 @@ const mapDispatchToProps = dispatch => {
     },
     onLoadChart: () => {
       dispatch(fetchBarData());
+    },
+    deleteSeries: (value) => {
+      dispatch(deleteSeries(value))
+    },
+    updateColorBar: (value) => {
+      dispatch(updateColorBar(value))
     }
   }
 }
