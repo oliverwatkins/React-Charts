@@ -4,10 +4,6 @@ import MUITextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import {connect} from 'react-redux'
-import {changeLineChartName, createCategory} from './duck'
-
-
 class CategoryForm extends React.Component {
 
   constructor(props) {
@@ -18,7 +14,6 @@ class CategoryForm extends React.Component {
     this.state = {
       enableButton: false,
     };
-
   }
 
   handleSubmit(event) {
@@ -75,19 +70,4 @@ class CategoryForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    barData: state.bar
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    createCategory: (val) => {
-      dispatch(createCategory(val))
-    }
-  }
-}
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CategoryForm)
+export default CategoryForm;

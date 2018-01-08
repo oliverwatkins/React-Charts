@@ -16,14 +16,6 @@ class LineChartPage extends React.Component {
     ActionsRedux.changeLineChartName(event.currentTarget.value);
   }
 
-  // static getStores() {
-  //   return [AppStore];
-  // }
-  //
-  // static calculateState(prevState) {
-  //   return AppStore.getState();
-  // }
-
   render() {
 
     let style = {

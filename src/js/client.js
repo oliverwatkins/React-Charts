@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import PageLayout from "./PageLayout";
 import BarChartPage from "./components/chart/bar/BarChartPage";
 import PieChartPage from "./components/chart/pie/PieChartPage";
-import LineChartPage from "./components/chart/line/LineChartPage";
+import LineChartPage from "./components/chart/xy/LineChartPage";
 import WelcomePage from "./pages/WelcomePage";
 
 import rootSaga from './components/chart/bar/saga'
@@ -15,7 +15,7 @@ import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
 
 import {reducer as barReducer} from './components/chart/bar/duck.js'
-import {reducer as xyReducer} from './components/chart/line/duck.js'
+import {reducer as xyReducer} from './components/chart/xy/duck.js'
 import {reducer as pieReducer} from './components/chart/pie/duck.js'
 
 import { createStore, combineReducers , applyMiddleware, compose} from 'redux'

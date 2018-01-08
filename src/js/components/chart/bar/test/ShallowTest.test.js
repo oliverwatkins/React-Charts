@@ -3,7 +3,6 @@ import {CategoryDataList} from './../CategoryDataList'; //dumb version
 
 import {shallow} from 'enzyme';
 
-
 describe('Shallow Render REACT COMPONENTS',()=>{
   let wrapper
 

@@ -17,7 +17,7 @@ export class CategoryDataList extends React.Component {
   }
 
   render() {
-    let barData = this.props.barData;
+    // let barData = this.props.barData;
     // const categories = barData.categories;
     const categories = this.props.categories;
 
@@ -60,25 +60,30 @@ export class CategoryDataList extends React.Component {
 }
 
 
-const mapStateToProps = state => {
-  const getCategories = makeCategoriesSelector(state)
+export default CategoryDataList;
 
-  return {
-    barData: state.bar,
-    categories: getCategories
+// const mapStateToProps = state => {
+//   const getCategories = makeCategoriesSelector(state)
+//
+//   return {
+//     barData: state.bar,
+//     categories: getCategories
+//
+//   }
+// }
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     deleteCategory: (categoryName, index) => {
+//       dispatch(deleteCategory(categoryName, index))
+//     }
+//   }
+// }
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(CategoryDataList)
 
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    deleteCategory: (categoryName, index) => {
-      dispatch(deleteCategory(categoryName, index))
-    }
-  }
-}
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CategoryDataList)
+
+
 
 

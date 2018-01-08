@@ -1,6 +1,5 @@
 import React from "react";
 
-import BarChartEntity from "../../../../js/entity/BarChartEntity";
 import Actions from "../../../../js/ActionsRedux";
 
 import XYChartEntity from "./XYChartEntity";
@@ -23,7 +22,6 @@ export default class LineSeriesList extends React.Component {
 
   deleteSeries(event, seriesName) {
     event.preventDefault();
-    alert('todo')
     Actions.deleteSeries(seriesName);
   }
 

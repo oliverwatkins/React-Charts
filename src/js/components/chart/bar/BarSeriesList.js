@@ -34,8 +34,6 @@ class BarSeriesList extends React.Component {
     let deleteSeries = this.props.deleteSeries;
     let colorSelected = this.props.colorSelected;
 
-    let self = this;
-
     return (
       <MuiThemeProvider>
       <div className="listStyle">
