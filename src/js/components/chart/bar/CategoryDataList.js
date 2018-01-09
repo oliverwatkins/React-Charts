@@ -59,29 +59,8 @@ export class CategoryDataList extends React.Component {
   }
 }
 
-
 export default CategoryDataList;
 
-// const mapStateToProps = state => {
-//   const getCategories = makeCategoriesSelector(state)
-//
-//   return {
-//     barData: state.bar,
-//     categories: getCategories
-//
-//   }
-// }
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     deleteCategory: (categoryName, index) => {
-//       dispatch(deleteCategory(categoryName, index))
-//     }
-//   }
-// }
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(CategoryDataList)
 
 
 

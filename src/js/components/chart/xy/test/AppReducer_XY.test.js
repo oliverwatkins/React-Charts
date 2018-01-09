@@ -13,7 +13,7 @@ Test the reducer functions
  */
 describe('Test Bar Reducer functions', () => {
 
-  it('loads initial data correctly ', () => {
+  xit('loads initial data correctly ', () => {
 
     let state = reducer(initialState_XY)
 
@@ -30,14 +30,14 @@ describe('Test Bar Reducer functions', () => {
 
   })
 
-  it('change bar chart name ', () => {
+  xit('change bar chart name ', () => {
 
     let state = reducer(initialState_XY, changeLineChartName('sausage'))
     expect(state.name).toEqual('sausage')
     expect(state.name).not.toEqual('hotdog')
   })
 
-  it(' creates a series ', () => {
+  xit(' creates a series ', () => {
     let state = reducer(initialState_XY, createSeries({name: "asdf", color: "brown"}));
     expect(state.series.length).toEqual(4)
     expect(state.series).toContainEqual({
@@ -48,7 +48,7 @@ describe('Test Bar Reducer functions', () => {
   })
 
 
-  it(' creates a category', () => {
+  xit(' creates a category', () => {
 
     let category = {
       name: "lizard",
@@ -64,7 +64,7 @@ describe('Test Bar Reducer functions', () => {
 
   })
 
-  it(' deletes a category ', () => {
+  xit(' deletes a category ', () => {
     let state = reducer(initialState_XY, deleteCategory("dog"));
 
     expect(state.categories.length).toEqual(2)
@@ -82,7 +82,7 @@ describe('Test Bar Reducer functions', () => {
     })
   })
 
-  it(' deletes a series ', () => {
+  xit(' deletes a series ', () => {
 
     let category = {
       name: "dog",
@@ -109,7 +109,7 @@ describe('Test Bar Reducer functions', () => {
     })
   })
 
-  it(' updates a color ', () => {
+  xit(' updates a color ', () => {
 
     let state = reducer(initialState_XY, updateColorBar("pink2", "Germany"));
 

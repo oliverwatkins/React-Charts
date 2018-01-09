@@ -11,14 +11,8 @@ import {makeCategoriesSelector} from "./selectors"
 import CategoryDataList from "./CategoryDataList";
 
 import {connect} from 'react-redux'
-import {
-  createCategory,
-  changeLineChartName,
-  fetchBarData,
-  deleteSeries,
-  updateColorBar,
-  createSeries,
-  deleteCategory
+import {createCategory, changeLineChartName, fetchBarData, deleteSeries,
+  updateColorBar, createSeries, deleteCategory, changeCell
 } from './duck';
 
 import TitleEditComponent from "../TitleEditComponent";
@@ -34,8 +28,7 @@ class BarChartPage extends React.Component {
     this.handleCreateSeries = this.handleCreateSeries.bind(this);
     this.handleCreateCategory = this.handleCreateCategory.bind(this);
     this.handleDeleteCategory = this.handleDeleteCategory.bind(this);
-
-
+    this.handleChangeCell = this.handleChangeCell.bind(this);
 
     this.onLoadChart = this.onLoadChart.bind(this);
   }
@@ -58,6 +51,10 @@ class BarChartPage extends React.Component {
 
   handleCreateCategory(val) {
     this.props.createCategory(val);
+  }
+
+  handleChangeCell(val) {
+    this.props.changeCell(val);
   }
 
   handleDeleteCategory(val) {
@@ -104,10 +101,10 @@ class BarChartPage extends React.Component {
           </div>
           <div>
             <div style={{width: 700, height: 200}}>
-              <BarChartDataTable {...this.state}/>
+              <BarChartDataTable barData={this.props.barData} changeCell={this.handleChangeCell} {...this.state}/>
             </div>
             <div>
-              <BarChartComponent onLoadChart={this.onLoadChart} {...this.state}/>
+              <BarChartComponent barData={this.props.barData} onLoadChart={this.onLoadChart} {...this.state}/>
             </div>
           </div>
         </div>
@@ -117,11 +114,7 @@ class BarChartPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-
-
   const getCategories = makeCategoriesSelector(state)
-
-  // alert('getCat ' + getCategories)
   return {
     barData: state.bar,
     categories: getCategories
@@ -149,6 +142,9 @@ const mapDispatchToProps = dispatch => {
     },
     deleteCategory: (cat) => {
       dispatch(deleteCategory(cat))
+    },
+    changeCell: (fromRow, toRow, updated ) => {
+      dispatch(changeCell(fromRow, toRow, updated ))
     }
   }
 }

@@ -3,18 +3,12 @@ import ReactDataGrid from "react-data-grid";
 import PropTypes from 'prop-types';
 import BarChartEntity from "./BarChartEntity";
 
-import {connect} from 'react-redux'
-import {changeCell} from './duck'
-
-const { Row } = ReactDataGrid;
-
 class BarDataList extends React.Component {
 
   constructor(props) {
     super(props)
 
     this.rowGetter = this.rowGetter.bind(this);
-    this.handleGridRowsUpdated = this.handleGridRowsUpdated.bind(this);
   }
 
   createCols(barData) {
@@ -60,16 +54,8 @@ class BarDataList extends React.Component {
     this._rows = rows;
   }
 
-
-
   rowGetter(i) {
     return this._rows[i];
-  }
-
-  handleGridRowsUpdated({ fromRow, toRow, updated }) {
-
-    // what does this do
-    this.props.changeCell({ fromRow, toRow, updated })
   }
 
   render() {
@@ -88,7 +74,7 @@ class BarDataList extends React.Component {
 
           style={style}
           enableCellSelect={true}
-          onGridRowsUpdated={this.handleGridRowsUpdated}
+          onGridRowsUpdated={this.props.changeCell}
           columns={this._columns}
           rowGetter={this.rowGetter}
           rowsCount={this._rows.length}
@@ -116,22 +102,5 @@ class ColumnFormatter extends React.Component {
 
 ColumnFormatter.propTypes = PropTypes.number.isRequired
 
-const mapStateToProps = state => {
-  return {
-    barData: state.bar
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    changeCell: (fromRow, toRow, updated ) => {
-
-
-      dispatch(changeCell(fromRow, toRow, updated ))
-    }
-  }
-}
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BarDataList)
+export default BarDataList;
 

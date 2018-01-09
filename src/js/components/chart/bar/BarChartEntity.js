@@ -56,14 +56,14 @@ class BarChartEntity {
   static updateColor(imState, action) {
     let list = imState.getIn(['series'])
 
-    let list3 = list.update(
+    let updatedList = list.update(
       list.findIndex(function(item) {
         return item.get("name") === action.seriesName;
       }), function(item) {
         return item.set("color", action.color);
       }
     );
-    imState = imState.setIn(['series'], list3)
+    imState = imState.setIn(['series'], updatedList)
     return imState;
   }
 

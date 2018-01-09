@@ -7,9 +7,6 @@ import Loader from 'react-loader-advanced';
 
 // import { RingLoader } from 'react-spinners';
 
-import { connect } from 'react-redux'
-import {fetchBarData} from './duck'
-
 class BarChartComponent extends React.Component {
 
   constructor(props) {
@@ -96,25 +93,4 @@ class BarChartComponent extends React.Component {
   }
 }
 
-
-const mapStateToProps = state => {
-  return {
-    barData: state.bar
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchBarData: (value) => {
-      // dispatch(fetchBarData(value))
-    }
-  }
-}
-
-//TODO is this needed
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BarChartComponent)
-
-
+export default BarChartComponent
