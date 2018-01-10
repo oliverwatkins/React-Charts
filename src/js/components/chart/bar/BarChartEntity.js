@@ -1,5 +1,6 @@
 import Immutable from 'immutable';
-import selectors from './selectors'
+// import {setIn} from 'immutable';
+
 class BarChartEntity {
 
   static get path() {
@@ -91,74 +92,57 @@ class BarChartEntity {
 
   static deleteCategory(imState, action) {
 
-    let filtered = imState.getIn(['categories']).filter(elem => elem !== action.categoryName);
-    imState = imState.setIn(['categories'], filtered);
+
+    let index = imState.getIn(['categories']).findIndex(item => item === action.categoryName)
+
+
+    //filter out category and replace in state
+    let filteredCategories = imState.getIn(['categories']).filter(elem => elem !== action.categoryName);
+    imState = imState.setIn(['categories'], filteredCategories);
 
 
     /**
      * Go through each series object and delete the data element at the specific index
      * which correponds to the category index.
      */
-    let index = action.index;
     let seriesList = imState.getIn(['series']);
 
-    console.info("seriesList ", seriesList.toJS())
+    seriesList  = Immutable.List(seriesList);
 
-    // seriesList = seriesList.updateIn(
-    //   ['data'],
-    //   function(item) {
-    //     console.info("item ", item)
-    //     return "XXXXXXXXXXXXXXXXXXxx";
-    //   }
-    // )
-
-    // seriesList = seriesList.update(
-    //
-    //   function(item) {
-    //     item.set("name", "asdfasdfasdfasdfasdf");
-    //     return item;
-    //   }
-    //
-    // )
-
-
-      // seriesList = seriesList.updateIn(['name'], () => "asdfasdfasdfasdfasdf")//a => "ftg")
-
-
-    // let seriesList = seriesList.update(
-    //   list.findIndex(function(item) {
-    //     return item.get("name") === action.seriesName;
-    //   }), function(item) {
-    //     return item.set("color", action.color);
-    //   }
-    // );
-
-
-
-    seriesList = seriesList.toJS();
-    seriesList.forEach(function (elem) {
-      let data = elem.data;
-      data.splice(index, 1);
-    });
-    var v = Immutable.fromJS(seriesList)
-
+    seriesList = seriesList.map(
+      elem => {
+        let data = elem.getIn(['data'])
+        data = data.remove(index)
+        elem = elem.setIn(['data'], data)
+        return elem
+      })
 
     imState = imState.setIn(['series'], seriesList);
 
     return imState;
   }
 
+
+  /**
+   * TODO should only be immutableJS
+   * @param imState
+   * @param action
+   * @returns {*}
+   */
   static createSeries(imState, action) {
     let series = action.series;
 
     let list = imState.getIn(['series'])
 
-    list = list.toJS();
 
+
+
+    /////////// JS /////////////////
+    list = list.toJS();
     let firstSeries = list[0];
 
     //create an empty series
-    let emptySeries = firstSeries.data.reduce((accum, currV, currIndex, array ) => {
+    let emptySeries = firstSeries.data.reduce((accum) => {
       accum.push({y:0})
       return accum;
     }, [])
@@ -172,6 +156,9 @@ class BarChartEntity {
     );
 
     var v = Immutable.fromJS(list)
+    /////////// JS /////////////////
+
+
     imState = imState.setIn(['series'], v)
     return imState;
   }
