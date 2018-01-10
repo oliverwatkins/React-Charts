@@ -21,36 +21,26 @@ class BarChartEntity {
 
   static createCategory(imState, action) {
 
-    let myList = imState.getIn(['categories'])
+    let categoryList = imState.getIn(['categories'])
 
-    /////+JS/////
-    myList = myList.toJS();
-    myList.push(action.value.name)
+    categoryList = categoryList.push(action.value.name)
 
-
-    var v = Immutable.fromJS(myList)
-    /////-JS///////
-
-    imState = imState.setIn(['categories'], v)
-
+    imState = imState.setIn(['categories'], categoryList)
 
     //now for each series create an entry
-    var list = imState.getIn(['series']);
+    let seriesList = imState.getIn(['series']);
 
+    seriesList  = Immutable.List(seriesList);
 
+    seriesList = seriesList.map(
+      elem => {
+        let data = elem.getIn(['data'])
+        data = data.push({y:0})
+        elem = elem.setIn(['data'], data)
+        return elem
+      })
 
-
-    //////+JS
-    list = list.toJS();
-
-    list.forEach(function (data) {
-      data.data.push({y: 0})
-    });
-
-    var v = Immutable.fromJS(list)
-    //////-JS
-
-    imState = imState.setIn(['series'], v);
+    imState = imState.setIn(['series'], seriesList);
 
     return imState;
   }
@@ -89,18 +79,6 @@ class BarChartEntity {
     return imState;
   }
 
-  /**
-   * TODO refactor so not using JS, and using immutable.
-   *
-   * need to figure out how to use immutable to change a deep nested array. Eg delete the second array element
-   * (the number '2') in all array elements below.
-
-       array : [
-       {data : [1,2,3]}
-       {data : [1,2,3]}
-       {data : [1,2,3]}
-       ]
-   */
 
   static deleteCategory(imState, action) {
 
