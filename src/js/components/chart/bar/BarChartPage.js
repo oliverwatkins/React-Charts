@@ -80,11 +80,10 @@ class BarChartPage extends React.Component {
             <div style={style}>
               <TitleEditComponent onChange={this.handleChartNameChange}/>
               <div>
-                <BarChartForm {...this.state} createSeries={this.handleCreateSeries}/>
+                <BarChartForm  createSeries={this.handleCreateSeries}/>
               </div>
               <div>
-                <BarSeriesList {...this.state}
-                               barData={this.props.barData}
+                <BarSeriesList barData={this.props.barData}
                                deleteSeries={this.handleDeleteSeries}
                                colorSelected={this.handleUpdateColorBar}
                 />
@@ -92,19 +91,19 @@ class BarChartPage extends React.Component {
             </div>
             <div style={style}>
               <div>
-                <CategoryForm {...this.state} createCategory={this.handleCreateCategory}/>
+                <CategoryForm createCategory={this.handleCreateCategory}/>
               </div>
               <div>
-                <CategoryDataList {...this.state} categories={this.props.categories} deleteCategory={this.handleDeleteCategory}/>
+                <CategoryDataList categories={this.props.categories} deleteCategory={this.handleDeleteCategory}/>
               </div>
             </div>
           </div>
           <div>
             <div style={{width: 700, height: 200}}>
-              <BarChartDataTable barData={this.props.barData} changeCell={this.handleChangeCell} {...this.state}/>
+              <BarChartDataTable barData={this.props.barData} changeCell={this.handleChangeCell} />
             </div>
             <div>
-              <BarChartComponent barData={this.props.barData} onLoadChart={this.onLoadChart} {...this.state}/>
+              <BarChartComponent barData={this.props.barData} onLoadChart={this.onLoadChart} />
             </div>
           </div>
         </div>

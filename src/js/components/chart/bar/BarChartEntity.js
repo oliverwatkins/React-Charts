@@ -22,14 +22,25 @@ class BarChartEntity {
   static createCategory(imState, action) {
 
     let myList = imState.getIn(['categories'])
+
+    /////+JS/////
     myList = myList.toJS();
     myList.push(action.value.name)
+
+
     var v = Immutable.fromJS(myList)
+    /////-JS///////
+
     imState = imState.setIn(['categories'], v)
 
 
     //now for each series create an entry
     var list = imState.getIn(['series']);
+
+
+
+
+    //////+JS
     list = list.toJS();
 
     list.forEach(function (data) {
@@ -37,6 +48,7 @@ class BarChartEntity {
     });
 
     var v = Immutable.fromJS(list)
+    //////-JS
 
     imState = imState.setIn(['series'], v);
 
@@ -121,7 +133,6 @@ class BarChartEntity {
 
 
   /**
-   * TODO should only be immutableJS
    * @param imState
    * @param action
    * @returns {*}
@@ -130,33 +141,31 @@ class BarChartEntity {
     let series = action.series;
 
     let list = imState.getIn(['series'])
+    list = Immutable.List(list);
 
+    let firstSeries = list.last();
 
+    let data = firstSeries.getIn(['data'])
 
-    /////////// JS /////////////////
-    list = list.toJS();
-    let firstSeries = list[0];
+    let emptySeries = this.createEmptyYSeriesForLength(data.size);
 
-    //create an empty series
-    let emptySeries = firstSeries.data.reduce((accum) => {
-      accum.push({y:0})
-      return accum;
-    }, [])
-
-    list.push(
+    list = list.push(
       {
         name: series.name,
         color: series.color,
         data: emptySeries
       },
     );
-
-    var v = Immutable.fromJS(list)
-    /////////// JS /////////////////
-
-
-    imState = imState.setIn(['series'], v)
+    imState = imState.setIn(['series'], list)
     return imState;
+  }
+
+  static createEmptyYSeriesForLength(length) {
+    let arr = [];
+    for (let i = 0; i < length; i++) {
+      arr.push({y:0})
+    }
+    return arr;
   }
 
   static cellChanged(imState, action) {
@@ -168,11 +177,8 @@ class BarChartEntity {
     if (seriesName === "category") {
       imState = imState.setIn(['categories', row], cellValue)
     } else {
-
       let list = imState.getIn(['series']);
-
       let index = list.findIndex(item => item.get("name") === seriesName);
-
       imState = imState.setIn(['series', index, 'data', row, 'y'], cellValue)
     }
     return imState;

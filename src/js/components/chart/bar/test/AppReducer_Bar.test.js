@@ -39,6 +39,9 @@ describe('Test Bar Reducer functions', () => {
 
   it(' creates a series ', () => {
     let state = reducer(initialState_Bar, createSeries({name: "asdf", color: "brown"}));
+
+    console.log('state.series ' , state.series)
+
     expect(state.series.length).toEqual(4)
     expect(state.series).toContainEqual({
       name: 'asdf', color: 'brown', data:
