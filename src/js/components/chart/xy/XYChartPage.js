@@ -1,16 +1,14 @@
 import React from "react";
 
 import LineChartComponent from "./LineChartComponent";
-import LineSeriesList from "./LineSeriesList";
-import LineChartForm from "./LineChartForm";
-import LineChartDataTable from "./LineChartDataTable";
-
-import TitleEditComponent from "../TitleEditComponent";
 
 import ActionsRedux from "../../../ActionsRedux";
 import { connect } from 'react-redux'
 
-class LineChartPage extends React.Component {
+
+import XYChartSeriesComponent from "./XYChartSeriesComponent"
+
+class XYChartPage extends React.Component {
 
   handleChartNameChange(event) {
     ActionsRedux.changeLineChartName(event.currentTarget.value);
@@ -37,21 +35,22 @@ class LineChartPage extends React.Component {
         <div style={{display: 'flex'}}>
           <div>
             <div style={style}>
-              <TitleEditComponent onChange={this.handleChartNameChange}/>
-              <div>
-                <LineChartForm {...this.state}/>
-              </div>
-              <div>
-                <LineSeriesList {...this.state}/>
-              </div>
+              {/*<TitleEditComponent onChange={this.handleChartNameChange}/>*/}
+              {/*<div>*/}
+                {/*<LineChartForm {...this.state}/>*/}
+              {/*</div>*/}
+              {/*<div>*/}
+                {/*<LineSeriesList {...this.state}/>*/}
+              {/*</div>*/}
             </div>
+            <div>
+              <XYChartSeriesComponent/>
+            </div>
+
           </div>
           <div>
-            <LineChartComponent {...this.state}/>
+            <LineChartComponent/>
           </div>
-        </div>
-        <div style={{width: 700}}>
-          <LineChartDataTable {...this.state}/>
         </div>
       </div>
     );
@@ -73,6 +72,6 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LineChartPage)
+)(XYChartPage)
 
-// export default LineChartPage;
+// export default XYChartPage;

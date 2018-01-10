@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import PageLayout from "./PageLayout";
 import BarChartPage from "./components/chart/bar/BarChartPage";
 import PieChartPage from "./components/chart/pie/PieChartPage";
-import LineChartPage from "./components/chart/xy/LineChartPage";
+import XYChartPage from "./components/chart/xy/XYChartPage";
 import WelcomePage from "./pages/WelcomePage";
 
 import rootSaga from './components/chart/bar/saga'
@@ -49,7 +49,7 @@ ReactDOM.render(
 
         <Route path="bar" component={BarChartPage}></Route>
         <Route path="pie" component={PieChartPage}></Route>
-        <Route path="line" component={LineChartPage}></Route>
+        <Route path="line" component={XYChartPage}></Route>
       </Route>
     </Router>
   </Provider>,
