@@ -32,6 +32,8 @@ export function reducer(state = initialState, action) {
       imState = BarChartEntity.changeName(imState, action.newName);
       break;
     case BarActions.CELL_CHANGED:
+
+      alert('action ' + JSON.stringify(action))
       imState = BarChartEntity.cellChanged(imState, action)
       break;
     case BarActions.CREATE_SERIES:

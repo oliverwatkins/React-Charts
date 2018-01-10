@@ -83,23 +83,20 @@ class BarChartEntity {
    * need to figure out how to use immutable to change a deep nested array. Eg delete the second array element
    * (the number '2') in all array elements below.
 
-   array : [
-   {data : [1,2,3]}
-   {data : [1,2,3]}
-   {data : [1,2,3]}
-   ]
+       array : [
+       {data : [1,2,3]}
+       {data : [1,2,3]}
+       {data : [1,2,3]}
+       ]
    */
 
   static deleteCategory(imState, action) {
 
-
     let index = imState.getIn(['categories']).findIndex(item => item === action.categoryName)
-
 
     //filter out category and replace in state
     let filteredCategories = imState.getIn(['categories']).filter(elem => elem !== action.categoryName);
     imState = imState.setIn(['categories'], filteredCategories);
-
 
     /**
      * Go through each series object and delete the data element at the specific index
@@ -133,7 +130,6 @@ class BarChartEntity {
     let series = action.series;
 
     let list = imState.getIn(['series'])
-
 
 
 
@@ -175,9 +171,7 @@ class BarChartEntity {
 
       let list = imState.getIn(['series']);
 
-      let index = list.findIndex(function (item) {
-        return item.get("name") === seriesName;
-      });
+      let index = list.findIndex(item => item.get("name") === seriesName);
 
       imState = imState.setIn(['series', index, 'data', row, 'y'], cellValue)
     }

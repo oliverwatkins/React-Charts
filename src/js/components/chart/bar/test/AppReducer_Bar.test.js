@@ -119,12 +119,27 @@ describe('Test Bar Reducer functions', () => {
 
 
   //TODO
-  xit(' changes the cell', () => {
-    let fromRow = 1, toRow = 1, updated = 42;
+  it(' changes the cell', () => {
+    let state = reducer(initialState_Bar, changeCell(
+      {
+        "cellKey":"Holland",
+        "fromRow":1,"toRow":1,
+        "rowIds":[null],
+        "updated":{"Holland":"999"}, //table component sets as string
+        "action":"CELL_UPDATE",
+        "fromRowData":{ //sent from table component. not really important here
+          "category":"cat",
+          "Germany":2,
+          "Holland":2,
+          "Mexico":2}}
+      )
+    )
 
-    let state = reducer(initialState_Bar, changeCell(fromRow, toRow, updated))
-
-    console.log('state', state)
+    expect(state.series).toContainEqual({
+      name: "Holland",
+      color: "blue",
+      data: [{"y":1},{"y":"999"},{"y":3},{"y":4}]
+    })
   })
 })
 
