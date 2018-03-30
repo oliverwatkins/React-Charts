@@ -7,6 +7,7 @@ import BarChartDataTable from "./BarChartDataTable";
 import CategoryForm from "./CategoryForm";
 
 import {makeCategoriesSelector} from "./selectors"
+import {makeBarDataSelector} from "./selectors"
 
 import CategoryDataList from "./CategoryDataList";
 
@@ -17,11 +18,17 @@ import {createCategory, changeLineChartName, fetchBarData, deleteSeries,
 
 import TitleEditComponent from "../TitleEditComponent";
 
-//redux container
+
+/**
+ * Redux container
+ *
+ */
+
 class BarChartPage extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.handleChartNameChange = this.handleChartNameChange.bind(this);
     this.handleDeleteSeries = this.handleDeleteSeries.bind(this);
     this.handleUpdateColorBar = this.handleUpdateColorBar.bind(this);
@@ -29,9 +36,10 @@ class BarChartPage extends React.Component {
     this.handleCreateCategory = this.handleCreateCategory.bind(this);
     this.handleDeleteCategory = this.handleDeleteCategory.bind(this);
     this.handleChangeCell = this.handleChangeCell.bind(this);
-
     this.onLoadChart = this.onLoadChart.bind(this);
   }
+
+
 
   handleChartNameChange(val, event) {
     this.props.changeLineChartName(val);
@@ -114,11 +122,13 @@ class BarChartPage extends React.Component {
 
 const mapStateToProps = state => {
   const getCategories = makeCategoriesSelector(state)
+  const getBarData = makeBarDataSelector(state)
   return {
-    barData: state.bar,
+    barData: getBarData,
     categories: getCategories
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     changeLineChartName: (val) => {

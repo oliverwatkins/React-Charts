@@ -94,7 +94,7 @@ class BarChartEntity {
      */
     let seriesList = imState.getIn(['series']);
 
-    seriesList  = Immutable.List(seriesList);
+    seriesList = Immutable.List(seriesList);
 
     seriesList = seriesList.map(
       elem => {
@@ -108,7 +108,6 @@ class BarChartEntity {
 
     return imState;
   }
-
 
   /**
    * @param imState

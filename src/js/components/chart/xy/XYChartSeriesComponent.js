@@ -1,8 +1,9 @@
 import React from "react";
 
-import Actions from "../../../../js/ActionsRedux";
+import XYSeriesComponent from "./XYSeriesComponent";
 
-import XYChartEntity from "./XYChartEntity";
+import XYChartForm from "./LineChartForm";
+
 
 import './List.less';
 
@@ -12,24 +13,15 @@ export default class XYChartSeriesComponent extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
-    // SlicesStore.on("change", this.getSlices);
-  }
-
-  componentWillUnmount() {
-    // SlicesStore.removeListener("change", this.getSlices);
-  }
-
-  deleteSeries(event, seriesName) {
-    event.preventDefault();
-    Actions.deleteSeries(seriesName);
-  }
 
   render() {
-
-
     return (
-      <div className="listStyle">asdf
+      <div className="listStyle">
+
+
+        <XYChartForm/>
+
+        <XYSeriesComponent/>
         {/*<table>*/}
           {/*<tbody>*/}
           {/*{this.props.app.xy.series.map(function (series, i) {*/}

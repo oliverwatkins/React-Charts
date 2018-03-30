@@ -1,13 +1,14 @@
 import React from "react";
+
 import ColorChooser from '../ColorChooser'
-
 import MUITextField from 'material-ui/TextField';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import RaisedButton from 'material-ui/RaisedButton';
+import PropTypes from 'prop-types';
 
 import 'react-hint/css/index.css'
 
-import RaisedButton from 'material-ui/RaisedButton';
 
 class BarChartForm extends React.Component {
 
@@ -23,6 +24,12 @@ class BarChartForm extends React.Component {
       showModalColorPicker: false
     };
   }
+
+
+  //the job of this component is only to create a new series
+  static propTypes = {
+    createSeries: PropTypes.func.isRequired
+  };
 
   handleSubmit(event) {
 
@@ -49,7 +56,6 @@ class BarChartForm extends React.Component {
       this.setState({enableButton: true});
     }
   }
-
   render() {
     let enableButton = this.state.enableButton
 
@@ -59,12 +65,12 @@ class BarChartForm extends React.Component {
     }
     return (
       <MuiThemeProvider>
-
       <div style={style}>
         <h3>Series :</h3>
         <form onSubmit={this.handleSubmit}>
 
           <table>
+            <tbody>
             <tr>
             <td>
           <MUITextField
@@ -74,31 +80,26 @@ class BarChartForm extends React.Component {
             ref="seriesName"
             name="newSlice"
             onChange={this.onChangeText}
-            data-rh="Bottom" data-rh-at="bottom"
-          />
+            data-rh="Bottom" data-rh-at="bottom" />
             </td>
               <td>
-
-          <ColorChooser
-                        onChooseColor={this.colorSelected}/>
+                <ColorChooser onChooseColor={this.colorSelected}/>
               </td>
-          <td>
-
-          <RaisedButton style={style}
-                        type="submit"
-                        label="Add Series"
-                        disabled={!enableButton}
-          />
-                              </td>
-          </tr>
+              <td>
+                <RaisedButton style={style}
+                              type="submit"
+                              label="Add Series"
+                              disabled={!enableButton}
+                />
+              </td>
+            </tr>
+            </tbody>
           </table>
         </form>
       </div>
-
       </MuiThemeProvider>
     )
   }
 }
-
 export default BarChartForm;
 

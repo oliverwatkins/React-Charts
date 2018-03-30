@@ -1,6 +1,6 @@
+import React from "react";
 
-
-class XYSeriesComponent extends React.Component {
+export default class XYSeriesComponent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -8,9 +8,15 @@ class XYSeriesComponent extends React.Component {
 
 
   render() {
-    <div>
-      <input>asfd</input><input>fdsa</input>
-    </div>
+
+    data
+
+    return (
+      <div>
+        <input width={10} /><input/>
+      </div>
+    )
+
   }
 
 

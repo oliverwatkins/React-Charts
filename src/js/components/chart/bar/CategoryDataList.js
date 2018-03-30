@@ -1,14 +1,10 @@
 import React from "react";
 
 import './List.less';
-import {deleteCategory} from "./duck";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
-
-import {connect} from 'react-redux'
-
-import {makeCategoriesSelector} from "./selectors"
+import PropTypes from 'prop-types';
 
 export class CategoryDataList extends React.Component {
   constructor(props) {
@@ -16,9 +12,12 @@ export class CategoryDataList extends React.Component {
     this.deleteCategory = this.deleteCategory.bind(this);
   }
 
+  static propTypes = {
+    categories: PropTypes.array.isRequired,
+    deleteCategory: PropTypes.func
+  };
+
   render() {
-    // let barData = this.props.barData;
-    // const categories = barData.categories;
     const categories = this.props.categories;
 
     let deleteS = this.deleteCategory;

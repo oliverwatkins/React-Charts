@@ -20,8 +20,6 @@ import {reducer as pieReducer} from './components/chart/pie/duck.js'
 
 import { createStore, combineReducers , applyMiddleware, compose} from 'redux'
 
-
-
 let combinedReducers = combineReducers({
   xy: xyReducer,
   pie: pieReducer,
@@ -42,11 +40,9 @@ const app = document.getElementById('app');
 
 ReactDOM.render(
   <Provider store={store}>
-
     <Router history={hashHistory}>
       <Route path="/" component={PageLayout}>
         <IndexRoute component={WelcomePage}></IndexRoute>
-
         <Route path="bar" component={BarChartPage}></Route>
         <Route path="pie" component={PieChartPage}></Route>
         <Route path="line" component={XYChartPage}></Route>

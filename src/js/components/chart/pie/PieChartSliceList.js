@@ -7,7 +7,7 @@ import {updateColor} from '../../../ActionsRedux'
 
 
 
-class PieChartSliceList extends React.Component {
+export default class PieChartSliceList extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -67,36 +67,36 @@ class PieChartSliceList extends React.Component {
 
 
 
-const mapStateToProps = state => {
-  return {
-    pieData: state.app.pie.data
-  }
-}
-
-//depreacated
-// function colorSelected(color, seriesName) {
-//   Actions.updateColor(color, seriesName)
+// const mapStateToProps = state => {
+//   return {
+//     pieData: state.app.pie.data
+//   }
 // }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    colorSelected: (color, seriesName )=> {
-
-      console.info('in color selected')
-      let a = updateColor(color, seriesName)
-      dispatch(a);
-
-      // alert('hello hello')
-      // dispatch(toggleTodo(id))
-    }
-  }
-}
-
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PieChartSliceList)
+//
+// //depreacated
+// // function colorSelected(color, seriesName) {
+// //   Actions.updateColor(color, seriesName)
+// // }
+//
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     colorSelected: (color, seriesName )=> {
+//
+//       console.info('in color selected')
+//       let a = updateColor(color, seriesName)
+//       dispatch(a);
+//
+//       // alert('hello hello')
+//       // dispatch(toggleTodo(id))
+//     }
+//   }
+// }
+//
+//
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(PieChartSliceList)
 
 
 

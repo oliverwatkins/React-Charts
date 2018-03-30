@@ -3,22 +3,36 @@ import ReactDataGrid from "react-data-grid";
 import PropTypes from 'prop-types';
 import BarChartEntity from "./BarChartEntity";
 
-class BarDataList extends React.Component {
+class BarChartDataTable extends React.Component {
 
   constructor(props) {
     super(props)
-
     this.rowGetter = this.rowGetter.bind(this);
   }
 
+  static propTypes = {
+    changeCell: PropTypes.func.isRequired,
+    barData: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        isFetching: PropTypes.bool.isRequired,
+        categories: PropTypes.array.isRequired,
+        series: PropTypes.arrayOf(PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          color: PropTypes.string.isRequired,
+          data: PropTypes.arrayOf(PropTypes.shape({
+              y: PropTypes.number.isRequired
+            })
+          ),
+        }))
+      }
+    )
+  };
+
   createCols(barData) {
-
     let series = BarChartEntity.getSeries2(barData);
-
     let cols = [];
 
     cols.push({key: "category", name: "category", editable:true, formatter:ColumnFormatter});
-
     series.forEach(function (value) {
       cols.push({key: value.name, name: value.name, editable:true});
     });
@@ -88,10 +102,6 @@ class BarDataList extends React.Component {
 
 class ColumnFormatter extends React.Component {
 
-  // propTypes: {
-  //   value: "" //PropTypes.number.isRequired
-  // }
-
   render() {
     return (
       <div >
@@ -100,7 +110,5 @@ class ColumnFormatter extends React.Component {
   }
 };
 
-ColumnFormatter.propTypes = PropTypes.number.isRequired
-
-export default BarDataList;
+export default BarChartDataTable;
 

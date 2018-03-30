@@ -4,6 +4,8 @@ import MUITextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import PropTypes from 'prop-types';
+
 class CategoryForm extends React.Component {
 
   constructor(props) {
@@ -15,6 +17,10 @@ class CategoryForm extends React.Component {
       enableButton: false,
     };
   }
+
+  static propTypes = {
+    createCategory: PropTypes.func.isRequired
+  };
 
   handleSubmit(event) {
     event.preventDefault();
@@ -58,11 +64,8 @@ class CategoryForm extends React.Component {
               type="text"
               ref="categoryName"
               onChange={this.onChangeText}
-
-
             />
-            <RaisedButton type="submit" label="Add Category"
-                          disabled={!enableButton}/>
+            <RaisedButton type="submit" label="Add Category" disabled={!enableButton}/>
           </form>
         </div>
       </MuiThemeProvider>

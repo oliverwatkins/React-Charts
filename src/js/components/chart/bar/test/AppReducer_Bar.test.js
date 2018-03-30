@@ -47,7 +47,6 @@ describe('Test Bar Reducer functions', () => {
       name: 'asdf', color: 'brown', data:
         [{"y": 0}, {"y": 0}, {"y": 0}, {"y": 0}]
     })
-
   })
 
 
@@ -86,8 +85,6 @@ describe('Test Bar Reducer functions', () => {
   })
 
   it(' deletes a series ', () => {
-
-
     let state = reducer(initialState_Bar, deleteSeries("Germany"));
 
     expect(state.series.length).toEqual(2)
@@ -147,7 +144,7 @@ describe('Test Bar Reducer functions', () => {
 })
 
 
-const initialState_Bar =
+export const initialState_Bar =
   {
     name: "Bar Chart",
     categories: [

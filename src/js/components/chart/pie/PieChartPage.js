@@ -31,6 +31,9 @@ class PieChartPage extends Component {
   // }
 
   render() {
+
+    // alert("" + JSON.stringify(this.state))
+
     return (
       <div>
         <h1>Pie Chart</h1>
@@ -38,13 +41,13 @@ class PieChartPage extends Component {
           <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
         </div>
         <div className="col-md-5">
-          <PieChartForm {...this.state}/>
+          <PieChartForm pieData={this.props.pieData} {...this.state}/>
         </div>
         <div className="col-md-5">
-          <PieChartSliceList {...this.state}/>
+          <PieChartSliceList pieData={this.props.pieData.series} {...this.state}/>
         </div>
         <div className="col-md-5">
-          <SimplePieChart {...this.state}/>
+          <SimplePieChart pieData={this.props.pieData.series} onLoadChart={this.onLoadChart} />
         </div>
       </div>
     );

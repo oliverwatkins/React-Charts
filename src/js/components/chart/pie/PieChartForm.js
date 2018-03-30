@@ -15,9 +15,7 @@ import {connect} from 'react-redux'
 
 import {changeNamePie} from '../../../ActionsRedux'
 
-
-
-class PieChartForm extends React.Component {
+export default class PieChartForm extends React.Component {
   constructor(props) {
 
     super(props);
@@ -55,6 +53,8 @@ class PieChartForm extends React.Component {
 
   render() {
 
+    // alert("" + JSON.stringify(this.props))
+
     let pieData = this.props.pieData;
 
     return (
@@ -83,22 +83,25 @@ class PieChartForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    pieData: state.app.pie
-  }
-}
 
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changeName: (newName)=> {
-      dispatch(changeNamePie(newName));
-    }
-  }
-}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PieChartForm)
+// const mapStateToProps = state => {
+//   return {
+//     pieData: state.app.pie
+//   }
+// }
+//
+//
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     changeName: (newName)=> {
+//       dispatch(changeNamePie(newName));
+//     }
+//   }
+// }
+//
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(PieChartForm)

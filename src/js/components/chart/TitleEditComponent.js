@@ -25,14 +25,14 @@ export default class TitleEditComponent extends React.Component {
             ref="titleField"
             hintText="Enter Chart Title"
             type="text"
-            valueCOMMENTED_OUT={this.props.value}
             onChange={this.keyPress}
           />
-
         </div>
       </MuiThemeProvider>
     )
   }
+
+  // valueCOMMENTED_OUT={this.props.value}
 
   keyPress(e) {
     e.persist();

@@ -3,8 +3,7 @@ import Immutable from "immutable";
 export const MiscActions = {
   FETCH_BAR_DATA : 'FETCH_BAR_DATA',
   SERVER_RESPONSE : 'SERVER_RESPONSE',
-}
-
+};
 
 import BarChartEntity from './BarChartEntity'
 
@@ -33,7 +32,7 @@ export function reducer(state = initialState, action) {
       break;
     case BarActions.CELL_CHANGED:
 
-      alert('action ' + JSON.stringify(action))
+      // alert('action ' + JSON.stringify(action))
       imState = BarChartEntity.cellChanged(imState, action)
       break;
     case BarActions.CREATE_SERIES:
@@ -138,7 +137,7 @@ export function fetchBarData(value) {
 }
 
 
-const initialState =
+export const initialState =
   {
     name: "Bar Chart",
     isFetching: true,

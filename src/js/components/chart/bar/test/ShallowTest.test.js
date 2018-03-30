@@ -3,6 +3,10 @@ import {CategoryDataList} from './../CategoryDataList'; //dumb version
 
 import {shallow} from 'enzyme';
 
+/**
+ * TODO this test have any point?
+ *
+ */
 describe('Shallow Render REACT COMPONENTS',()=>{
   let wrapper
 
