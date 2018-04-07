@@ -79,14 +79,12 @@ export function createSeries(series) {
     series
   }
 }
-
 export function deleteSeries(seriesName) {
   return {
     type: BarActions.DELETE_SERIES,
     seriesName
   }
 }
-
 export function updateColorBar(color, seriesName) {
   return {
     type: BarActions.UPDATE_COLOR,
@@ -94,7 +92,6 @@ export function updateColorBar(color, seriesName) {
     color
   }
 }
-
 export function updateColorPie(color, seriesName) {
   return {
     type: PieActions.UPDATE_COLOR,
@@ -102,21 +99,18 @@ export function updateColorPie(color, seriesName) {
     color
   }
 }
-
 export function changeLineChartName(newName) {
   return {
     type: BarActions.CHANGE_NAME_BAR,
     newName
   }
 }
-
 export function createCategory(value) {
   return {
     type: BarActions.CREATE_CATEGORY,
     value
   }
 }
-
 export function deleteCategory(categoryName, index) {
   return {
     type: BarActions.DELETE_CATEGORY,
@@ -124,7 +118,6 @@ export function deleteCategory(categoryName, index) {
     index
   }
 }
-
 export function changeCell(value) {
   return {
     type: BarActions.CELL_CHANGED,

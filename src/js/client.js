@@ -4,9 +4,9 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 
 import PageLayout from "./PageLayout";
 import BarChartPage from "./components/chart/bar/ui/BarChartContainer";
-import PieChartPage from "./components/chart/pie/PieChartPage";
-import XYChartPage from "./components/chart/xy/XYChartPage";
-import WelcomePage from "./pages/WelcomePage";
+import PieChartPage from "./components/chart/pie/ui/PieChartContainer";
+import XYChartPage from "./components/chart/xy/ui/XYChartPage";
+import WelcomePage from "./components/WelcomePage";
 
 import rootSaga from './components/chart/bar/saga'
 
@@ -34,6 +34,7 @@ const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
+//setup saga middleware
 sagaMiddleware.run(rootSaga);
 
 const app = document.getElementById('app');

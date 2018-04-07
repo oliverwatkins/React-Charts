@@ -1,6 +1,6 @@
 import Immutable from "immutable";
 
-import PieChart from './PieChartEntity'
+import {pieChartLogic} from './pieChartLogic'
 
 export function reducer(state = initialState, action) {
 
@@ -12,17 +12,17 @@ export function reducer(state = initialState, action) {
   switch (action.type) {
 
     case PieActions.CREATE_SLICE:
-      imState = PieChart.createSlice(imState, action.slice);
+      imState = pieChartLogic.createSlice(imState, action.slice);
       break;
     case PieActions.CHANGE_NAME_PIE:
-      imState = PieChart.changeName(imState, action.newName);
+      imState = pieChartLogic.changeName(imState, action.newName);
       break;
     case PieActions.UPDATE_COLOR:
       //TODO
       // imState = PieChart.(imState, action.newName);
       break;
     case PieActions.DELETE_SLICE:
-      imState = PieChart.deleteSlice(imState, action.name);
+      imState = pieChartLogic.deleteSlice(imState, action.name);
       break;
     default : {
       // throw 'asdfasdfasd action not found ' + action.type

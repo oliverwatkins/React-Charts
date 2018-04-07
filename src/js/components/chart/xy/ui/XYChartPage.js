@@ -2,7 +2,7 @@ import React from "react";
 
 import LineChartComponent from "./LineChartComponent";
 
-import ActionsRedux from "../../../ActionsRedux";
+// import ActionsRedux from "../../../ActionsRedux";
 import { connect } from 'react-redux'
 
 

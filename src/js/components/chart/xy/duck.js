@@ -1,6 +1,8 @@
 import Immutable from "immutable";
 
-import XYChartEntity from './XYChartEntity'
+import {xyChartLogic} from './xyChartLogic'
+
+
 
 export function reducer(state = initialState, action) {
 
@@ -13,7 +15,7 @@ export function reducer(state = initialState, action) {
 
     //bar
     case LineActions.CHANGE_NAME_XY:
-      imState = XYChartEntity.changeName(imState, action.newName);
+      imState = xyChartLogic.changeName(imState, action.newName);
       break;
     // case BarActions.CELL_CHANGED:
     //   imState = BarChartEntity.cellChanged(imState, action)

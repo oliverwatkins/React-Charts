@@ -14,11 +14,15 @@ export default class WelcomePage extends React.Component {
             <li>JSX and ES6</li>
             <li>Functional Components</li>
             <li><strike>flux</strike> redux</li>
-            <li>immutable js</li>
+            <li>simple saga example</li>
+            <li>reducers</li>
+            <li>Jest tests</li>
+            <li>immutable-js</li>
             <li>integration of third party components : recharts and react-grid</li>
             <li>third party components : recharts and react-grid</li>
             <li>debouncing</li>
             <li>Material UI and react bootstrap</li>
+
           </ul>
         </div>
 

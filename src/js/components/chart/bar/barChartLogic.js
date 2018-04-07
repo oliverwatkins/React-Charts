@@ -1,19 +1,22 @@
 import Immutable from 'immutable';
 
+/**
+ * Logic for reducer calls for the bar chart.
+ */
 export const barChartLogic = {
 
-  getSeries: (barData)=> {
+  getSeries (barData) {
     return barData.series;
   },
-  getCategories : (barData) => {
+  getCategories (barData) {
     return barData.categories;
   },
 
-  isFetching: (barData)=> {
+  isFetching (barData) {
     return barData.isFetching;
   },
 
-  createCategory: (imState, action) => {
+  createCategory(imState, action) {
 
     let categoryList = imState.getIn(['categories']);
 
@@ -40,12 +43,15 @@ export const barChartLogic = {
   },
 
   /**
-   * Remote element from list.
+   * Delete a chart series
    */
   deleteSeries(imState, action) {
     let list = imState.getIn(['series']);
-    let listWithout = list.filter((elem) => elem.get("name") !== action.seriesName);
-    imState = imState.setIn(['series'], listWithout);
+
+    //get all series that do not match the name of the series to delete
+    let listWithoutSeriesToDelete = list.filter((elem) => elem.get("name") !== action.seriesName);
+
+    imState = imState.setIn(['series'], listWithoutSeriesToDelete);
     return imState;
   },
 
@@ -160,7 +166,3 @@ export const barChartLogic = {
     return imState;
   }
 }
-
-
-
-

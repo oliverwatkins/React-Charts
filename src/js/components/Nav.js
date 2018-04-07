@@ -48,11 +48,9 @@ export default class Nav extends React.Component {
                 <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Home</IndexLink>
               </li>
               <li >
-
                 <Link to="bar" onClick={this.toggleCollapse.bind(this)} className={barClass}>
                   &nbsp;
                 </Link>
-
               </li>
               <li>
                 <Link to="line" onClick={this.toggleCollapse.bind(this)} className={lineClass}>
@@ -61,9 +59,7 @@ export default class Nav extends React.Component {
               </li>
               <li >
                 <Link to="pie" onClick={this.toggleCollapse.bind(this)} className={pieClass}>
-
                   &nbsp;
-
                 </Link>
               </li>
             </ul>

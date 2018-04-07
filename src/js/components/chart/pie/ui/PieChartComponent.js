@@ -1,14 +1,9 @@
 import React from "react";
 import {PieChart, Pie, Tooltip, Cell} from 'recharts'
 
-import TitleComponent from '../TitleComponent'
+import TitleComponent from '../../TitleComponent'
 
 import PropTypes from 'prop-types';
-
-
-import { connect } from 'react-redux'
-
-// import {changeNamePie} from '../../../ActionsRedux'
 
 export default class PieChartComponent extends React.Component {
 
@@ -17,10 +12,8 @@ export default class PieChartComponent extends React.Component {
     this.getChartData = this.getChartData.bind(this);
   }
 
-
   static propTypes = {
     pieData: PropTypes.number,
-    asdf: PropTypes.element.isRequired
   }
 
   getChartData() {
@@ -28,7 +21,6 @@ export default class PieChartComponent extends React.Component {
     //   data01: SlicesStore.getChartData(),
     // });
   }
-
 
   componentWillMount() {
     // SlicesStore.on("change", this.getChartName);
@@ -39,10 +31,6 @@ export default class PieChartComponent extends React.Component {
     // SlicesStore.removeListener("change", this.getChartName);
     // SlicesStore.removeListener("change", this.getChartData);
   }
-
-
-
-
 
   render() {
     return (
@@ -70,27 +58,3 @@ export default class PieChartComponent extends React.Component {
     );
   }
 }
-
-
-PieChartComponent.defaultProps = {
-  asdf:PropTypes.element.isRequired
-}
-
-// /**
-//  * TODO remove redux from here
-//  * @param state
-//  * @returns {{pieData: (initialState.app.pie|{name, data})}}
-//  */
-//
-// const mapStateToProps = state => {
-//   return {
-//     pieData: state.app.pie
-//   }
-// }
-// const mapDispatchToProps = state => {
-//   return {}
-// }
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(PieChartComponent)

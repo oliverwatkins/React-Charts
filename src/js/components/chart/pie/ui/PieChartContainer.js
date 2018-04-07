@@ -7,32 +7,10 @@ import PieChartForm from "./PieChartForm";
 import PieChartSliceList from "./PieChartSliceList";
 
 import { connect } from 'react-redux'
-import {changeNamePie} from '../../../ActionsRedux.js';
-
 
 class PieChartPage extends Component {
 
-  // static getStores() {
-  //   return [AppStore];
-  // }
-  //
-  // static calculateState(prevState) {
-  //   return AppStore.getState();
-  // }
-
-  // handleChartNameChange(event) {
-  //   var changeName = function(newName) {
-  //     dispatcher.dispatch({
-  //       type: "CHANGE_NAME",
-  //       newName,
-  //     });
-  //   }
-  //   changeName(event.currentTarget.value);
-  // }
-
   render() {
-
-    // alert("" + JSON.stringify(this.state))
 
     return (
       <div>
@@ -67,22 +45,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-
-
-// handleChartNameChange(event) {
-//   var changeName = function(newName) {
-//     dispatcher.dispatch({
-//       type: "CHANGE_NAME",
-//       newName,
-//     });
-//   }
-//   changeName(event.currentTarget.value);
-// }
-
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(PieChartPage)
-
-
