@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import BarChartComponent from "../BarChartComponent";
+import BarChartComponent from "../ui/BarChart";
 
 import {initialState} from "../duck";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import BarChartForm from "../BarChartForm";
+import BarChartForm from "../ui/BarChartForm";
 
 describe('Test basic rendering',()=> {
   xit('BarChartForm renders', () => {

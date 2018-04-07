@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import BarSeriesList from "../BarSeriesList";
+import BarSeriesList from "../ui/BarSeriesList";
 
 import {initialState} from "../duck";
 

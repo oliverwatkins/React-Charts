@@ -1,5 +1,9 @@
 import { createSelector } from 'reselect'
 
+/**
+ * Very simple selectors used in mapStateToProps in container component
+ */
+
 const getCategories = (state) => {
   return state.bar.categories
 }
@@ -7,8 +11,6 @@ const getCategories = (state) => {
 const getBarData = (state) => {
   return state.bar
 }
-
-
 
 export const makeCategoriesSelector = createSelector(
   getCategories,
@@ -23,4 +25,3 @@ export const makeBarDataSelector = createSelector(
     return value
   }
 )
-

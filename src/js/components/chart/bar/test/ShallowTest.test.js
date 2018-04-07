@@ -1,5 +1,5 @@
 import React from 'react';
-import {CategoryDataList} from './../CategoryDataList'; //dumb version
+import {CategoryDataList} from '../ui/CategoryDataList'; //dumb version
 
 import {shallow} from 'enzyme';
 

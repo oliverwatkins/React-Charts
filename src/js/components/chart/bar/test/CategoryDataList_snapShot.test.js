@@ -1,5 +1,5 @@
 import React from 'react';
-import {CategoryDataList} from './../CategoryDataList'; //dumb
+import {CategoryDataList} from '../ui/CategoryDataList'; //dumb
 import renderer from 'react-test-renderer';
 
 describe('Test basic rendering',()=> {

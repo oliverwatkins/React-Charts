@@ -5,7 +5,10 @@ export const MiscActions = {
   SERVER_RESPONSE : 'SERVER_RESPONSE',
 };
 
-import BarChartEntity from './BarChartEntity'
+
+import {barChartLogic} from './barChartLogic'
+
+// import BarChartEntity from './BarChartEntity'
 
 export function reducer(state = initialState, action) {
 
@@ -22,33 +25,33 @@ export function reducer(state = initialState, action) {
       break;
 
     case MiscActions.SERVER_RESPONSE: {
-      imState = BarChartEntity.fetchFinished(imState, action)
+      imState = barChartLogic.fetchFinished(imState, action)
       break;
     }
 
     //bar
     case BarActions.CHANGE_NAME_BAR:
-      imState = BarChartEntity.changeName(imState, action.newName);
+      imState = barChartLogic.changeName(imState, action.newName);
       break;
     case BarActions.CELL_CHANGED:
 
       // alert('action ' + JSON.stringify(action))
-      imState = BarChartEntity.cellChanged(imState, action)
+      imState = barChartLogic.cellChanged(imState, action)
       break;
     case BarActions.CREATE_SERIES:
-      imState = BarChartEntity.createSeries(imState, action)
+      imState = barChartLogic.createSeries(imState, action)
       break;
     case BarActions.CREATE_CATEGORY:
-      imState = BarChartEntity.createCategory(imState, action)
+      imState = barChartLogic.createCategory(imState, action)
       break;
     case BarActions.DELETE_CATEGORY:
-      imState = BarChartEntity.deleteCategory(imState, action)
+      imState = barChartLogic.deleteCategory(imState, action)
       break;
     case BarActions.DELETE_SERIES:
-      imState = BarChartEntity.deleteSeries(imState, action)
+      imState = barChartLogic.deleteSeries(imState, action)
       break;
     case BarActions.UPDATE_COLOR:
-      imState = BarChartEntity.updateColor(imState, action)
+      imState = barChartLogic.updateColor(imState, action)
       break;
     default : {
       // throw 'action not found ' + action.type
@@ -69,7 +72,7 @@ export const BarActions = {
   UPDATE_COLOR: 'UPDATE_COLOR_BAR'
 }
 
-//bar
+//bar actions
 export function createSeries(series) {
   return {
     type: BarActions.CREATE_SERIES,
@@ -137,6 +140,12 @@ export function fetchBarData(value) {
 }
 
 
+
+
+
+/**
+ * Initial state
+ */
 export const initialState =
   {
     name: "Bar Chart",

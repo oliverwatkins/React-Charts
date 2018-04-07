@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CategoryForm from "../CategoryForm";
+import CategoryForm from "../ui/CategoryForm";
 
 import {initialState} from "../duck";
 

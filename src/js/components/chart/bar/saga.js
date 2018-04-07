@@ -4,6 +4,12 @@ import { put, takeEvery, all ,call} from 'redux-saga/effects'
 
 import {fetchBarData} from './duck'
 
+/**
+ * Demonstration of an asynch call using a saga. The data is just a simple
+ * JSON file on the server, some time is added, to simulate lag. ABout as simple
+ * as a saga can get
+ */
+
 const fetcher = () => {
   return fetch(`test.json`)
     .then(response => {
@@ -23,8 +29,6 @@ export function* loadChart() {
 
   yield put({ type: 'SERVER_RESPONSE', payload })
 }
-
-
 
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
