@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import BarChartForm from "../ui/BarChartForm";
 
 describe('Test basic rendering',()=> {
-  xit('BarChartForm renders', () => {
+  it('BarChartForm renders', () => {
     const component = renderer.create(
       <BarChartForm createSeries={()=>1} />
     );

@@ -4,7 +4,9 @@ import BarChartDataTable from "../ui/BarChartDataTable";
 
 import {initialState} from "../duck";
 
-
+/**
+ * TODO Something funny with the data table stops this from working
+ */
 describe('Test basic rendering',()=> {
   xit('BarChartDataTable renders', () => {
     const component = renderer.create(

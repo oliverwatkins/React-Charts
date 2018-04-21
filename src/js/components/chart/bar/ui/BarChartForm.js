@@ -74,6 +74,7 @@ class BarChartForm extends React.Component {
             <tr>
             <td>
           <MUITextField
+            id="enterSeriesNameField"
             style={{width:170}}
             hintText="Enter Series Name"
             type="text"

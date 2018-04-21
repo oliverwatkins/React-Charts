@@ -25,11 +25,8 @@ export default class WelcomePage extends React.Component {
 
           </ul>
         </div>
-
         All code is
           <a href="https://github.com/oliverwatkins/React-Charts"> available from Github </a>
-
-
       </div>
     );
   }

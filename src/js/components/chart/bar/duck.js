@@ -5,59 +5,50 @@ export const MiscActions = {
   SERVER_RESPONSE : 'SERVER_RESPONSE',
 };
 
-
 import {barChartLogic} from './barChartLogic'
-
-// import BarChartEntity from './BarChartEntity'
 
 export function reducer(state = initialState, action) {
 
-  let imState = Immutable.fromJS(state);
+  let immutableState = Immutable.fromJS(state); //convert to immutable
 
   if (!action)
-    return imState.toJS();
+    return immutableState.toJS();
 
   switch (action.type) {
     case MiscActions.FETCH_BAR_DATA:
-
       //TODO is this needed? This action is listened to already in the saga
       // Server.doGetRequest('/bardata');
       break;
-
     case MiscActions.SERVER_RESPONSE: {
-      imState = barChartLogic.fetchFinished(imState, action)
+      immutableState = barChartLogic.fetchFinished(immutableState, action)
       break;
     }
-
-    //bar
     case BarActions.CHANGE_NAME_BAR:
-      imState = barChartLogic.changeName(imState, action.newName);
+      immutableState = barChartLogic.changeName(immutableState, action.newName);
       break;
     case BarActions.CELL_CHANGED:
-
-      // alert('action ' + JSON.stringify(action))
-      imState = barChartLogic.cellChanged(imState, action)
+      immutableState = barChartLogic.cellChanged(immutableState, action)
       break;
     case BarActions.CREATE_SERIES:
-      imState = barChartLogic.createSeries(imState, action)
+      immutableState = barChartLogic.createSeries(immutableState, action)
       break;
     case BarActions.CREATE_CATEGORY:
-      imState = barChartLogic.createCategory(imState, action)
+      immutableState = barChartLogic.createCategory(immutableState, action)
       break;
     case BarActions.DELETE_CATEGORY:
-      imState = barChartLogic.deleteCategory(imState, action)
+      immutableState = barChartLogic.deleteCategory(immutableState, action)
       break;
     case BarActions.DELETE_SERIES:
-      imState = barChartLogic.deleteSeries(imState, action)
+      immutableState = barChartLogic.deleteSeries(immutableState, action)
       break;
     case BarActions.UPDATE_COLOR:
-      imState = barChartLogic.updateColor(imState, action)
+      immutableState = barChartLogic.updateColor(immutableState, action)
       break;
     default : {
-      // throw 'action not found ' + action.type
+      //throw 'action not found ' + action.type
     }
   }
-  return imState.toJS();
+  return immutableState.toJS();
 }
 
 

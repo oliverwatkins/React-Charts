@@ -32,6 +32,37 @@ export function reducer(state = initialState, action) {
 }
 
 //pie
+export function enterPieChartName() { //??
+  return {type: PieActions.ENTER_PIE_CHART_NAME}
+}
+
+export function addSlice(id) {
+  return {
+    type: PieActions.ADD_PIE_SLICE,
+    id
+  }
+}
+export function createSlice(slice) {
+  return {
+    type: PieActions.CREATE_SLICE,
+    slice
+  }
+}
+export function deleteSlice(name) {
+  return {
+    type: PieActions.DELETE_SLICE,
+    name
+  }
+}
+export function changeNamePie(newName) {
+  return {
+    type: PieActions.CHANGE_NAME_PIE,
+    newName
+  }
+}
+
+
+//pie
 export const PieActions = {
   ENTER_PIE_CHART_NAME: 'ENTER_PIE_CHART_NAME',
   ADD_PIE_SLICE: 'ADD_PIE_SLICE',
@@ -87,32 +118,3 @@ const initialState =
 
 
 
-//pie
-export function enterPieChartName() { //??
-  return {type: PieActions.ENTER_PIE_CHART_NAME}
-}
-
-export function addSlice(id) {
-  return {
-    type: PieActions.ADD_PIE_SLICE,
-    id
-  }
-}
-export function createSlice(slice) {
-  return {
-    type: PieActions.CREATE_SLICE,
-    slice
-  }
-}
-export function deleteSlice(name) {
-  return {
-    type: PieActions.DELETE_SLICE,
-    name
-  }
-}
-export function changeNamePie(newName) {
-  return {
-    type: PieActions.CHANGE_NAME_PIE,
-    newName
-  }
-}

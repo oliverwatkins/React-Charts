@@ -2,10 +2,6 @@ import Immutable from 'immutable';
 
 export const pieChartLogic = {
 
-  // path() {
-  //   return ['app', 'pie'];
-  // },
-
   createSlice(imState, action) {
     imState = imState.updateIn(['data'], a => a.push(action))
     return imState;

@@ -58,10 +58,10 @@ export default class PieChartForm extends React.Component {
           <div>
               <h3>Add Sections Here :</h3>
           </div>
-            <MUITextField type="text" ref="sliceName"
+            <MUITextField id="newSliceField" type="text" ref="sliceName"
                    name="newSlice" placeholder="Add Pie Slice Name"></MUITextField>
 
-            <MUITextField type="number" ref="value"
+            <MUITextField id="newValueField" type="number" ref="value"
                    name="newValue" placeholder="Add value"></MUITextField>
 
           <ColorChooser onChooseColor={this.colorSelected}/>

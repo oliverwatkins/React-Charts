@@ -60,6 +60,7 @@ class CategoryForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <h3>Category :</h3>
             <MUITextField
+              id="enterCatName"
               hintText="Enter Category Name"
               type="text"
               ref="categoryName"
