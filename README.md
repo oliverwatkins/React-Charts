@@ -9,4 +9,9 @@ Demonstrates :
 * Functional Components
 * redux
 * Immutable.js
+* reducers
+* reselect
+* sagas
+* jest
+
 

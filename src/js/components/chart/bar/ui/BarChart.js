@@ -5,7 +5,7 @@ import {barChartLogic} from "../barChartLogic";
 
 import Loader from 'react-loader-advanced';
 import PropTypes from 'prop-types';
-// import { RingLoader } from 'react-spinners';
+import { RingLoader } from 'react-spinners';
 
 class BarChartPanel extends React.Component {
 
@@ -35,7 +35,6 @@ class BarChartPanel extends React.Component {
     this.props.onLoadChart();
   }
 
-
   createDataForChart(barData) {
 
     let series = barChartLogic.getSeries(barData);
@@ -46,13 +45,10 @@ class BarChartPanel extends React.Component {
     for (let i = 0; i < categories.length; i++) { //TODO refactor ES6 style
       let obj = {};
       obj["name"] = categories[i];
-
       for (let j = 0; j < series.length; j++) {
         const s = series[j];
-
         let d = s.data[i].y;
         let n = s.name;
-
         obj[n] = d;
       }
       newData.push(obj)
@@ -63,11 +59,8 @@ class BarChartPanel extends React.Component {
   render() {
 
     let barData = this.props.barData;
-
     let series = barChartLogic.getSeries(barData);
-
     let data = this.createDataForChart(barData);
-
     let isFetching = barChartLogic.isFetching(barData);
 
     let style1 = {
@@ -81,15 +74,15 @@ class BarChartPanel extends React.Component {
       display: "inline"
     }
 
-    return (
-      <Loader show={isFetching} message={
-        <div style={{display: 'flex', position: 'center', justifyContent: 'center'}}>
-          <div style={style1} color={'white'} loading="true"> disable spinner for now </div>
-          {/*<RingLoader style={style1} color={'white'} loading={true}/>*/}
-          <div style={style2}>..loading..</div>
-        </div>
-      }>
 
+    let loadingMessage = <div style={{display: 'flex', position: 'center', justifyContent: 'center'}}>
+      <div style={style1} color={'white'} loading="true">  </div>
+      <RingLoader style={style1} color={'white'} loading={true}/>
+      <div style={style2}>loading..</div>
+    </div>
+
+    return (
+      <Loader show={isFetching} message={loadingMessage}>
       <div>
         <TitleComponent name={barData.name}/>
         <BarChart width={600} height={500} data={data} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
@@ -107,7 +100,7 @@ class BarChartPanel extends React.Component {
       </div>
     </Loader>
     );
+    }
   }
-}
 
 export default BarChartPanel

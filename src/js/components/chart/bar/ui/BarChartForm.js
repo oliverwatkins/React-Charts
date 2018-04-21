@@ -25,7 +25,6 @@ class BarChartForm extends React.Component {
     };
   }
 
-
   //the job of this component is only to create a new series
   static propTypes = {
     createSeries: PropTypes.func.isRequired

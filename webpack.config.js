@@ -21,6 +21,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         query: {
           plugins: ['emotion', 'react-html-attrs', 'transform-class-properties'],
+          presets: ['es2015', 'stage-0', 'react']
         }
       },
       {
