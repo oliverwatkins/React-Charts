@@ -14,7 +14,7 @@ export function reducer(state = initialState, action) {
     case PieActions.CREATE_SLICE:
       imState = pieChartLogic.createSlice(imState, action.slice);
       break;
-    case PieActions.CHANGE_NAME_PIE:
+    case PieActions.CHANGE_NAME_PIE: //type in name
       imState = pieChartLogic.changeName(imState, action.newName);
       break;
     case PieActions.UPDATE_COLOR:
@@ -33,7 +33,9 @@ export function reducer(state = initialState, action) {
 
 //pie
 export function enterPieChartName() { //??
-  return {type: PieActions.ENTER_PIE_CHART_NAME}
+  return {
+    type: PieActions.ENTER_PIE_CHART_NAME
+  }
 }
 
 export function addSlice(id) {
@@ -74,44 +76,21 @@ export const PieActions = {
 
 const initialState =
   {
-    name: "Bar Chart",
+    name: "Pie Chart",
     isFetching: true,
-    categories: [
-      "Apple",
-      "Orange",
-      "Banana",
-      "Peach"
-    ],
-    series: [
+    data: [
       {
-        name: "Mexico",
-        color: "red",
-        data: [
-          {y: 0},
-          {y: 0},
-          {y: 0},
-          {y: 0}
-        ]
-      },
-      {
-        name: "Germany",
-        color: "orange",
-        data: [
-          {y: 0},
-          {y: 0},
-          {y: 0},
-          {y: 0}
-        ]
-      },
-      {
-        name: "Holland",
-        color: "blue",
-        data: [
-          {x: 1, y: 0},
-          {x: 2, y: 0},
-          {x: 3, y: 0},
-          {x: 4, y: 0}
-        ]
+        "name":"Apple",
+        "value":13,
+        "color":"red",
+      }, {
+        "name":"Orange",
+        "value":54,
+        "color":"blue",
+      }, {
+        "name":"Banana",
+        "value":54,
+        "color":"yellow",
       }
     ]
   }

@@ -71,8 +71,9 @@ class BarChartContainer extends React.Component {
     this.props.changeCell(val);
   }
 
-  handleDeleteCategory(val) {
-    this.props.deleteCategory(val);
+  handleDeleteCategory(event, val, i) {
+    event.preventDefault();
+    this.props.deleteCategory(val, i);
   }
 
   onLoadChart(val, event) {

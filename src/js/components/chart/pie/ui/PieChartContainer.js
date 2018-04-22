@@ -8,7 +8,23 @@ import PieChartSliceList from "./PieChartSliceList";
 
 import { connect } from 'react-redux'
 
+
+import {deleteSlice, changeNamePie} from '../duck';
+
+
 class PieChartPage extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.onDeleteSlice = this.onDeleteSlice.bind(this);
+    // this.onDeleteSlice = this.onDeleteSlice.bind(this);
+  }
+
+  onDeleteSlice(event, categoryName, index) {
+    event.preventDefault();
+    this.props.deleteSlice(categoryName, index);
+  }
 
   render() {
 
@@ -19,13 +35,13 @@ class PieChartPage extends Component {
           <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
         </div>
         <div className="col-md-5">
-          <PieChartForm pieData={this.props.pieData} {...this.state}/>
+          <PieChartForm pieData={this.props.pieData} />
         </div>
         <div className="col-md-5">
-          <PieChartSliceList pieData={this.props.pieData.series} {...this.state}/>
+          <PieChartSliceList data={this.props.pieData.data} deleteSlice={this.onDeleteSlice}/>
         </div>
         <div className="col-md-5">
-          <SimplePieChart pieData={this.props.pieData.series} onLoadChart={this.onLoadChart} />
+          <SimplePieChart pieData={this.props.pieData} onLoadChart={this.onLoadChart} />
         </div>
       </div>
     );
@@ -39,9 +55,12 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    changeBarChartName: (val) => {
+    changePieChartName: (val) => {
       dispatch(changeNamePie(val))
-    }
+    },
+    deleteSlice: (val) => {
+      dispatch(deleteSlice(val))
+    },
   }
 }
 

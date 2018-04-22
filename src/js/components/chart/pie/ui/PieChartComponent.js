@@ -13,8 +13,12 @@ export default class PieChartComponent extends React.Component {
   }
 
   static propTypes = {
-    pieData: PropTypes.number,
-  }
+    data: PropTypes.arrayOf({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.bool.isRequired,
+      data: PropTypes.array.isRequired
+    })
+  };
 
   getChartData() {
     // this.setState({

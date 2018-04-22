@@ -11,7 +11,7 @@ class CategoryForm extends React.Component {
   constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.onChangeText = this.onChangeText.bind(this);
+    this.onChangeText = this.onChangeText.bind(this); //todo no need to bind here
 
     this.state = {
       enableButton: false,

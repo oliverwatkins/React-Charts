@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 export class CategoryDataList extends React.Component {
   constructor(props) {
     super(props);
-    this.deleteCategory = this.deleteCategory.bind(this);
   }
 
   static propTypes = {
@@ -20,7 +19,7 @@ export class CategoryDataList extends React.Component {
   render() {
     const categories = this.props.categories;
 
-    let deleteS = this.deleteCategory;
+    let deleteS = this.props.deleteCategory;
     return (
       <MuiThemeProvider>
         <div className="listStyle">
