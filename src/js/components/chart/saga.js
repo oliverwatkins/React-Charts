@@ -2,8 +2,9 @@
 import { delay } from 'redux-saga'
 import { put, takeEvery, all ,call} from 'redux-saga/effects'
 
-import {fetchBarData} from './duck'
-import {fetchPieData} from './../pie/duck'
+
+import {fetchBarData, BarActions} from './bar/duck'
+import {fetchPieData, PieActions} from './pie/duck'
 
 
 /**
@@ -12,8 +13,8 @@ import {fetchPieData} from './../pie/duck'
  * as a saga can get
  */
 
-const fetcher = () => {
-  return fetch(`bar_dummy_data.json`)
+const fetcherBar = () => {
+  return fetch(`data/bar_dummy_data.json`)
     .then(response => {
       return response.json()
     })
@@ -23,7 +24,7 @@ const fetcher = () => {
 };
 
 const fetcherPie = () => {
-  return fetch(`pie_dummy_data.json`)
+  return fetch(`data/pie_dummy_data.json`)
     .then(response => {
       return response.json()
     })
@@ -32,32 +33,32 @@ const fetcherPie = () => {
     })
 };
 
-export function* loadChart() {
-  yield takeEvery('FETCH_BAR_DATA', fetchBarData)
+export function* loadBarChart() {
+  yield takeEvery(BarActions.FETCH_BAR_DATA, fetchBarData)
 
   yield delay(3000)
 
-  const payload = yield call(fetcher, "");
+  const payload = yield call(fetcherBar, "");
 
-  yield put({ type: 'SERVER_RESPONSE', payload })
+  yield put({ type: BarActions.BAR_DATA_FETCHED, payload })
 }
 
 
 export function* loadPieChart() {
-  yield takeEvery('FETCH_PIE_DATA', fetchPieData)
+  yield takeEvery(PieActions.FETCH_PIE_DATA, fetchPieData)
 
-  yield delay(6000)
+  yield delay(2000)
 
   const payload = yield call(fetcherPie, "");
 
-  yield put({ type: 'SERVER_RESPONSE', payload })
+  yield put({ type: PieActions.PIE_DATA_FETCHED, payload })
 }
 
 
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
   yield all([
-    loadChart(),
+    loadBarChart(),
     loadPieChart()
   ])
 }

@@ -8,7 +8,7 @@ import PieChartPage from "./components/chart/pie/ui/PieChartContainer";
 import XYChartPage from "./components/chart/xy/ui/XYChartPage";
 import WelcomePage from "./components/WelcomePage";
 
-import rootSaga from './components/chart/bar/saga'
+import rootSaga from './components/chart/saga'
 
 import { Provider } from 'react-redux'
 

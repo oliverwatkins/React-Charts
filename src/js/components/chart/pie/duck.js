@@ -2,12 +2,6 @@ import Immutable from "immutable";
 
 import {pieChartLogic} from './pieChartLogic'
 
-export const MiscActions = {
-  FETCH_BAR_DATA : 'FETCH_BAR_DATA',
-  SERVER_RESPONSE : 'SERVER_RESPONSE',
-};
-
-
 export function reducer(state = initialState, action) {
 
   let imState = Immutable.fromJS(state);
@@ -17,11 +11,11 @@ export function reducer(state = initialState, action) {
 
   switch (action.type) {
 
-    case MiscActions.FETCH_BAR_DATA:
+    case PieActions.FETCH_PIE_DATA:
       //TODO is this needed? This action is listened to already in the saga
       // Server.doGetRequest('/bardata');
       break;
-    case MiscActions.SERVER_RESPONSE: {
+    case PieActions.PIE_DATA_FETCHED: {
       imState = pieChartLogic.fetchFinished(imState, action)
       break;
     }
@@ -93,6 +87,7 @@ export const PieActions = {
   CHANGE_NAME_PIE: 'CHANGE_NAME_PIE',
   CREATE_SLICE: 'CREATE_SLICE',
   FETCH_PIE_DATA:'FETCH_PIE_DATA',
+  PIE_DATA_FETCHED: 'PIE_DATA_FETCHED',
   DELETE_SLICE: 'DELETE_SLICE',
   UPDATE_COLOR: 'UPDATE_COLOR_PIE'
 }

@@ -31,37 +31,9 @@ class PieChartPanel extends React.Component {
     this.props.onLoadChart();
   }
 
-  createDataForChart(barData) {
-
-    let series = pieChartLogic.getSlices(barData);
-
-    // let categories = pieChartLogic.getCategories(barData);
-
-    let newData = [];
-
-    for (let i = 0; i < categories.length; i++) { //TODO refactor ES6 style
-      let obj = {};
-      obj["name"] = categories[i];
-      for (let j = 0; j < series.length; j++) {
-        const s = series[j];
-        let d = s.data[i].y;
-        let n = s.name;
-        obj[n] = d;
-      }
-      newData.push(obj)
-    }
-    return newData;
-  }
-
   render() {
-
     let pieData = this.props.pieData;
-
-    let isFetching = this.props.isFetching;
-    // let series = barChartLogic.getSeries(barData);
-    // let data = this.createDataForChart(barData);
-    // let isFetching = barChartLogic.isFetching(barData);
-
+    let isFetching = this.props.pieData.isFetching;
     let style1 = {
       color:"white",
       fontSize: 40,
@@ -72,7 +44,6 @@ class PieChartPanel extends React.Component {
       fontSize: 40,
       display: "inline"
     }
-
 
     let loadingMessage =
             <div style={{display: 'flex', position: 'center', justifyContent: 'center'}}>
@@ -89,9 +60,9 @@ class PieChartPanel extends React.Component {
         <div>
           <TitleComponent name={pieData.name}/>
           <PieChart width={800} height={400}>
-            <Pie data={pieData.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
+            <Pie dataKey="value" data={pieData.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
               {
-                pieData.data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                pieData.data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
               }
             </Pie>
             <Tooltip/>
@@ -101,5 +72,4 @@ class PieChartPanel extends React.Component {
     );
   }
 }
-
 export default PieChartPanel;

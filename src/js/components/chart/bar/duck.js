@@ -1,10 +1,5 @@
 import Immutable from "immutable";
 
-export const MiscActions = {
-  FETCH_BAR_DATA : 'FETCH_BAR_DATA',
-  SERVER_RESPONSE : 'SERVER_RESPONSE',
-};
-
 import {barChartLogic} from './barChartLogic'
 
 export function reducer(state = initialState, action) {
@@ -15,11 +10,11 @@ export function reducer(state = initialState, action) {
     return immutableState.toJS();
 
   switch (action.type) {
-    case MiscActions.FETCH_BAR_DATA:
+    case BarActions.FETCH_BAR_DATA:
       //TODO is this needed? This action is listened to already in the saga
       // Server.doGetRequest('/bardata');
       break;
-    case MiscActions.SERVER_RESPONSE: {
+    case BarActions.BAR_DATA_FETCHED: {
       immutableState = barChartLogic.fetchFinished(immutableState, action)
       break;
     }
@@ -45,7 +40,7 @@ export function reducer(state = initialState, action) {
       immutableState = barChartLogic.updateColor(immutableState, action)
       break;
     default : {
-      console.warn('no action found : ' + action)
+      console.warn('no action found : ' + (action ? action.type : action))
       //throw 'action not found ' + action.type
     }
   }
@@ -55,6 +50,8 @@ export function reducer(state = initialState, action) {
 
 //bar
 export const BarActions = {
+  FETCH_BAR_DATA : 'FETCH_BAR_DATA',
+  BAR_DATA_FETCHED: 'BAR_DATA_FETCHED',
   CHANGE_NAME_BAR: 'CHANGE_NAME_BAR',
   CREATE_SERIES: 'CREATE_SERIES',
   CELL_CHANGED: 'CELL_CHANGED',
@@ -119,7 +116,7 @@ export function changeCell(value) {
 
 export function fetchBarData(value) {
   return {
-    type: MiscActions.FETCH_BAR_DATA,
+    type: BarActions.FETCH_BAR_DATA,
     value
   }
 }
