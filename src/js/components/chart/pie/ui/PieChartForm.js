@@ -1,16 +1,13 @@
 import React from "react";
 
-// import Actions from "../../../../js/ActionsRedux";
-import TitleEditComponent from '../../TitleEditComponent'
 import ColorChooser from '../../ColorChooser'
-
-import ReactDOM from "react-dom";
 
 import MUITextField from 'material-ui/TextField';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class PieChartForm extends React.Component {
+
   constructor(props) {
 
     super(props);
@@ -19,40 +16,33 @@ export default class PieChartForm extends React.Component {
     this.colorSelected = this.colorSelected.bind(this);
 
     this.state = {
-      selectedColor: '123123'
+      selectedColor: '#123123'
     };
   }
 
   handleSubmit(event) {
-    event.preventDefault();
 
-    const val = ReactDOM.findDOMNode(this.refs.sliceName).value;
+    let name =  this.refs.sliceName.input.value;
+    let value =  this.refs.value.input.value;
 
-    const value = parseInt(ReactDOM.findDOMNode(this.refs.value).value);
-
-    var slice = {
-      name: val,
+    let slice = {
+      name: name,
       color: this.state.selectedColor,
       value: value
-    }
-    Actions.createSlice(slice);
+    };
+
+    this.props.createSlice(event, slice);
   }
 
   colorSelected(color) {
     this.setState({selectedColor: color});
   }
-
-  handleChartNameChange(event) {
-    Actions.changeName(event.currentTarget.value);
-  }
-
   render() {
     let pieData = this.props.pieData;
     return (
     <MuiThemeProvider>
       <form onSubmit={this.handleSubmit}>
 
-        <TitleEditComponent value={pieData.name} onChange={this.handleChartNameChange}/>
 
         <div>
           <div>

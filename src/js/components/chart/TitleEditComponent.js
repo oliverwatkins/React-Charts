@@ -32,8 +32,6 @@ export default class TitleEditComponent extends React.Component {
     )
   }
 
-  // valueCOMMENTED_OUT={this.props.value}
-
   keyPress(e) {
     e.persist();
     let val = this.refs.titleField.input.value

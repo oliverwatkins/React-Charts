@@ -37,6 +37,9 @@ const store = createStore(
 //setup saga middleware
 sagaMiddleware.run(rootSaga);
 
+
+
+
 const app = document.getElementById('app');
 
 ReactDOM.render(

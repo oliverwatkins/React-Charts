@@ -45,6 +45,7 @@ export function reducer(state = initialState, action) {
       immutableState = barChartLogic.updateColor(immutableState, action)
       break;
     default : {
+      console.warn('no action found : ' + action)
       //throw 'action not found ' + action.type
     }
   }

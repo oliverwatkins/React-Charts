@@ -9,7 +9,9 @@ import PropTypes from 'prop-types';
 
 import 'react-hint/css/index.css'
 
-
+/**
+ * The first three elements to add a series. the textfield, add button, and color chooser
+ */
 class BarChartForm extends React.Component {
 
   constructor(props) {
@@ -48,6 +50,10 @@ class BarChartForm extends React.Component {
     this.setState({selectedColor: color});
   }
 
+  /**
+   * Detect text change in field. Makes 'add series' button enabled
+   * if there is some text
+   */
   onChangeText(e, value) {
     if (!value) {
       this.setState({enableButton: false});
@@ -55,6 +61,8 @@ class BarChartForm extends React.Component {
       this.setState({enableButton: true});
     }
   }
+
+
   render() {
     let enableButton = this.state.enableButton
 

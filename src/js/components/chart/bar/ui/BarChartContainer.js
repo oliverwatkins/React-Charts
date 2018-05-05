@@ -11,11 +11,7 @@ import {makeBarDataSelector} from "../selectors"
 
 import CategoryDataList from "./CategoryDataList";
 
-
-// import './BarSeriesList.less';
 import './../../../../global.less';
-
-
 
 import {connect} from 'react-redux'
 import {createCategory, changeLineChartName, fetchBarData, deleteSeries,
@@ -23,7 +19,6 @@ import {createCategory, changeLineChartName, fetchBarData, deleteSeries,
 } from '../duck';
 
 import TitleEditComponent from "../../TitleEditComponent";
-
 
 /**
  * Redux container
@@ -44,8 +39,6 @@ class BarChartContainer extends React.Component {
     this.handleChangeCell = this.handleChangeCell.bind(this);
     this.onLoadChart = this.onLoadChart.bind(this);
   }
-
-
 
   handleChartNameChange(val, event) {
     this.props.changeLineChartName(val);
