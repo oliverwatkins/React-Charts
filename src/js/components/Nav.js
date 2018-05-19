@@ -1,9 +1,12 @@
 import React from "react";
-import {IndexLink, Link} from "react-router";
+import {Link, withRouter} from "react-router-dom";
 
 import './style.less';
 
-export default class Nav extends React.Component {
+
+// import withRouter from from "react-router-dom";
+
+class Nav extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -26,10 +29,9 @@ export default class Nav extends React.Component {
     let pieClass = location.pathname.match(/^\/pie/) ? "active" : "";
     let barClass = location.pathname.match(/^\/bar/) ? "active" : "";
 
-    barClass = barClass + " bar-chart"
-    lineClass = lineClass + " line-chart"
-    pieClass = pieClass + " pie-chart"
-
+    barClass = barClass + " bar-chart";
+    lineClass = lineClass + " line-chart";
+    pieClass = pieClass + " pie-chart";
 
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -45,7 +47,7 @@ export default class Nav extends React.Component {
           <div className={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li className={featuredClass}>
-                <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Home</IndexLink>
+                <Link to="/" onClick={this.toggleCollapse.bind(this)}>Home</Link>
               </li>
               <li >
                 <Link to="bar" onClick={this.toggleCollapse.bind(this)} className={barClass}>
@@ -69,3 +71,6 @@ export default class Nav extends React.Component {
     );
   }
 }
+
+//HOC gives Nav access to routing objects
+export default withRouter(Nav)

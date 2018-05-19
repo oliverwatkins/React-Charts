@@ -1,13 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Route, IndexRoute, hashHistory } from "react-router";
 
-import PageLayout from "./PageLayout";
-import BarChartPage from "./components/chart/bar/ui/BarChartContainer";
-import PieChartPage from "./components/chart/pie/ui/PieChartContainer";
-import XYChartPage from "./components/chart/xy/ui/XYChartPage";
-import WelcomePage from "./components/WelcomePage";
+import { BrowserRouter} from "react-router-dom";
 
+import Main from "./Main";
 import rootSaga from './components/chart/saga'
 
 import { Provider } from 'react-redux'
@@ -37,21 +33,15 @@ const store = createStore(
 //setup saga middleware
 sagaMiddleware.run(rootSaga);
 
-
-
-
 const app = document.getElementById('app');
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path="/" component={PageLayout}>
-        <IndexRoute component={WelcomePage}></IndexRoute>
-        <Route path="bar" component={BarChartPage}></Route>
-        <Route path="pie" component={PieChartPage}></Route>
-        <Route path="line" component={XYChartPage}></Route>
-      </Route>
-    </Router>
+    <BrowserRouter>
+      <Main/>
+    </BrowserRouter>
   </Provider>,
 app);
+
+
 

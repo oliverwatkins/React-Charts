@@ -11,6 +11,7 @@ import {fetchPieData, PieActions} from './pie/duck'
  * Demonstration of an asynch call using a saga. The data is just a simple
  * JSON file on the server, some time is added, to simulate lag. ABout as simple
  * as a saga can get
+ *
  */
 
 const fetcherBar = () => {
