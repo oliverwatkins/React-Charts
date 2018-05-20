@@ -3,9 +3,6 @@ import {Link, withRouter} from "react-router-dom";
 
 import './style.less';
 
-
-// import withRouter from from "react-router-dom";
-
 class Nav extends React.Component {
   constructor() {
     super()
