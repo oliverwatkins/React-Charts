@@ -17,7 +17,6 @@ import {reducer as pieReducer} from './components/chart/pie/duck.js'
 import { createStore, combineReducers , applyMiddleware, compose} from 'redux'
 
 
-import AnimationExample from './../AnimationExample'
 
 let combinedReducers = combineReducers({
   xy: xyReducer,
@@ -45,8 +44,3 @@ ReactDOM.render(
     </BrowserRouter>
   </Provider>,
 app);
-
-
-
-// ReactDOM.render(
-//   <AnimationExample/>, app);
