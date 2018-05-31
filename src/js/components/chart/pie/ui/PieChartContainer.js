@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import PieChart from "./PieChart";
+import PieChart from "./PieChartPanel";
 import PieChartForm from "./PieChartForm";
 import PieChartSliceList from "./PieChartSliceList";
 import TitleEditComponent from "./../../TitleEditComponent"

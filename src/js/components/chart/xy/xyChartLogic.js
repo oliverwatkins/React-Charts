@@ -11,70 +11,36 @@ export const xyChartLogic = {
     return appState.xy.series;
   },
 
-  deleteSeries(imState, action) {
+  deleteXYSeries(imState, action) {
     let list = imState.getIn([...this.path, 'series'])
 
     list = list.filter(function (elem) {
-      return elem.get("name") !== action.seriesName
+      return elem.get("name") !== action.name
     })
     imState = imState.setIn([...this.path, 'series'], list)
 
     return imState;
   },
 
-  createSeries(imState, action) {
-    let series = action.series;
+  createXYSeries(imState, action) {
 
-    let list = imState.getIn([...this.path, 'series'])
 
-    list = list.toJS();
-    let firstSeries = list[0];
+    let series = imState.getIn([...this.path, 'series'])
+    series = Immutable.List(series);
 
-    let dataArr = [];
-    firstSeries.data.forEach(function (data) {
-      let n = data.name;
-      dataArr.push({"x": n, "y": 0});
-    });
-
-    list.push(
+    series = series.push(
       {
-        name: series.name,
-        color: series.color,
-        data: dataArr
+        name: action.name,
+        color: action.color,
+        data: [{"x":0,"y":0}]
       },
     );
 
-    var v = Immutable.fromJS(list)
-    imState = imState.setIn([...this.path, 'series'], v)
-    return imState;
-  },
-
-  cellChanged(imState, action) {
-
-    let row = action.value.fromRow;
-    let seriesName = Object.keys(action.value.updated)[0];
-    let cellValue = action.value.updated[seriesName];
-
-    if (seriesName === "category") {
-      imState = imState.setIn([...this.path, 'categories', row], cellValue)
-    } else {
-
-      var list = imState.getIn([...this.path, 'series']);
-
-      var index = list.findIndex(function (item) {
-        return item.get("name") === seriesName;
-      })
-
-      imState = imState.setIn([...this.path, 'series', index, 'data', row, 'y'], cellValue)
-    }
-    return imState;
-  },
-
-  changeName(imState, newName) {
-    imState = imState.setIn([...this.path, 'name'], newName)
-
+    // var v = Immutable.fromJS(series)
+    imState = imState.setIn([...this.path, 'series'], series)
     return imState;
   }
+
 }
 
 

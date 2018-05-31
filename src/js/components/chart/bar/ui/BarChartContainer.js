@@ -1,6 +1,6 @@
 import React from "react";
 
-import BarChartComponent from "./BarChart";
+import BarChartComponent from "./BarChartPanel";
 import BarSeriesList from "./BarSeriesList";
 import BarChartForm from "./BarChartForm";
 import BarChartDataTable from "./BarChartDataTable";

@@ -9,8 +9,6 @@ export default class XYSeriesComponent extends React.Component {
 
   render() {
 
-    data
-
     return (
       <div>
         <input width={10} /><input/>

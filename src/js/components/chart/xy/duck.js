@@ -13,19 +13,12 @@ export function reducer(state = initialState, action) {
 
   switch (action.type) {
 
-    //bar
-    case LineActions.CHANGE_NAME_XY:
-      imState = xyChartLogic.changeName(imState, action.newName);
+    case XYActions.CREATE_SERIES_XY:
+      imState = xyChartLogic.createXYSeries(imState, action)
       break;
-    // case BarActions.CELL_CHANGED:
-    //   imState = BarChartEntity.cellChanged(imState, action)
-    //   break;
-    case LineActions.CREATE_SERIES_XY:
-      // imState = XYChartEntity.createSeries(imState, action)
+    case XYActions.DELETE_SERIES_XY:
+      imState = xyChartLogic.deleteXYSeries(imState, action)
       break;
-    // case BarActions.CREATE_CATEGORY:
-    //   imState = BarChartEntity.createCategory(imState, action)
-    //   break;
     // case BarActions.DELETE_CATEGORY:
     //   imState = BarChartEntity.deleteCategory(imState, action)
     //   break;
@@ -38,17 +31,53 @@ export function reducer(state = initialState, action) {
 
 
     default : {
-      // throw 'action not found ' + action.type
+      // throw 'actionX not found ' + action.type
     }
   }
   return imState.toJS();
 }
 
 
-//bar
-export const LineActions = {
-  CHANGE_NAME_XY: 'CHANGE_NAME_XY',
+//xy
+export const XYActions = {
   CREATE_SERIES_XY: 'CREATE_SERIES_XY',
+  DELETE_SERIES_XY: 'DELETE_SERIES_XY'
+}
+
+
+
+
+
+export function fetchXYData() {
+  return {
+  }
+}
+export function updateColorXY() {
+  return {
+  }
+}
+export function changeCellXY() {
+  return {
+  }
+}
+export function changeXYChartName() {
+  return {
+  }
+}
+
+//xy actions
+export function createXYSeries(series) {
+  return {
+    type: XYActions.CREATE_SERIES_XY,
+    name: series.name,
+    color: series.color
+  }
+}
+export function deleteXYSeries(series) {
+  return {
+    type: XYActions.DELETE_SERIES_XY,
+    name: series.name,
+  }
 }
 
 
@@ -58,41 +87,25 @@ const initialState =
   {
     name: "XY Chart",
     isFetching: true,
-    categories: [
-      "Apple",
-      "Orange",
-      "Banana",
-      "Peach"
-    ],
     series: [
       {
-        name: "Mexico",
+        name: "Series1",
         color: "red",
         data: [
-          {y: 0},
-          {y: 0},
-          {y: 0},
-          {y: 0}
+          {x:2, y: 3},
+          {x:4, y: 6},
+          {x:7, y: 8},
+          {x:9, y: 23}
         ]
       },
       {
-        name: "Germany",
-        color: "orange",
-        data: [
-          {y: 0},
-          {y: 0},
-          {y: 0},
-          {y: 0}
-        ]
-      },
-      {
-        name: "Holland",
+        name: "Series2",
         color: "blue",
         data: [
-          {x: 1, y: 0},
-          {x: 2, y: 0},
-          {x: 3, y: 0},
-          {x: 4, y: 0}
+          {x:3, y: 5},
+          {x:5, y: 11},
+          {x:6, y: 12},
+          {x:12, y: 25}
         ]
       }
     ]

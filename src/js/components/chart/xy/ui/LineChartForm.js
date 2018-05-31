@@ -39,7 +39,8 @@ export default class LineChartForm extends React.Component {
   render() {
     let style = {
       "padding": "3px",
-      "margin": "3px"
+      "margin": "3px",
+      "border": "5px solid red"
     }
     return (
 
