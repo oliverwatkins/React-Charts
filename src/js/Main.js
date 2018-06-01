@@ -8,6 +8,8 @@ import PieChartPage from "./components/chart/pie/ui/PieChartContainer";
 import XYChartPage from "./components/chart/xy/ui/XYChartContainer";
 import WelcomePage from "./components/WelcomePage";
 
+import BouncySwitch from "./BouncySwitch"
+
 import './style.less';
 import { spring, AnimatedSwitch } from 'react-router-transition';
 
@@ -65,18 +67,29 @@ class Main extends React.Component {
           <div className="row">
             <div className="col-lg-12">
 
-              <AnimatedSwitch
-                atEnter={bounceTransition.atEnter}
-                atLeave={bounceTransition.atLeave}
-                atActive={bounceTransition.atActive}
-                mapStyles={mapStyles}
-                className="route-wrapper"
-              >
-                <Route exact path='/' component={WelcomePage}/>
-                <Route path='/bar' component={BarChartPage}/>
-                <Route path='/pie' component={PieChartPage}/>
-                <Route path='/line' component={XYChartPage}/>
-              </AnimatedSwitch>
+              {/*<AnimatedSwitch*/}
+                {/*atEnter={{ opacity: 0 }}*/}
+                {/*atLeave={{ opacity: 0 }}*/}
+                {/*atActive={{ opacity: 1 }}*/}
+                {/*className="switch-wrapper"*/}
+              {/*>*/}
+
+              {/*<AnimatedSwitch*/}
+                {/*atEnter={bounceTransition.atEnter}*/}
+                {/*atLeave={bounceTransition.atLeave}*/}
+                {/*atActive={bounceTransition.atActive}*/}
+                {/*mapStyles={mapStyles}*/}
+                {/*className="switch-wrapper"*/}
+              {/*>*/}
+
+                <BouncySwitch>
+                  <Route exact path='/' component={WelcomePage}/>
+                  <Route path='/bar' component={BarChartPage}/>
+                  <Route path='/pie' component={PieChartPage}/>
+                  <Route path='/line' component={XYChartPage}/>
+                </BouncySwitch>
+
+              {/*</AnimatedSwitch>*/}
             </div>
           </div>
           <Footer/>
