@@ -9,6 +9,10 @@ import XYChartPage from "./components/chart/xy/ui/XYChartContainer";
 import WelcomePage from "./components/WelcomePage";
 
 import BouncySwitch from "./BouncySwitch"
+import FadeSwitch from "./FadeSwitch"
+
+
+
 
 import './style.less';
 import { spring, AnimatedSwitch } from 'react-router-transition';
@@ -74,20 +78,13 @@ class Main extends React.Component {
                 {/*className="switch-wrapper"*/}
               {/*>*/}
 
-              {/*<AnimatedSwitch*/}
-                {/*atEnter={bounceTransition.atEnter}*/}
-                {/*atLeave={bounceTransition.atLeave}*/}
-                {/*atActive={bounceTransition.atActive}*/}
-                {/*mapStyles={mapStyles}*/}
-                {/*className="switch-wrapper"*/}
-              {/*>*/}
 
-                <BouncySwitch>
+                <FadeSwitch>
                   <Route exact path='/' component={WelcomePage}/>
                   <Route path='/bar' component={BarChartPage}/>
                   <Route path='/pie' component={PieChartPage}/>
                   <Route path='/line' component={XYChartPage}/>
-                </BouncySwitch>
+                </FadeSwitch>
 
               {/*</AnimatedSwitch>*/}
             </div>

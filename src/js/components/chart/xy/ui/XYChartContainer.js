@@ -88,7 +88,12 @@ class XYChartContainer extends React.Component {
 
 
             <div>
-              <XYChartSeriesComponent/>
+              <XYChartSeriesComponent
+                xyData={this.props.xyData}
+                changeCell={this.handleChangeCell}
+                createXYSeries={this.handleCreateXYSeries}
+                deleteXYSeries={this.handleDeleteXYSeries}
+              />
             </div>
 
           </div>

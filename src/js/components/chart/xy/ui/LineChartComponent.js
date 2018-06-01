@@ -9,28 +9,8 @@ export default class LineChartComponent extends React.Component {
   }
 
   createDataForChart() {
-    // let series = XYChartEntity.getSeries(this.props.app);
-
-    // let series = BarChartEntity.getSeries(this.props.app);
 
     let newData = [];
-
-    // for (let i = 0; i < categories.length; i++) {
-    //
-    //   let obj = {};
-    //
-    //   obj["name"] = categories[i];
-    //
-    //   for (let j = 0; j < series.length; j++) {
-    //     const s = series[j];
-    //
-    //     let d = s.data[i].y;
-    //     let n = s.name;
-    //
-    //     obj[n] = d;
-    //   }
-    //   newData.push(obj)
-    // }
     return newData;
   }
 
