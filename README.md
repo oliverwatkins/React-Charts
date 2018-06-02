@@ -4,14 +4,27 @@ Simple React Application
 
 Demonstrates :
 
+REACT
 * Controlled component
-* JSX
 * Functional Components
-* redux
-* Immutable.js
+* JSX
+* ES6
+
+REDUX
+* redux connect
 * reducers
 * reselect
 * sagas
-* jest
+* immutability with Immutable.js
+
+TESTING
+* testing with jest
+* snapshot tests
+* reducer tests
+
+MISC
+* transitions
+* third party components
+
 
 
