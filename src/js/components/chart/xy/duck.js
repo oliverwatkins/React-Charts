@@ -19,16 +19,9 @@ export function reducer(state = initialState, action) {
     case XYActions.DELETE_SERIES_XY:
       imState = xyChartLogic.deleteXYSeries(imState, action)
       break;
-    // case BarActions.DELETE_CATEGORY:
-    //   imState = BarChartEntity.deleteCategory(imState, action)
-    //   break;
-    // case BarActions.DELETE_SERIES:
-    //   imState = BarChartEntity.deleteSeries(imState, action)
-    //   break;
-    // case BarActions.UPDATE_COLOR:
-    //   imState = BarChartEntity.updateColor(imState, action)
-    //   break;
-
+    case XYActions.CHANGE_CELL_XY:
+      imState = xyChartLogic.changeCellXY(imState, action)
+      break;
 
     default : {
       // throw 'actionX not found ' + action.type
@@ -41,11 +34,9 @@ export function reducer(state = initialState, action) {
 //xy
 export const XYActions = {
   CREATE_SERIES_XY: 'CREATE_SERIES_XY',
-  DELETE_SERIES_XY: 'DELETE_SERIES_XY'
+  DELETE_SERIES_XY: 'DELETE_SERIES_XY',
+  CHANGE_CELL_XY: 'CHANGE_CELL_XY'
 }
-
-
-
 
 
 export function fetchXYData() {
@@ -56,10 +47,7 @@ export function updateColorXY() {
   return {
   }
 }
-export function changeCellXY() {
-  return {
-  }
-}
+
 export function changeXYChartName() {
   return {
   }
@@ -77,6 +65,15 @@ export function deleteXYSeries(series) {
   return {
     type: XYActions.DELETE_SERIES_XY,
     name: series.name,
+  }
+}
+export function changeCellXY(seriesName, axis, row, value) {
+  return {
+    type: XYActions.CHANGE_CELL_XY,
+    series: seriesName,
+    axis: axis,
+    row: row,
+    value: value
   }
 }
 

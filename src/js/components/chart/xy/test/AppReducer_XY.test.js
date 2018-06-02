@@ -1,7 +1,8 @@
 import {reducer} from "./../duck"
 import {
   createXYSeries,
-  deleteXYSeries
+  deleteXYSeries,
+  changeCellXY
 } from "./../duck"
 /*
 Test the reducer functions
@@ -36,6 +37,24 @@ describe('Test Bar Reducer functions', () => {
         [{"x": 0, "y": 0}]
     })
 
+  })
+
+  it(' change cell ', () => {
+
+    let state = reducer(initialState_XY, createXYSeries({name: "asdf2", color: "gray"}));
+    expect(state.series.length).toEqual(2);
+
+    state = reducer(state, changeCellXY({name: "asdf2", axis: "x", row: 0, value:3}));
+    expect(state.series).toContainEqual({
+      name: 'asdf2', color: 'gray', data:
+        [{"x": 3, "y": 0}]
+    });
+
+    state = reducer(state, changeCellXY({name: "asdf2", axis: "y", row: 0, value:5}));
+    expect(state.series).toContainEqual({
+      name: 'asdf2', color: 'gray', data:
+        [{"x": 3, "y": 5}]
+    });
   })
 
   const initialState_XY =

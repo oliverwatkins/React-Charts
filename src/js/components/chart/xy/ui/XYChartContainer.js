@@ -89,7 +89,7 @@ class XYChartContainer extends React.Component {
 
             <div>
               <XYChartSeriesComponent
-                xyData={this.props.xyData}
+                xySeries={this.props.xyData.series}
                 changeCell={this.handleChangeCell}
                 createXYSeries={this.handleCreateXYSeries}
                 deleteXYSeries={this.handleDeleteXYSeries}
@@ -129,8 +129,8 @@ const mapDispatchToProps = dispatch => {
     createXYSeries: (series) => {
       dispatch(createXYSeries(series))
     },
-    changeCellXY: (fromRow, toRow, updated ) => {
-      dispatch(changeCellXY(fromRow, toRow, updated ))
+    changeCellXY: (series, axis, row, value ) => {
+      dispatch(changeCellXY(series, axis, row, value ))
     }
   }
 }

@@ -39,7 +39,12 @@ export const xyChartLogic = {
     // var v = Immutable.fromJS(series)
     imState = imState.setIn([...this.path, 'series'], series)
     return imState;
+  },
+
+  changeCellXY(imState, action) {
+    return imState;
   }
+
 
 }
 
