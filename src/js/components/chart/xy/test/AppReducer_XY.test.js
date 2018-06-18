@@ -41,18 +41,20 @@ describe('Test Bar Reducer functions', () => {
 
   xit(' change cell at out of range cell', () => {
 
-    let state = reducer(initialState_XY, createXYSeries({name: "asdf2", color: "gray"}));
-    expect(state.series.length).toEqual(2);
+    // let state = reducer(initialState_XY_cellupdate, createXYSeries({name: "asdf2", color: "gray"}));
+    // expect(state.series.length).toEqual(1);
+    // expect(state.series[0].data.length).toEqual(2);
 
     try {
       //this should fail. data length is 1 and we are adding at 3 which is out of bounds. Max we
       //can add to is 2
-      state = reducer(state, changeCellXY({name: "changeCellXY", axis: "x", row: 3, value: 3}));
+      let state = reducer(initialState_XY_cellupdate, changeCellXY({name: "changeCellXY", axis: "x", row: 3, value: 3}));
 
       // Fail test if above expression doesn't throw anything.
       expect(true).toBe(false);
 
     } catch (e) {
+      // throw e;
     }
 
   })
@@ -74,10 +76,7 @@ describe('Test Bar Reducer functions', () => {
 
 
   it(' change cell ', () => {
-    // expect(state.series).toContainEqual({
-    //   name: 'changeCellXY', color: 'gray', data:
-    //     [{"x": 3, "y": 0}]
-    // });
+
     let state = reducer(initialState_XY_cellupdate, changeCellXY({name: "changeCellXY", axis: "y", row: 0, value:99}));
 
     expect(state.series.length).toEqual(1);
@@ -88,18 +87,7 @@ describe('Test Bar Reducer functions', () => {
         [{"x": 0, "y":99},
           {"x":1, "y":2}]
     });
-    // state = reducer(state, changeCellXY({name: "changeCellXY", axis: "x", row: 3, value: 3}));
-    //
-    // expect(state.series).toContainEqual({
-    //   name: 'asdf2', color: 'gray', data:
-    //     [{"x": 3, "y": 5}]
-    // });
   })
-
-
-
-
-
 
   xit('loads initial data correctly ', () => {
 

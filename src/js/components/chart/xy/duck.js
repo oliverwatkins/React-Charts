@@ -10,6 +10,7 @@ export function reducer(state = initialState, action) {
 
   if (!action)
     return imState.toJS();
+  // debugger;
 
   switch (action.type) {
 
@@ -22,7 +23,6 @@ export function reducer(state = initialState, action) {
     case XYActions.CHANGE_CELL_XY:
       imState = xyChartLogic.changeCellXY(imState, action)
       break;
-
     default : {
       // throw 'actionX not found ' + action.type
     }

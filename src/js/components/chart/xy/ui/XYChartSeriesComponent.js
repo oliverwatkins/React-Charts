@@ -35,7 +35,7 @@ export default class XYChartSeriesComponent extends React.Component {
     let textfieldChange = this.refs[inputLabel];
     let val = textfieldChange.value;
 
-    this.props.changeCellXY(seriesName, axis, row, val)
+    this.props.changeCellXY({name: seriesName, axis:axis, row:row, value:val})
   }
 
   render() {
