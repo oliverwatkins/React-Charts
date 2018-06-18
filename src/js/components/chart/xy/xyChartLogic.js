@@ -42,10 +42,34 @@ export const xyChartLogic = {
   },
 
   changeCellXY(imState, action) {
+
+    let seriesList = imState.getIn([...this.path, 'series'])
+
+    var idxSeriesItem = seriesList.findIndex((elem) => {
+      return elem.get("seriesName") === action.name
+    })
+
+    let singlelistItem = seriesList.filter((elem, i) => {
+      return elem.get("seriesName") === action.name
+    })
+
+    singlelistItem = singlelistItem.get(0);
+
+    let l = singlelistItem.toJS();
+    console.log(l);
+    singlelistItem = singlelistItem.updateIn(['data'], function(list){
+      var idx = list.findIndex(function(item, i){ //index?
+        if(i == action.row)
+          return true;
+      });
+      return list.setIn([idx, action.axis], action.value);
+    });
+    seriesList = seriesList.setIn([idxSeriesItem], singlelistItem);
+
+    imState = imState.setIn([...this.path, 'series'], seriesList);
+
     return imState;
   }
-
-
 }
 
 

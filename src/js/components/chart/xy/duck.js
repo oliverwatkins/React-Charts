@@ -67,13 +67,13 @@ export function deleteXYSeries(series) {
     name: series.name,
   }
 }
-export function changeCellXY(seriesName, axis, row, value) {
+export function changeCellXY(seriesValues) {
   return {
     type: XYActions.CHANGE_CELL_XY,
-    series: seriesName,
-    axis: axis,
-    row: row,
-    value: value
+    seriesName: seriesValues.name,
+    axis: seriesValues.axis,
+    row: seriesValues.row,
+    value: seriesValues.value
   }
 }
 
