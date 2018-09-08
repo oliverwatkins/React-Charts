@@ -95,7 +95,7 @@ class XYChartContainer extends React.Component {
 
           </div>
           <div>
-            <LineChartComponent/>
+            <LineChartComponent xySeries={this.props.xyData.series}/>
           </div>
         </div>
       </div>

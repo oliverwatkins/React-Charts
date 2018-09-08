@@ -1,7 +1,6 @@
 import React from "react";
 
 
-import XYChartForm from "./LineChartForm";
 
 
 import './List.less';
@@ -40,6 +39,7 @@ export default class XYChartSeriesComponent extends React.Component {
       "margin": "3px",
       "border": "5px solid blue"
     }
+
 
     let series = this.props.xySeries;
 
