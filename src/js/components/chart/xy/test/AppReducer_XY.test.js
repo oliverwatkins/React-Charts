@@ -9,6 +9,21 @@ Test the reducer functions
  */
 describe('Test Bar Reducer functions', () => {
 
+
+  const initialState_XY =
+    {
+      name: "XY Chart",
+      isFetching: true,
+      series: [
+        {
+          name:"series1",
+          color:"red",
+          data: [{"x": 0, "y": 0},
+            {"x":1, "y":2}]
+        }
+      ]
+    }
+
   it(' creates a series ', () => {
 
     let state = reducer(initialState_XY, createXYSeries({name: "asdf", color: "brown"}));
@@ -56,7 +71,6 @@ describe('Test Bar Reducer functions', () => {
     } catch (e) {
       // throw e;
     }
-
   })
 
 
@@ -87,6 +101,14 @@ describe('Test Bar Reducer functions', () => {
         [{"x": 0, "y":99},
           {"x":1, "y":2}]
     });
+
+    state = reducer(state, changeCellXY({name: "changeCellXY", axis: "y", row: 1, value:98}));
+
+    expect(state.series).toContainEqual({
+      name: 'changeCellXY', color: 'blah', data:
+        [{"x": 0, "y":99},
+          {"x":1, "y":98}]
+    });
   })
 
   xit('loads initial data correctly ', () => {
@@ -112,9 +134,6 @@ describe('Test Bar Reducer functions', () => {
     expect(state.name).toEqual('sausage')
     expect(state.name).not.toEqual('hotdog')
   })
-
-
-
 
   xit(' creates a category', () => {
 
