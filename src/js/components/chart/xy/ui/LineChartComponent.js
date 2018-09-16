@@ -1,5 +1,5 @@
 import React from "react";
-import {ScatterChart, Scatter, LineChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
+import {ScatterChart, Scatter, LineChart, Bar, Line, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 
 
 export default class LineChartComponent extends React.Component {
@@ -14,6 +14,17 @@ export default class LineChartComponent extends React.Component {
     return newData;
   }
 
+  // createScatters() {
+  //
+  //   return{
+  //   <div>
+  //     <Scatter name='A school' data={data01} fill='#8884d8' line shape="cross"/>
+  //     <Scatter name='B school' data={data02} fill='#82ca9d' line shape="diamond"/>
+  //     <Scatter name='asdfasfd' data={data03} fill='#434343' line shape="square"/>
+  //   </div>
+  //   }
+  //
+  // }
 
 
   render() {
@@ -35,30 +46,75 @@ export default class LineChartComponent extends React.Component {
   //   {x: 17, y: 3, z: 400}, {x: 140, y: 25, z: 280},
   //   {x: 150, y: 400, z: 500}, {x: 110, y: 280, z: 200}]
 
-    const data = this.props.xySeries[0].data;
+    // const data = this.props.xySeries[0].data;
 
-    // const data = [{x: 1, y: 1}, {x: 5, y: 7}, {x: 10, y: 18}]
+    // const data = [{x: 1, x2:3, y: 1}, {x: 5, x2:3, y: 17}, {x: 10, x2:3, y: 18}]
+
+
+    // const data01 = [{x: 10, y: 30}, {x: 30, y: 200}, {x: 45, y: 100}, {x: 50, y: 400}, {x: 70, y: 150}, {x: 100, y: 250}];
+    // const data02 = [{x: 30, y: 20}, {x: 50, y: 180}, {x: 75, y: 240}, {x: 100, y: 100}, {x: 120, y: 190}];
+
+    // const data03 = [{x: 65, y: 50}];
+
+    const objects = [
+      {
+        name:"asdfasfd",
+        data: [{x: 10, y: 30}, {x: 30, y: 200}, {x: 45, y: 100}, {x: 50, y: 400}, {x: 70, y: 150}, {x: 100, y: 250}],
+        color: "#111111",
+        shape: "square"
+      },
+      {
+        name:"asdfasfd",
+        data: [{x: 30, y: 20}, {x: 50, y: 180}, {x: 75, y: 240}, {x: 100, y: 100}, {x: 120, y: 190}],
+        color: "#757575",
+        shape: "diamond"
+      },
+      {
+        name:"asdfasfd",
+        data: [{x: 65, y: 50}],
+        color: "#512121",
+        shape: "circle"
+      }
+
+    ]
+
+
+    objects.push({
+      name: this.props.xySeries[0].name,
+      data: this.props.xySeries[0].data,
+      color: this.props.xySeries[0].color,
+      shape: this.props.xySeries[0].shape,
+
+    })
+
+
+
+
+
 
     // let series = XYChartEntity.getSeries(this.props.app);
 
     // let series = this.props.app.xy.series;
     // let data = this.createDataForChart();
 
+    // let myScatters = this.createScatters();
+
     return (
       <div>
-        {/*<TitleComponent name={this.props.app.xy.name}/>*/}
-        <LineChart width={600} height={300} data={data}
-                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <XAxis dataKey={"x"} interval={5} type="number" ticks={[10, 12, 14, 16, 18]}/>
-          <YAxis dataKey={"y"} interval={5} type="number" ticks={[10, 12, 14, 16, 18]}/>
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="x" stroke="#8884d8" />
-          <Line type="monotone" dataKey="y" stroke="#2284d8" />
-        </LineChart>
+        <ScatterChart width={600} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
+          <CartesianGrid />
+          <XAxis type="number" dataKey={'x'} />
+          <YAxis type="number" dataKey={'y'} />
+          <ZAxis range={[100]}/>
+          <Tooltip cursor={{strokeDasharray: '3 3'}}/>
+          <Legend/>
+          {/*<Scatter name='A school' data={data01} fill='#8884d8' line shape="cross"/>*/}
+          {/*<Scatter name='B school' data={data02} fill='#82ca9d' line shape="diamond"/>*/}
+          {/*<Scatter name='asdfasfd' data={data03} fill='#434343' line shape="square"/>*/}
 
-        {/*ticks={[100, 120, 140, 160, 180]}*/}
+          {objects.map((object, i) => <Scatter name={object.name} data={object.data} fill={object.color} line shape={object.shape} />)}
+
+        </ScatterChart>
 
 
         {/*<LineChart width={500} height={300} data={data}>*/}
