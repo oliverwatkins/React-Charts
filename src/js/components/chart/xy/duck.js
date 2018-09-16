@@ -77,9 +77,6 @@ export function changeCellXY(seriesValues) {
   }
 }
 
-
-
-
 const initialState =
   {
     name: "XY Chart",
@@ -88,6 +85,7 @@ const initialState =
       {
         name: "Series1",
         color: "red",
+        shape:"square",
         data: [
           {x:2, y: 3},
           {x:4, y: 6},
@@ -97,6 +95,7 @@ const initialState =
       },
       {
         name: "Series2",
+        shape:"diamond",
         color: "blue",
         data: [
           {x:3, y: 5},
