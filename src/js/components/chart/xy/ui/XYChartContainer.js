@@ -6,6 +6,12 @@ import { connect } from 'react-redux'
 
 import {makeXYDataSelector} from "../selectors"
 
+import FlatButton from 'material-ui/FlatButton';
+// import RaisedButton from 'material-ui/';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+
+
 import {changeXYChartName, fetchXYData, deleteXYSeries,
   updateColorXY, createXYSeries, changeCellXY
 } from '../duck';
@@ -39,8 +45,11 @@ class XYChartContainer extends React.Component {
   }
 
   handleCreateXYSeries(val) {
-    this.props.createXYSeries(val);
+    this.props.createXYSeries({name: "xxx", color: "red"});
   }
+  // handleUpdateColorXY(val) {
+  //   this.props.updateColorXY({name: "xxx", color: "red"});
+  // }
 
   handleChangeCell(val) {
     this.props.changeCellXY(val);
@@ -59,10 +68,12 @@ class XYChartContainer extends React.Component {
       // borderWidth: "1px"
     }
 
+    let enableButton = true;
     // let XYChartSeriesComponent = <h3>Blahhhhh</h3>;
 
     return (
       <div>
+        <MuiThemeProvider>
 
         <h1>XY Chart</h1>
 
@@ -74,7 +85,15 @@ class XYChartContainer extends React.Component {
         <div style={{display: 'flex'}}>
           <div>
             <div style={style}>
-              Title here
+              <FlatButton style={style}
+                            type="submit"
+                            label="Add Series"
+                            disabled={!enableButton}
+                            onClick={(e) => this.handleCreateXYSeries()}
+              />
+
+              {/*<input value="Create Series" type="button" onClick={(e) => this.handleCreateXYSeries()}/>*/}
+
               {/*<TitleEditComponent onChange={this.handleChartNameChange}/>*/}
               {/*<div>*/}
                 {/*<LineChartForm {...this.state}/>*/}
@@ -90,6 +109,7 @@ class XYChartContainer extends React.Component {
                 changeCellXY={this.handleChangeCell}
                 createXYSeries={this.handleCreateXYSeries}
                 deleteXYSeries={this.handleDeleteXYSeries}
+                updateColorXY={this.handleUpdateColorXY}
               />
             </div>
 
@@ -98,6 +118,7 @@ class XYChartContainer extends React.Component {
             <LineChartComponent xySeries={this.props.xyData.series}/>
           </div>
         </div>
+        </MuiThemeProvider>
       </div>
     );
   }

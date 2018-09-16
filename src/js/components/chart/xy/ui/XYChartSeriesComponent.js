@@ -1,11 +1,13 @@
 import React from "react";
 
-
+import MUITextField from 'material-ui/TextField';
+import SeriesDataComponent from './SeriesDataComponent'
 
 
 import './List.less';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
 /**
  * Manages creating deleting series for chart.
  *
@@ -16,6 +18,7 @@ export default class XYChartSeriesComponent extends React.Component {
     super(props);
   }
 
+  // @deprecated
   handleCreateSeries() {
 
     this.props.createXYSeries({name: "xxx", color: "red"})
@@ -37,14 +40,11 @@ export default class XYChartSeriesComponent extends React.Component {
     let style = {
       "padding": "3px",
       "margin": "3px",
-      "border": "5px solid blue"
-    }
-
+      // "border": "5px solid blue"
+    };
 
     let series = this.props.xySeries;
-
-    let seriesC =
-
+    let tabbedPane =
       <Tabs>
         <TabList>{
           series.map((val) =>
@@ -59,28 +59,39 @@ export default class XYChartSeriesComponent extends React.Component {
         {
         series.map((val) =>
           <TabPanel>
+            <SeriesDataComponent name={val.name} handleUpdateColorXY={this.props.updateColorXY} />
             <form>
+
+              <table>
               {
-                val.data.map((v, row) => <div>
-                  <span>
+                val.data.map((v, row) => <tr>
+                  <td>
                     <input onChange={(e) => this.onChange(val.name, "x", row, e)} ref={"input_x_" + row + "_" + val.name} type="text" value={v.x}/>
+                  </td>
+                  <td>
                     <input onChange={(e) => this.onChange(val.name, "y", row, e)} ref={"input_y_" + row + "_" + val.name} type="text" value={v.y}/>
-                  </span>
-                </div>)
+                  </td>
+                </tr>)
               }
-              <span><input value={"empty1"}/><input value={"empty2"}/></span>
+                <tr>
+                  <td>
+                    <input value={"empty1"}/>
+                  </td>
+                  <td>
+                    <input value={"empty2"}/>
+                  </td>
+                </tr>
+              </table>
             </form>
           </TabPanel>
           )
         }
       </Tabs>
-        return (
+
+      return (
         <div className="listStyle" style={style}>
-          <input value="Create Series" type="button" onClick={(e) => this.handleCreateSeries()}/>
-          {
-            seriesC
-          }
-      </div>
-    );
+          { tabbedPane }
+        </div>
+      );
   }
 }

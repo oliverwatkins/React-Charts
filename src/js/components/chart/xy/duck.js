@@ -35,7 +35,9 @@ export function reducer(state = initialState, action) {
 export const XYActions = {
   CREATE_SERIES_XY: 'CREATE_SERIES_XY',
   DELETE_SERIES_XY: 'DELETE_SERIES_XY',
-  CHANGE_CELL_XY: 'CHANGE_CELL_XY'
+  CHANGE_CELL_XY: 'CHANGE_CELL_XY',
+  CHANGE_COLOR_XY: 'CHANGE_COLOR_XY',
+
 }
 
 
@@ -43,8 +45,11 @@ export function fetchXYData() {
   return {
   }
 }
-export function updateColorXY() {
+export function updateColorXY(newColor, seriesName) {
   return {
+    type: XYActions.CHANGE_COLOR_XY,
+    name: seriesName,
+    newColor: newColor
   }
 }
 
