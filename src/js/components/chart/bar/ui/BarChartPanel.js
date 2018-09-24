@@ -42,7 +42,9 @@ class BarChartPanel extends React.Component {
 
     let newData = [];
 
-    for (let i = 0; i < categories.length; i++) { //TODO refactor ES6 style
+    //TODO refactor out of here
+    //TODO refactor ES6 style
+    for (let i = 0; i < categories.length; i++) {
       let obj = {};
       obj["name"] = categories[i];
       for (let j = 0; j < series.length; j++) {
@@ -53,10 +55,32 @@ class BarChartPanel extends React.Component {
       }
       newData.push(obj)
     }
+
+
+
     return newData;
   }
 
   render() {
+
+
+    //TODO refactor out of here
+    let mmArray = {minY:undefined, maxY:undefined}
+
+    mmArray = this.props.barData.series.reduce((acc, object) => {
+      let minMaxArray = object.data.reduce((acc2, obj2) => {
+        acc2.minY = ( acc2.minY === undefined || obj2.y < acc2.minY ) ? obj2.y : acc2.minY
+        acc2.maxY = ( acc2.maxY === undefined || obj2.y > acc2.maxY ) ? obj2.y : acc2.maxY
+        return acc2;
+      }, acc);
+      return minMaxArray;
+    }, mmArray);
+
+    mmArray.maxY = parseInt(mmArray.maxY);
+    // mmArray.maxX = parseInt(mmArray.maxX);
+    mmArray.minY = parseInt(mmArray.minY);
+    // mmArray.minX = parseInt(mmArray.minX);
+
 
     let barData = this.props.barData;
     let series = barChartLogic.getSeries(barData);
@@ -87,7 +111,7 @@ class BarChartPanel extends React.Component {
         <TitleComponent name={barData.name}/>
         <BarChart width={600} height={500} data={data} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
           <XAxis dataKey="name"/>
-          <YAxis/>
+          <YAxis domain={[mmArray.minY, mmArray.maxY]}/>
           <CartesianGrid strokeDasharray="3 3"/>
           <Tooltip/>
           <Legend />

@@ -8,16 +8,11 @@ export default class LineChartComponent extends React.Component {
     super(props);
   }
 
-  // createDataForChart() {
-  //
-  //   let newData = [];
-  //   return newData;
-  // }
-
   render() {
     const objects = []
 
 
+    //TODO refactor out of here
     let mmArray = {minX:undefined, minY:undefined, maxX:undefined, maxY:undefined}
 
     mmArray = this.props.xySeries.reduce((acc, object) => {
@@ -30,8 +25,6 @@ export default class LineChartComponent extends React.Component {
       }, acc);
       return minMaxArray;
     }, mmArray);
-
-    // alert("maxY " + mmArray.maxY)
 
     mmArray.maxY = parseInt(mmArray.maxY);
     mmArray.maxX = parseInt(mmArray.maxX);
@@ -47,23 +40,12 @@ export default class LineChartComponent extends React.Component {
       })
     })
 
-    // let newData = [];
-    //
-    // newData = object.data;
-
-
     return (
       <div>
         <ScatterChart width={600} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
           <CartesianGrid />
-          <XAxis type="number" dataKey={'x'}
-                 domain={[mmArray.minX, mmArray.maxX]}
-          />
-          <YAxis type="number" dataKey={'y'}
-                 domain={[mmArray.minY, mmArray.maxY]}
-          />
-
-
+          <XAxis type="number" dataKey={'x'} domain={[mmArray.minX, mmArray.maxX]} />
+          <YAxis type="number" dataKey={'y'} domain={[mmArray.minY, mmArray.maxY]} />
           <ZAxis range={[100]}/>
           <Tooltip cursor={{strokeDasharray: '3 3'}}/>
           <Legend/>
