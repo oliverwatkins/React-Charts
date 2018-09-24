@@ -97,7 +97,8 @@ const initialState =
           {x:7, y: 8},
           {x:9, y: 23}
         ]
-      },
+      }
+      ,
       {
         name: "Series2",
         shape:"diamond",

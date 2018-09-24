@@ -16,16 +16,21 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 export default class XYChartSeriesComponent extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  // @deprecated
-  handleCreateSeries() {
-
-    this.props.createXYSeries({name: "xxx", color: "red"})
+    this.onChange = this.onChange.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
 
   onChange (seriesName, axis, row, e) {
+    e.persist();
+    let inputLabel = "input_" + axis + "_" + row + "_" + seriesName
+    let textfieldChange = this.refs[inputLabel];
+    let val = textfieldChange.value;
 
+    this.setState({event: {inputLabel: inputLabel, type: 'keypress', value: e.target.value}});
+  }
+
+
+  onBlur (seriesName, axis, row, e) {
     e.persist();
 
     let inputLabel = "input_" + axis + "_" + row + "_" + seriesName
@@ -35,8 +40,21 @@ export default class XYChartSeriesComponent extends React.Component {
     this.props.changeCellXY({name: seriesName, axis:axis, row:row, value:val})
   }
 
-  render() {
+  shouldComponentUpdate(nextProps, nextState) {
+    if(this.state) {
+      if (this.state.keyPress) {
+        console.info("do NOT update component....")
+        return false;
+      }else {
 
+        return true;
+      }
+    }
+    return true;
+  }
+
+
+  render() {
     let style = {
       "padding": "3px",
       "margin": "3px",
@@ -57,21 +75,55 @@ export default class XYChartSeriesComponent extends React.Component {
         }
         </TabList>
         {
-        series.map((val) =>
+        series.map((series) =>
           <TabPanel>
-            <SeriesDataComponent name={val.name} handleUpdateColorXY={this.props.updateColorXY} />
+            <SeriesDataComponent name={series.name} handleUpdateColorXY={this.props.updateColorXY} />
             <form>
-
               <table>
               {
-                val.data.map((v, row) => <tr>
-                  <td>
-                    <input onChange={(e) => this.onChange(val.name, "x", row, e)} ref={"input_x_" + row + "_" + val.name} type="text" value={v.x}/>
-                  </td>
-                  <td>
-                    <input onChange={(e) => this.onChange(val.name, "y", row, e)} ref={"input_y_" + row + "_" + val.name} type="text" value={v.y}/>
-                  </td>
-                </tr>)
+                series.data.map(
+                  (v, row) => {
+
+                    let refX = "input_x_" + row + "_" + series.name;
+                    let refY = "input_y_" + row + "_" + series.name;
+
+                    let valueX=v.x;
+                    let valueY=v.y;
+
+                    if (this.state && this.state.event) {
+
+                      if (refY == this.state.event.inputLabel) {
+                        valueY = this.state.event.value;
+                      }
+                      else if (refX == this.state.event.inputLabel) {
+                        valueX = this.state.event.value;
+                      }
+                      console.info('gitsdfasdf' + this.state.event.inputLabel + " value " + this.state.event.value)
+                    }
+
+                    let xInput = <input
+                      onBlur={(e) => this.onBlur(series.name, "x", row, e)}
+
+                      onChange={(e) => this.onChange(series.name, "x", row, e)}
+
+                      ref={refX} type="text" value={valueX}/>
+
+                    let yInput =
+                      <input
+                        onBlur={(e) => this.onBlur(series.name, "y", row, e)}
+                        onChange={(e) => this.onChange(series.name, "y", row, e)}
+                        ref={refY} type="text" value={valueY}/>
+
+                    return <tr>
+                      <td>
+                        {xInput}
+                      </td>
+                      <td>
+                        {yInput}
+                      </td>
+                    </tr>
+                  }
+                )
               }
                 <tr>
                   <td>
