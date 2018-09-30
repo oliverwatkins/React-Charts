@@ -14,20 +14,6 @@ export default class PieChartSliceList extends React.Component {
     // this.deleteSlice = this.deleteSlice.bind(this);
 
   }
-  // deleteSlice(event, categoryName, index) {
-  //   event.preventDefault();
-  //   this.props.deleteSlice(categoryName, index);
-  // }
-
-
-  componentWillMount() {
-    // SlicesStore.on("change", this.getSlices);
-  }
-
-  componentWillUnmount() {
-    // SlicesStore.removeListener("change", this.getSlices);
-  }
-
 
   static propTypes = {
     deleteSlice: PropTypes.func.isRequired,
@@ -38,39 +24,30 @@ export default class PieChartSliceList extends React.Component {
     }))
   };
 
-
-//   series: PropTypes.arrayOf(PropTypes.shape({
-//                                               name: PropTypes.string.isRequired,
-//   color: PropTypes.string.isRequired,
-//   data: PropTypes.arrayOf(PropTypes.shape({
-//                                             y: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-// })
-// ),
-// }))
   render() {
     let deleteS = this.props.deleteSlice;
     let props = this.props;
     let pieData = this.props.data;
     return (
       <MuiThemeProvider>
-        <table className="table">
+        <table  >
           <tbody>
           {pieData.map(function (slice, i) {
-            var key = 'xx_' + i;
+            var key = 'slice_' + i;
 
             var style = {
               color: 'black',
               background: slice.color
             };
             return (
-              <tr key={key}>
-                <td>
+              <tr key={key} >
+                <td style={{padding:5}}>
                   {slice.name}
                 </td>
-                <td>
+                <td style={{padding:5}}>
                   {slice.value}
                 </td>
-                <td>
+                <td style={{padding:5}}>
                   <ColorChooser color={slice.color}
                                 onChooseColor={
                                   (color) => {
@@ -78,7 +55,7 @@ export default class PieChartSliceList extends React.Component {
                                   }
                                 }/>
                 </td>
-                <td>
+                <td style={{padding:5}}>
                   <FlatButton label="Delete" secondary={true}
                               onClick={
                                 (e) => deleteS(e, slice.name, i)}/>

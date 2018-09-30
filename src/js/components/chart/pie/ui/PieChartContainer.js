@@ -50,9 +50,9 @@ class PieChartContainer extends Component {
       <div>
         <div style={{display: 'flex'}}>
         {/*<h1>Pie Chart</h1>*/}
-        {/*<div className="alert alert-danger">*/}
-          {/*<strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.*/}
-        {/*</div>*/}
+          <div className="alert alert-danger">
+            <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
+          </div>
           <div>
             <div>
               <TitleEditComponent value={this.props.pieData.name} onChange={this.handleChartNameChange}/>

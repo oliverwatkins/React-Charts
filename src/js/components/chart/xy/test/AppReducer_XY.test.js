@@ -2,7 +2,8 @@ import {reducer} from "./../duck"
 import {
   createCreateXYSeriesAction,
   createDeleteXYSeriesAction,
-  createChangeCellXYAction
+  createChangeCellXYAction,
+  createChangeXYChartNameAction
 } from "./../duck"
 import {createChangeBarChartNameAction} from "../../bar/duck";
 /*
@@ -24,6 +25,12 @@ describe('Test Bar Reducer functions', () => {
         }
       ]
     }
+
+  it(' change name ', () => {
+
+    let state = reducer(initialState_XY, createChangeXYChartNameAction("asdf"));
+    expect(state.name).toEqual("asdf");
+  })
 
   it(' creates a series ', () => {
 
@@ -55,6 +62,7 @@ describe('Test Bar Reducer functions', () => {
 
   })
 
+//???
   xit(' change cell at out of range cell', () => {
 
     // let state = reducer(initialState_XY_cellupdate, createXYSeries({name: "asdf2", color: "gray"}));

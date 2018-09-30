@@ -1,6 +1,6 @@
 import React from "react";
 
-import LineChartComponent from "./LineChartComponent";
+import XYChartComponent from "./XYChartComponent";
 
 import { connect } from 'react-redux'
 
@@ -18,6 +18,7 @@ import {createChangeCellXYAction, createFetchXYDataAction, createDeleteXYSeriesA
 
 import XYChartSeriesComponent from "./XYChartSeriesComponent"
 import TitleComponent from '../../TitleComponent'
+import TitleEditComponent from '../../TitleEditComponent'
 
 class XYChartContainer extends React.Component {
 
@@ -74,14 +75,12 @@ class XYChartContainer extends React.Component {
     return (
       <div>
         <MuiThemeProvider>
-
-        <h1>XY Chart</h1>
-
+          <div>
+            <TitleEditComponent value={this.props.xyData.name} onChange={this.handleChartNameChange}/>
+          </div>
         <div className="alert alert-danger">
           <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
         </div>
-
-
         <div style={{display: 'flex'}}>
           <div>
             <div style={style}>
@@ -89,18 +88,7 @@ class XYChartContainer extends React.Component {
                             type="submit"
                             label="Add Series"
                             disabled={!enableButton}
-                            onClick={(e) => this.handleCreateXYSeries()}
-              />
-
-              {/*<input value="Create Series" type="button" onClick={(e) => this.handleCreateXYSeries()}/>*/}
-
-              {/*<TitleEditComponent onChange={this.handleChartNameChange}/>*/}
-              {/*<div>*/}
-                {/*<LineChartForm {...this.state}/>*/}
-              {/*</div>*/}
-              {/*<div>*/}
-                {/*<LineSeriesList {...this.state}/>*/}
-              {/*</div>*/}
+                            onClick={(e) => this.handleCreateXYSeries()} />
             </div>
 
             <div>
@@ -112,11 +100,21 @@ class XYChartContainer extends React.Component {
                 updateColorXY={this.handleUpdateColorXY}
               />
             </div>
-
           </div>
           <div>
-            <LineChartComponent xySeries={this.props.xyData.series}/>
+
+            <div>
+              <TitleComponent name={this.props.xyData.name}/>
+            </div>
+
+            <div>
+              <XYChartComponent xySeries={this.props.xyData.series}/>
+            </div>
+
           </div>
+
+
+
         </div>
         </MuiThemeProvider>
       </div>

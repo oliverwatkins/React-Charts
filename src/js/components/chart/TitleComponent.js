@@ -5,8 +5,8 @@ import React from "react";
  */
 export default function TitleComponent(props) {
   return (
-    <div id="canvasTitle">
-      <h1 className="text-center">{props.name}</h1>
+    <div className="chart-title">
+      {props.name}
     </div>
   );
 }

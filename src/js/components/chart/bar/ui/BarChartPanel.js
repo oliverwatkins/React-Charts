@@ -7,6 +7,25 @@ import Loader from 'react-loader-advanced';
 import PropTypes from 'prop-types';
 import { RingLoader } from 'react-spinners';
 
+let createMaxMinArray = function (props) {
+  let maxMinArray = {minY: undefined, maxY: undefined}
+
+  //get overall max/min
+  maxMinArray = props.barData.series.reduce((acc, object) => {
+
+    //get max/min for a single series
+    let maxMinSeries = object.data.reduce((acc2, obj2) => {
+      acc2.minY = ( acc2.minY === undefined || obj2.y < acc2.minY ) ? obj2.y : acc2.minY
+      acc2.maxY = ( acc2.maxY === undefined || obj2.y > acc2.maxY ) ? obj2.y : acc2.maxY
+      return acc2;
+    }, acc);
+    return maxMinSeries;
+
+  }, maxMinArray);
+
+  return maxMinArray;
+};
+
 class BarChartPanel extends React.Component {
 
   constructor(props) {
@@ -62,25 +81,10 @@ class BarChartPanel extends React.Component {
   }
 
   render() {
+    let maxMinArray = createMaxMinArray(this.props);
 
-
-    //TODO refactor out of here
-    let mmArray = {minY:undefined, maxY:undefined}
-
-    mmArray = this.props.barData.series.reduce((acc, object) => {
-      let minMaxArray = object.data.reduce((acc2, obj2) => {
-        acc2.minY = ( acc2.minY === undefined || obj2.y < acc2.minY ) ? obj2.y : acc2.minY
-        acc2.maxY = ( acc2.maxY === undefined || obj2.y > acc2.maxY ) ? obj2.y : acc2.maxY
-        return acc2;
-      }, acc);
-      return minMaxArray;
-    }, mmArray);
-
-    mmArray.maxY = parseInt(mmArray.maxY);
-    // mmArray.maxX = parseInt(mmArray.maxX);
-    mmArray.minY = parseInt(mmArray.minY);
-    // mmArray.minX = parseInt(mmArray.minX);
-
+    maxMinArray.maxY = parseInt(maxMinArray.maxY);
+    maxMinArray.minY = parseInt(maxMinArray.minY);
 
     let barData = this.props.barData;
     let series = barChartLogic.getSeries(barData);
@@ -109,9 +113,10 @@ class BarChartPanel extends React.Component {
       <Loader show={isFetching} message={loadingMessage}>
       <div>
         <TitleComponent name={barData.name}/>
-        <BarChart width={600} height={500} data={data} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+        <BarChart width={600} height={500} data={data} >
+
           <XAxis dataKey="name"/>
-          <YAxis domain={[mmArray.minY, mmArray.maxY]}/>
+          <YAxis domain={[maxMinArray.minY, maxMinArray.maxY]}/>
           <CartesianGrid strokeDasharray="3 3"/>
           <Tooltip/>
           <Legend />

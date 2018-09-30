@@ -60,7 +60,7 @@ export const BarActions = {
   UPDATE_COLOR: 'UPDATE_COLOR_BAR'
 }
 
-//bar actions
+//bar action creators
 export function createCreateSeriesAction(series) {
   return {
     type: BarActions.CREATE_SERIES,
@@ -80,13 +80,6 @@ export function createUpdateColorBarAction(color, seriesName) {
     color
   }
 }
-// export function updateColorPie(color, seriesName) {
-//   return {
-//     type: PieActions.UPDATE_COLOR,
-//     seriesName,
-//     color
-//   }
-// }
 export function createChangeBarChartNameAction(newName) {
   return {
     type: BarActions.CHANGE_NAME_BAR,

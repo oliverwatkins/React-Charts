@@ -11,6 +11,13 @@ export const xyChartLogic = {
     return appState.xy.series;
   },
 
+
+  changeXYChartName(imState, action) {
+
+    imState = imState.setIn(['name'], action.name)
+    return imState;
+  },
+
   deleteXYSeries(imState, action) {
     let list = imState.getIn([...this.path, 'series'])
 
@@ -40,6 +47,8 @@ export const xyChartLogic = {
     imState = imState.setIn([...this.path, 'series'], series)
     return imState;
   },
+
+
 
   changeCellXY(imState, action) {
 

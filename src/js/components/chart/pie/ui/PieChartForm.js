@@ -18,7 +18,7 @@ export default class PieChartForm extends React.Component {
     this.colorSelected = this.colorSelected.bind(this);
 
     this.state = {
-      selectedColor: '#5dff43'
+      selectedColor: '#3f7aff'
     };
   }
 
@@ -61,12 +61,12 @@ export default class PieChartForm extends React.Component {
           <table>
             <tbody>
             <tr>
-              <td>
-                <MUITextField id="newSliceField" type="text" ref="sliceName"
+              <td width="50px" >
+                <MUITextField style={{width:100}} id="newSliceField" type="text" ref="sliceName"
                    name="newSlice" placeholder="Slice Name"></MUITextField>
               </td>
-              <td>
-                <MUITextField id="newValueField" type="number" ref="value"
+              <td width="50px" >
+                <MUITextField style={{width:100}} id="newValueField" type="number" ref="value"
                    name="newValue" placeholder="Value"></MUITextField>
               </td>
               <td>

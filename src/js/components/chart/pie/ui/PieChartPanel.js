@@ -56,10 +56,10 @@ class PieChartPanel extends React.Component {
 
     return (
       <Loader show={isFetching} message={loadingMessage}>
-
         <div>
+          <div>
           <TitleComponent name={pieData.name}/>
-          <PieChart width={800} height={400}>
+          <PieChart width={500} height={500}>
             <Pie dataKey="value" data={pieData.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
               {
                 pieData.data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
@@ -67,6 +67,10 @@ class PieChartPanel extends React.Component {
             </Pie>
             <Tooltip/>
           </PieChart>
+
+
+          </div>
+
         </div>
       </Loader>
     );

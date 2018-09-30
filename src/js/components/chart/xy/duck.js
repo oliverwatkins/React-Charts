@@ -23,6 +23,9 @@ export function reducer(state = initialState, action) {
     case XYActions.CHANGE_CELL_XY:
       imState = xyChartLogic.changeCellXY(imState, action)
       break;
+    case XYActions.CHANGE_NAME_XY:
+      imState = xyChartLogic.changeXYChartName(imState, action)
+      break;
     default : {
       // throw 'actionX not found ' + action.type
     }
@@ -37,9 +40,8 @@ export const XYActions = {
   DELETE_SERIES_XY: 'DELETE_SERIES_XY',
   CHANGE_CELL_XY: 'CHANGE_CELL_XY',
   CHANGE_COLOR_XY: 'CHANGE_COLOR_XY',
-
-}
-
+  CHANGE_NAME_XY: 'CHANGE_NAME_XY'
+};
 
 export function createFetchXYDataAction() {
   return {
@@ -53,8 +55,10 @@ export function createUpdateColorXYAction(newColor, seriesName) {
   }
 }
 
-export function createChangeXYChartNameAction() {
+export function createChangeXYChartNameAction(newName) {
   return {
+    type: XYActions.CHANGE_NAME_XY,
+    name: newName,
   }
 }
 
