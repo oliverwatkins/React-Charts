@@ -10,7 +10,6 @@ import {Modal, Button} from 'react-bootstrap';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-
 /**
  * ColorChooser. Works with react-color (a color picker)
  */
@@ -38,8 +37,6 @@ export default class ColorChooser extends React.Component {
       width: 90,
       color: 'black',
       background: color,
-
-
       borderRadius: "25px",
     // -moz-border-radius: 25px,
     // -webkit-border-radius: 25px,
@@ -66,16 +63,13 @@ export default class ColorChooser extends React.Component {
             <Button onClick={this.cancel}>Cancel</Button>
           </Modal.Footer>
         </Modal>
-
         <div label={color}
              onClick={this.popupPicker}
              style={style}>{color}</div>
       </span>
       </MuiThemeProvider>
-
     )
   }
-
   chooseColor(event) {
     this.setState({showModalColorPicker: false, color: event.hex});
     this.props.onChooseColor(event.hex);

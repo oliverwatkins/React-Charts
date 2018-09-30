@@ -60,9 +60,9 @@ export const barChartLogic = {
     let list = imState.getIn(['series']);
 
     let updatedList = list.update(
-      list.findIndex(function (item) {
+      list.findIndex((item) => {
         return item.get("name") === action.seriesName;
-      }), function (item) {
+      }), (item) => {
         return item.set("color", action.color);
       }
     );

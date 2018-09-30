@@ -5,7 +5,7 @@ import PieChartForm from "./PieChartForm";
 import PieChartSliceList from "./PieChartSliceList";
 import TitleEditComponent from "./../../TitleEditComponent"
 import {connect} from 'react-redux'
-import {changeNamePie, createSlice, deleteSlice, fetchPieData} from '../duck';
+import {changeNamePie, createSlice, deleteSlice, fetchPieData, createChangePieSliceColorAction} from '../duck';
 
 /**
  * container
@@ -18,11 +18,17 @@ class PieChartContainer extends Component {
     this.onChangeNamePie = this.onChangeNamePie.bind(this);
     this.onCreateSlice = this.onCreateSlice.bind(this);
     this.onLoadChart = this.onLoadChart.bind(this);
+    this.onChangeColor = this.onChangeColor.bind(this);
   }
 
   onCreateSlice(event, categoryName, index) {
     event.preventDefault();
     this.props.createSlice(categoryName, index);
+  }
+
+  onChangeColor(name, newColor) {
+    // event.preventDefault();
+    this.props.changeColor(name, newColor);
   }
 
   onDeleteSlice(event, categoryName, index) {
@@ -54,7 +60,7 @@ class PieChartContainer extends Component {
           <PieChartForm pieData={this.props.pieData} createSlice={this.onCreateSlice}/>
         </div>
         <div className="col-md-5">
-          <PieChartSliceList data={this.props.pieData.data} deleteSlice={this.onDeleteSlice}/>
+          <PieChartSliceList data={this.props.pieData.data} deleteSlice={this.onDeleteSlice} colorSelected={this.onChangeColor}/>
         </div>
         <div className="col-md-5">
           <PieChart pieData={this.props.pieData} onLoadChart={this.onLoadChart} />
@@ -73,6 +79,10 @@ const mapDispatchToProps = dispatch => {
   return {
     changePieChartName: (val) => {
       dispatch(changeNamePie(val))
+    },
+    changeColor: (color, sliceName, idx) => {
+
+      dispatch(createChangePieSliceColorAction(color, sliceName,  idx))
     },
     deleteSlice: (val, idx) => {
       dispatch(deleteSlice(val, idx))

@@ -15,19 +15,17 @@ export function reducer(state = initialState, action) {
       //TODO is this needed? This action is listened to already in the saga
       // Server.doGetRequest('/bardata');
       break;
-    case PieActions.PIE_DATA_FETCHED: {
+    case PieActions.PIE_DATA_FETCHED:
       imState = pieChartLogic.fetchFinished(imState, action)
       break;
-    }
     case PieActions.CREATE_SLICE:
       imState = pieChartLogic.createSlice(imState, action.slice);
       break;
-    case PieActions.CHANGE_NAME_PIE: //type in name
+    case PieActions.CHANGE_NAME_PIE:
       imState = pieChartLogic.changeName(imState, action.newName);
       break;
-    case PieActions.UPDATE_COLOR:
-      //TODO
-      // imState = PieChart.(imState, action.newName);
+    case PieActions.UPDATE_COLOR_PIE:
+      imState = pieChartLogic.changePieChartSliceColor(imState, action.sliceName, action.color);
       break;
     case PieActions.DELETE_SLICE:
       imState = pieChartLogic.deleteSlice(imState, action.name);
@@ -39,7 +37,7 @@ export function reducer(state = initialState, action) {
   return imState.toJS();
 }
 
-//pie
+//pie action creators TODO rename to create*****action
 export function enterPieChartName() { //??
   return {
     type: PieActions.ENTER_PIE_CHART_NAME
@@ -78,6 +76,13 @@ export function changeNamePie(newName) {
     newName
   }
 }
+export function createChangePieSliceColorAction(color, name) {
+  return {
+    type: PieActions.UPDATE_COLOR_PIE,
+    sliceName: name,
+    color: color
+  }
+}
 
 
 //pie
@@ -89,7 +94,7 @@ export const PieActions = {
   FETCH_PIE_DATA:'FETCH_PIE_DATA',
   PIE_DATA_FETCHED: 'PIE_DATA_FETCHED',
   DELETE_SLICE: 'DELETE_SLICE',
-  UPDATE_COLOR: 'UPDATE_COLOR_PIE'
+  UPDATE_COLOR_PIE: 'UPDATE_COLOR_PIE'
 }
 
 const initialState =
@@ -112,6 +117,3 @@ const initialState =
       }
     ]
   }
-
-
-

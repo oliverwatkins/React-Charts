@@ -74,7 +74,7 @@ export default class PieChartSliceList extends React.Component {
                   <ColorChooser color={slice.color}
                                 onChooseColor={
                                   (color) => {
-                                    props.colorSelected('sausage is nice')
+                                    props.colorSelected(color, slice.name)
                                   }
                                 }/>
                 </td>

@@ -37,6 +37,7 @@ export default class XYChartSeriesComponent extends React.Component {
     let textfieldChange = this.refs[inputLabel];
     let val = textfieldChange.value;
 
+    console.info("seriesName " + seriesName)
     this.props.changeCellXY({name: seriesName, axis:axis, row:row, value:val})
   }
 
@@ -103,9 +104,7 @@ export default class XYChartSeriesComponent extends React.Component {
 
                     let xInput = <input
                       onBlur={(e) => this.onBlur(series.name, "x", row, e)}
-
                       onChange={(e) => this.onChange(series.name, "x", row, e)}
-
                       ref={refX} type="text" value={valueX}/>
 
                     let yInput =

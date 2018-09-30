@@ -19,6 +19,22 @@ export const pieChartLogic = {
     return imState;
   },
 
+
+  changePieChartSliceColor(imState, sliceName, color) {
+    let data = imState.getIn(['data']);
+
+    let updatedList = data.update(
+      data.findIndex((item) => {
+        return item.get("name") === sliceName;
+      }), (item) => {
+        return item.set("color", color);
+      }
+    );
+    imState = imState.setIn(['data'], updatedList);
+    return imState;
+  },
+
+
   fetchFinished(imState, action) {
 
     let pieData = Immutable.fromJS(action.payload.app.pie);

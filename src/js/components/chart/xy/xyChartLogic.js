@@ -45,12 +45,14 @@ export const xyChartLogic = {
 
     let seriesList = imState.getIn([...this.path, 'series'])
 
+    console.info("action " + action.name)
+
     var idxSeriesItem = seriesList.findIndex((elem) => {
-      return elem.get("seriesName") === action.name
+      return elem.get("name") === action.seriesName
     })
 
     let singlelistItem = seriesList.filter((elem, i) => {
-      return elem.get("seriesName") === action.name
+      return elem.get("name") === action.seriesName
     })
 
     singlelistItem = singlelistItem.get(0);
