@@ -1,4 +1,4 @@
-import {reducer, createChangePieSliceColorAction, changeNamePie, createSlice, deleteSlice} from "./../duck"
+import {reducer, createChangePieSliceColorAction, createChangeNamePieAction, createCreateSliceAction, createDeleteSliceAction} from "./../duck"
 /*
 Test the reducer functions
  */
@@ -15,13 +15,13 @@ describe('Test Reducer functions', () => {
   });
 
   it('change pie chart name ', () => {
-    let state = reducer(initialState_Pie, changeNamePie("blah"));
+    let state = reducer(initialState_Pie, createChangeNamePieAction("blah"));
 
     expect(state.name).toBe('blah')
   });
 
   it('create pie slice ', () => {
-    let state = reducer(initialState_Pie, createSlice({name: 'Group Z', value: 12, color: '#123123'}));
+    let state = reducer(initialState_Pie, createCreateSliceAction({name: 'Group Z', value: 12, color: '#123123'}));
     expect(state.data.length).toEqual(7);
     expect(state.data[6].name).toEqual("Group Z");
     expect(state.data[6].value).toEqual(12);
@@ -30,13 +30,19 @@ describe('Test Reducer functions', () => {
 
   it('delete slice ', () => {
     expect(initialState_Pie.data.length).toEqual(6);
-    let state = reducer(initialState_Pie, deleteSlice("Group A"));
+    let state = reducer(initialState_Pie, createDeleteSliceAction("Group A"));
     expect(state.data.length).toEqual(5);
   })
 
   it('change color of slice', () => {
     expect(initialState_Pie.data.length).toEqual(6);
-    let state = reducer(initialState_Pie, createChangePieSliceColorAction("Group C", "pink"));
+    expect(initialState_Pie.data[2].name).toEqual("Group C");
+
+
+    let state = reducer(initialState_Pie, createChangePieSliceColorAction("pink", "Group C"));
+
+
+    // expect(state.data).toEqual(6);
 
     expect(state.data.length).toEqual(6);
     expect(state.data[2].color).toEqual("pink");

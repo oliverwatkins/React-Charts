@@ -37,40 +37,40 @@ export function reducer(state = initialState, action) {
   return imState.toJS();
 }
 
-//pie action creators TODO rename to create*****action
-export function enterPieChartName() { //??
+//pie action creators
+export function createEnterPieChartNameAction() { //??
   return {
     type: PieActions.ENTER_PIE_CHART_NAME
   }
 }
 
-export function addSlice(id) {
+export function createAddSliceAction(id) {
   return {
     type: PieActions.ADD_PIE_SLICE,
     id
   }
 }
-export function createSlice(slice) {
+export function createCreateSliceAction(slice) {
   return {
     type: PieActions.CREATE_SLICE,
     slice
   }
 }
 
-export function fetchPieData(value) {
+export function createFetchPieDataAction(value) {
   return {
     type: PieActions.FETCH_PIE_DATA,
     value
   }
 }
 
-export function deleteSlice(name) {
+export function createDeleteSliceAction(name) {
   return {
     type: PieActions.DELETE_SLICE,
     name
   }
 }
-export function changeNamePie(newName) {
+export function createChangeNamePieAction(newName) {
   return {
     type: PieActions.CHANGE_NAME_PIE,
     newName
@@ -83,7 +83,6 @@ export function createChangePieSliceColorAction(color, name) {
     color: color
   }
 }
-
 
 //pie
 export const PieActions = {

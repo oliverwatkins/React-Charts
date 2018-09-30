@@ -14,8 +14,8 @@ import CategoryDataList from "./CategoryDataList";
 import './../../../../global.less';
 
 import {connect} from 'react-redux'
-import {createCategory, changeLineChartName, fetchBarData, deleteSeries,
-  updateColorBar, createSeries, deleteCategory, changeCell
+import {createCreateCategoryAction, createChangeBarChartNameAction, createFetchBarDataAction, createDeleteSeriesAction,
+  createUpdateColorBarAction, createCreateSeriesAction, createDeleteCategoryAction, createChangeCellAction
 } from '../duck';
 
 import TitleEditComponent from "../../TitleEditComponent";
@@ -132,28 +132,28 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeLineChartName: (val) => {
-      dispatch(changeLineChartName(val))
+      dispatch(createChangeBarChartNameAction(val))
     },
     onLoadChart: () => {
-      dispatch(fetchBarData());
+      dispatch(createFetchBarDataAction());
     },
     deleteSeries: (value) => {
-      dispatch(deleteSeries(value))
+      dispatch(createDeleteSeriesAction(value))
     },
     updateColorBar: (colorValue, seriesName) => {
-      dispatch(updateColorBar(colorValue, seriesName))
+      dispatch(createUpdateColorBarAction(colorValue, seriesName))
     },
     createSeries: (series) => {
-      dispatch(createSeries(series))
+      dispatch(createCreateSeriesAction(series))
     },
     createCategory: (cat) => {
-      dispatch(createCategory(cat))
+      dispatch(createCreateCategoryAction(cat))
     },
     deleteCategory: (cat) => {
-      dispatch(deleteCategory(cat))
+      dispatch(createDeleteCategoryAction(cat))
     },
     changeCell: (fromRow, toRow, updated ) => {
-      dispatch(changeCell(fromRow, toRow, updated ))
+      dispatch(createChangeCellAction(fromRow, toRow, updated ))
     }
   }
 }

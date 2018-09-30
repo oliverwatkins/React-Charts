@@ -5,7 +5,7 @@ import PieChartForm from "./PieChartForm";
 import PieChartSliceList from "./PieChartSliceList";
 import TitleEditComponent from "./../../TitleEditComponent"
 import {connect} from 'react-redux'
-import {changeNamePie, createSlice, deleteSlice, fetchPieData, createChangePieSliceColorAction} from '../duck';
+import {createChangeNamePieAction, createCreateSliceAction, createDeleteSliceAction, createFetchPieDataAction, createChangePieSliceColorAction} from '../duck';
 
 /**
  * container
@@ -43,7 +43,6 @@ class PieChartContainer extends Component {
 
   onLoadChart(val) {
     this.props.onLoadChart(val);
-    // this.props.changePieChartName(categoryName, index);
   }
 
   render() {
@@ -78,20 +77,20 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changePieChartName: (val) => {
-      dispatch(changeNamePie(val))
+      dispatch(createChangeNamePieAction(val))
     },
     changeColor: (color, sliceName, idx) => {
 
       dispatch(createChangePieSliceColorAction(color, sliceName,  idx))
     },
     deleteSlice: (val, idx) => {
-      dispatch(deleteSlice(val, idx))
+      dispatch(createDeleteSliceAction(val, idx))
     },
     createSlice: (val, idx) => {
-      dispatch(createSlice(val, idx))
+      dispatch(createCreateSliceAction(val, idx))
     },
     onLoadChart: () => {
-      dispatch(fetchPieData());
+      dispatch(createFetchPieDataAction());
     },
   }
 }

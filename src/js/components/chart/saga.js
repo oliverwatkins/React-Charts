@@ -4,7 +4,7 @@ import { put, takeEvery, all ,call} from 'redux-saga/effects'
 
 
 import {fetchBarData, BarActions} from './bar/duck'
-import {fetchPieData, PieActions} from './pie/duck'
+import {createFetchPieDataAction, PieActions} from './pie/duck'
 
 
 /**
@@ -46,7 +46,7 @@ export function* loadBarChart() {
 
 
 export function* loadPieChart() {
-  yield takeEvery(PieActions.FETCH_PIE_DATA, fetchPieData)
+  yield takeEvery(PieActions.FETCH_PIE_DATA, createFetchPieDataAction)
 
   yield delay(2000)
 

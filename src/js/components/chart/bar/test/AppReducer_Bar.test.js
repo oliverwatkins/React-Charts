@@ -1,12 +1,12 @@
 import {reducer} from "./../duck"
 import {
-  deleteSeries,
-  changeLineChartName,
-  changeCell,
-  createCategory,
-  createSeries,
-  deleteCategory,
-  updateColorBar
+  createDeleteSeriesAction,
+  createChangeBarChartNameAction,
+  createChangeCellAction,
+  createCreateCategoryAction,
+  createCreateSeriesAction,
+  createDeleteCategoryAction,
+  createUpdateColorBarAction
 } from "./../duck"
 /*
 Test the reducer functions
@@ -32,13 +32,13 @@ describe('Test Bar Reducer functions', () => {
 
   it('change bar chart name ', () => {
 
-    let state = reducer(initialState_Bar, changeLineChartName('sausage'))
+    let state = reducer(initialState_Bar, createChangeBarChartNameAction('sausage'))
     expect(state.name).toEqual('sausage')
     expect(state.name).not.toEqual('hotdog')
   })
 
   it(' creates a series ', () => {
-    let state = reducer(initialState_Bar, createSeries({name: "asdf", color: "brown"}));
+    let state = reducer(initialState_Bar, createCreateSeriesAction({name: "asdf", color: "brown"}));
 
     console.log('state.series ' , state.series)
 
@@ -55,7 +55,7 @@ describe('Test Bar Reducer functions', () => {
     let category = {
       name: "lizard",
     }
-    let state = reducer(initialState_Bar, createCategory(category));
+    let state = reducer(initialState_Bar, createCreateCategoryAction(category));
     expect(state.categories.length).toEqual(5)
 
     expect(state.series).toContainEqual({
@@ -67,7 +67,7 @@ describe('Test Bar Reducer functions', () => {
   })
 
   it(' deletes a category ', () => {
-    let state = reducer(initialState_Bar, deleteCategory("cow"));
+    let state = reducer(initialState_Bar, createDeleteCategoryAction("cow"));
 
     expect(state.categories.length).toEqual(3)
     expect(state.categories).not.toContainEqual("cow")
@@ -85,7 +85,7 @@ describe('Test Bar Reducer functions', () => {
   })
 
   it(' deletes a series ', () => {
-    let state = reducer(initialState_Bar, deleteSeries("Germany"));
+    let state = reducer(initialState_Bar, createDeleteSeriesAction("Germany"));
 
     expect(state.series.length).toEqual(2)
     expect(state.series).toContainEqual({
@@ -108,7 +108,7 @@ describe('Test Bar Reducer functions', () => {
 
   it(' updates a color ', () => {
 
-    let state = reducer(initialState_Bar, updateColorBar("pink2", "Germany"));
+    let state = reducer(initialState_Bar, createUpdateColorBarAction("pink2", "Germany"));
 
     expect(state.series).toContainEqual({
       name: "Germany",
@@ -120,7 +120,7 @@ describe('Test Bar Reducer functions', () => {
 
   //TODO
   it(' changes the cell', () => {
-    let state = reducer(initialState_Bar, changeCell(
+    let state = reducer(initialState_Bar, createChangeCellAction(
       {
         "cellKey":"Holland",
         "fromRow":1,"toRow":1,

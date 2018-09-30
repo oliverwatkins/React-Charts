@@ -12,8 +12,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 
-import {changeXYChartName, fetchXYData, deleteXYSeries,
-  updateColorXY, createXYSeries, changeCellXY
+import {createChangeCellXYAction, createFetchXYDataAction, createDeleteXYSeriesAction,
+  createUpdateColorXYAction, createCreateXYSeriesAction, createChangeXYChartNameAction
 } from '../duck';
 
 import XYChartSeriesComponent from "./XYChartSeriesComponent"
@@ -133,22 +133,22 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeXYChartName: (val) => {
-      dispatch(changeXYChartName(val))
+      dispatch(createChangeXYChartNameAction(val))
     },
     onLoadChart: () => {
-      dispatch(fetchXYData());
+      dispatch(createFetchXYDataAction());
     },
     deleteXYSeries: (value) => {
-      dispatch(deleteXYSeries(value))
+      dispatch(createDeleteXYSeriesAction(value))
     },
     updateColorXY: (colorValue, seriesName) => {
-      dispatch(updateColorXY(colorValue, seriesName))
+      dispatch(createUpdateColorXYAction(colorValue, seriesName))
     },
     createXYSeries: (series) => {
-      dispatch(createXYSeries(series))
+      dispatch(createCreateXYSeriesAction(series))
     },
     changeCellXY: (series, axis, row, value ) => {
-      dispatch(changeCellXY({name:series.name, axis:series.axis, row: series.row, value: series.value}))
+      dispatch(createChangeCellXYAction({name:series.name, axis:series.axis, row: series.row, value: series.value}))
     }
   }
 }

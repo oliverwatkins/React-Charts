@@ -47,7 +47,6 @@ export function reducer(state = initialState, action) {
   return immutableState.toJS();
 }
 
-
 //bar
 export const BarActions = {
   FETCH_BAR_DATA : 'FETCH_BAR_DATA',
@@ -62,59 +61,59 @@ export const BarActions = {
 }
 
 //bar actions
-export function createSeries(series) {
+export function createCreateSeriesAction(series) {
   return {
     type: BarActions.CREATE_SERIES,
     series
   }
 }
-export function deleteSeries(seriesName) {
+export function createDeleteSeriesAction(seriesName) {
   return {
     type: BarActions.DELETE_SERIES,
     seriesName
   }
 }
-export function updateColorBar(color, seriesName) {
+export function createUpdateColorBarAction(color, seriesName) {
   return {
     type: BarActions.UPDATE_COLOR,
     seriesName,
     color
   }
 }
-export function updateColorPie(color, seriesName) {
-  return {
-    type: PieActions.UPDATE_COLOR,
-    seriesName,
-    color
-  }
-}
-export function changeLineChartName(newName) {
+// export function updateColorPie(color, seriesName) {
+//   return {
+//     type: PieActions.UPDATE_COLOR,
+//     seriesName,
+//     color
+//   }
+// }
+export function createChangeBarChartNameAction(newName) {
   return {
     type: BarActions.CHANGE_NAME_BAR,
     newName
   }
 }
-export function createCategory(value) {
+export function createCreateCategoryAction(value) {
   return {
     type: BarActions.CREATE_CATEGORY,
     value
   }
 }
-export function deleteCategory(categoryName, index) {
+export function createDeleteCategoryAction(categoryName, index) {
   return {
     type: BarActions.DELETE_CATEGORY,
     categoryName,
     index
   }
 }
-export function changeCell(value) {
+export function createChangeCellAction(value) {
   return {
     type: BarActions.CELL_CHANGED,
     value
   }
 }
 
-export function fetchBarData(value) {
+export function createFetchBarDataAction(value) {
   return {
     type: BarActions.FETCH_BAR_DATA,
     value

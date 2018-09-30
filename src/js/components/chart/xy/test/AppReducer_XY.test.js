@@ -1,9 +1,10 @@
 import {reducer} from "./../duck"
 import {
-  createXYSeries,
-  deleteXYSeries,
-  changeCellXY
+  createCreateXYSeriesAction,
+  createDeleteXYSeriesAction,
+  createChangeCellXYAction
 } from "./../duck"
+import {createChangeBarChartNameAction} from "../../bar/duck";
 /*
 Test the reducer functions
  */
@@ -26,7 +27,7 @@ describe('Test Bar Reducer functions', () => {
 
   it(' creates a series ', () => {
 
-    let state = reducer(initialState_XY, createXYSeries({name: "asdf", color: "brown"}));
+    let state = reducer(initialState_XY, createCreateXYSeriesAction({name: "asdf", color: "brown"}));
     expect(state.series.length).toEqual(2)
     expect(state.series).toContainEqual({
       name: 'asdf', color: 'brown', data:
@@ -36,7 +37,7 @@ describe('Test Bar Reducer functions', () => {
 
   it(' delete a series ', () => {
 
-    let state = reducer(initialState_XY, createXYSeries({name: "toDelete", color: "pink"}));
+    let state = reducer(initialState_XY, createCreateXYSeriesAction({name: "toDelete", color: "pink"}));
 
     expect(state.series.length).toEqual(2)
     expect(state.series).toContainEqual({
@@ -44,7 +45,7 @@ describe('Test Bar Reducer functions', () => {
         [{"x": 0, "y": 0}]
     })
 
-    state = reducer(state, deleteXYSeries({name: "toDelete"}));
+    state = reducer(state, createDeleteXYSeriesAction({name: "toDelete"}));
 
     expect(state.series.length).toEqual(1)
     expect(state.series).not.toContainEqual({
@@ -63,7 +64,7 @@ describe('Test Bar Reducer functions', () => {
     try {
       //this should fail. data length is 1 and we are adding at 3 which is out of bounds. Max we
       //can add to is 2
-      let state = reducer(initialState_XY_cellupdate, changeCellXY({name: "changeCellXY", axis: "x", row: 3, value: 3}));
+      let state = reducer(initialState_XY_cellupdate, createChangeCellXYAction({name: "changeCellXY", axis: "x", row: 3, value: 3}));
 
       // Fail test if above expression doesn't throw anything.
       expect(true).toBe(false);
@@ -91,7 +92,7 @@ describe('Test Bar Reducer functions', () => {
 
   it(' change cell ', () => {
 
-    let state = reducer(initialState_XY_cellupdate, changeCellXY({name: "changeCellXY", axis: "y", row: 0, value:99}));
+    let state = reducer(initialState_XY_cellupdate, createChangeCellXYAction({name: "changeCellXY", axis: "y", row: 0, value:99}));
 
     expect(state.series.length).toEqual(1);
     expect(state.series[0].data.length).toEqual(2);
@@ -102,7 +103,7 @@ describe('Test Bar Reducer functions', () => {
           {"x":1, "y":2}]
     });
 
-    state = reducer(state, changeCellXY({name: "changeCellXY", axis: "y", row: 1, value:98}));
+    state = reducer(state, createChangeCellXYAction({name: "changeCellXY", axis: "y", row: 1, value:98}));
 
     expect(state.series).toContainEqual({
       name: 'changeCellXY', color: 'blah', data:
@@ -130,7 +131,7 @@ describe('Test Bar Reducer functions', () => {
 
   xit('change bar chart name ', () => {
 
-    let state = reducer(initialState_XY, changeLineChartName('sausage'))
+    let state = reducer(initialState_XY, createChangeBarChartNameAction('sausage'))
     expect(state.name).toEqual('sausage')
     expect(state.name).not.toEqual('hotdog')
   })
@@ -140,7 +141,7 @@ describe('Test Bar Reducer functions', () => {
     let category = {
       name: "lizard",
     }
-    let state = reducer(initialState_XY, createCategory(category));
+    let state = reducer(initialState_XY, createCreateCategoryAction(category));
     expect(state.categories.length).toEqual(4)
 
     expect(state.series).toContainEqual({
@@ -152,7 +153,7 @@ describe('Test Bar Reducer functions', () => {
   })
 
   xit(' deletes a category ', () => {
-    let state = reducer(initialState_XY, deleteCategory("dog"));
+    let state = reducer(initialState_XY, createDeleteCategoryAction("dog"));
 
     expect(state.categories.length).toEqual(2)
     expect(state.categories).not.toContainEqual("dog")
@@ -171,7 +172,7 @@ describe('Test Bar Reducer functions', () => {
 
   xit(' updates a color ', () => {
 
-    let state = reducer(initialState_XY, updateColorBar("pink2", "Germany"));
+    let state = reducer(initialState_XY, createUpdateColorBarAction("pink2", "Germany"));
 
     expect(state.series).toContainEqual({
       name: "Germany",
@@ -185,7 +186,7 @@ describe('Test Bar Reducer functions', () => {
   xit(' changes the cell', () => {
     let fromRow = 1, toRow = 1, updated = 42;
 
-    let state = reducer(initialState_XY, changeCell(fromRow, toRow, updated))
+    let state = reducer(initialState_XY, createChangeCellAction(fromRow, toRow, updated))
 
     console.log('state', state)
   })

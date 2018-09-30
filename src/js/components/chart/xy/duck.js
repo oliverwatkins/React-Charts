@@ -41,11 +41,11 @@ export const XYActions = {
 }
 
 
-export function fetchXYData() {
+export function createFetchXYDataAction() {
   return {
   }
 }
-export function updateColorXY(newColor, seriesName) {
+export function createUpdateColorXYAction(newColor, seriesName) {
   return {
     type: XYActions.CHANGE_COLOR_XY,
     name: seriesName,
@@ -53,26 +53,26 @@ export function updateColorXY(newColor, seriesName) {
   }
 }
 
-export function changeXYChartName() {
+export function createChangeXYChartNameAction() {
   return {
   }
 }
 
 //xy actions
-export function createXYSeries(series) {
+export function createCreateXYSeriesAction(series) {
   return {
     type: XYActions.CREATE_SERIES_XY,
     name: series.name,
     color: series.color
   }
 }
-export function deleteXYSeries(series) {
+export function createDeleteXYSeriesAction(series) {
   return {
     type: XYActions.DELETE_SERIES_XY,
     name: series.name,
   }
 }
-export function changeCellXY(seriesValues) {
+export function createChangeCellXYAction(seriesValues) {
   return {
     type: XYActions.CHANGE_CELL_XY,
     seriesName: seriesValues.name,
