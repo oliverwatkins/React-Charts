@@ -48,21 +48,25 @@ class PieChartContainer extends Component {
   render() {
     return (
       <div>
+        <div style={{display: 'flex'}}>
         {/*<h1>Pie Chart</h1>*/}
         {/*<div className="alert alert-danger">*/}
           {/*<strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.*/}
         {/*</div>*/}
-        <div className="col-md-5">
-          <TitleEditComponent value={this.props.pieData.name} onChange={this.handleChartNameChange}/>
-        </div>
-        <div className="col-md-5">
-          <PieChartForm pieData={this.props.pieData} createSlice={this.onCreateSlice}/>
-        </div>
-        <div className="col-md-5">
-          <PieChartSliceList data={this.props.pieData.data} deleteSlice={this.onDeleteSlice} colorSelected={this.onChangeColor}/>
-        </div>
-        <div className="col-md-5">
-          <PieChart pieData={this.props.pieData} onLoadChart={this.onLoadChart} />
+          <div>
+            <div>
+              <TitleEditComponent value={this.props.pieData.name} onChange={this.handleChartNameChange}/>
+            </div>
+            <div>
+              <PieChartForm pieData={this.props.pieData} createSlice={this.onCreateSlice}/>
+            </div>
+            <div>
+              <PieChartSliceList data={this.props.pieData.data} deleteSlice={this.onDeleteSlice} colorSelected={this.onChangeColor}/>
+            </div>
+          </div>
+          <div>
+            <PieChart pieData={this.props.pieData} onLoadChart={this.onLoadChart} />
+          </div>
         </div>
       </div>
     );
