@@ -142,6 +142,9 @@ const mapDispatchToProps = dispatch => {
     updateColorXY: (colorValue, seriesName) => {
       dispatch(createUpdateColorXYAction(colorValue, seriesName))
     },
+
+
+
     createXYSeries: (series) => {
       dispatch(createCreateXYSeriesAction(series))
     },

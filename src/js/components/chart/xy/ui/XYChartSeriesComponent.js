@@ -1,7 +1,7 @@
 import React from "react";
 
 import MUITextField from 'material-ui/TextField';
-import SeriesDataComponent from './SeriesDataComponent'
+import XYSeriesInfoComponent from './XYSeriesInfoComponent'
 
 
 import './List.less';
@@ -76,9 +76,17 @@ export default class XYChartSeriesComponent extends React.Component {
         }
         </TabList>
         {
+
+
+
         series.map((series) =>
           <TabPanel>
-            <SeriesDataComponent name={series.name} handleUpdateColorXY={this.props.updateColorXY} />
+            <XYSeriesInfoComponent data={series}
+                                 handleDeleteSeriesXY={this.props.deleteXYSeries}
+                                 handleUpdateColorXY={this.props.updateColorXY}
+                                 deleteSlice={this.props.deleteXYSeries}
+
+            />
             <form>
               <table>
               {
@@ -138,7 +146,6 @@ export default class XYChartSeriesComponent extends React.Component {
           )
         }
       </Tabs>
-
       return (
         <div className="listStyle" style={style}>
           { tabbedPane }

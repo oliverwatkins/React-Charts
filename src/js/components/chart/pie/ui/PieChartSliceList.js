@@ -25,9 +25,10 @@ export default class PieChartSliceList extends React.Component {
   };
 
   render() {
-    let deleteS = this.props.deleteSlice;
     let props = this.props;
+    let deleteSlice = this.props.deleteSlice;
     let pieData = this.props.data;
+
     return (
       <MuiThemeProvider>
         <table  >
@@ -58,7 +59,7 @@ export default class PieChartSliceList extends React.Component {
                 <td style={{padding:5}}>
                   <FlatButton label="Delete" secondary={true}
                               onClick={
-                                (e) => deleteS(e, slice.name, i)}/>
+                                (e) => deleteSlice(e, slice.name, i)}/>
                 </td>
               </tr>
             );
