@@ -24,42 +24,7 @@ class XYChartContainer extends React.Component {
 
   constructor(props) {
     super(props)
-
-    this.handleChartNameChange = this.handleChartNameChange.bind(this);
-    this.handleDeleteXYSeries = this.handleDeleteXYSeries.bind(this);
-    this.handleUpdateColorXY = this.handleUpdateColorXY.bind(this);
-    this.handleCreateXYSeries = this.handleCreateXYSeries.bind(this);
-    this.handleChangeCell = this.handleChangeCell.bind(this);
-    this.onLoadChart = this.onLoadChart.bind(this);
   }
-
-  handleChartNameChange(val, event) {
-    this.props.changeXYChartName(val);
-  }
-
-  handleDeleteXYSeries(val, event) {
-    this.props.deleteXYSeries(val);
-  }
-
-  handleUpdateColorXY(val, name) {
-    this.props.updateColorXY(val, name);
-  }
-
-  handleCreateXYSeries(val) {
-    this.props.createXYSeries({name: "xxx", color: "red"});
-  }
-  // handleUpdateColorXY(val) {
-  //   this.props.updateColorXY({name: "xxx", color: "red"});
-  // }
-
-  handleChangeCell(val) {
-    this.props.changeCellXY(val);
-  }
-
-  onLoadChart(val, event) {
-    this.props.onLoadXYChart(val);
-  }
-
 
   render() {
 
@@ -70,13 +35,12 @@ class XYChartContainer extends React.Component {
     }
 
     let enableButton = true;
-    // let XYChartSeriesComponent = <h3>Blahhhhh</h3>;
 
     return (
       <div>
         <MuiThemeProvider>
           <div>
-            <TitleEditComponent value={this.props.xyData.name} onChange={this.handleChartNameChange}/>
+            <TitleEditComponent value={this.props.xyData.name} onChange={this.props.changeXYChartName}/>
           </div>
         <div className="alert alert-danger">
           <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
@@ -88,33 +52,26 @@ class XYChartContainer extends React.Component {
                             type="submit"
                             label="Add Series"
                             disabled={!enableButton}
-                            onClick={(e) => this.handleCreateXYSeries()} />
+                            onClick={(e) => this.props.createXYSeries()} />
             </div>
-
             <div>
               <XYChartSeriesComponent
                 xySeries={this.props.xyData.series}
-                changeCellXY={this.handleChangeCell}
-                createXYSeries={this.handleCreateXYSeries}
-                deleteXYSeries={this.handleDeleteXYSeries}
-                updateColorXY={this.handleUpdateColorXY}
+                changeCellXY={this.props.changeCellXY}
+                createXYSeries={this.props.createXYSeries}
+                deleteXYSeries={this.props.deleteXYSeries}
+                updateColorXY={this.props.updateColorXY}
               />
             </div>
           </div>
           <div>
-
             <div>
               <TitleComponent name={this.props.xyData.name}/>
             </div>
-
             <div>
               <XYChartComponent xySeries={this.props.xyData.series}/>
             </div>
-
           </div>
-
-
-
         </div>
         </MuiThemeProvider>
       </div>
@@ -142,9 +99,6 @@ const mapDispatchToProps = dispatch => {
     updateColorXY: (colorValue, seriesName) => {
       dispatch(createUpdateColorXYAction(colorValue, seriesName))
     },
-
-
-
     createXYSeries: (series) => {
       dispatch(createCreateXYSeriesAction(series))
     },

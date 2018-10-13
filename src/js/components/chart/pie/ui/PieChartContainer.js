@@ -14,58 +14,28 @@ class PieChartContainer extends Component {
 
   constructor(props) {
     super(props)
-    this.onDeleteSlice = this.onDeleteSlice.bind(this);
-    this.onChangeNamePie = this.onChangeNamePie.bind(this);
-    this.onCreateSlice = this.onCreateSlice.bind(this);
-    this.onLoadChart = this.onLoadChart.bind(this);
-    this.onChangeColor = this.onChangeColor.bind(this);
-  }
-
-  onCreateSlice(event, categoryName, index) {
-    event.preventDefault();
-    this.props.createSlice(categoryName, index);
-  }
-
-  onChangeColor(name, newColor) {
-    // event.preventDefault();
-    this.props.changeColor(name, newColor);
-  }
-
-  onDeleteSlice(event, categoryName, index) {
-    event.preventDefault();
-    this.props.deleteSlice(categoryName, index);
-  }
-
-  onChangeNamePie(event, categoryName, index) {
-    event.preventDefault();
-    this.props.changePieChartName(categoryName, index);
-  }
-
-  onLoadChart(val) {
-    this.props.onLoadChart(val);
   }
 
   render() {
     return (
       <div>
         <div style={{display: 'flex'}}>
-        {/*<h1>Pie Chart</h1>*/}
           <div className="alert alert-danger">
             <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
           </div>
           <div>
             <div>
-              <TitleEditComponent value={this.props.pieData.name} onChange={this.handleChartNameChange}/>
+              <TitleEditComponent value={this.props.pieData.name} onChange={this.props.changePieChartName}/>
             </div>
             <div>
-              <PieChartForm pieData={this.props.pieData} createSlice={this.onCreateSlice}/>
+              <PieChartForm pieData={this.props.pieData} createSlice={this.props.createSlice}/>
             </div>
             <div>
-              <PieChartSliceList data={this.props.pieData.data} deleteSlice={this.onDeleteSlice} colorSelected={this.onChangeColor}/>
+              <PieChartSliceList data={this.props.pieData.data} deleteSlice={this.props.deleteSlice} colorSelected={this.props.changeColor}/>
             </div>
           </div>
           <div>
-            <PieChart pieData={this.props.pieData} onLoadChart={this.onLoadChart} />
+            <PieChart pieData={this.props.pieData} onLoadChart={this.props.onLoadChart} />
           </div>
         </div>
       </div>
@@ -84,10 +54,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(createChangeNamePieAction(val))
     },
     changeColor: (color, sliceName, idx) => {
-
       dispatch(createChangePieSliceColorAction(color, sliceName,  idx))
     },
     deleteSlice: (val, idx) => {
+      //TODO not working??
       dispatch(createDeleteSliceAction(val, idx))
     },
     createSlice: (val, idx) => {

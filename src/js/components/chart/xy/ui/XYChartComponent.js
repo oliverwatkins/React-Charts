@@ -57,7 +57,7 @@ export default class XYChartComponent extends React.Component {
           <ZAxis range={[100]}/>
           <Tooltip cursor={{strokeDasharray: '3 3'}}/>
           <Legend/>
-          {objects.map((object, i) => <Scatter name={object.name} data={object.data} fill={object.color} line shape={object.shape} />)}
+          {objects.map((object, i) => <Scatter key={"scat_" + i} name={object.name} data={object.data} fill={object.color} line shape={object.shape} />)}
         </ScatterChart>
       </div>
     );

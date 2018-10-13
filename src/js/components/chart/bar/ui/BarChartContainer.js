@@ -29,48 +29,6 @@ class BarChartContainer extends React.Component {
 
   constructor(props) {
     super(props)
-
-    this.handleChartNameChange = this.handleChartNameChange.bind(this);
-    this.handleDeleteSeries = this.handleDeleteSeries.bind(this);
-    this.handleUpdateColorBar = this.handleUpdateColorBar.bind(this);
-    this.handleCreateSeries = this.handleCreateSeries.bind(this);
-    this.handleCreateCategory = this.handleCreateCategory.bind(this);
-    this.handleDeleteCategory = this.handleDeleteCategory.bind(this);
-    this.handleChangeCell = this.handleChangeCell.bind(this);
-    this.onLoadChart = this.onLoadChart.bind(this);
-  }
-
-  handleChartNameChange(val, event) {
-    this.props.changeLineChartName(val);
-  }
-
-  handleDeleteSeries(val, event) {
-    this.props.deleteSeries(val);
-  }
-
-  handleUpdateColorBar(val, name) {
-    this.props.updateColorBar(val, name);
-  }
-
-  handleCreateSeries(val) {
-    this.props.createSeries(val);
-  }
-
-  handleCreateCategory(val) {
-    this.props.createCategory(val);
-  }
-
-  handleChangeCell(val) {
-    this.props.changeCell(val);
-  }
-
-  handleDeleteCategory(event, val, i) {
-    event.preventDefault();
-    this.props.deleteCategory(val, i);
-  }
-
-  onLoadChart(val, event) {
-    this.props.onLoadChart(val);
   }
 
   render() {
@@ -86,32 +44,32 @@ class BarChartContainer extends React.Component {
         <div style={{display: 'flex'}}>
           <div>
             <div >
-              <TitleEditComponent onChange={this.handleChartNameChange}/>
+              <TitleEditComponent onChange={this.props.changeLineChartName}/>
               <div>
-                <BarChartForm createSeries={this.handleCreateSeries}/>
+                <BarChartForm createSeries={this.props.createSeries}/>
               </div>
               <div>
                 <BarSeriesList barData={this.props.barData}
-                               deleteSeries={this.handleDeleteSeries}
-                               colorSelected={this.handleUpdateColorBar}
+                               deleteSeries={this.props.deleteSeries}
+                               colorSelected={this.props.updateColorBar}
                 />
               </div>
             </div>
             <div style={style}>
               <div>
-                <CategoryForm createCategory={this.handleCreateCategory}/>
+                <CategoryForm createCategory={this.props.createCategory}/>
               </div>
               <div>
-                <CategoryDataList categories={this.props.categories} deleteCategory={this.handleDeleteCategory}/>
+                <CategoryDataList categories={this.props.categories} deleteCategory={this.props.deleteCategory}/>
               </div>
             </div>
           </div>
           <div>
             <div style={{width: 700, height: 200}}>
-              <BarChartDataTable barData={this.props.barData} changeCell={this.handleChangeCell} />
+              <BarChartDataTable barData={this.props.barData} changeCell={this.props.changeCell} />
             </div>
             <div>
-              <BarChartComponent barData={this.props.barData} onLoadChart={this.onLoadChart} />
+              <BarChartComponent barData={this.props.barData} onLoadChart={this.props.onLoadChart} />
             </div>
           </div>
         </div>
@@ -150,7 +108,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(createCreateCategoryAction(cat))
     },
     deleteCategory: (cat) => {
-      dispatch(createDeleteCategoryAction(cat))
+      //not working right now
+      // dispatch(createDeleteCategoryAction(cat))
     },
     changeCell: (fromRow, toRow, updated ) => {
       dispatch(createChangeCellAction(fromRow, toRow, updated ))
