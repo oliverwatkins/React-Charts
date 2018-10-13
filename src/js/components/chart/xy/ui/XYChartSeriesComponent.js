@@ -1,12 +1,10 @@
 import React from "react";
-
-import MUITextField from 'material-ui/TextField';
 import XYSeriesInfoComponent from './XYSeriesInfoComponent'
-
+import PropTypes from 'prop-types';
 
 import './List.less';
 
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 
 /**
  * Manages creating deleting series for chart.
@@ -19,6 +17,14 @@ export default class XYChartSeriesComponent extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onBlur = this.onBlur.bind(this);
   }
+
+  static propTypes = {
+    changeXYSeriesName: PropTypes.func.isRequired,
+    deleteSeries: PropTypes.func.isRequired
+
+
+  };
+
 
   onChange (seriesName, axis, row, e) {
     e.persist();
@@ -62,13 +68,15 @@ export default class XYChartSeriesComponent extends React.Component {
       // "border": "5px solid blue"
     };
 
+    // debugger;
+
     let series = this.props.xySeries;
     let tabbedPane =
       <Tabs>
         <TabList>{
-          series.map((val) =>
-            <Tab>
-              <div>
+          series.map((val, i) =>
+            <Tab key={"tab_" + i}>
+              <div key={"tabdiv_" + i}>
                 {val.name} - {val.color}
               </div>
             </Tab>
@@ -76,70 +84,67 @@ export default class XYChartSeriesComponent extends React.Component {
         }
         </TabList>
         {
-
-
-
-        series.map((series) =>
-          <TabPanel>
+        series.map((series, i) =>
+          <TabPanel key={i}>
             <XYSeriesInfoComponent data={series}
-                                 handleDeleteSeriesXY={this.props.deleteXYSeries}
-                                 handleUpdateColorXY={this.props.updateColorXY}
-                                 deleteSlice={this.props.deleteXYSeries}
-
+                                 deleteSeries={this.props.deleteXYSeries}
+                                 changeXYSeriesName={this.props.changeXYSeriesName}
             />
             <form>
               <table>
-              {
-                series.data.map(
-                  (v, row) => {
+                <tbody>
+                {
+                  series.data.map(
+                    (v, row) => {
 
-                    let refX = "input_x_" + row + "_" + series.name;
-                    let refY = "input_y_" + row + "_" + series.name;
+                      let refX = "input_x_" + row + "_" + series.name;
+                      let refY = "input_y_" + row + "_" + series.name;
 
-                    let valueX=v.x;
-                    let valueY=v.y;
+                      let valueX=v.x;
+                      let valueY=v.y;
 
-                    if (this.state && this.state.event) {
+                      if (this.state && this.state.event) {
 
-                      if (refY == this.state.event.inputLabel) {
-                        valueY = this.state.event.value;
+                        if (refY === this.state.event.inputLabel) {
+                          valueY = this.state.event.value;
+                        }
+                        else if (refX === this.state.event.inputLabel) {
+                          valueX = this.state.event.value;
+                        }
+                        console.info(' ' + this.state.event.inputLabel + " value " + this.state.event.value)
                       }
-                      else if (refX == this.state.event.inputLabel) {
-                        valueX = this.state.event.value;
-                      }
-                      console.info('gitsdfasdf' + this.state.event.inputLabel + " value " + this.state.event.value)
+
+                      let xInput = <input
+                        onBlur={(e) => this.onBlur(series.name, "x", row, e)}
+                        onChange={(e) => this.onChange(series.name, "x", row, e)}
+                        ref={refX} key={refX} type="text" value={valueX}/>
+
+                      let yInput =
+                        <input
+                          onBlur={(e) => this.onBlur(series.name, "y", row, e)}
+                          onChange={(e) => this.onChange(series.name, "y", row, e)}
+                          ref={refY} key={refY} type="text" value={valueY}/>
+
+                      return <tr key={row}>
+                        <td>
+                          {xInput}
+                        </td>
+                        <td>
+                          {yInput}
+                        </td>
+                      </tr>
                     }
-
-                    let xInput = <input
-                      onBlur={(e) => this.onBlur(series.name, "x", row, e)}
-                      onChange={(e) => this.onChange(series.name, "x", row, e)}
-                      ref={refX} type="text" value={valueX}/>
-
-                    let yInput =
-                      <input
-                        onBlur={(e) => this.onBlur(series.name, "y", row, e)}
-                        onChange={(e) => this.onChange(series.name, "y", row, e)}
-                        ref={refY} type="text" value={valueY}/>
-
-                    return <tr>
-                      <td>
-                        {xInput}
-                      </td>
-                      <td>
-                        {yInput}
-                      </td>
-                    </tr>
-                  }
-                )
-              }
-                <tr>
-                  <td>
-                    <input value={"empty1"}/>
-                  </td>
-                  <td>
-                    <input value={"empty2"}/>
-                  </td>
-                </tr>
+                  )
+                }
+                  <tr key={"empty"}>
+                    <td>
+                      <input value={"empty1"} onChange={()=>alert("TODO")}/>
+                    </td>
+                    <td>
+                      <input value={"empty2"} onChange={()=>alert("TODO")}/>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </form>
           </TabPanel>

@@ -66,14 +66,14 @@ export function createChangeXYChartNameAction(newName) {
 export function createCreateXYSeriesAction(series) {
   return {
     type: XYActions.CREATE_SERIES_XY,
-    name: series.name,
-    color: series.color
+    name: "TODO",//series.name,
+    color: "green"//series.color
   }
 }
-export function createDeleteXYSeriesAction(series) {
+export function createDeleteXYSeriesAction(seriesName) {
   return {
     type: XYActions.DELETE_SERIES_XY,
-    name: series.name,
+    name: seriesName,
   }
 }
 export function createChangeCellXYAction(seriesValues) {
