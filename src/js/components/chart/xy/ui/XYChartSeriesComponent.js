@@ -21,8 +21,6 @@ export default class XYChartSeriesComponent extends React.Component {
   static propTypes = {
     changeXYSeriesName: PropTypes.func.isRequired,
     deleteSeries: PropTypes.func.isRequired
-
-
   };
 
 
@@ -89,6 +87,9 @@ export default class XYChartSeriesComponent extends React.Component {
             <XYSeriesInfoComponent data={series}
                                  deleteSeries={this.props.deleteXYSeries}
                                  changeXYSeriesName={this.props.changeXYSeriesName}
+                                 changePoint={this.props.changePoint}
+                                 changeColor={this.props.changeColor}
+
             />
             <form>
               <table>

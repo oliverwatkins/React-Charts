@@ -60,7 +60,7 @@ export default class XYSeriesInfoComponent extends React.Component {
               hintText="Enter Series Name"
               type="text"
               ref="seriesName"
-              // value={props.name}
+              value={this.props.data.name}
               name="newSlice"
               onChange={changeName}
               data-rh="Bottom" data-rh-at="bottom" />
@@ -88,16 +88,14 @@ export default class XYSeriesInfoComponent extends React.Component {
     );
   }
 
-  pointChanged(e, pointValue, seriesName) {
-    alert('ho' + e + " pointValue" + e.target.value)
-
+  pointChanged(e) {
     this.setState({selectedPoint: e.target.value});
-    this.props.handleUpdatePointXY({point:e.target.value, seriesName:seriesName})
+    this.props.changePoint(e.target.value, this.props.data.name)
   }
 
-  colorSelected(color, seriesName) {
+  colorSelected(color) {
     this.setState({selectedColor: color}); //local
-    this.props.handleUpdateColorXY({value:color, seriesName:seriesName})
+    this.props.changeColor(color, this.props.data.name)
   }
 
   // deleteSeries(seriesName) {

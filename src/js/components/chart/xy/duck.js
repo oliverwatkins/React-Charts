@@ -15,16 +15,22 @@ export function reducer(state = initialState, action) {
   switch (action.type) {
 
     case XYActions.CREATE_SERIES_XY:
-      imState = xyChartLogic.createXYSeries(imState, action)
+      imState = xyChartLogic.createXYSeries(imState, action);
       break;
     case XYActions.DELETE_SERIES_XY:
-      imState = xyChartLogic.deleteXYSeries(imState, action)
+      imState = xyChartLogic.deleteXYSeries(imState, action);
       break;
     case XYActions.CHANGE_CELL_XY:
-      imState = xyChartLogic.changeCellXY(imState, action)
+      imState = xyChartLogic.changeCellXY(imState, action);
       break;
     case XYActions.CHANGE_NAME_XY:
-      imState = xyChartLogic.changeXYChartName(imState, action)
+      imState = xyChartLogic.changeXYChartName(imState, action);
+      break;
+    case XYActions.CHANGE_POINT_XY:
+      imState = xyChartLogic.changeXYPoint(imState, action);
+      break;
+    case XYActions.CHANGE_COLOR_XY:
+      imState = xyChartLogic.changeXYColor(imState, action);
       break;
     default : {
       // throw 'actionX not found ' + action.type
@@ -40,7 +46,8 @@ export const XYActions = {
   DELETE_SERIES_XY: 'DELETE_SERIES_XY',
   CHANGE_CELL_XY: 'CHANGE_CELL_XY',
   CHANGE_COLOR_XY: 'CHANGE_COLOR_XY',
-  CHANGE_NAME_XY: 'CHANGE_NAME_XY'
+  CHANGE_NAME_XY: 'CHANGE_NAME_XY',
+  CHANGE_POINT_XY: 'CHANGE_POINT_XY'
 };
 
 export function createFetchXYDataAction() {
@@ -76,6 +83,34 @@ export function createDeleteXYSeriesAction(seriesName) {
     name: seriesName,
   }
 }
+
+export function createChangePointAction(seriesName, point) {
+  return {
+    type: XYActions.CHANGE_POINT_XY,
+    name: seriesName,
+    point: point,
+  }
+}
+
+export function createChangeColorAction(seriesName, color) {
+  return {
+    type: XYActions.CHANGE_COLOR_XY,
+    name: seriesName,
+    color: color,
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 export function createChangeCellXYAction(seriesValues) {
   return {
     type: XYActions.CHANGE_CELL_XY,

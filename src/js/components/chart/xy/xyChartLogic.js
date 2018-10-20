@@ -11,6 +11,55 @@ export const xyChartLogic = {
     return appState.xy.series;
   },
 
+  changeXYPoint(imState, action) {
+    let list = imState.getIn(['series']);
+
+    let updatedList = list.update(
+      list.findIndex((item) => {
+        return item.get("name") === action.name;
+      }), (item) => {
+        return item.set("shape", action.point);
+      }
+    );
+    imState = imState.setIn(['series'], updatedList);
+    return imState;
+  },
+
+  changeXYColor(imState, action) {
+    let list = imState.getIn(['series']);
+
+    let updatedList = list.update(
+      list.findIndex((item) => {
+        return item.get("name") === action.name;
+      }), (item) => {
+        return item.set("color", action.color);
+      }
+    );
+    imState = imState.setIn(['series'], updatedList);
+    return imState;
+  },
+
+
+  changeXYColor(imState, action) {
+
+
+
+    let list = imState.getIn([...this.path, 'series'])
+
+
+
+    ['app', 'xy']
+    imState = imState.setIn(['color'], action.color)
+    return imState;
+    // debugger;
+    // // alert('here44 ')
+    // // imState = imState.setIn(['name'], action.name, action.point)
+    // return imState;
+  },
+
+
+
+
 
   changeXYChartName(imState, action) {
 
