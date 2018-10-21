@@ -13,14 +13,8 @@ import ColorChooser from '../../ColorChooser';
 export default class XYSeriesInfoComponent extends React.Component {
   constructor(props) {
     super(props);
-
     this.colorSelected = this.colorSelected.bind(this);
-    // this.deleteSeries = this.deleteSeries.bind(this);
     this.pointChanged = this.pointChanged.bind(this);
-
-    this.changeSeriesName= this.changeSeriesName.bind(this);
-
-
   }
 
   static propTypes = {
@@ -66,11 +60,11 @@ export default class XYSeriesInfoComponent extends React.Component {
               ref="seriesName"
               value={this.props.data.name}
               name="newSlice"
-              onChange={this.changeSeriesName}
+              onChange={(e)=>changeName(this.props.data.name, e.target.value)}
               data-rh="Bottom" data-rh-at="bottom" />
           </td>
           <td>
-            <ColorChooser style={style} onChooseColor={this.colorSelected}/>
+            <ColorChooser style={style} color={this.props.data.color} onChooseColor={this.colorSelected}/>
           </td>
           <td>
             <select onChange={this.pointChanged}>
@@ -91,15 +85,6 @@ export default class XYSeriesInfoComponent extends React.Component {
       </div>
     );
   }
-
-
-  changeSeriesName(e) {
-
-
-    // this.setState({selectedPoint: e.target.value});
-    this.props.changeXYSeriesName(this.props.data.name, e.target.value)
-  }
-
 
   pointChanged(e) {
     this.setState({selectedPoint: e.target.value});

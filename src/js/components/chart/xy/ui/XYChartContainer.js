@@ -114,20 +114,16 @@ const mapDispatchToProps = dispatch => {
       dispatch(createUpdateColorXYAction(colorValue, seriesName))
     },
     createXYSeries: (series) => {
-
-
-
       dispatch(createCreateXYSeriesAction(series))
     },
     changeCellXY: (series, axis, row, value) => {
       dispatch(createChangeCellXYAction({name: series.name, axis: series.axis, row: series.row, value: series.value}))
     },
-
     changePoint: (point, series) => {
       dispatch(createChangePointAction(series, point))
     },
     changeColor: (color, seriesName) => {
-      dispatch(createChangeColorAction({name: seriesName, color: color}))
+      dispatch(createChangeColorAction(seriesName, color));
     }
   }
 }

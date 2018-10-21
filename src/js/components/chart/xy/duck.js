@@ -115,11 +115,11 @@ export function createChangePointAction(seriesName, point) {
   }
 }
 
-export function createChangeColorAction(seriesName, color) {
+export function createChangeColorAction(seriesName, newColor) {
   return {
     type: XYActions.CHANGE_COLOR_XY,
     name: seriesName,
-    color: color,
+    color: newColor,
   }
 }
 

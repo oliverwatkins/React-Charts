@@ -40,14 +40,14 @@ export const xyChartLogic = {
   },
 
 
-  changeXYColor(imState, action) {
-
-    let list = imState.getIn([...this.path, 'series'])
-
-    ['app', 'xy']
-    imState = imState.setIn(['color'], action.color)
-    return imState;
-  },
+  // changeXYColor(imState, action) {
+  //
+  //   let list = imState.getIn([...this.path, 'series'])
+  //
+  //   ['app', 'xy']
+  //   imState = imState.setIn(['color'], action.color)
+  //   return imState;
+  // },
 
 
 
@@ -72,11 +72,6 @@ export const xyChartLogic = {
     imState = imState.setIn(['series'], updatedList);
     return imState;
   },
-
-
-
-
-
 
 
 

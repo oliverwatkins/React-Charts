@@ -3,7 +3,10 @@ import {
   createCreateXYSeriesAction,
   createDeleteXYSeriesAction,
   createChangeCellXYAction,
-  createChangeXYChartNameAction
+  createChangeXYChartNameAction,
+  createChangeColorAction,
+  createChangePointAction
+
 } from "./../duck"
 import {createChangeBarChartNameAction} from "../../bar/duck";
 /*
@@ -178,18 +181,28 @@ describe('Test Bar Reducer functions', () => {
     })
   })
 
-  xit(' updates a color ', () => {
+  it(' updates a color ', () => {
 
-    let state = reducer(initialState_XY, createUpdateColorBarAction("pink2", "Germany"));
+    let state = reducer(initialState_XY, createChangeColorAction("series1", "blue"));
 
     expect(state.series).toContainEqual({
-      name: "Germany",
-      color: "pink2",
-      data: [{y: 0}, {y: 0}, {y: 0}, {y: 0}]
+      name: "series1",
+      color: "blue",
+      data: [{"x": 0, "y": 0}, {"x": 1, "y": 2}]
     })
   })
 
+  it(' updates point ', () => {
 
+    let state = reducer(initialState_XY, createChangePointAction("series1", "cross"));
+
+    expect(state.series).toContainEqual({
+      name: "series1",
+      color: "red",
+      shape: "cross",
+      data: [{"x": 0, "y": 0}, {"x": 1, "y": 2}]
+    })
+  })
   //TODO
   xit(' changes the cell', () => {
     let fromRow = 1, toRow = 1, updated = 42;
