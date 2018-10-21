@@ -14,7 +14,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {
   createChangeCellXYAction, createFetchXYDataAction, createDeleteXYSeriesAction,
   createUpdateColorXYAction, createCreateXYSeriesAction, createChangeXYChartNameAction,
-  createChangeColorAction, createChangePointAction
+  createChangeColorAction, createChangePointAction, createChangeXYSeriesNameAction
 } from '../duck';
 
 import XYChartSeriesComponent from "./XYChartSeriesComponent"
@@ -58,6 +58,7 @@ class XYChartContainer extends React.Component {
                 </div>
                 <div>
                   <XYChartSeriesComponent
+                    changeXYSeriesName={this.props.changeXYSeriesName}
                     xySeries={this.props.xyData.series}
                     changeCellXY={this.props.changeCellXY}
                     createXYSeries={this.props.createXYSeries}
@@ -95,9 +96,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeXYChartName: (val) => {
-      dispatch(createChangeXYChartNameAction(val))
+    changeXYChartName: (newName) => {
+      dispatch(createChangeXYChartNameAction(newName))
     },
+
+    changeXYSeriesName: (name, newName) => {
+      dispatch(createChangeXYSeriesNameAction(name, newName))
+    },
+
     onLoadChart: () => {
       dispatch(createFetchXYDataAction());
     },
@@ -108,6 +114,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(createUpdateColorXYAction(colorValue, seriesName))
     },
     createXYSeries: (series) => {
+
+
+
       dispatch(createCreateXYSeriesAction(series))
     },
     changeCellXY: (series, axis, row, value) => {

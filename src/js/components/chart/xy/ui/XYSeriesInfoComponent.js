@@ -17,6 +17,10 @@ export default class XYSeriesInfoComponent extends React.Component {
     this.colorSelected = this.colorSelected.bind(this);
     // this.deleteSeries = this.deleteSeries.bind(this);
     this.pointChanged = this.pointChanged.bind(this);
+
+    this.changeSeriesName= this.changeSeriesName.bind(this);
+
+
   }
 
   static propTypes = {
@@ -62,7 +66,7 @@ export default class XYSeriesInfoComponent extends React.Component {
               ref="seriesName"
               value={this.props.data.name}
               name="newSlice"
-              onChange={changeName}
+              onChange={this.changeSeriesName}
               data-rh="Bottom" data-rh-at="bottom" />
           </td>
           <td>
@@ -88,6 +92,15 @@ export default class XYSeriesInfoComponent extends React.Component {
     );
   }
 
+
+  changeSeriesName(e) {
+
+
+    // this.setState({selectedPoint: e.target.value});
+    this.props.changeXYSeriesName(this.props.data.name, e.target.value)
+  }
+
+
   pointChanged(e) {
     this.setState({selectedPoint: e.target.value});
     this.props.changePoint(e.target.value, this.props.data.name)
@@ -97,10 +110,6 @@ export default class XYSeriesInfoComponent extends React.Component {
     this.setState({selectedColor: color}); //local
     this.props.changeColor(color, this.props.data.name)
   }
-
-  // deleteSeries(seriesName) {
-  //   this.props.handleDeleteSeriesXY({seriesName:seriesName})
-  // }
 }
 
 

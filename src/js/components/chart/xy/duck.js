@@ -26,6 +26,18 @@ export function reducer(state = initialState, action) {
     case XYActions.CHANGE_NAME_XY:
       imState = xyChartLogic.changeXYChartName(imState, action);
       break;
+
+    case XYActions.CHANGE_SERIES_NAME_XY:
+      imState = xyChartLogic.changeXYSeriesName(imState, action);
+      break;
+
+
+
+
+
+
+
+
     case XYActions.CHANGE_POINT_XY:
       imState = xyChartLogic.changeXYPoint(imState, action);
       break;
@@ -47,6 +59,7 @@ export const XYActions = {
   CHANGE_CELL_XY: 'CHANGE_CELL_XY',
   CHANGE_COLOR_XY: 'CHANGE_COLOR_XY',
   CHANGE_NAME_XY: 'CHANGE_NAME_XY',
+  CHANGE_SERIES_NAME_XY: 'CHANGE_SERIES_NAME_XY',
   CHANGE_POINT_XY: 'CHANGE_POINT_XY'
 };
 
@@ -68,6 +81,16 @@ export function createChangeXYChartNameAction(newName) {
     name: newName,
   }
 }
+
+export function createChangeXYSeriesNameAction(name, newName) {
+  return {
+    type: XYActions.CHANGE_SERIES_NAME_XY,
+    name: name,
+    newName: newName,
+  }
+}
+
+
 
 //xy actions
 export function createCreateXYSeriesAction(series) {
@@ -99,17 +122,6 @@ export function createChangeColorAction(seriesName, color) {
     color: color,
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 export function createChangeCellXYAction(seriesValues) {
   return {
