@@ -19,6 +19,9 @@ export function reducer(state = initialState, action) {
       break;
     }
     case BarActions.CHANGE_NAME_BAR:
+
+      // alert('should work')
+
       immutableState = barChartLogic.changeName(immutableState, action.newName);
       break;
     case BarActions.CELL_CHANGED:

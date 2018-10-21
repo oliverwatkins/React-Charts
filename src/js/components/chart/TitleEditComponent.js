@@ -11,7 +11,9 @@ export default class TitleEditComponent extends React.Component {
   constructor(){
     super()
     this.keyPress = this.keyPress.bind(this);
-    this.keyPress = debounce(this.keyPress,1000);
+
+    //have to disable debounce for now. interfering with the onChange event
+    // this.keyPress = debounce(this.keyPress,300);
   }
 
   render() {
@@ -25,17 +27,16 @@ export default class TitleEditComponent extends React.Component {
             ref="titleField"
             hintText="Enter Chart Title"
             type="text"
-            onChange={this.keyPress}
+            value={this.props.value}
+            onChange={(e)=>this.keyPress(e.target)}
           />
         </div>
       </MuiThemeProvider>
     )
   }
 
-  keyPress(e) {
-    e.persist();
-    let val = this.refs.titleField.input.value
-    this.props.onChange(val);
+  keyPress(target) {
+    this.props.onChange(target.value);
   }
 }
 
@@ -49,5 +50,4 @@ function debounce(fn, delay) {
     }, delay);
   };
 }
-
 

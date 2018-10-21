@@ -44,7 +44,7 @@ class BarChartContainer extends React.Component {
         <div style={{display: 'flex'}}>
           <div>
             <div >
-              <TitleEditComponent onChange={this.props.changeLineChartName}/>
+              <TitleEditComponent value={this.props.barData.name} onChange={this.props.changeBarChartName}/>
               <div>
                 <BarChartForm createSeries={this.props.createSeries}/>
               </div>
@@ -89,7 +89,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeLineChartName: (val) => {
+    changeBarChartName: (val) => {
+
+      // alert("val " + val)
+
       dispatch(createChangeBarChartNameAction(val))
     },
     onLoadChart: () => {

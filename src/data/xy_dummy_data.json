@@ -1,7 +1,7 @@
 {
   "app": {
     "xy": {
-      "name": "XY Chart",
+      "name": "My XY Chart",
       "series": [
         {
           "name": "Series1x",

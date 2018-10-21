@@ -135,7 +135,7 @@ export function createChangeCellXYAction(seriesValues) {
 
 const initialState =
   {
-    name: "XY Chart",
+    name: "My XY Chart",
     isFetching: true,
     series: [
       {

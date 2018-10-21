@@ -162,6 +162,7 @@ export const barChartLogic = {
   },
 
   changeName(imState, newName) {
+    // alert('new name' + newName)
     imState = imState.setIn(['name'], newName)
     return imState;
   }
