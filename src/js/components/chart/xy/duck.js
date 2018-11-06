@@ -90,11 +90,11 @@ export function createChangeXYSeriesNameAction(name, newName) {
 
 
 //xy actions
-export function createCreateXYSeriesAction(series) {
+export function createCreateXYSeriesAction(name, color) {
   return {
     type: XYActions.CREATE_SERIES_XY,
-    name: series.name ? series.name : "TODO",
-    color: series.color ? series.color : "green"
+    name: name ? name : "TODO",
+    color: color ? color : "green"
   }
 }
 export function createDeleteXYSeriesAction(seriesName) {

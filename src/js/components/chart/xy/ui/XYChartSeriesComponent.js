@@ -8,8 +8,6 @@ import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 
 /**
  * Manages creating deleting series for chart.
- *
- *
  */
 export default class XYChartSeriesComponent extends React.Component {
   constructor(props) {
@@ -18,7 +16,6 @@ export default class XYChartSeriesComponent extends React.Component {
     this.onBlur = this.onBlur.bind(this);
     this.changeEmpty1 = this.changeEmpty1.bind(this);
     this.changeEmpty2 = this.changeEmpty2.bind(this);
-
 
     this.state = {
       empty1: "x",
@@ -145,15 +142,6 @@ export default class XYChartSeriesComponent extends React.Component {
                       </tr>
                     }
                   ) //map series data
-
-
-
-
-
-
-
-
-
                 }
                   <tr key={"empty"}>
                     <td>
@@ -188,6 +176,9 @@ export default class XYChartSeriesComponent extends React.Component {
     console.info("onblur")
     if (!(isNaN(this.state.empty1) || isNaN(this.state.empty2))) {
       this.props.addDataPair(this.state.empty1, this.state.empty2, seriesName);
+
+      this.setState({empty1:"", empty2:""});
+
     }
   }
 }

@@ -60,12 +60,6 @@ export const xyChartLogic = {
     return imState;
   },
 
-
-
-
-
-
-
   deleteXYSeries(imState, action) {
     let list = imState.getIn([...this.path, 'series'])
 
@@ -90,6 +84,7 @@ export const xyChartLogic = {
         data: [{"x":0,"y":0}]
       },
     );
+
 
     // var v = Immutable.fromJS(series)
     imState = imState.setIn([...this.path, 'series'], series)
@@ -125,6 +120,8 @@ export const xyChartLogic = {
       return list.setIn([idx, action.axis], action.value);
     });
 
+    singlelistItem = this.sortDataOnX(singlelistItem);
+
     seriesList = seriesList.setIn([idxSeriesItem], singlelistItem);
 
     imState = imState.setIn([...this.path, 'series'], seriesList);
@@ -138,24 +135,46 @@ export const xyChartLogic = {
 
     let idxSeriesItem = seriesList.findIndex((elem) => {
       return elem.get("name") === action.name
-    })
+    });
 
     let singlelistItem = seriesList.filter((elem, i) => {
       return elem.get("name") === action.name
-    })
+    });
 
     console.info(" ----- " + JSON.stringify(singlelistItem.toJS()))
 
     singlelistItem = singlelistItem.get(0);
+
     singlelistItem = singlelistItem.updateIn(['data'], function(list){
-      return list.push({x:action.xValue, y:action.yValue});
+      return list.push(Immutable.Map({x:action.xValue, y:action.yValue}));
     });
+
+
+    singlelistItem = this.sortDataOnX(singlelistItem);
 
     seriesList = seriesList.setIn([idxSeriesItem], singlelistItem);
     imState = imState.setIn([...this.path, 'series'], seriesList);
 
     return imState;
+  },
+
+
+  sortDataOnX(singlelistItem) {
+    singlelistItem = singlelistItem.updateIn(['data'], function(list){
+      let sortedList = list.sort(function(lhs, rhs) {
+        console.info("lhs " + lhs)
+        if (Number(lhs.get("x")) > Number(rhs.get("x"))) {
+          return 1;
+        }
+        return -1;
+      });
+      return sortedList;
+    });
+    return singlelistItem;
   }
+
+
+
 }
 
 

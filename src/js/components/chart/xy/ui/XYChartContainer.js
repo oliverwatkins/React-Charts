@@ -54,7 +54,7 @@ class XYChartContainer extends React.Component {
                               type="submit"
                               label="Add Series"
                               disabled={!enableButton}
-                              onClick={(e) => this.props.createXYSeries()}/>
+                              onClick={(e) => this.props.createXYSeries("todo" , "blue")}/>
                 </div>
                 <div>
                   <XYChartSeriesComponent
