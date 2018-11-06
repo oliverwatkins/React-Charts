@@ -57,7 +57,7 @@ class PieChartPanel extends React.Component {
     return (
       <Loader show={isFetching} message={loadingMessage}>
         <div>
-          <div>
+          <div className="chartpanel">
           <TitleComponent name={pieData.name}/>
           <PieChart width={500} height={500}>
             <Pie dataKey="value" data={pieData.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
@@ -67,10 +67,7 @@ class PieChartPanel extends React.Component {
             </Pie>
             <Tooltip/>
           </PieChart>
-
-
           </div>
-
         </div>
       </Loader>
     );

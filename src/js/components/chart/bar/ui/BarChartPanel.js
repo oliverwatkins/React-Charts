@@ -74,9 +74,6 @@ class BarChartPanel extends React.Component {
       }
       newData.push(obj)
     }
-
-
-
     return newData;
   }
 
@@ -111,7 +108,7 @@ class BarChartPanel extends React.Component {
 
     return (
       <Loader show={isFetching} message={loadingMessage}>
-      <div>
+      <div className="chartpanel">
         <TitleComponent name={barData.name}/>
         <BarChart width={600} height={500} data={data} >
 

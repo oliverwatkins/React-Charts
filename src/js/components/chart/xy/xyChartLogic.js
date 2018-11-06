@@ -40,19 +40,6 @@ export const xyChartLogic = {
   },
 
 
-  // changeXYColor(imState, action) {
-  //
-  //   let list = imState.getIn([...this.path, 'series'])
-  //
-  //   ['app', 'xy']
-  //   imState = imState.setIn(['color'], action.color)
-  //   return imState;
-  // },
-
-
-
-
-
   changeXYChartName(imState, action) {
     imState = imState.setIn(['name'], action.name)
     return imState;
@@ -72,6 +59,9 @@ export const xyChartLogic = {
     imState = imState.setIn(['series'], updatedList);
     return imState;
   },
+
+
+
 
 
 
@@ -114,7 +104,7 @@ export const xyChartLogic = {
 
     console.info("action " + action.name)
 
-    var idxSeriesItem = seriesList.findIndex((elem) => {
+    let idxSeriesItem = seriesList.findIndex((elem) => {
       return elem.get("name") === action.seriesName
     })
 
@@ -126,6 +116,7 @@ export const xyChartLogic = {
 
     let l = singlelistItem.toJS();
     console.log(l);
+
     singlelistItem = singlelistItem.updateIn(['data'], function(list){
       var idx = list.findIndex(function(item, i){ //index?
         if(i == action.row)
@@ -133,12 +124,65 @@ export const xyChartLogic = {
       });
       return list.setIn([idx, action.axis], action.value);
     });
+
     seriesList = seriesList.setIn([idxSeriesItem], singlelistItem);
 
     imState = imState.setIn([...this.path, 'series'], seriesList);
 
     return imState;
+  },
+
+
+  addDataPair(imState, action) {
+    let seriesList = imState.getIn([...this.path, 'series'])
+
+    console.info("action " + action.name)
+    console.info("xxxxx " + JSON.stringify(seriesList.toJS()) + " action.name " + action.name)
+    let idxSeriesItem = seriesList.findIndex((elem) => {
+      return elem.get("name") === action.name
+    })
+
+    if (idxSeriesItem == -1)
+      throw "idxSeriesItem == -1"
+
+
+    let singlelistItem = seriesList.filter((elem, i) => {
+      return elem.get("name") === action.name
+    })
+
+    // if (!singlelistItem)
+    //   throw "singlelistItem is undefiend"
+
+    console.info(" ----- " + JSON.stringify(singlelistItem.toJS()))
+
+    singlelistItem = singlelistItem.get(0);
+    singlelistItem = singlelistItem.updateIn(['data'], function(list){
+      // var idx = list.findIndex(function(item, i){ //index?
+      //   if(i == action.row)
+      //     return true;
+      // });
+      return list.push({x:action.xValue, y:action.yValue});
+    });
+
+    seriesList = seriesList.setIn([idxSeriesItem], singlelistItem);
+
+    imState = imState.setIn([...this.path, 'series'], seriesList);
+
+
+
+
+    return imState;
+
   }
+
+
+
+
+
+
+
+
+
 }
 
 

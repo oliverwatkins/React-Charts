@@ -5,14 +5,14 @@ import {
   createChangeCellXYAction,
   createChangeXYChartNameAction,
   createChangeColorAction,
-  createChangePointAction
+  createChangePointAction,
+  createAddDataPairAction
 
 } from "./../duck"
-import {createChangeBarChartNameAction} from "../../bar/duck";
 /*
 Test the reducer functions
  */
-describe('Test Bar Reducer functions', () => {
+describe('Test XY Reducer functions', () => {
 
 
   const initialState_XY =
@@ -55,7 +55,7 @@ describe('Test Bar Reducer functions', () => {
         [{"x": 0, "y": 0}]
     })
 
-    state = reducer(state, createDeleteXYSeriesAction({name: "toDelete"}));
+    state = reducer(state, createDeleteXYSeriesAction("toDelete"));
 
     expect(state.series.length).toEqual(1)
     expect(state.series).not.toContainEqual({
@@ -120,6 +120,24 @@ describe('Test Bar Reducer functions', () => {
       name: 'changeCellXY', color: 'blah', data:
         [{"x": 0, "y":99},
           {"x":1, "y":98}]
+    });
+  })
+
+  it(' adds data pair to series ', () => {
+
+
+
+
+    let state = reducer(initialState_XY, createAddDataPairAction(12, 13, "series1"));
+
+
+
+    expect(state.series).toContainEqual({
+      name:"series1",
+      color:"red",
+      data: [{"x": 0, "y": 0},
+        {"x":1, "y":2},
+        {"x":12, "y":13}]
     });
   })
 

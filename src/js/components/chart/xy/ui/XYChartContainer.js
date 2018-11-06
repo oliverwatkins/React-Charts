@@ -14,7 +14,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {
   createChangeCellXYAction, createFetchXYDataAction, createDeleteXYSeriesAction,
   createUpdateColorXYAction, createCreateXYSeriesAction, createChangeXYChartNameAction,
-  createChangeColorAction, createChangePointAction, createChangeXYSeriesNameAction
+  createChangeColorAction, createChangePointAction, createChangeXYSeriesNameAction, createAddDataPairAction
 } from '../duck';
 
 import XYChartSeriesComponent from "./XYChartSeriesComponent"
@@ -58,20 +58,19 @@ class XYChartContainer extends React.Component {
                 </div>
                 <div>
                   <XYChartSeriesComponent
-                    changeXYSeriesName={this.props.changeXYSeriesName}
                     xySeries={this.props.xyData.series}
+                    changeXYSeriesName={this.props.changeXYSeriesName}
+                    addDataPair={this.props.addDataPair}
                     changeCellXY={this.props.changeCellXY}
                     createXYSeries={this.props.createXYSeries}
                     deleteXYSeries={this.props.deleteXYSeries}
                     updateColorXY={this.props.updateColorXY}
                     changePoint={this.props.changePoint}
                     changeColor={this.props.changeColor}
-
-
                   />
                 </div>
               </div>
-              <div>
+              <div className="chartpanel">
                 <div>
                   <TitleComponent name={this.props.xyData.name}/>
                 </div>
@@ -124,13 +123,13 @@ const mapDispatchToProps = dispatch => {
     },
     changeColor: (color, seriesName) => {
       dispatch(createChangeColorAction(seriesName, color));
+    },
+    addDataPair: (xValue, yValue, seriesName) => {
+      dispatch(createAddDataPairAction(xValue, yValue, seriesName));
     }
   }
 }
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(XYChartContainer)
-
-// export default XYChartPage;

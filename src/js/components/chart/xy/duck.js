@@ -31,13 +31,9 @@ export function reducer(state = initialState, action) {
       imState = xyChartLogic.changeXYSeriesName(imState, action);
       break;
 
-
-
-
-
-
-
-
+    case XYActions.ADD_DATA_PAIR_XY:
+      imState = xyChartLogic.addDataPair(imState, action);
+      break;
     case XYActions.CHANGE_POINT_XY:
       imState = xyChartLogic.changeXYPoint(imState, action);
       break;
@@ -60,6 +56,7 @@ export const XYActions = {
   CHANGE_COLOR_XY: 'CHANGE_COLOR_XY',
   CHANGE_NAME_XY: 'CHANGE_NAME_XY',
   CHANGE_SERIES_NAME_XY: 'CHANGE_SERIES_NAME_XY',
+  ADD_DATA_PAIR_XY: 'ADD_DATA_PAIR_XY',
   CHANGE_POINT_XY: 'CHANGE_POINT_XY'
 };
 
@@ -96,8 +93,8 @@ export function createChangeXYSeriesNameAction(name, newName) {
 export function createCreateXYSeriesAction(series) {
   return {
     type: XYActions.CREATE_SERIES_XY,
-    name: "TODO",//series.name,
-    color: "green"//series.color
+    name: series.name ? series.name : "TODO",
+    color: series.color ? series.color : "green"
   }
 }
 export function createDeleteXYSeriesAction(seriesName) {
@@ -123,7 +120,42 @@ export function createChangeColorAction(seriesName, newColor) {
   }
 }
 
+
+
+
+
+
+
+export function createAddDataPairAction(xValue, yValue, seriesName) {
+
+  console.info("asdf")
+
+  return {
+    type: XYActions.ADD_DATA_PAIR_XY,
+    name: seriesName,
+    xValue: xValue,
+    yValue: yValue
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export function createChangeCellXYAction(seriesValues) {
+
+  console.info("sadfasfd")
+
   return {
     type: XYActions.CHANGE_CELL_XY,
     seriesName: seriesValues.name,

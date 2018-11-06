@@ -16,11 +16,21 @@ export default class XYChartSeriesComponent extends React.Component {
     super(props);
     this.onChange = this.onChange.bind(this);
     this.onBlur = this.onBlur.bind(this);
+    this.changeEmpty1 = this.changeEmpty1.bind(this);
+    this.changeEmpty2 = this.changeEmpty2.bind(this);
+
+
+    this.state = {
+      empty1: "x",
+      empty2: "y"
+    };
   }
 
   static propTypes = {
     changeXYSeriesName: PropTypes.func.isRequired,
-    deleteSeries: PropTypes.func.isRequired
+    deleteSeries: PropTypes.func.isRequired,
+    changeCellXY: PropTypes.func.isRequired,
+    addDataPair: PropTypes.func.isRequired
   };
 
 
@@ -139,10 +149,10 @@ export default class XYChartSeriesComponent extends React.Component {
                 }
                   <tr key={"empty"}>
                     <td>
-                      <input value={"empty1"} onChange={()=>alert("TODO")}/>
+                      <input ref="empty1" className="empty" value={this.state.empty1} onChange={(e)=>this.changeEmpty1(e.target)}/>
                     </td>
                     <td>
-                      <input value={"empty2"} onChange={()=>alert("TODO")}/>
+                      <input ref="empty2" className="empty" value={this.state.empty2} onChange={(e)=>this.changeEmpty2(e.target)} onBlur={(e)=>this.onBlurEmpty2(e)}/>
                     </td>
                   </tr>
                 </tbody>
@@ -158,4 +168,27 @@ export default class XYChartSeriesComponent extends React.Component {
         </div>
       );
   }
+  changeEmpty1(target) {
+    this.setState({empty1:target.value})
+  }
+
+  changeEmpty2(target) {
+    this.setState({empty2:target.value})
+  }
+
+  onBlurEmpty2(target) {
+    console.info("onblur")
+    if (!(isNaN(this.state.empty1) || isNaN(this.state.empty2))) {
+      alert("both numbers!!")
+    }
+
+
+  }
 }
+
+// let changeEmpty1 = () => {
+//
+// }
+// let changeEmpty2 = () => {
+//
+// }
