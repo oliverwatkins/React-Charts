@@ -61,7 +61,6 @@ export default class XYChartSeriesComponent extends React.Component {
         console.info("do NOT update component....")
         return false;
       }else {
-
         return true;
       }
     }
@@ -145,14 +144,23 @@ export default class XYChartSeriesComponent extends React.Component {
                         </td>
                       </tr>
                     }
-                  )
+                  ) //map series data
+
+
+
+
+
+
+
+
+
                 }
                   <tr key={"empty"}>
                     <td>
                       <input ref="empty1" className="empty" value={this.state.empty1} onChange={(e)=>this.changeEmpty1(e.target)}/>
                     </td>
                     <td>
-                      <input ref="empty2" className="empty" value={this.state.empty2} onChange={(e)=>this.changeEmpty2(e.target)} onBlur={(e)=>this.onBlurEmpty2(e)}/>
+                      <input ref="empty2" className="empty" value={this.state.empty2} onChange={(e)=>this.changeEmpty2(e.target)} onBlur={(e)=>this.onBlurEmpty2(e, series.name)}/>
                     </td>
                   </tr>
                 </tbody>
@@ -176,19 +184,10 @@ export default class XYChartSeriesComponent extends React.Component {
     this.setState({empty2:target.value})
   }
 
-  onBlurEmpty2(target) {
+  onBlurEmpty2(target, seriesName) {
     console.info("onblur")
     if (!(isNaN(this.state.empty1) || isNaN(this.state.empty2))) {
-      alert("both numbers!!")
+      this.props.addDataPair(this.state.empty1, this.state.empty2, seriesName);
     }
-
-
   }
 }
-
-// let changeEmpty1 = () => {
-//
-// }
-// let changeEmpty2 = () => {
-//
-// }

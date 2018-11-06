@@ -136,53 +136,26 @@ export const xyChartLogic = {
   addDataPair(imState, action) {
     let seriesList = imState.getIn([...this.path, 'series'])
 
-    console.info("action " + action.name)
-    console.info("xxxxx " + JSON.stringify(seriesList.toJS()) + " action.name " + action.name)
     let idxSeriesItem = seriesList.findIndex((elem) => {
       return elem.get("name") === action.name
     })
-
-    if (idxSeriesItem == -1)
-      throw "idxSeriesItem == -1"
-
 
     let singlelistItem = seriesList.filter((elem, i) => {
       return elem.get("name") === action.name
     })
 
-    // if (!singlelistItem)
-    //   throw "singlelistItem is undefiend"
-
     console.info(" ----- " + JSON.stringify(singlelistItem.toJS()))
 
     singlelistItem = singlelistItem.get(0);
     singlelistItem = singlelistItem.updateIn(['data'], function(list){
-      // var idx = list.findIndex(function(item, i){ //index?
-      //   if(i == action.row)
-      //     return true;
-      // });
       return list.push({x:action.xValue, y:action.yValue});
     });
 
     seriesList = seriesList.setIn([idxSeriesItem], singlelistItem);
-
     imState = imState.setIn([...this.path, 'series'], seriesList);
 
-
-
-
     return imState;
-
   }
-
-
-
-
-
-
-
-
-
 }
 
 
