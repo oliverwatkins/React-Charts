@@ -90,9 +90,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeBarChartName: (val) => {
-
-      // alert("val " + val)
-
       dispatch(createChangeBarChartNameAction(val))
     },
     onLoadChart: () => {

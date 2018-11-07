@@ -70,12 +70,10 @@ export default class XYChartSeriesComponent extends React.Component {
 
   render() {
     let style = {
-      "padding": "1px",
-      "margin": "1px",
+      "padding": "0px",
+      "margin": "0px",
       // "border": "5px solid blue"
     };
-
-    // debugger;
 
     let series = this.props.xySeries;
     let tabbedPane =
@@ -101,7 +99,7 @@ export default class XYChartSeriesComponent extends React.Component {
 
             />
             <form>
-              <table>
+              <table style={style}>
                 <tbody>
                 {
                   series.data.map(
@@ -124,13 +122,9 @@ export default class XYChartSeriesComponent extends React.Component {
                         console.info(' ' + this.state.event.inputLabel + " value " + this.state.event.value)
                       }
 
-
-
                       let xInput = <input
                         // onBlur={(e) => this.onBlur(series.name, "x", row, e)}
-                        //
                         // onChange={(e) => this.onChange(series.name, "x", row, e)}
-
                         ref={refX} key={refX} type="text" value={valueX}/>
 
                       let yInput =
@@ -139,36 +133,23 @@ export default class XYChartSeriesComponent extends React.Component {
                           onChange={(e) => this.onChange(series.name, "y", row, e)}
                           ref={refY} key={refY} type="text" value={valueY}/>
 
-                      return <tr key={row}>
-                        <td>
+                      return <tr style={style} key={row}>
+                        <td style={style}>
                           {xInput}
                         </td>
-                        <td>
+                        <td style={style}>
                           {yInput}
                         </td>
                         <td>
-
-
                           <FlatButton secondary={true} onClick={(e) => this.props.deleteDataPair(series.name, valueX)}>
-                            <svg width="20" height="20" viewBox="0 0 1024 1024">
+                            <svg width="10" height="10" viewBox="0 0 1024 1024">
                               <path d="M192 1024h640l64-704h-768zM640 128v-128h-256v128h-320v192l64-64h768l64 64v-192h-320zM576 128h-128v-64h128v64z"></path>
                             </svg>
                           </FlatButton>
-
-
-
-
-
-
-
-                          {/*<svg width="20" height="20" viewBox="0 0 1024 1024">*/}
-                            {/*<path d="M192 1024h640l64-704h-768zM640 128v-128h-256v128h-320v192l64-64h768l64 64v-192h-320zM576 128h-128v-64h128v64z"></path>*/}
-                          {/*</svg>*/}
-                          {/*<MdDeleteForever width="22" height="22" onClick={(e) => this.props.deleteDataPair(series.name, valueX)}/>*/}
                         </td>
                       </tr>
                     }
-                  ) //map series data
+                  )
                 }
                   <tr key={"empty"}>
                     <td>
@@ -200,12 +181,9 @@ export default class XYChartSeriesComponent extends React.Component {
   }
 
   onBlurEmpty2(target, seriesName) {
-    console.info("onblur")
     if (!(isNaN(this.state.empty1) || isNaN(this.state.empty2))) {
       this.props.addDataPair(this.state.empty1, this.state.empty2, seriesName);
-
       this.setState({empty1:"", empty2:""});
-
     }
   }
 }

@@ -10,7 +10,6 @@ import FlatButton from 'material-ui/FlatButton';
 // import RaisedButton from 'material-ui/';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-
 import {
   createChangeCellXYAction, createFetchXYDataAction, createDeleteXYSeriesAction,
   createUpdateColorXYAction, createCreateXYSeriesAction, createChangeXYChartNameAction,
@@ -44,9 +43,6 @@ class XYChartContainer extends React.Component {
             <div>
               <TitleEditComponent value={this.props.xyData.name} onChange={this.props.changeXYChartName}/>
             </div>
-            <div className="alert alert-danger">
-              <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
-            </div>
             <div style={{display: 'flex'}}>
               <div>
                 <div style={style}>
@@ -58,8 +54,6 @@ class XYChartContainer extends React.Component {
                 </div>
                 <div>
                   <XYChartSeriesComponent
-
-                    // deleteDataPair(series.name, valueX)
                     xySeries={this.props.xyData.series}
                     changeXYSeriesName={this.props.changeXYSeriesName}
                     addDataPair={this.props.addDataPair}
@@ -101,11 +95,9 @@ const mapDispatchToProps = dispatch => {
     changeXYChartName: (newName) => {
       dispatch(createChangeXYChartNameAction(newName))
     },
-
     changeXYSeriesName: (name, newName) => {
       dispatch(createChangeXYSeriesNameAction(name, newName))
     },
-
     onLoadChart: () => {
       dispatch(createFetchXYDataAction());
     },
@@ -130,13 +122,9 @@ const mapDispatchToProps = dispatch => {
     addDataPair: (xValue, yValue, seriesName) => {
       dispatch(createAddDataPairAction(xValue, yValue, seriesName));
     },
-
     deleteDataPair: (seriesName, xValue) => {
       dispatch(createDeleteDataPairAction(seriesName, xValue));
     }
-
-
-
   }
 }
 export default connect(
