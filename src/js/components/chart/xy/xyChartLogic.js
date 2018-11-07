@@ -88,6 +88,9 @@ export const xyChartLogic = {
 
     // var v = Immutable.fromJS(series)
     imState = imState.setIn([...this.path, 'series'], series)
+
+    console.info(JSON.stringify(imState.toJS()))
+
     return imState;
   },
 
@@ -130,6 +133,39 @@ export const xyChartLogic = {
   },
 
 
+  deleteDataPair(imState, action) {
+
+    let seriesList = imState.getIn([...this.path, 'series'])
+    let idxSeriesItem = seriesList.findIndex((elem) => {
+      return elem.get("name") === action.name
+    });
+    let singlelistItem = seriesList.filter((elem, i) => {
+      return elem.get("name") === action.name
+    });
+
+
+
+    //should be just ONE item
+    singlelistItem = singlelistItem.get(0);
+
+    singlelistItem = singlelistItem.updateIn(['data'], function(list){
+      // list = list.remove(["x","1"]);
+
+      list = list.filter((item) => item.get('x') !== action.xValue);
+
+
+      return list;
+      // list.push(Immutable.Map({x:action.xValue, y:action.yValue}));
+    });
+
+
+    seriesList = seriesList.setIn([idxSeriesItem], singlelistItem);
+    imState = imState.setIn([...this.path, 'series'], seriesList);
+
+    return imState;
+  },
+
+
   addDataPair(imState, action) {
     let seriesList = imState.getIn([...this.path, 'series'])
 
@@ -143,7 +179,9 @@ export const xyChartLogic = {
 
     console.info(" ----- " + JSON.stringify(singlelistItem.toJS()))
 
+    //should be just ONE item
     singlelistItem = singlelistItem.get(0);
+
 
     singlelistItem = singlelistItem.updateIn(['data'], function(list){
       return list.push(Immutable.Map({x:action.xValue, y:action.yValue}));

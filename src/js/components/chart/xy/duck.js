@@ -34,6 +34,13 @@ export function reducer(state = initialState, action) {
     case XYActions.ADD_DATA_PAIR_XY:
       imState = xyChartLogic.addDataPair(imState, action);
       break;
+
+    case XYActions.DELETE_DATA_PAIR_XY:
+      imState = xyChartLogic.deleteDataPair(imState, action);
+      break;
+
+
+
     case XYActions.CHANGE_POINT_XY:
       imState = xyChartLogic.changeXYPoint(imState, action);
       break;
@@ -57,6 +64,7 @@ export const XYActions = {
   CHANGE_NAME_XY: 'CHANGE_NAME_XY',
   CHANGE_SERIES_NAME_XY: 'CHANGE_SERIES_NAME_XY',
   ADD_DATA_PAIR_XY: 'ADD_DATA_PAIR_XY',
+  DELETE_DATA_PAIR_XY: 'DELETE_DATA_PAIR_XY',
   CHANGE_POINT_XY: 'CHANGE_POINT_XY'
 };
 
@@ -137,6 +145,17 @@ export function createAddDataPairAction(xValue, yValue, seriesName) {
     yValue: yValue
   }
 }
+
+
+export function createDeleteDataPairAction(seriesName, xValue) {
+  return {
+    type: XYActions.DELETE_DATA_PAIR_XY,
+    name: seriesName,
+    xValue: xValue,
+  }
+}
+
+
 
 
 

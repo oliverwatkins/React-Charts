@@ -6,7 +6,8 @@ import {
   createChangeXYChartNameAction,
   createChangeColorAction,
   createChangePointAction,
-  createAddDataPairAction
+  createAddDataPairAction,
+  createDeleteDataPairAction
 
 } from "./../duck"
 /*
@@ -37,7 +38,7 @@ describe('Test XY Reducer functions', () => {
 
   it(' creates a series ', () => {
 
-    let state = reducer(initialState_XY, createCreateXYSeriesAction({name: "asdf", color: "brown"}));
+    let state = reducer(initialState_XY, createCreateXYSeriesAction("asdf","brown"));
     expect(state.series.length).toEqual(2)
     expect(state.series).toContainEqual({
       name: 'asdf', color: 'brown', data:
@@ -47,7 +48,7 @@ describe('Test XY Reducer functions', () => {
 
   it(' delete a series ', () => {
 
-    let state = reducer(initialState_XY, createCreateXYSeriesAction({name: "toDelete", color: "pink"}));
+    let state = reducer(initialState_XY, createCreateXYSeriesAction("toDelete", "pink"));
 
     expect(state.series.length).toEqual(2)
     expect(state.series).toContainEqual({
@@ -139,6 +140,32 @@ describe('Test XY Reducer functions', () => {
         {"x":1, "y":2},
         {"x":12, "y":13}]
     });
+  })
+
+
+
+  it(' deletes data pair to series ', () => {
+    let state = reducer(initialState_XY, createAddDataPairAction(12, 13, "series1"));
+
+    expect(state.series).toContainEqual({
+      name:"series1",
+      color:"red",
+      data: [{"x": 0, "y": 0},
+        {"x":1, "y":2},
+        {"x":12, "y":13}]
+    });
+
+    //now delete x=1
+    state = reducer(state, createDeleteDataPairAction("series1", 1));
+
+    expect(state.series).toContainEqual({
+      name:"series1",
+      color:"red",
+      data: [{"x": 0, "y": 0},
+        {"x":12, "y":13}]
+    });
+
+
   })
 
   xit('loads initial data correctly ', () => {

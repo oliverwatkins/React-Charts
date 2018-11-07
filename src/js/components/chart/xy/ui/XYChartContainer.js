@@ -14,7 +14,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {
   createChangeCellXYAction, createFetchXYDataAction, createDeleteXYSeriesAction,
   createUpdateColorXYAction, createCreateXYSeriesAction, createChangeXYChartNameAction,
-  createChangeColorAction, createChangePointAction, createChangeXYSeriesNameAction, createAddDataPairAction
+  createChangeColorAction, createChangePointAction, createChangeXYSeriesNameAction, createAddDataPairAction,createDeleteDataPairAction
 } from '../duck';
 
 import XYChartSeriesComponent from "./XYChartSeriesComponent"
@@ -58,9 +58,12 @@ class XYChartContainer extends React.Component {
                 </div>
                 <div>
                   <XYChartSeriesComponent
+
+                    // deleteDataPair(series.name, valueX)
                     xySeries={this.props.xyData.series}
                     changeXYSeriesName={this.props.changeXYSeriesName}
                     addDataPair={this.props.addDataPair}
+                    deleteDataPair={this.props.deleteDataPair}
                     changeCellXY={this.props.changeCellXY}
                     createXYSeries={this.props.createXYSeries}
                     deleteXYSeries={this.props.deleteXYSeries}
@@ -126,7 +129,14 @@ const mapDispatchToProps = dispatch => {
     },
     addDataPair: (xValue, yValue, seriesName) => {
       dispatch(createAddDataPairAction(xValue, yValue, seriesName));
+    },
+
+    deleteDataPair: (seriesName, xValue) => {
+      dispatch(createDeleteDataPairAction(seriesName, xValue));
     }
+
+
+
   }
 }
 export default connect(
