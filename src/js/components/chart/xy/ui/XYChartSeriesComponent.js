@@ -27,7 +27,7 @@ export default class XYChartSeriesComponent extends React.Component {
 
   static propTypes = {
     changeXYSeriesName: PropTypes.func.isRequired,
-    deleteSeries: PropTypes.func.isRequired,
+    deleteXYSeries: PropTypes.func.isRequired,
     changeCellXY: PropTypes.func.isRequired,
     addDataPair: PropTypes.func.isRequired,
     deleteDataPair: PropTypes.func.isRequired
@@ -142,7 +142,7 @@ export default class XYChartSeriesComponent extends React.Component {
                         </td>
                         <td>
                           <FlatButton secondary={true} onClick={(e) => this.props.deleteDataPair(series.name, valueX)}>
-                            <svg width="10" height="10" viewBox="0 0 1024 1024">
+                            <svg width="20" height="20" viewBox="0 0 1024 1024">
                               <path d="M192 1024h640l64-704h-768zM640 128v-128h-256v128h-320v192l64-64h768l64 64v-192h-320zM576 128h-128v-64h128v64z"></path>
                             </svg>
                           </FlatButton>

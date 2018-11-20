@@ -8,7 +8,7 @@ import {shallow} from 'enzyme';
  *
  */
 describe('Shallow Render REACT COMPONENTS',()=>{
-  let wrapper
+  let wrapper;
 
   beforeEach(()=>{
     wrapper = shallow(<CategoryDataList categories={['Apple', 'Orange', 'tomato']}/>)

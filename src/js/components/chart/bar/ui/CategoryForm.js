@@ -73,5 +73,4 @@ class CategoryForm extends React.Component {
     )
   }
 }
-
 export default CategoryForm;

@@ -7,24 +7,8 @@ import Loader from 'react-loader-advanced';
 import PropTypes from 'prop-types';
 import { RingLoader } from 'react-spinners';
 
-let createMaxMinArray = function (props) {
-  let maxMinArray = {minY: undefined, maxY: undefined}
 
-  //get overall max/min
-  maxMinArray = props.barData.series.reduce((acc, object) => {
-
-    //get max/min for a single series
-    let maxMinSeries = object.data.reduce((acc2, obj2) => {
-      acc2.minY = ( acc2.minY === undefined || obj2.y < acc2.minY ) ? obj2.y : acc2.minY
-      acc2.maxY = ( acc2.maxY === undefined || obj2.y > acc2.maxY ) ? obj2.y : acc2.maxY
-      return acc2;
-    }, acc);
-    return maxMinSeries;
-
-  }, maxMinArray);
-
-  return maxMinArray;
-};
+import {createMaxMinArray, createDataForChart} from "../Utils";
 
 class BarChartPanel extends React.Component {
 
@@ -54,50 +38,29 @@ class BarChartPanel extends React.Component {
     this.props.onLoadChart();
   }
 
-  createDataForChart(barData) {
 
-    let series = barChartLogic.getSeries(barData);
-    let categories = barChartLogic.getCategories(barData);
-
-    let newData = [];
-
-    //TODO refactor out of here
-    //TODO refactor ES6 style
-    for (let i = 0; i < categories.length; i++) {
-      let obj = {};
-      obj["name"] = categories[i];
-      for (let j = 0; j < series.length; j++) {
-        const s = series[j];
-        let d = s.data[i].y;
-        let n = s.name;
-        obj[n] = d;
-      }
-      newData.push(obj)
-    }
-    return newData;
-  }
 
   render() {
-    let maxMinArray = createMaxMinArray(this.props);
+    let maxMinArray = createMaxMinArray(this.props.barData.series);
 
     maxMinArray.maxY = parseInt(maxMinArray.maxY);
     maxMinArray.minY = parseInt(maxMinArray.minY);
 
     let barData = this.props.barData;
     let series = barChartLogic.getSeries(barData);
-    let data = this.createDataForChart(barData);
+    let data = createDataForChart(barData.series, barData.categories);
     let isFetching = barChartLogic.isFetching(barData);
 
     let style1 = {
       color:"white",
       fontSize: 40,
       display: "inline"
-    }
+    };
     let style2 = {
       color:"white",
       fontSize: 40,
       display: "inline"
-    }
+    };
 
 
     let loadingMessage = <div style={{display: 'flex', position: 'center', justifyContent: 'center'}}>

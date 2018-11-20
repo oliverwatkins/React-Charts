@@ -58,15 +58,14 @@ class BarSeriesList extends React.Component {
                   </td>
                   <td>
                     <ColorChooser color={series.color}
-                                  onChooseColor={
-                                    (color) => {
-                                      colorSelected(color, series.name)
-                                    }
-                                  }
+                        onChooseColor={
+                          (color) => {
+                            colorSelected(color, series.name)
+                          }
+                        }
                     />
                   </td>
                   <td>
-
                     <FlatButton secondary={true}
                                 onClick={
                                   (e) => deleteSeries(series.name)}>
@@ -74,9 +73,6 @@ class BarSeriesList extends React.Component {
                         <path d="M192 1024h640l64-704h-768zM640 128v-128h-256v128h-320v192l64-64h768l64 64v-192h-320zM576 128h-128v-64h128v64z"></path>
                       </svg>
                     </FlatButton>
-
-
-
                   </td>
                 </tr>
               );
@@ -88,9 +84,4 @@ class BarSeriesList extends React.Component {
     );
   }
 }
-
 export default BarSeriesList;
-
-
-
-

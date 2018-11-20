@@ -1,7 +1,7 @@
 import React from "react";
 import {ScatterChart, Scatter, LineChart, Bar, Line, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 
-
+import {createMaxMinArray} from "./../Utils";
 
 export default class XYChartComponent extends React.Component {
 
@@ -11,6 +11,8 @@ export default class XYChartComponent extends React.Component {
 
   render() {
     const objects = []
+
+    //get max min values for both x and y, and add some padding.
     let maxMinArray = createMaxMinArray(this.props);
 
     this.props.xySeries.map((object, i) => {
@@ -37,29 +39,4 @@ export default class XYChartComponent extends React.Component {
     );
   }
 }
-
-let createMaxMinArray = function (props) {
-  let mmArray = {minX: undefined, minY: undefined, maxX: undefined, maxY: undefined}
-
-  //get overall max/min.
-  mmArray = props.xySeries.reduce((acc, object) => {
-
-    //get max/min for one series
-    let minMaxArray = object.data.reduce((acc2, obj2) => {
-      acc2.minX = ( acc2.minX === undefined || obj2.x < acc2.minX ) ? obj2.x : acc2.minX
-      acc2.minY = ( acc2.minY === undefined || obj2.y < acc2.minY ) ? obj2.y : acc2.minY
-      acc2.maxX = ( acc2.maxX === undefined || obj2.x > acc2.maxX ) ? obj2.x : acc2.maxX
-      acc2.maxY = ( acc2.maxY === undefined || obj2.y > acc2.maxY ) ? obj2.y : acc2.maxY
-      return acc2;
-    }, acc);
-
-    return minMaxArray;
-  }, mmArray);
-
-  mmArray.maxY = parseInt(mmArray.maxY);
-  mmArray.maxX = parseInt(mmArray.maxX);
-  mmArray.minY = parseInt(mmArray.minY);
-  mmArray.minX = parseInt(mmArray.minX);
-  return mmArray;
-};
 
