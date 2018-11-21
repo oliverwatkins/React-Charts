@@ -3,8 +3,8 @@ import { delay } from 'redux-saga'
 import { put, takeEvery, all ,call} from 'redux-saga/effects'
 
 
-import {createFetchBarDataAction, BarActions} from './bar/duck'
-import {createFetchPieDataAction, PieActions} from './pie/duck'
+import {createFetchBarDataAction, BarActions} from './bar/actions'
+import {createFetchPieDataAction, PieActions} from './pie/actions'
 
 
 /**

@@ -1,5 +1,5 @@
 import React from "react";
-import {ScatterChart, Scatter, LineChart, Bar, Line, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
+import {ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 
 import {createMaxMinArray} from "./../Utils";
 
@@ -39,4 +39,3 @@ export default class XYChartComponent extends React.Component {
     );
   }
 }
-

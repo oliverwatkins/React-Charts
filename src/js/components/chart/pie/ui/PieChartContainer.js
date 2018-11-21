@@ -5,7 +5,7 @@ import PieChartForm from "./PieChartForm";
 import PieChartSliceList from "./PieChartSliceList";
 import TitleEditComponent from "./../../TitleEditComponent"
 import {connect} from 'react-redux'
-import {createChangeNamePieAction, createCreateSliceAction, createDeleteSliceAction, createFetchPieDataAction, createChangePieSliceColorAction} from '../duck';
+import {createChangeNamePieAction, createCreateSliceAction, createDeleteSliceAction, createFetchPieDataAction, createChangePieSliceColorAction} from '../actions';
 
 /**
  * container

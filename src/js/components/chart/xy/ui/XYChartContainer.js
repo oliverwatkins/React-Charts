@@ -14,7 +14,7 @@ import {
   createChangeCellXYAction, createFetchXYDataAction, createDeleteXYSeriesAction,
   createUpdateColorXYAction, createCreateXYSeriesAction, createChangeXYChartNameAction,
   createChangeColorAction, createChangePointAction, createChangeXYSeriesNameAction, createAddDataPairAction,createDeleteDataPairAction
-} from '../duck';
+} from '../actions';
 
 import XYChartSeriesComponent from "./XYChartSeriesComponent"
 import TitleComponent from '../../TitleComponent'

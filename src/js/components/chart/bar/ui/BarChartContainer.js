@@ -6,8 +6,7 @@ import BarChartForm from "./BarChartForm";
 import BarChartDataTable from "./BarChartDataTable";
 import CategoryForm from "./CategoryForm";
 
-import {makeCategoriesSelector} from "../selectors"
-import {makeBarDataSelector} from "../selectors"
+import {makeCategoriesSelector, makeBarDataSelector} from "../selectors"
 
 import CategoryDataList from "./CategoryDataList";
 
@@ -16,7 +15,7 @@ import './../../../../global.less';
 import {connect} from 'react-redux'
 import {createCreateCategoryAction, createChangeBarChartNameAction, createFetchBarDataAction, createDeleteSeriesAction,
   createUpdateColorBarAction, createCreateSeriesAction, createDeleteCategoryAction, createChangeCellAction
-} from '../duck';
+} from '../actions';
 
 import TitleEditComponent from "../../TitleEditComponent";
 
