@@ -1,4 +1,4 @@
-import {reducer} from "./../duck"
+import {reducer} from "./../reducer"
 import {
   createDeleteSeriesAction,
   createChangeBarChartNameAction,
@@ -7,7 +7,7 @@ import {
   createCreateSeriesAction,
   createDeleteCategoryAction,
   createUpdateColorBarAction
-} from "./../duck"
+} from "./../actions"
 /*
 Test the reducer functions
  */
@@ -67,9 +67,19 @@ describe('Test Bar Reducer functions', () => {
   })
 
   it(' deletes a category ', () => {
+
+    expect(initialState_Bar.series).toContainEqual({
+      name: "Holland",
+      color: "blue",
+      data: [{y: 1}, {y: 2}, {y: 3}, {y: 4}]
+    });
+
     let state = reducer(initialState_Bar, createDeleteCategoryAction("cow"));
 
     expect(state.categories.length).toEqual(3)
+    expect(state.categories).toEqual(
+      ["dog", "cat", "horse"]
+    )
     expect(state.categories).not.toContainEqual("cow")
     expect(state.series).toContainEqual({
       name: "Holland",
@@ -82,6 +92,8 @@ describe('Test Bar Reducer functions', () => {
       color: "orange",
       data: [{y: 1}, {y: 2}, {y: 4}]
     })
+
+
   })
 
   it(' deletes a series ', () => {

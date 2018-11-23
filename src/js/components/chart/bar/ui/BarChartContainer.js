@@ -107,8 +107,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(createCreateCategoryAction(cat))
     },
     deleteCategory: (cat) => {
-      //not working right now
-      // dispatch(createDeleteCategoryAction(cat))
+      dispatch(createDeleteCategoryAction(cat))
     },
     changeCell: (fromRow, toRow, updated ) => {
       dispatch(createChangeCellAction(fromRow, toRow, updated ))

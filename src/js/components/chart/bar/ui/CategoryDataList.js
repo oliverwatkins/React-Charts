@@ -19,7 +19,7 @@ export class CategoryDataList extends React.Component {
   render() {
     const categories = this.props.categories;
 
-    let deleteS = this.props.deleteCategory;
+    let deleteCat = this.props.deleteCategory;
     return (
       <MuiThemeProvider>
         <div className="listStyle">
@@ -34,7 +34,7 @@ export class CategoryDataList extends React.Component {
                   </td>
                   <td>
                     <FlatButton label="Delete" secondary={true}
-                                onClick={(e) => deleteS(e, cat, i)}/>
+                                onClick={(e) => deleteCat(cat, e, i)}/>
 
                     {/*<input type="button" value="delete"*/}
                     {/*onClick={(e) => deleteS(e, cat, i)}/>*/}
