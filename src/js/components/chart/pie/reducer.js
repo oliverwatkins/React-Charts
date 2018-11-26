@@ -20,6 +20,7 @@ export function reducer(state = initialState, action) {
       imState = pieChartLogic.fetchFinished(imState, action)
       break;
     case PieActions.CREATE_SLICE:
+      // debugger;
       imState = pieChartLogic.createSlice(imState, action.slice);
       break;
     case PieActions.CHANGE_NAME_PIE:
@@ -41,7 +42,7 @@ export function reducer(state = initialState, action) {
 const initialState =
   {
     name: "Pie Chart",
-    isFetching: true,
+    isFetching: false,
     data: [
       {
         "name":"Apple",

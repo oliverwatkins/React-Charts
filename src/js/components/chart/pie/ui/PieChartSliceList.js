@@ -59,7 +59,7 @@ export default class PieChartSliceList extends React.Component {
                 <td style={{padding:5}}>
                   <FlatButton label="Delete" secondary={true}
                               onClick={
-                                (e) => deleteSlice(e, slice.name, i)}/>
+                                (e) => deleteSlice(slice.name, i)}/>
                 </td>
               </tr>
             );

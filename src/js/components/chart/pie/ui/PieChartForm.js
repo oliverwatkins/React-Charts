@@ -33,7 +33,7 @@ export default class PieChartForm extends React.Component {
       value: Number(value)
     };
 
-    this.props.createSlice(event, slice);
+    this.props.createSlice(slice, event);
   }
 
   colorSelected(color) {
@@ -51,7 +51,7 @@ export default class PieChartForm extends React.Component {
     let pieData = this.props.pieData;
     return (
     <MuiThemeProvider>
-      <form onSubmit={this.handleSubmit}>
+      <form>
 
         <div>
           <div>
@@ -77,6 +77,7 @@ export default class PieChartForm extends React.Component {
                 <RaisedButton style={style}
                               type="submit"
                               label="Add Pie Slice"
+                              onClick={this.handleSubmit}
                               disabled={!enableButton} />
               </td>
             </tr>

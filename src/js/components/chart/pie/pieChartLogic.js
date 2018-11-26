@@ -2,12 +2,13 @@ import Immutable from 'immutable';
 
 export const pieChartLogic = {
 
-  createSlice(imState, action) {
-    imState = imState.updateIn(['data'], a => a.push(action))
+  createSlice(imState, slice) {
+    imState = imState.updateIn(['data'], a => a.push(slice))
     return imState;
   },
 
   deleteSlice(imState, name) {
+
     //filter out all except where there is a name match
     let filtered = imState.getIn(['data']).filter(o => {return o.get('name') !== name});
     imState = imState.setIn(['data'], filtered);

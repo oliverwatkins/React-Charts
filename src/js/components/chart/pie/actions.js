@@ -1,8 +1,3 @@
-import Immutable from "immutable";
-
-import {pieChartLogic} from './pieChartLogic'
-
-
 //pie action creators
 export function createEnterPieChartNameAction() { //??
   return {
@@ -24,6 +19,9 @@ export function createCreateSliceAction(slice) {
 }
 
 export function createFetchPieDataAction(value) {
+
+  debugger;
+
   return {
     type: PieActions.FETCH_PIE_DATA,
     value
@@ -33,7 +31,7 @@ export function createFetchPieDataAction(value) {
 export function createDeleteSliceAction(name) {
   return {
     type: PieActions.DELETE_SLICE,
-    name
+    name: name
   }
 }
 export function createChangeNamePieAction(newName) {
