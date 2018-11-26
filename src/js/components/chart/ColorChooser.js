@@ -20,7 +20,7 @@ export default class ColorChooser extends React.Component {
 
     this.state = {
       showModalColorPicker: false,
-      color: props.color ? props.color : '#c2a5ca'
+      color: props.color ? props.color : '#bb51ca'
     };
 
     this.cancel = this.cancel.bind(this);
@@ -30,7 +30,6 @@ export default class ColorChooser extends React.Component {
 
   render() {
     let color = this.props.color ? this.props.color : this.state.color;
-
 
     var style = {
       padding: 10,
@@ -48,9 +47,7 @@ export default class ColorChooser extends React.Component {
     return (
 
       <MuiThemeProvider>
-
       <span>
-
         <Modal show={this.state.showModalColorPicker} onHide={this.cancel}>
           <Modal.Header closeButton>
             <Modal.Title>Pick a Color</Modal.Title>

@@ -61,7 +61,8 @@ class PieChartPanel extends React.Component {
           <div className="chartpanel">
           <TitleComponent name={pieData.name}/>
           <PieChart width={500} height={500}>
-            <Pie dataKey="value" data={pieData.data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
+            <Pie dataKey="value" data={pieData.data}
+                 cx={250} cy={250} outerRadius={180} fill="#8884d8" label>
               {
                 pieData.data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
               }

@@ -70,12 +70,12 @@ export default class PieChartForm extends React.Component {
                    name="newValue" placeholder="Value"></MUITextField>
               </td>
               <td>
-                <ColorChooser onChooseColor={this.colorSelected}/>
+                <ColorChooser color={this.state.selectedColor} onChooseColor={this.colorSelected}/>
               </td>
 
               <td>
                 <RaisedButton style={style}
-                              type="submit"
+                              type="button"
                               label="Add Pie Slice"
                               onClick={this.handleSubmit}
                               disabled={!enableButton} />

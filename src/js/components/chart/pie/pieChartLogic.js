@@ -8,7 +8,6 @@ export const pieChartLogic = {
   },
 
   deleteSlice(imState, name) {
-
     //filter out all except where there is a name match
     let filtered = imState.getIn(['data']).filter(o => {return o.get('name') !== name});
     imState = imState.setIn(['data'], filtered);
@@ -46,6 +45,3 @@ export const pieChartLogic = {
     return imState;
   },
 };
-
-
-

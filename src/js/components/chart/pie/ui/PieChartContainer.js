@@ -20,9 +20,6 @@ class PieChartContainer extends Component {
     return (
       <div>
         <div style={{display: 'flex'}}>
-          <div className="alert alert-danger">
-            <strong>ATTENTION!</strong> This chart is still a work in progress!!!!!.
-          </div>
           <div>
             <div>
               <TitleEditComponent value={this.props.pieData.name} onChange={this.props.changePieChartName}/>
