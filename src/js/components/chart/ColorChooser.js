@@ -11,6 +11,7 @@ import {Modal, Button} from 'react-bootstrap';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 /**
+ *
  * ColorChooser. Works with react-color (a color picker)
  */
 export default class ColorChooser extends React.Component {
