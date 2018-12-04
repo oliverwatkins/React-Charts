@@ -1,7 +1,12 @@
-import {reducer, createChangePieSliceColorAction, createChangeNamePieAction, createCreateSliceAction, createDeleteSliceAction} from "./../duck"
-/*
-Test the reducer functions
- */
+import {createChangePieSliceColorAction, createChangeNamePieAction, createCreateSliceAction, createDeleteSliceAction} from "./../actions"
+
+import {reducer} from "./../reducer"
+
+
+
+  /*
+  Test the reducer functions
+   */
 describe('Test Reducer functions', () => {
 
   it('loads initial data correctly ', () => {

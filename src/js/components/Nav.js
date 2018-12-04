@@ -44,21 +44,21 @@ class Nav extends React.Component {
           <div className={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li className={featuredClass}>
-                <Link to="/" onClick={this.toggleCollapse.bind(this)}>Home</Link>
+                <Link to="/" onClick={this.toggleCollapse.bind(this)}></Link>
               </li>
               <li >
-                <Link to="bar" onClick={this.toggleCollapse.bind(this)} className={barClass}>
-                  &nbsp;
+                <Link to="bar" onClick={this.toggleCollapse.bind(this)} className={barClass}>Bar
+
                 </Link>
               </li>
               <li>
                 <Link to="line" onClick={this.toggleCollapse.bind(this)} className={lineClass}>
-                  &nbsp;
+                  XY
                 </Link>
               </li>
               <li >
                 <Link to="pie" onClick={this.toggleCollapse.bind(this)} className={pieClass}>
-                  &nbsp;
+                  PIE
                 </Link>
               </li>
             </ul>

@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import BarChartComponent from "../ui/BarChartPanel";
 
-import {initialState} from "../duck";
+import {initialState} from "../reducer";
 
 describe('Test basic rendering',()=> {
   it('BarSeriesList renders', () => {

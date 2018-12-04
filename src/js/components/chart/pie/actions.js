@@ -20,7 +20,6 @@ export function createCreateSliceAction(slice) {
 
 export function createFetchPieDataAction(value) {
 
-  debugger;
 
   return {
     type: PieActions.FETCH_PIE_DATA,

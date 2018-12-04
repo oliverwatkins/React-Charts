@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import BarChartDataTable from "../ui/BarChartDataTable";
 
-import {initialState} from "../duck";
+import {initialState} from "../reducer";
 
 /**
  * TODO Something funny with the data table stops this from working

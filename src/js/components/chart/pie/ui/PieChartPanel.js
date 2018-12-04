@@ -29,7 +29,7 @@ class PieChartPanel extends React.Component {
 
   componentDidMount() {
     //off for now
-    // this.props.onLoadChart();
+    this.props.onLoadChart();
   }
 
   render() {

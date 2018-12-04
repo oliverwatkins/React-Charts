@@ -1,4 +1,4 @@
-import {reducer} from "./../duck"
+import {reducer} from "./../reducer"
 import {
   createCreateXYSeriesAction,
   createDeleteXYSeriesAction,
@@ -9,7 +9,7 @@ import {
   createAddDataPairAction,
   createDeleteDataPairAction
 
-} from "./../duck"
+} from "./../actions"
 /*
 Test the reducer functions
  */
