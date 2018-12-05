@@ -17,6 +17,8 @@ REDUX
 * sagas
 * immutability with Immutable.js
 
+
+
 TESTING
 * testing with jest
 * snapshot tests
