@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const size = 20; //half size (ie radius)
+const size = 40; //half size (ie radius)
 
 export default function PieIcon(props) {
 

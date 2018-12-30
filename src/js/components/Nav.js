@@ -2,8 +2,9 @@ import React from "react";
 import {Link, withRouter} from "react-router-dom";
 
 import './style.less';
-import PieIcon from "./PieIcon";
-import BarIcon from "./BarIcon";
+import PieIcon from "./icons/PieIcon";
+import BarIcon from "./icons/BarIcon";
+import XYIcon from "./icons/XYIcon";
 
 class Nav extends React.Component {
   constructor() {
@@ -60,7 +61,15 @@ class Nav extends React.Component {
               </li>
               <li>
                 <Link to="line" onClick={this.toggleCollapse.bind(this)} className={lineClass}>
-                  XY
+									<div style={{display:"flex"}}>
+
+									<XYIcon></XYIcon>
+
+									<div style={{margin:"0 0 0 10px"}}> XY </div>
+									</div>
+
+
+
                 </Link>
               </li>
               <li >

@@ -1,6 +1,6 @@
 import React from "react";
 
-const size = 20;
+const size = 40;
 
 export default function BarIcon(props) {
 	let viewBox=` -${size} -${size} ${size*2} ${size*2}`

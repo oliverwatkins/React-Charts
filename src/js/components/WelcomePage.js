@@ -1,5 +1,5 @@
 import React from "react";
-import BarIcon from "./BarIcon";
+import BarIcon from "./icons/BarIcon";
 
 export default class WelcomePage extends React.Component {
   render() {
