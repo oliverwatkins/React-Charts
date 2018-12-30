@@ -2,6 +2,8 @@ import React from "react";
 import {Link, withRouter} from "react-router-dom";
 
 import './style.less';
+import PieIcon from "./PieIcon";
+import BarIcon from "./BarIcon";
 
 class Nav extends React.Component {
   constructor() {
@@ -47,8 +49,13 @@ class Nav extends React.Component {
                 <Link to="/" onClick={this.toggleCollapse.bind(this)}></Link>
               </li>
               <li >
-                <Link to="bar" onClick={this.toggleCollapse.bind(this)} className={barClass}>Bar
+                <Link to="bar" onClick={this.toggleCollapse.bind(this)} className={barClass}>
 
+
+									<div style={{display:"flex"}}>
+										<BarIcon></BarIcon>
+										<div style={{margin:"0 0 0 10px"}}> Bar </div>
+									</div>
                 </Link>
               </li>
               <li>
@@ -57,8 +64,12 @@ class Nav extends React.Component {
                 </Link>
               </li>
               <li >
+
                 <Link to="pie" onClick={this.toggleCollapse.bind(this)} className={pieClass}>
-                  PIE
+                  <div style={{display:"flex"}}>
+                   <PieIcon></PieIcon>
+										             <div style={{margin:"0 0 0 10px"}}> Pie </div>
+                  </div>
                 </Link>
               </li>
             </ul>

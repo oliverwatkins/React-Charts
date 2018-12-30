@@ -1,4 +1,5 @@
 import React from "react";
+import BarIcon from "./BarIcon";
 
 export default class WelcomePage extends React.Component {
   render() {
@@ -24,6 +25,8 @@ export default class WelcomePage extends React.Component {
             <li>Material UI and react bootstrap</li>
 
           </ul>
+
+          <BarIcon/>
         </div>
         All code is
           <a href="https://github.com/oliverwatkins/React-Charts"> available from Github </a>
