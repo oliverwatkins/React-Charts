@@ -47,13 +47,13 @@ class Nav extends React.Component {
           <div className={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li className={featuredClass}>
-                <Link to="/" onClick={this.toggleCollapse.bind(this)}></Link>
+                <Link to="/" onClick={this.toggleCollapse.bind(this)}>Welcome</Link>
               </li>
               <li >
                 <Link to="bar" onClick={this.toggleCollapse.bind(this)} className={barClass}>
 
 
-									<div style={{display:"flex"}}>
+									<div style={{display:"flex", alignItems: "center"}}>
 										<BarIcon></BarIcon>
 										<div style={{margin:"0 0 0 10px"}}> Bar </div>
 									</div>
@@ -61,9 +61,10 @@ class Nav extends React.Component {
               </li>
               <li>
                 <Link to="line" onClick={this.toggleCollapse.bind(this)} className={lineClass}>
-									<div style={{display:"flex"}}>
+									<div style={{display:"flex", alignItems: "center"}}>
 
 									<XYIcon></XYIcon>
+
 
 									<div style={{margin:"0 0 0 10px"}}> XY </div>
 									</div>
@@ -75,7 +76,7 @@ class Nav extends React.Component {
               <li >
 
                 <Link to="pie" onClick={this.toggleCollapse.bind(this)} className={pieClass}>
-                  <div style={{display:"flex"}}>
+									<div style={{display:"flex", alignItems: "center"}}>
                    <PieIcon></PieIcon>
 										             <div style={{margin:"0 0 0 10px"}}> Pie </div>
                   </div>

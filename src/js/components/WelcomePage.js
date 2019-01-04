@@ -1,5 +1,7 @@
 import React from "react";
 import BarIcon from "./icons/BarIcon";
+import XYIcon from "./icons/XYIcon";
+import PieIcon from "./icons/PieIcon";
 
 export default class WelcomePage extends React.Component {
   render() {
@@ -25,8 +27,10 @@ export default class WelcomePage extends React.Component {
             <li>Material UI and react bootstrap</li>
 
           </ul>
+					<XYIcon></XYIcon>
+					<BarIcon></BarIcon>
+					<PieIcon></PieIcon>
 
-          <BarIcon/>
         </div>
         All code is
           <a href="https://github.com/oliverwatkins/React-Charts"> available from Github </a>
