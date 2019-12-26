@@ -79,6 +79,8 @@ class Main extends React.Component {
               {/*>*/}
 
 
+
+
                 <FadeSwitch>
                   <Route exact path='/' component={WelcomePage}/>
                   <Route path='/bar' component={BarChartPage}/>
